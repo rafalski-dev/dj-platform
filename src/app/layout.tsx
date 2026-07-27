@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+import { cormorant, manrope } from "@/components/ui/fonts/fonts";
 
 export const metadata: Metadata = {
   title: "DJ-platform",
@@ -16,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", inter.variable)}>
+    <html lang="en" className={`${cormorant.variable} ${manrope.variable}`}>
       <body className="flex min-h-full flex-col">{children}</body>
     </html>
   );
