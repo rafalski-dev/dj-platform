@@ -1,9 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Wrapper } from "../wrapper";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 const NAV_ITEMS = [
@@ -26,12 +23,6 @@ export function Header() {
           <Link href="/" className="text-primary font-serif text-[22px]">
             Logo
           </Link>
-          <Button
-            className="border-border/30 text-primary rounded-md bg-white/5 p-1.5 hover:bg-white/5"
-            onClick={() => setIsOpen((prev) => !prev)}
-          >
-            {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-          </Button>
         </div>
       </Wrapper>
     </header>
