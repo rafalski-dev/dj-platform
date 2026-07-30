@@ -5,7 +5,7 @@ import { Dialog as SheetPrimitive } from "@base-ui/react/dialog";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { XIcon } from "lucide-react";
+import { X } from "lucide-react";
 
 function Sheet({ ...props }: SheetPrimitive.Root.Props) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />;
@@ -62,15 +62,9 @@ function SheetContent({
         {showCloseButton && (
           <SheetPrimitive.Close
             data-slot="sheet-close"
-            render={
-              <Button
-                variant="ghost"
-                className="bg-secondary absolute top-4 right-4"
-                size="icon-sm"
-              />
-            }
+            render={<Button variant="icon" size="header" className="absolute top-4 right-4" />}
           >
-            <XIcon />
+            <X size={24} />
             <span className="sr-only">Close</span>
           </SheetPrimitive.Close>
         )}
@@ -83,7 +77,7 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-header"
-      className={cn("flex flex-col gap-1.5 p-6", className)}
+      className={cn("flex flex-col gap-1.5 p-4", className)}
       {...props}
     />
   );

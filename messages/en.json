@@ -1,5 +1,9 @@
 {
   "LandingPage": {
+    "Header": {
+      "signIn": "Sign In",
+      "availability": "Check Availability"
+    },
     "Hero": {
       "title": "Hello World!"
     }
