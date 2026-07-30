@@ -66,11 +66,9 @@
   --destructive: rgb(231, 0, 11);
 
   /* Borders */
-  --border: rgba(229, 229, 229, 0.4);
+  --border: rgb(232, 214, 178);
   --input: rgb(229, 229, 229, 0.4);
   --ring: rgb(214, 176, 116);
-
-  --gold-light: rgb(235, 211, 160);
   --gold-dark: rgb(201, 156, 86);
 }
 
@@ -101,7 +99,7 @@
   --destructive: rgb(231, 0, 11);
 
   /* Borders */
-  --border: rgba(229, 229, 229, 0.4);
+  --border: rgb(232, 214, 178);
   --input: rgb(229, 229, 229, 0.4);
   --ring: rgb(214, 176, 116);
 
