@@ -55,9 +55,9 @@
   --primary-foreground: rgb(28, 20, 8);
 
   --secondary: rgba(245, 245, 245, 0.02);
-  --secondary-foreground: rgb(245, 239, 228);
+  --secondary-foreground: rgb(214, 176, 116);
 
-  --muted: rgb(21, 18, 13);
+  --muted: rgb(22, 20, 18);
   --muted-foreground: rgb(183, 171, 148);
 
   --accent: rgb(214, 176, 116);
@@ -69,6 +69,8 @@
   --border: rgb(232, 214, 178);
   --input: rgb(229, 229, 229, 0.4);
   --ring: rgb(214, 176, 116);
+
+  --gold-light: rgb(235, 211, 160);
   --gold-dark: rgb(201, 156, 86);
 }
 
@@ -81,7 +83,7 @@
   --card: rgb(21, 18, 13);
   --card-foreground: rgb(245, 239, 228);
 
-  --popover: --card(rgb(21, 18, 13));
+  --popover: rgb(21, 18, 13);
   --popover-foreground: rgb(245, 239, 228);
 
   --primary: rgb(214, 176, 116);
@@ -111,6 +113,7 @@
   * {
     border-color: var(--border);
     outline-color: var(--ring);
+    font-size: 15px;
   }
   body {
     background-color: var(--background);
@@ -128,5 +131,9 @@
 }
 
 @utility bg-gold-gradient {
-  background-image: linear-gradient(0deg, var(--gold-light), var(--gold-dark));
+  background-image: linear-gradient(90deg, var(--gold-light), var(--gold-dark));
+}
+
+@utility bg-plain-gradient {
+  background-image: linear-gradient(90deg, var(--gold-dark), var(--gold-dark));
 }
