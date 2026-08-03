@@ -1,26 +1,16 @@
-import { Link } from "@/i18n/navigation";
-import { Menu, X, XIcon } from "lucide-react";
+import { NavItem } from "@/types/navigation";
 import { Wrapper } from "../wrapper";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetFooter,
-  SheetHeader,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Button } from "@base-ui/react";
-import { useTranslations } from "next-intl";
+import { NavMobile } from "./nav";
+import Link from "next/link";
 
-const NAV_ITEMS = [
-  { id: 1, name: "About me", path: "#about-me" },
-  { id: 2, name: "Services", path: "#services" },
-  { id: 3, name: "Reviews", path: "#reviews" },
-  { id: 4, name: "Contact", path: "#contact" },
+const navItems: NavItem[] = [
+  { label: "About me", path: "#about-me" },
+  { label: "Services", path: "#services" },
+  { label: "Reviews", path: "#reviews" },
+  { label: "Contact", path: "#contact" },
 ];
 
 export function Header() {
-  const t = useTranslations("LandingPage.Header");
   return (
     <header
       className={
@@ -29,41 +19,12 @@ export function Header() {
     >
       <Wrapper>
         <div className={"flex items-center justify-between py-4"}>
-          <Link href="/" className="text-primary font-serif text-[25px]">
-            Logo
+          <Link href="/" className="text-primary font-serif">
+            <div className="flex items-center gap-3 text-[25px] md:text-[28px]">Logo</div>
           </Link>
-          <Sheet>
-            <SheetTrigger className="border-border/40 flex size-9.5 cursor-pointer items-center justify-center rounded-sm border bg-white/7 transition-colors hover:bg-white/12">
-              <Menu className="text-primary" size={24} />
-            </SheetTrigger>
-            <SheetContent side="top" className="flex" showCloseButton={false}>
-              <SheetHeader className="flex gap-5">
-                <div className="flex items-center justify-between">
-                  <Link href="/" className="text-primary font-serif text-[25px]">
-                    Logo
-                  </Link>
-                  <SheetClose className="border-border/40 flex size-9.5 cursor-pointer items-center justify-center rounded-sm border bg-white/7 transition-colors hover:bg-white/12">
-                    <XIcon className="text-primary" size={24} />
-                  </SheetClose>
-                </div>
-                <nav className="flex flex-col">
-                  {NAV_ITEMS.map(({ id, name, path }) => (
-                    <Link
-                      key={id}
-                      href={path}
-                      className="border-border/20 border-b py-3 font-serif text-3xl"
-                    >
-                      {name}
-                    </Link>
-                  ))}
-                </nav>
-              </SheetHeader>
-              <SheetFooter>
-                <Button>{t("signIn")}</Button>
-                <Button>{t("availability")}</Button>
-              </SheetFooter>
-            </SheetContent>
-          </Sheet>
+          <div className="lg:hidden">
+            <NavMobile navItems={navItems} />
+          </div>
         </div>
       </Wrapper>
     </header>
