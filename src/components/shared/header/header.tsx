@@ -1,4 +1,4 @@
-import { navItems } from "@/constants/navigation";
+import { navItems } from "@/constants/navigations";
 import { Wrapper } from "../wrapper";
 import { NavDesktop, NavMobile } from "./nav";
 import { Logo } from "../logo";

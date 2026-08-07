@@ -4,6 +4,7 @@
       "signIn": "Sign In",
       "availability": "Check Availability"
     },
+    "Footer": {},
     "Hero": {
       "title": "Hello World!"
     }
