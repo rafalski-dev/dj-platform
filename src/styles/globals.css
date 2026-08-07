@@ -57,11 +57,11 @@
   --secondary: rgba(245, 245, 245, 0.02);
   --secondary-foreground: rgb(214, 176, 116);
 
-  --muted: rgb(22, 20, 18);
+  --muted: rgb(28, 25, 23);
   --muted-foreground: #b7ab94;
 
   --accent: rgb(214, 176, 116);
-  --accent-foreground: rgb(214, 176, 116);
+  --accent-foreground: rgb(235, 211, 160);
 
   --destructive: rgb(231, 0, 11);
 

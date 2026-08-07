@@ -1,14 +1,7 @@
-import { NavItem } from "@/types/navigation";
+import { navItems } from "@/constants/navigation";
 import { Wrapper } from "../wrapper";
-import { NavMobile } from "./nav";
+import { NavDesktop, NavMobile } from "./nav";
 import Link from "next/link";
-
-const navItems: NavItem[] = [
-  { label: "About me", path: "#about-me" },
-  { label: "Services", path: "#services" },
-  { label: "Reviews", path: "#reviews" },
-  { label: "Contact", path: "#contact" },
-];
 
 export function Header() {
   return (
@@ -19,11 +12,14 @@ export function Header() {
     >
       <Wrapper>
         <div className={"flex items-center justify-between py-4"}>
-          <Link href="/" className="text-primary font-serif">
+          <Link href="/" className="text-primary lg: w-1/3 font-serif">
             <div className="flex items-center gap-3 text-[25px] md:text-[28px]">Logo</div>
           </Link>
           <div className="lg:hidden">
             <NavMobile navItems={navItems} />
+          </div>
+          <div className="hidden w-full lg:block">
+            <NavDesktop navItems={navItems} />
           </div>
         </div>
       </Wrapper>

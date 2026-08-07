@@ -6,7 +6,7 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu, XIcon } from "lucide-react";
+import { Menu, Moon, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
@@ -56,6 +56,38 @@ export function NavMobile({ navItems }: { navItems: NavItem[] }) {
   );
 }
 
-export function NavDesktop() {
-  return;
+export function NavDesktop({ navItems }: { navItems: NavItem[] }) {
+  const t = useTranslations("LandingPage.Header");
+  return (
+    <div className="flex w-full items-center justify-between gap-5">
+      <nav className="flex gap-2">
+        {navItems.map(({ label, path }, index) => {
+          return (
+            <a
+              key={index}
+              href={path}
+              className="text-muted-foreground hover:text-accent-foreground p-3 transition-colors"
+            >
+              {label}
+            </a>
+          );
+        })}
+      </nav>
+
+      <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3">
+          <Button variant="icon" size="icon-sm" className="text-foreground">
+            <Moon />
+          </Button>
+          <Button variant="icon" size="icon-sm" className="text-foreground">
+            EN
+          </Button>
+        </div>
+        <Button variant="outline" size="sm">
+          {t("signIn")}
+        </Button>
+        <Button size="sm">{t("availability")}</Button>
+      </div>
+    </div>
+  );
 }
