@@ -12,9 +12,11 @@ export function Header() {
     >
       <Wrapper>
         <div className={"flex items-center justify-between py-4"}>
-          <Link href="/" className="text-primary lg: w-1/3 font-serif">
-            <div className="flex items-center gap-3 text-[25px] md:text-[28px]">Logo</div>
-          </Link>
+          <div className="lg:w-1/3">
+            <Link href="/" className="text-primary font-serif text-[25px] md:text-[28px]">
+              Logo
+            </Link>
+          </div>
           <div className="lg:hidden">
             <NavMobile navItems={navItems} />
           </div>
