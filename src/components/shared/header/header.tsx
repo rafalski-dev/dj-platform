@@ -1,7 +1,7 @@
 import { navItems } from "@/constants/navigation";
 import { Wrapper } from "../wrapper";
 import { NavDesktop, NavMobile } from "./nav";
-import Link from "next/link";
+import { Logo } from "../logo";
 
 export function Header() {
   return (
@@ -13,9 +13,7 @@ export function Header() {
       <Wrapper>
         <div className={"flex items-center justify-between py-4"}>
           <div className="lg:w-1/3">
-            <Link href="/" className="text-primary font-serif text-[25px] md:text-[28px]">
-              Logo
-            </Link>
+            <Logo size="text-[25px] md:text-[28px]" />
           </div>
           <div className="lg:hidden">
             <NavMobile navItems={navItems} />
