@@ -1,4 +1,9 @@
 export type NavItem = {
-  label: string;
+  navKey: string;
+  path: string;
+};
+
+export type ClientItem = {
+  navKey: string;
   path: string;
 };

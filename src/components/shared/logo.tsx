@@ -6,7 +6,7 @@ type LogoProps = {
 
 export function Logo({ size }: LogoProps) {
   return (
-    <Link href="/" className={`text-primary font-serif ${size}`}>
+    <Link href="/" className={`text-primary w-fit font-serif ${size}`}>
       Logo
     </Link>
   );
