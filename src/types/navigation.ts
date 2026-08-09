@@ -1,4 +1,4 @@
 export type NavItem = {
-  label: string;
+  navKey: string;
   path: string;
 };

@@ -4,7 +4,22 @@
       "signIn": "Sign In",
       "availability": "Check Availability"
     },
-    "Footer": {},
+    "Navigation": {
+      "aboutMe": "About me",
+      "services": "Services",
+      "reviews": "Reviews",
+      "contact": "Contact",
+      "dashboard": "Client Dashboard",
+      "termsAndConditions": "Terms & Conditions",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "Footer": {
+      "navTitle": "Navigation",
+      "clientTitle": "Client",
+      "socialTitle": "Social",
+      "description": "Years of experience, one goal - making sure every party is unforgettable. Book now and let's celebrate.",
+      "developerCredit": "Website built and managed by"
+    },
     "Hero": {
       "title": "Hello World!"
     }

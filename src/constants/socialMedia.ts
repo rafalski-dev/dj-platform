@@ -1,7 +1,8 @@
+import { SocialItem } from "@/types/socialMedia";
 import { siteConfig } from "@/config/site";
 
-export const socialMedia = [
-  { label: "Instagram", path: siteConfig.socialMedia.instagram },
-  { label: "Facebook", path: siteConfig.socialMedia.facebook },
-  { label: "Youtube", path: siteConfig.socialMedia.youtube },
+export const socialMedia: SocialItem[] = [
+  { name: "Instagram", url: siteConfig.socialMedia.instagram, icon: "instagram" },
+  { name: "Facebook", url: siteConfig.socialMedia.facebook, icon: "facebook" },
+  { name: "Youtube", url: siteConfig.socialMedia.youtube, icon: "youtube" },
 ];
