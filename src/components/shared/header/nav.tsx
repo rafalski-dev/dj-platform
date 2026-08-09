@@ -35,9 +35,9 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
             </SheetClose>
           </div>
           <nav className="flex flex-col">
-            {navItems.map(({ navKey, path }, index) => (
+            {navItems.map(({ navKey, path }) => (
               <a
-                key={index}
+                key={navKey}
                 href={path}
                 className="border-border/10 hover:border-border/20 group border-b py-3 font-serif transition-all"
               >
@@ -63,10 +63,10 @@ export async function NavDesktop({ navItems }: { navItems: NavItem[] }) {
   return (
     <div className="flex w-full items-center justify-between gap-5">
       <nav className="flex gap-2">
-        {navItems.map(({ navKey, path }, index) => {
+        {navItems.map(({ navKey, path }) => {
           return (
             <a
-              key={index}
+              key={navKey}
               href={path}
               className="text-muted-foreground hover:text-accent-foreground p-3 transition-colors"
             >
