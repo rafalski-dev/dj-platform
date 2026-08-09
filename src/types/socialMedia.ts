@@ -1,5 +1,5 @@
 export type SocialItem = {
-  name: "Facebook" | "Youtube" | "Instagram";
+  name: "Facebook" | "YouTube" | "Instagram";
   url: string;
   icon: "facebook" | "youtube" | "instagram";
 };

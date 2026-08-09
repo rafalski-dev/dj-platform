@@ -11,7 +11,4 @@ export type FooterSocialSectionProps = {
   linksList: SocialItem[];
 };
 
-export type FooterLinkProps = {
-  navKey: string;
-  path: string;
-};
+export type FooterLinkProps = NavItem;
