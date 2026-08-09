@@ -9,11 +9,12 @@ import {
 import { Menu, Moon, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
 import { NavItem } from "@/types/navigation";
+import { getTranslations } from "next-intl/server";
 
-export function NavMobile({ navItems }: { navItems: NavItem[] }) {
-  const t = useTranslations("LandingPage.Header");
+export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
+  const th = await getTranslations("LandingPage.Header");
+  const tn = await getTranslations("LandingPage.Navigation");
 
   return (
     <Sheet>
@@ -34,41 +35,42 @@ export function NavMobile({ navItems }: { navItems: NavItem[] }) {
             </SheetClose>
           </div>
           <nav className="flex flex-col">
-            {navItems.map(({ label, path }, index) => (
+            {navItems.map(({ navKey, path }, index) => (
               <a
                 key={index}
                 href={path}
                 className="border-border/10 hover:border-border/20 group border-b py-3 font-serif transition-all"
               >
                 <span className="group-hover:text-primary inline-block text-3xl transition-all duration-300 group-hover:translate-x-2 md:text-4xl">
-                  {label}
+                  {tn(navKey)}
                 </span>
               </a>
             ))}
           </nav>
         </SheetHeader>
         <SheetFooter>
-          <Button variant="outline">{t("signIn")}</Button>
-          <Button>{t("availability")}</Button>
+          <Button variant="outline">{th("signIn")}</Button>
+          <Button>{th("availability")}</Button>
         </SheetFooter>
       </SheetContent>
     </Sheet>
   );
 }
 
-export function NavDesktop({ navItems }: { navItems: NavItem[] }) {
-  const t = useTranslations("LandingPage.Header");
+export async function NavDesktop({ navItems }: { navItems: NavItem[] }) {
+  const th = await getTranslations("LandingPage.Header");
+  const tn = await getTranslations("LandingPage.Navigation");
   return (
     <div className="flex w-full items-center justify-between gap-5">
       <nav className="flex gap-2">
-        {navItems.map(({ label, path }, index) => {
+        {navItems.map(({ navKey, path }, index) => {
           return (
             <a
               key={index}
               href={path}
               className="text-muted-foreground hover:text-accent-foreground p-3 transition-colors"
             >
-              {label}
+              {tn(navKey)}
             </a>
           );
         })}
@@ -84,9 +86,9 @@ export function NavDesktop({ navItems }: { navItems: NavItem[] }) {
           </Button>
         </div>
         <Button variant="outline" size="sm">
-          {t("signIn")}
+          {th("signIn")}
         </Button>
-        <Button size="sm">{t("availability")}</Button>
+        <Button size="sm">{th("availability")}</Button>
       </div>
     </div>
   );
