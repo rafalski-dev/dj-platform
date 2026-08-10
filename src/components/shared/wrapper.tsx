@@ -1,7 +1,5 @@
-type Props = {
-  children: React.ReactNode;
-};
+import { WrapperProps } from "@/types/shared";
 
-export function Wrapper({ children }: Props) {
-  return <div className="mx-auto w-full max-w-7xl px-4 md:px-5 lg:px-7">{children}</div>;
+export function Wrapper({ children }: WrapperProps) {
+  return <div className="mx-auto w-full max-w-7xl px-5 md:px-6 lg:px-8">{children}</div>;
 }
