@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "DJ Platform",
+  name: "DJ Maven",
   url: "https://dj-platform.vercel.app",
   ogImage: "https://dj-platform.vercel.app/og-image.jpg",
   contact: { number: "+44 500 200 100", email: "contact@djplatform.com" },
