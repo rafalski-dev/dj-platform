@@ -8,7 +8,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "text-primary-foreground bg-gold-gradient shadow-lg/20 hover:shadow-primary",
+        default:
+          "text-primary-foreground bg-gold-gradient shadow-lg/20 hover:shadow-primary font-semibold",
         outline: "border-border/20 bg-secondary hover:bg-muted hover:border-border/35 ",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
@@ -21,10 +22,10 @@ const buttonVariants = cva(
       },
       size: {
         default:
-          "h-11 gap-1.5 px-4.5 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5 md:text-bas md:h-12",
+          "h-11 gap-2 px-4.5 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5 md:text-base md:h-12",
         xs: "h-8 gap-1 px-2.5 text-xs has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 [&_svg:not([class*='size-'])]:size-3",
         sm: "h-11 gap-1 px-4 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 text-[14px]",
-        lg: "h-14 gap-1.5 px-4 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
+        lg: "h-14 gap-2.5 px-6 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3 ",
         icon: "size-10 [&_svg:not([class*='size-'])]:size-6 md:size-11 md:[&_svg:not([class*='size-'])]:size-7",
         "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-3",
         "icon-sm": "h-11 w-11 text-[14px] [&_svg:not([class*='size-'])]:size-4",
