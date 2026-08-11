@@ -23,12 +23,12 @@ export async function Hero() {
               </span>
             </h1>
             <div className="max-w-140 md:hidden">
-              <SectionDescription className="mb-8">
+              <SectionDescription className="mb-8 text-[18px]/8 md:text-[19px]">
                 {t("sectionDescriptionNarrow")}
               </SectionDescription>
             </div>
             <div className="hidden md:block md:max-w-160">
-              <SectionDescription className="mb-8">
+              <SectionDescription className="mb-8 text-[18px]/8 md:text-[19px]">
                 {t("sectionDescriptionWide")}
               </SectionDescription>
             </div>
