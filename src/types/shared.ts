@@ -4,6 +4,7 @@ export type WrapperProps = {
 
 export type SectionLabelProps = {
   children: string;
+  textStyle?: string;
 };
 
 export type SectionDescriptionProps = {
@@ -13,5 +14,10 @@ export type SectionDescriptionProps = {
 
 export type SectionProps = {
   children: React.ReactNode;
+  className?: string;
+};
+
+export type SectionTitleProps = {
+  children: string;
   className?: string;
 };
