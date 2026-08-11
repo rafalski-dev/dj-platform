@@ -11,14 +11,14 @@ export async function Hero() {
   const t = await getTranslations("LandingPage.Hero");
 
   return (
-    <section className="pt-25 pb-16 md:pt-35 md:pb-24 lg:pb-32">
+    <section className="pt-25 pb-16 md:pt-35 md:pb-24 lg:flex lg:min-h-dvh lg:items-center lg:pb-32">
       <Wrapper>
-        <div className="grid grid-cols-1 gap-10">
-          <div className="flex flex-col">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12">
+          <div className="flex w-full flex-col lg:w-1/2">
             <SectionLabel>{t("sectionLabel")}</SectionLabel>
-            <h1 className="mb-6 max-w-150 text-[44px]/13 md:text-[54px]/13">
+            <h1 className="mb-6 max-w-150 text-[44px]/13 md:text-[54px]/13 lg:mt-2 lg:text-[68px]/20">
               {t("titleStart")}{" "}
-              <span className="from-foreground to-primary bg-linear-to-r to-50% bg-clip-text text-[44px]/13 text-transparent md:text-[54px]/13">
+              <span className="from-foreground to-primary bg-linear-to-r to-50% bg-clip-text text-[44px] text-transparent md:text-[54px] lg:text-[68px]">
                 {t("titleHighlighted")}
               </span>
             </h1>
@@ -32,7 +32,7 @@ export async function Hero() {
                 {t("sectionDescriptionWide")}
               </SectionDescription>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 lg:mt-2 lg:gap-5">
               <Button size="lg">
                 {t("primaryButton")}
                 <MoveRight />
@@ -41,7 +41,7 @@ export async function Hero() {
                 {t("secondaryButton")}
               </Button>
             </div>
-            <div className="mt-6 flex items-center">
+            <div className="mt-6 flex items-center md:gap-2">
               <div className="mr-2 flex gap-0.75">
                 {Array(5)
                   .fill(null)
@@ -56,7 +56,7 @@ export async function Hero() {
               </div>
             </div>
           </div>
-          <div className="border-border/20 shadow-accent/10 relative aspect-3/2 overflow-hidden rounded-4xl border shadow-lg hue-rotate-15">
+          <div className="border-border/20 shadow-accent/10 relative aspect-3/2 h-full w-full overflow-hidden rounded-4xl border shadow-lg hue-rotate-15 lg:w-1/2">
             <Image
               src="/images/hero.jpg"
               fill
