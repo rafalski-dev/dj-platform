@@ -13,6 +13,18 @@
       "termsAndConditions": "Terms & Conditions",
       "privacyPolicy": "Privacy Policy"
     },
+    "Hero": {
+      "sectionLabel": "Dj & Master of ceremonies",
+      "titleStart": "Weddings and events your guests",
+      "titleHighlighted": "remember for years.",
+      "sectionDescriptionNarrow": "Music, lighting, and hosting of the highest class. Every entrance, dance, and tear of joy happens at exactly the right moment.",
+      "sectionDescriptionWide": "Music, lighting, and hosting of the highest class. With years of experience reading the room, I make sure every entrance, dance, and tear of joy happens at exactly the right moment — so you can simply enjoy the night.",
+      "primaryButton": "Check availability",
+      "secondaryButton": "See offer",
+      "rating": "Rated",
+      "and": "and",
+      "events": "events performed"
+    },
     "Footer": {
       "navTitle": "Navigation",
       "clientTitle": "Client",
@@ -20,9 +32,6 @@
       "description": "Years of experience, one goal - making sure every party is unforgettable. Book now and let's celebrate.",
       "developerCredit": "Website built and managed by",
       "rights": "All Rights Reserved."
-    },
-    "Hero": {
-      "title": "Hello World!"
     }
   }
 }
