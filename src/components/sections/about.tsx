@@ -14,28 +14,33 @@ export async function About() {
   return (
     <Section>
       <Wrapper>
-        <div className="flex flex-col gap-12">
-          <div className="border-border/20 shadow-accent/10 relative aspect-3/2 overflow-hidden rounded-4xl border shadow-lg hue-rotate-8 lg:w-1/2">
-            <Image
-              src="/images/about.jpg"
-              fill
-              className="object-cover contrast-105"
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw"
-              alt="DJ speaking into a microphone during the event"
-            />
-          </div>
-          <div>
-            <SectionLabel>{t("sectionLabel")}</SectionLabel>
-            <SectionTitle className="md:max-w-150">{t("sectionTitle")}</SectionTitle>
-            <div className="mb-7 flex flex-col gap-5">
-              <SectionDescription>{t("sectionDescriptionFirst")}</SectionDescription>
-              <SectionDescription>{t("sectionDescriptionSecond")}</SectionDescription>
+        <div className="flex flex-col gap-12 lg:gap-18">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-center">
+            <div className="w-full lg:w-1/2">
+              <div className="border-border/20 shadow-accent/10 relative aspect-3/2 overflow-hidden rounded-4xl border shadow-lg hue-rotate-8 lg:aspect-square">
+                <Image
+                  src="/images/about.png"
+                  fill
+                  loading="eager"
+                  className="object-cover contrast-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  alt="DJ speaking into a microphone during the event"
+                />
+              </div>
             </div>
-            <SectionLabel textStyle="font-serif text-[24px] tracking-[2px] capitalize italic font-thin">
-              {siteConfig.fullName}
-            </SectionLabel>
+            <div className="lg:w-1/2">
+              <SectionLabel>{t("sectionLabel")}</SectionLabel>
+              <SectionTitle className="md:max-w-150">{t("sectionTitle")}</SectionTitle>
+              <div className="mb-7 flex flex-col gap-5">
+                <SectionDescription>{t("sectionDescriptionFirst")}</SectionDescription>
+                <SectionDescription>{t("sectionDescriptionSecond")}</SectionDescription>
+              </div>
+              <SectionLabel textStyle="font-serif text-[24px] tracking-[2px] capitalize italic font-thin md:text-[24px] lg:text-[24px]">
+                {siteConfig.fullName}
+              </SectionLabel>
+            </div>
           </div>
-          <div className="grid grid-cols-2 gap-3.5 md:gap-4.5">
+          <div className="grid grid-cols-2 gap-3.5 md:gap-4.5 lg:grid-cols-4">
             {aboutCardsData.map((card) => (
               <div
                 key={card}
