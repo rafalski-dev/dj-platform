@@ -25,6 +25,30 @@
       "and": "and",
       "events": "events performed"
     },
+    "About": {
+      "sectionLabel": "About me",
+      "sectionTitle": "For twelve years I've played every wedding as if it were my own.",
+      "sectionDescriptionFirst": "My name is Marek Nowicki and for twelve years I've hosted some of the most beautiful weddings in Poland. I don't just play a playlist — I read the room, sense the moment and build energy so that every guest, from grandma to the youngest, finds their way onto the dance floor.",
+      "sectionDescriptionSecond": "Class, stage presence and top-tier equipment are a given. The rest is instinct — which is exactly why couples recommend me to their friends.",
+      "stats": {
+        "experience": {
+          "number": "12 years",
+          "label": "on events dancefloors"
+        },
+        "events": {
+          "number": "380+",
+          "label": "weddings & ceremonies"
+        },
+        "feedback": {
+          "number": "5/5",
+          "label": "average couples rating"
+        },
+        "reliability": {
+          "number": "100%",
+          "label": "on-time, every time"
+        }
+      }
+    },
     "Footer": {
       "navTitle": "Navigation",
       "clientTitle": "Client",
