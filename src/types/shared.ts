@@ -10,3 +10,8 @@ export type SectionDescriptionProps = {
   children: React.ReactNode;
   className?: string;
 };
+
+export type SectionProps = {
+  children: React.ReactNode;
+  className?: string;
+};
