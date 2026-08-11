@@ -7,7 +7,7 @@ export function SectionLabel({ children, textStyle }: SectionLabelProps) {
       <span className="from-primary block h-px w-8 bg-linear-to-r from-20% to-transparent"></span>
       <p
         className={cn(
-          "md:text-[13px text-[12.5px] font-medium tracking-[3px] uppercase",
+          "text-[12.5px] font-medium tracking-[3px] uppercase md:text-[13px]",
           textStyle,
         )}
       >
