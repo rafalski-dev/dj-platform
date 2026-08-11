@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 import { SectionDescriptionProps } from "@/types/shared";
 
-export function SectionDescription({ children, className = "" }: SectionDescriptionProps) {
+export function SectionDescription({ children, className }: SectionDescriptionProps) {
   return (
-    <p className={cn("text-muted-foreground text-[18px]/8 font-light md:text-[19px]", className)}>
+    <p className={cn("text-muted-foreground text-[17px]/8 font-light md:text-[18px]", className)}>
       {children}
     </p>
   );
