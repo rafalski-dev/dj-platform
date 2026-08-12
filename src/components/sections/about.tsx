@@ -15,9 +15,9 @@ export async function About() {
     <Section>
       <Wrapper>
         <div className="flex flex-col gap-12 lg:gap-18">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-center">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
             <div className="w-full lg:w-1/2">
-              <div className="border-border/20 shadow-accent/10 relative aspect-3/2 overflow-hidden rounded-4xl border shadow-lg hue-rotate-8 lg:aspect-square">
+              <div className="border-border/20 shadow-accent/10 relative aspect-3/2 overflow-hidden rounded-4xl border shadow-lg hue-rotate-8">
                 <Image
                   src="/images/about.png"
                   fill
@@ -46,7 +46,7 @@ export async function About() {
                 key={card}
                 className="border-border/20 bg-secondary flex min-h-42 flex-col justify-between gap-4 rounded-4xl border p-7 backdrop-blur-sm"
               >
-                <span className="text-accent-foreground font-serif text-[36px] md:text-[44px]">
+                <span className="text-accent-foreground font-serif text-[36px] md:text-[48px]">
                   {t(`stats.${card}.number`)}
                 </span>
                 <span className="text-muted-foreground/90 text-[14px] font-light md:text-[15px]">
