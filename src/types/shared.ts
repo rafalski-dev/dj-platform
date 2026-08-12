@@ -5,6 +5,7 @@ export type WrapperProps = {
 export type SectionLabelProps = {
   children: string;
   textStyle?: string;
+  position?: "center" | "left";
 };
 
 export type SectionDescriptionProps = {
