@@ -19,7 +19,7 @@ export async function About() {
             <div className="w-full lg:w-1/2">
               <div className="border-border/20 shadow-accent/10 relative aspect-3/2 overflow-hidden rounded-4xl border shadow-lg hue-rotate-8">
                 <Image
-                  src="/images/about.png"
+                  src="/images/about.jpg"
                   fill
                   loading="eager"
                   className="object-cover contrast-105"
