@@ -56,15 +56,17 @@ export async function Hero() {
               </div>
             </div>
           </div>
-          <div className="border-border/20 shadow-accent/10 relative aspect-3/2 h-full w-full overflow-hidden rounded-4xl border shadow-lg hue-rotate-15 lg:w-1/2">
-            <Image
-              src="/images/hero.jpg"
-              fill
-              className="object-cover contrast-110"
-              priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw"
-              alt="The crowd and the DJ dances on the dancefloor."
-            />
+          <div className="w-full lg:w-1/2">
+            <div className="border-border/20 shadow-accent/10 relative aspect-3/2 overflow-hidden rounded-4xl border shadow-lg hue-rotate-15">
+              <Image
+                src="/images/hero.jpg"
+                fill
+                className="object-cover contrast-110"
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                alt="The crowd and the DJ dances on the dancefloor."
+              />
+            </div>
           </div>
         </div>
       </Wrapper>
