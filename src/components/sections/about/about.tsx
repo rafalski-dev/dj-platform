@@ -1,11 +1,12 @@
 import { siteConfig } from "@/config/site";
-import { Section } from "../shared/section";
-import { SectionDescription } from "../shared/sectionDescription";
-import { SectionLabel } from "../shared/sectionLabel";
-import { SectionTitle } from "../shared/sectionTitle";
-import { Wrapper } from "../shared/wrapper";
+import { Section } from "../../shared/section";
+import { SectionDescription } from "../../shared/sectionDescription";
+import { SectionLabel } from "../../shared/sectionLabel";
+import { SectionTitle } from "../../shared/sectionTitle";
+import { Wrapper } from "../../shared/wrapper";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { AboutCardsList } from "./aboutCardsList";
 
 const aboutCardsData: string[] = ["experience", "events", "feedback", "reliability"];
 
@@ -40,21 +41,7 @@ export async function About() {
               </SectionLabel>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-3.5 md:gap-4.5 lg:grid-cols-4">
-            {aboutCardsData.map((card) => (
-              <div
-                key={card}
-                className="border-border/20 bg-secondary flex min-h-42 flex-col justify-between gap-4 rounded-4xl border p-7 backdrop-blur-sm"
-              >
-                <span className="text-accent-foreground font-serif text-[36px] md:text-[48px]">
-                  {t(`stats.${card}.number`)}
-                </span>
-                <span className="text-muted-foreground/90 text-[14px] font-light md:text-[15px]">
-                  {t(`stats.${card}.label`)}
-                </span>
-              </div>
-            ))}
-          </div>
+          <AboutCardsList itemsList={aboutCardsData} />
         </div>
       </Wrapper>
     </Section>

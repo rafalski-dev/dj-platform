@@ -1,4 +1,4 @@
-import { About } from "@/components/sections/about";
+import { About } from "@/components/sections/about/about";
 import { Hero } from "@/components/sections/hero";
 
 export default function Home() {
