@@ -31,7 +31,7 @@ export async function About() {
             </div>
             <div className="lg:w-1/2">
               <SectionLabel>{t("sectionLabel")}</SectionLabel>
-              <SectionTitle className="md:max-w-150">{t("sectionTitle")}</SectionTitle>
+              <SectionTitle className="max-w-120 md:max-w-150">{t("sectionTitle")}</SectionTitle>
               <div className="mb-7 flex flex-col gap-5">
                 <SectionDescription>{t("sectionDescriptionFirst")}</SectionDescription>
                 <SectionDescription>{t("sectionDescriptionSecond")}</SectionDescription>
