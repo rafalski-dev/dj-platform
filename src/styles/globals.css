@@ -55,7 +55,7 @@
   --primary-foreground: rgb(28, 20, 8);
 
   --secondary: rgba(245, 245, 245, 0.02);
-  --secondary-foreground: rgb(214, 176, 116);
+  --secondary-foreground: rgb(201, 156, 86);
 
   --muted: rgb(28, 25, 23);
   --muted-foreground: rgb(183, 171, 148);
@@ -113,12 +113,12 @@
   * {
     border-color: var(--border);
     outline-color: var(--ring);
-    font-size: 15px;
   }
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
+    font-size: 15px;
   }
   h1,
   h2,
