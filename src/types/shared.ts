@@ -22,3 +22,8 @@ export type SectionTitleProps = {
   children: string;
   className?: string;
 };
+
+export type LogoProps = {
+  iconSize: string;
+  className: string;
+};
