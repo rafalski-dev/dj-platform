@@ -137,6 +137,29 @@
         "customNeon": "Custom Neon"
       }
     },
+    "Process": {
+      "sectionLabel": "How it works",
+      "sectionTitle": "From the first call to the last dance.",
+      "sectionDescription": "A simple, calm process where I hold your hand at every stage of the planning.",
+      "steps": {
+        "availability": {
+          "title": "Call & availability",
+          "description": "We check the date and I learn your vision for the evening — with no obligation at all."
+        },
+        "package": {
+          "title": "Choosing a package",
+          "description": "I match the perfect package to your venue, guest count, and your style, ensuring every element aligns with your vision."
+        },
+        "details": {
+          "title": "Playlist & details",
+          "description": "Using our online panel, we build your must-play list and timeline so every song hits at exactly the right moment."
+        },
+        "event": {
+          "title": "Event day",
+          "description": "I arrive with professional equipment, ready to keep the dancefloor packed all night long."
+        }
+      }
+    },
     "Footer": {
       "navTitle": "Navigation",
       "clientTitle": "Client",
