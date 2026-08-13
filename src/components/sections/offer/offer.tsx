@@ -16,8 +16,10 @@ export async function Offer() {
         <div className="flex flex-col items-center gap-12">
           <div className="flex w-full flex-col items-center">
             <SectionLabel position="center">{t("sectionLabel")}</SectionLabel>
-            <SectionTitle className="text-center">{t("sectionTitle")}</SectionTitle>
-            <SectionDescription className="text-center">
+            <SectionTitle className="text-center md:max-w-110 lg:max-w-140">
+              {t("sectionTitle")}
+            </SectionTitle>
+            <SectionDescription className="text-center md:max-w-150 lg:max-w-180">
               {t("sectionDescription")}
             </SectionDescription>
           </div>
