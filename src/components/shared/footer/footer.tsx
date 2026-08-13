@@ -16,8 +16,8 @@ export async function Footer() {
       <Wrapper>
         <div className="flex flex-col gap-10">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-[40%_1fr_1fr_1fr]">
-            <div className="flex flex-col gap-4">
-              <Logo size="text-[25px] lg:text-[30px]" />
+            <div className="flex w-full flex-col gap-4">
+              <Logo iconSize={28} className="text-[28px] lg:text-[32px]" />
               <p className="text-popover-foreground max-w-75 text-[14.5px] lg:text-base">
                 {t("description")}
               </p>
