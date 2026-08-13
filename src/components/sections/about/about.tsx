@@ -33,8 +33,12 @@ export async function About() {
               <SectionLabel>{t("sectionLabel")}</SectionLabel>
               <SectionTitle className="max-w-120 md:max-w-150">{t("sectionTitle")}</SectionTitle>
               <div className="mb-7 flex flex-col gap-5">
-                <SectionDescription>{t("sectionDescriptionFirst")}</SectionDescription>
-                <SectionDescription>{t("sectionDescriptionSecond")}</SectionDescription>
+                <SectionDescription className="md:max-w-150 lg:max-w-full">
+                  {t("sectionDescriptionFirst")}
+                </SectionDescription>
+                <SectionDescription className="md:max-w-150 lg:max-w-full">
+                  {t("sectionDescriptionSecond")}
+                </SectionDescription>
               </div>
               <SectionLabel textStyle="font-serif text-[24px] tracking-[2px] capitalize italic font-thin md:text-[24px] lg:text-[24px]">
                 {siteConfig.fullName}
