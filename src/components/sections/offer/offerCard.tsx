@@ -32,6 +32,7 @@ export async function OfferCard({ cardNameKey, mostPopular, featuresList }: Offe
         <Button
           variant="outline"
           className="w-full"
+          nativeButton={false}
           render={<Link href="#contact">{t("primaryButton")}</Link>}
         ></Button>
       </footer>
