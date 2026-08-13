@@ -24,6 +24,6 @@ export type SectionTitleProps = {
 };
 
 export type LogoProps = {
-  iconSize: string;
+  iconSize: number;
   className: string;
 };
