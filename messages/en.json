@@ -49,6 +49,94 @@
         }
       }
     },
+    "Offer": {
+      "sectionLabel": "Offer",
+      "sectionTitle": "Three packages. One goal - your perfect evening.",
+      "sectionDescription": "Weddings, proms, birthdays, corporate events — every celebration. Each package is tailored to your venue and guest count. Write to me for a made-to-measure quote.",
+      "cards": {
+        "classic": {
+          "title": "Classic",
+          "description": "Intimate events where great music and an easy atmosphere matter most.",
+          "features": {
+            "sound": "Professional venue sound",
+            "lighting": "Dancefloor lighting",
+            "music": "Dj & full music coverage",
+            "hosting": "Hosting the event",
+            "consultation": "Online planning panel",
+            "welcoming": "Grand entrance fanfare",
+            "entertainment": "Wide range of entertainment",
+            "effects": "Special sound, lighting and fog effects",
+            "wishes": "Custom wishes and dedications",
+            "personalization": "Full event personalization",
+            "live": "Live music or vocals",
+            "visuals": "LED sign or venue mapping",
+            "lowFog": "Low fog for the first dance",
+            "language": "Multilingual event support",
+            "djs": "Dual DJ sets — different styles"
+          }
+        },
+        "premium": {
+          "title": "Premium",
+          "description": "Complete coverage of the event — from the welcome to the last dance.",
+          "features": {
+            "sound": "Professional venue sound",
+            "lighting": "Dancefloor lighting",
+            "music": "Dj & full music coverage",
+            "hosting": "Hosting the event",
+            "consultation": "Online planning panel",
+            "welcoming": "Grand entrance fanfare",
+            "entertainment": "Wide range of games and entertainment",
+            "effects": "Special sound, lighting and fog effects",
+            "wishes": "Custom wishes and dedications",
+            "personalization": "Full event personalization",
+            "live": "Live music or vocals",
+            "visuals": "LED sign or venue mapping",
+            "lowFog": "Low fog for the first dance",
+            "language": "Multilingual event support",
+            "djs": "Dual DJ sets — different styles"
+          }
+        },
+        "signature": {
+          "title": "Signature",
+          "description": "A full production perfected in every detail — with live musicians and a light-stage design.",
+          "features": {
+            "sound": "Professional venue sound",
+            "lighting": "Dancefloor lighting",
+            "music": "Dj & full music coverage",
+            "hosting": "Hosting the event",
+            "consultation": "Online planning panel",
+            "welcoming": "Grand entrance fanfare",
+            "entertainment": "Wide range of games and entertainment",
+            "effects": "Special sound, lighting and fog effects",
+            "wishes": "Custom wishes and dedications",
+            "personalization": "Full event personalization",
+            "live": "Live music or vocals",
+            "visuals": "LED sign or venue mapping",
+            "lowFog": "Low fog for the first dance",
+            "language": "Multilingual event support",
+            "djs": "Dual DJ sets — different styles"
+          }
+        }
+      },
+      "included": "Included:",
+      "notIncluded": "Not included:",
+      "primaryButton": "Ask for a quote",
+      "mostPopular": "Most popular",
+      "btnShowMore": "Show more features",
+      "btnShowLess": "Show fewer features",
+      "availableAddons": "Add-ons for any package",
+      "addons": {
+        "photoBooth": "Photo booth",
+        "stageSparks": "Stage sparks",
+        "liveVocalist": "Live vocalist",
+        "saxophonist": "Saxophonist",
+        "loveSign": "Love Sign",
+        "lowFog": "Low Fog",
+        "confetti": "Confetti",
+        "extraDj": "Extra DJ",
+        "customNeon": "Custom Neon"
+      }
+    },
     "Footer": {
       "navTitle": "Navigation",
       "clientTitle": "Client",
