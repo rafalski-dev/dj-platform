@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { SectionDescriptionProps } from "@/types/shared";
+import { SectionDescriptionProps } from "@/types/sharedComponents";
 
 export function SectionDescription({ children, className }: SectionDescriptionProps) {
   return (

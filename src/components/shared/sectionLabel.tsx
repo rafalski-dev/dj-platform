@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { SectionLabelProps } from "@/types/shared";
+import { SectionLabelProps } from "@/types/sharedComponents";
 
 export function SectionLabel({ children, textStyle, position = "left" }: SectionLabelProps) {
   if (position === "center") {

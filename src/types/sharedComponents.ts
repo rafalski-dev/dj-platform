@@ -27,3 +27,14 @@ export type LogoProps = {
   iconSize: number;
   className: string;
 };
+
+export type CustomImageProps = {
+  src: string;
+  alt: string;
+  ratio?: string;
+  loading?: "eager" | "lazy";
+  priority?: boolean;
+  sizes?: string;
+  contrast?: string;
+  hue?: string;
+};

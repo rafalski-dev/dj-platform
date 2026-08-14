@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { LogoProps } from "@/types/shared";
+import { LogoProps } from "@/types/sharedComponents";
 import { AudioLines } from "lucide-react";
 import Link from "next/link";
 

@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { SectionTitleProps } from "@/types/shared";
+import { SectionTitleProps } from "@/types/sharedComponents";
 
 export function SectionTitle({ children, className }: SectionTitleProps) {
   return (
