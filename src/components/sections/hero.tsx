@@ -4,8 +4,8 @@ import { SectionDescription } from "../shared/sectionDescription";
 import { Button } from "../ui/button";
 import { MoveRight } from "lucide-react";
 import { StarIcon } from "../icons/starIcon";
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { CustomImage } from "../shared/customImage";
 
 export async function Hero() {
   const t = await getTranslations("LandingPage.Hero");
@@ -57,16 +57,16 @@ export async function Hero() {
             </div>
           </div>
           <div className="w-full lg:w-1/2">
-            <div className="border-border/20 shadow-accent/10 relative aspect-3/2 overflow-hidden rounded-4xl border shadow-lg hue-rotate-15">
-              <Image
-                src="/images/hero.jpg"
-                fill
-                className="object-cover contrast-110"
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                alt="The crowd and the DJ dances on the dancefloor."
-              />
-            </div>
+            <CustomImage
+              src="/images/hero.jpg"
+              alt="The crowd and the DJ dances on the dancefloor."
+              priority
+              ratio="aspect-3/2"
+              loading="eager"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              contrast="contrast-110"
+              hue="hue-rotate-15"
+            />
           </div>
         </div>
       </Wrapper>
