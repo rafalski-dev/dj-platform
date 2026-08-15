@@ -1,0 +1,50 @@
+import { GalleryImageType } from "@/types/gallery";
+
+export const galleryData: GalleryImageType[] = [
+  {
+    id: 1,
+    imgSrc: "/images/gallery/crowd-dancing-with-dj.jpg",
+    altKey: "crowd",
+    ratio: "aspect-4/3",
+    hue: "hue-rotate-15",
+    width: "lg:col-span-3",
+    sizes: "(max-width: 768px) 100vw, 50vw",
+  },
+  {
+    id: 2,
+    imgSrc: "/images/gallery/wedding-venue.jpg",
+    altKey: "weddingVenue",
+    ratio: "aspect-4/3",
+    contrast: "contrast-93",
+    hue: "hue-rotate-10",
+    width: "lg:col-span-3",
+    sizes: "(max-width: 768px) 100vw, 50vw",
+  },
+  {
+    id: 3,
+    imgSrc: "/images/gallery/outdoor-wedding.jpg",
+    altKey: "outdoorCeremony",
+    ratio: "aspect-4/3",
+    contrast: "contrast-130",
+    width: "lg:col-span-2",
+    sizes: "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw",
+  },
+  {
+    id: 4,
+    imgSrc: "/images/gallery/newlyweds-dance.jpg",
+    altKey: "newlyWeds",
+    ratio: "aspect-4/3",
+    contrast: "contrast-110",
+    width: "lg:col-span-2",
+    sizes: "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw",
+  },
+  {
+    id: 5,
+    imgSrc: "/images/gallery/dj-stand.jpg",
+    altKey: "djStand",
+    ratio: "aspect-4/3",
+    contrast: "contrast-120",
+    width: "lg:col-span-2",
+    sizes: "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw",
+  },
+];

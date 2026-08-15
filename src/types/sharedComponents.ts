@@ -37,4 +37,5 @@ export type CustomImageProps = {
   loading?: "eager" | "lazy";
   contrast?: string;
   hue?: string;
+  width?: string;
 };

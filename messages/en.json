@@ -160,6 +160,16 @@
         }
       }
     },
+    "Gallery": {
+      "sectionLabel": "Our work",
+      "images": {
+        "crowd": "Crowd and DJ dancing on the main dancefloor",
+        "weddingVenue": "Presentation of breathtaking main wedding hall",
+        "outdoorCeremony": "Guests welcoming newlyweds at outdoor ceremony",
+        "newlyWeds": "Crowd and newlyweds dancing and having fun outdoor",
+        "djStand": "Presentation of DJ's stand and his mixing skills"
+      }
+    },
     "Footer": {
       "navTitle": "Navigation",
       "clientTitle": "Client",
