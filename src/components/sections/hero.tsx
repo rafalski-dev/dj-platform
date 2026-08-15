@@ -64,8 +64,7 @@ export async function Hero() {
               ratio="aspect-3/2"
               loading="eager"
               sizes="(max-width: 1024px) 100vw, 50vw"
-              contrast="contrast-110"
-              hue="hue-rotate-15"
+              contrast="contrast-105"
             />
           </div>
         </div>
