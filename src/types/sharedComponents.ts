@@ -31,10 +31,10 @@ export type LogoProps = {
 export type CustomImageProps = {
   src: string;
   alt: string;
-  ratio?: string;
-  loading?: "eager" | "lazy";
+  ratio: string;
   priority?: boolean;
   sizes?: string;
+  loading?: "eager" | "lazy";
   contrast?: string;
   hue?: string;
 };

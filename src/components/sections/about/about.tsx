@@ -4,9 +4,9 @@ import { SectionDescription } from "../../shared/sectionDescription";
 import { SectionLabel } from "../../shared/sectionLabel";
 import { SectionTitle } from "../../shared/sectionTitle";
 import { Wrapper } from "../../shared/wrapper";
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { AboutCardsList } from "./aboutCardsList";
+import { CustomImage } from "@/components/shared/customImage";
 
 const aboutCardsData: string[] = ["experience", "events", "feedback", "reliability"];
 
@@ -18,16 +18,15 @@ export async function About() {
         <div className="flex flex-col gap-12 lg:gap-18">
           <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
             <div className="w-full lg:w-1/2">
-              <div className="border-border/20 shadow-accent/10 relative aspect-3/2 overflow-hidden rounded-4xl border shadow-lg hue-rotate-8">
-                <Image
-                  src="/images/about.jpg"
-                  fill
-                  loading="eager"
-                  className="object-cover contrast-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  alt="DJ speaking into a microphone during the event"
-                />
-              </div>
+              <CustomImage
+                src="/images/about.jpg"
+                alt="DJ speaking into a microphone during the event"
+                ratio="aspect-3/2"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="eager"
+                contrast="contrast-105"
+                hue="hue-rotate-8"
+              />
             </div>
             <div className="lg:w-1/2">
               <SectionLabel>{t("sectionLabel")}</SectionLabel>
