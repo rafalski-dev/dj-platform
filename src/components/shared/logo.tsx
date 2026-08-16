@@ -7,7 +7,7 @@ export function Logo({ iconSize, className }: LogoProps) {
   return (
     <Link href="/" className={cn(`flex items-center gap-2 lg:gap-3`, className)}>
       <AudioLines size={iconSize} className="text-accent" />
-      <span className="text-accent tracking-wider">Maven</span>
+      <span className="font-serif tracking-wider">Maven</span>
     </Link>
   );
 }
