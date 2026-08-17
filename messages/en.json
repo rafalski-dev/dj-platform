@@ -186,6 +186,36 @@
         "10": "Professional approach and great communication. The party was a success, though we wanted a longer closing set — we sorted it on site. Very positive overall!"
       }
     },
+    "FAQ": {
+      "sectionLabel": "Frequently asked",
+      "sectionTitle": "Before you write maybe this helps",
+      "items": {
+        "availability": {
+          "question": "Is my date still available?",
+          "answer": "The best way to find out is to reach out with your date and venue. I keep my calendar up to date and will confirm availability right away — popular dates, especially in summer, tend to book up months in advance, so it's worth asking early."
+        },
+        "travel": {
+          "question": "Do you travel across Poland?",
+          "answer": "Yes, I play events all over Poland. Travel within the local area is included, and for venues further away I simply add a transparent travel fee that we agree on upfront — no surprises."
+        },
+        "songs": {
+          "question": "Can we choose the songs ourselves?",
+          "answer": "Absolutely. Before the event we go through your must-play list, any songs to avoid, and the moments that matter most to you. From there I read the room and blend your requests with tracks that keep the dance floor full all night."
+        },
+        "ceremony": {
+          "question": "What about ceremony music?",
+          "answer": "I can handle music for the whole day, including the ceremony. We'll plan the entrance, key moments, and background sound together so every part flows smoothly and sounds exactly how you imagined."
+        },
+        "equipment": {
+          "question": "What if the equipment fails?",
+          "answer": "I always bring backup gear — spare controllers, cables, and audio sources — so the music never stops. Reliable, professional-grade equipment plus redundancy means technical issues stay invisible to you and your guests."
+        },
+        "booking": {
+          "question": "How does booking a date work?",
+          "answer": "It's simple: send me a message with your date and details, we talk through what you're looking for, and once everything fits I reserve the date with a signed agreement and a deposit. After that, your date is locked in."
+        }
+      }
+    },
     "Footer": {
       "navTitle": "Navigation",
       "clientTitle": "Client",
