@@ -3,8 +3,8 @@ import { Section } from "../../shared/section";
 import { Wrapper } from "../../shared/wrapper";
 import { SectionLabel } from "../../shared/sectionLabel";
 import { SectionTitle } from "../../shared/sectionTitle";
-import { TestimonialsCarousel } from "./testimonialsCarousel";
 import { TestimonialDataType } from "@/types/testimonials";
+import { TestimonialsCarousel } from "./testimonialsCarousel";
 
 const testimonialsData: TestimonialDataType[] = [
   {
@@ -101,9 +101,7 @@ export async function Testimonials() {
               {t("sectionTitle")}
             </SectionTitle>
           </div>
-          <div>
-            <TestimonialsCarousel testimonialsData={testimonialsData} />
-          </div>
+          <TestimonialsCarousel testimonialsData={testimonialsData} />
         </div>
       </Wrapper>
     </Section>
