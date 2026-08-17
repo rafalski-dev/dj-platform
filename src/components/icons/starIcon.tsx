@@ -1,4 +1,16 @@
-export function StarIcon({ size = 33, color = "#FFFFFF", className = "", ...props }) {
+export function StarIcon({
+  size = 33,
+  color = "#FFFFFF",
+  variant = "filled",
+  className = "",
+  ...props
+}: {
+  size?: number;
+  color?: string;
+  variant?: "filled" | "empty";
+  className?: string;
+} & React.SVGProps<SVGSVGElement>) {
+  const isEmpty = variant === "empty";
   return (
     <svg
       viewBox="0 -0.5 33 33"
@@ -6,7 +18,10 @@ export function StarIcon({ size = 33, color = "#FFFFFF", className = "", ...prop
       height={size}
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      fill={color}
+      fill={isEmpty ? "none" : color}
+      stroke={color}
+      strokeWidth={isEmpty ? 2 : 0}
+      strokeLinejoin="round"
       {...props}
     >
       <title>star</title>
