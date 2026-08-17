@@ -46,7 +46,7 @@
   --foreground: rgb(245, 239, 228);
 
   --card: rgb(21, 18, 13);
-  --card-foreground: rgb(245, 239, 228);
+  --card-foreground: rgb(237, 230, 214);
 
   --popover: --card(rgb(21, 18, 13));
   --popover-foreground: rgb(143, 133, 111);
