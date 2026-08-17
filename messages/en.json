@@ -170,6 +170,22 @@
         "djStand": "Presentation of DJ's stand and his mixing skills"
       }
     },
+    "Testimonials": {
+      "sectionLabel": "Testimonials",
+      "sectionTitle": "Many couples have trusted me. Here's what they say.",
+      "testimonials": {
+        "1": "Our wedding was absolutely magical and the dance floor never emptied! The DJ read the crowd perfectly, keeping everyone dancing from grandma to the youngest guests.",
+        "2": "Professionalism at the highest level. Communication was effortless and every song request was honored. The sound and lighting were seriously impressive. Worth it!",
+        "3": "We threw a 40th birthday and needed someone to get the crowd going. Perfect match! Great energy, real connection with guests, and music for every taste.",
+        "4": "Really good to work with, though a bit more classic music for the older guests would have helped. Still, the atmosphere was great and the floor stayed packed.",
+        "5": "The best decision in planning our wedding! Seamless transitions, great timing, and tons of energy. Our guests still talk about it. Thank you!",
+        "6": "We booked for a company party and it was a bullseye. Professional, punctual, and music tuned to a very mixed crowd. We'll definitely book again.",
+        "7": "Great fun and an amazing vibe! The only thing I'd note was the volume early on — but one word and it was fixed right away.",
+        "8": "Brilliant from start to finish. He ran our wedding with great instinct, the games were fun, and the music kept the floor ready all night!",
+        "9": "Lovely to work with and a truly personal approach to what we wanted. The playlist was spot on and the dance floor stayed hot until the very end.",
+        "10": "Professional approach and great communication. The party was a success, though we wanted a longer closing set — we sorted it on site. Very positive overall!"
+      }
+    },
     "Footer": {
       "navTitle": "Navigation",
       "clientTitle": "Client",
