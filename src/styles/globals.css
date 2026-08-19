@@ -48,7 +48,7 @@
   --card: rgb(21, 18, 13);
   --card-foreground: rgb(237, 230, 214);
 
-  --popover: --card(rgb(21, 18, 13));
+  --popover: rgb(18, 15, 10);
   --popover-foreground: rgb(143, 133, 111);
 
   --primary: rgb(214, 176, 116);
@@ -58,7 +58,7 @@
   --secondary-foreground: rgb(201, 156, 86);
 
   --muted: rgb(28, 25, 23);
-  --muted-foreground: rgb(183, 171, 148);
+  --muted-foreground: rgb(180, 168, 145);
 
   --accent: rgb(214, 176, 116);
   --accent-foreground: rgb(235, 211, 160);
@@ -67,7 +67,7 @@
 
   /* Borders */
   --border: rgb(232, 214, 178);
-  --input: rgb(229, 229, 229, 0.4);
+  --input: rgb(232, 214, 178);
   --ring: rgb(214, 176, 116);
 
   --gold-light: rgb(235, 211, 160);
@@ -127,6 +127,22 @@
   h5,
   h6 {
     font-family: var(--font-serif);
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--foreground) !important;
+    caret-color: var(--foreground);
+    box-shadow:
+      inset 0 0 0 1000px var(--background),
+      var(--tw-inset-shadow, 0 0 #0000),
+      var(--tw-inset-ring-shadow, 0 0 #0000),
+      var(--tw-ring-offset-shadow, 0 0 #0000),
+      var(--tw-ring-shadow, 0 0 #0000),
+      var(--tw-shadow, 0 0 #0000) !important;
+    transition: background-color 9999999s ease-in-out 0s !important;
   }
 }
 
