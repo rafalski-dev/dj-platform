@@ -6,6 +6,7 @@ export type SectionLabelProps = {
   children: string;
   textStyle?: string;
   position?: "center" | "left";
+  decoration?: boolean;
 };
 
 export type SectionDescriptionProps = {

@@ -216,6 +216,13 @@
         }
       }
     },
+    "Newsletter": {
+      "sectionLabel": "Newsletter",
+      "sectionTitle": "A few dates still remain in 2026/2027 season.",
+      "sectionDescription": "Sign up and I'll send you the open dates and musical inspiration for your evening",
+      "button": "Sign up",
+      "placeholder": "Your email address"
+    },
     "Footer": {
       "navTitle": "Navigation",
       "clientTitle": "Client",
