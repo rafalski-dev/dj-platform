@@ -24,6 +24,9 @@
   --color-card: var(--card);
   --color-foreground: var(--foreground);
   --color-background: var(--background);
+  --color-success-bg: var(--success-bg);
+  --color-success-text: var(--success-text);
+  --color-success-border: var(--success-border);
 
   /* Fonts */
   --font-sans: var(--font-manrope);
@@ -64,6 +67,11 @@
   --accent-foreground: rgb(235, 211, 160);
 
   --destructive: rgb(215, 25, 34);
+
+  /* Success */
+  --success-bg: rgba(127, 206, 127, 0.1);
+  --success-text: rgb(191, 227, 191);
+  --success-border: rgb(127, 206, 127, 0.28);
 
   /* Borders */
   --border: rgb(232, 214, 178);
