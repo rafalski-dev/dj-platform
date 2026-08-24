@@ -1,19 +1,61 @@
-import { Input } from "@/components/shared/form/input";
-import { Button } from "../../ui/button";
-import { getTranslations } from "next-intl/server";
+"use client";
 
-export async function NewsletterForm() {
-  const t = await getTranslations("LandingPage.Newsletter");
+import { handleSubmit } from "@/actions/newsletter";
+import { Button } from "@/components/ui/button";
+import { FieldGroup, Field, FieldError } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Spinner } from "@/components/ui/spinner";
+import { useActionState } from "react";
+import { NewsletterSuccess } from "./newsletterSuccess";
+import { initialState } from "@/constants/newsletter";
+import { useTranslations } from "next-intl";
+
+export function NewsletterForm() {
+  const t = useTranslations("LandingPage.Newsletter");
+  const [state, dispatchAction, isPending] = useActionState(handleSubmit, initialState);
+
   return (
-    <form className="flex w-full max-w-140 flex-col items-center justify-center gap-5 md:flex-row">
-      <Input
-        name="newsletterAddress"
-        className="rounded-full px-6"
-        placeholder={t("placeholder")}
-      />
-      <Button className="h-12 w-full rounded-full md:w-30" type="submit">
-        {t("button")}
-      </Button>
+    <form className="flex w-full flex-col items-center justify-center" action={dispatchAction}>
+      {state.status === "success" ? (
+        <NewsletterSuccess message={t("successMessage")} />
+      ) : (
+        <FieldGroup className="max-w-130 gap-4">
+          <div className="flex flex-col gap-4 md:flex-row md:gap-3">
+            <Field>
+              <Input
+                className="h-12.5 rounded-full px-5"
+                defaultValue={state.providedEmail}
+                required
+                name="email"
+                type="email"
+                placeholder={t("placeholder")}
+                aria-label={t("placeholder")}
+                aria-invalid={!!state?.errors?.email}
+                aria-describedby={state?.errors?.email ? "email-error" : undefined}
+              />
+              {state?.errors?.email && (
+                <FieldError id="email" className="px-6">
+                  {state.errors.email[0]}
+                </FieldError>
+              )}
+            </Field>
+            <Button disabled={isPending} className="w-full rounded-full py-6 md:w-36" type="submit">
+              {isPending ? (
+                <>
+                  <Spinner data-icon="inline-start" />
+                  {t("btnProcessing")}
+                </>
+              ) : (
+                <>{t("btnSignUp")}</>
+              )}
+            </Button>
+          </div>
+
+          {state.status === "error" && (
+            <FieldError className="text-center">{state.serverError}</FieldError>
+          )}
+        </FieldGroup>
+      )}
     </form>
   );
 }

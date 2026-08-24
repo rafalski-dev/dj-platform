@@ -220,8 +220,16 @@
       "sectionLabel": "Newsletter",
       "sectionTitle": "A few dates still remain in 2026/2027 season.",
       "sectionDescription": "Sign up and I'll send you the open dates and musical inspiration for your evening",
-      "button": "Sign up",
-      "placeholder": "Your email address"
+      "successMessage": "Thank you. We'll be in touch with the open dates.",
+      "btnSignUp": "Sign up",
+      "btnProcessing": "Processing",
+      "placeholder": "Provide address e-mail",
+      "fetchingError": "Error occurred during submitting your e-mail. Please try again.",
+      "serverError": "Something went wrong. Please try again",
+      "errors": {
+        "emptyEmail": "Provide address e-mail",
+        "invalidEmail": "Provide correct address e-mail"
+      }
     },
     "Footer": {
       "navTitle": "Navigation",
