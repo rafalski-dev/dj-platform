@@ -3,7 +3,7 @@ export const siteConfig = {
   fullName: "Marek Nowicki",
   url: "https://dj-platform.vercel.app",
   ogImage: "https://dj-platform.vercel.app/og-image.jpg",
-  contact: { number: "+44 500 200 100", email: "contact@djplatform.com" },
+  contact: { number: "+44 500 200 100", email: "contact@djmaven.com" },
   socialMedia: {
     instagram: "https://www.instagram.com/",
     facebook: "https://www.facebook.com/",
