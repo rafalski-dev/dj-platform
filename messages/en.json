@@ -231,6 +231,49 @@
         "invalidEmail": "Provide correct address e-mail"
       }
     },
+    "Contact": {
+      "sectionLabel": "Contact",
+      "sectionTitle": "Let's check whether your date is free.",
+      "sectionDescription": "Want to ask about wedding, birthday, prom, anniversary, conference of anything else? Leave a message and I usually reply within 24 hours.",
+      "contactDetails": {
+        "email": "E-mail",
+        "phone": "Phone",
+        "coverage": "Coverage"
+      },
+      "coverage": "All of Poland",
+      "contactForm": {
+        "formInputs": {
+          "fullName": { "label": "Full name", "placeholder": "Steven Johnson" },
+          "eventDate": { "label": "Event date", "placeholder": "13.10.2027" },
+          "email": { "label": "E-mail", "placeholder": "sample@email.com" },
+          "phone": { "label": "Phone", "placeholder": "07890 123456" },
+          "eventType": {
+            "label": "Event type",
+            "options": {
+              "placeholder": "Choose event type",
+              "wedding": "Wedding",
+              "prom": "Prom",
+              "anniversary": "Anniversary",
+              "18th birthday": "18th birthday",
+              "conference": "Conference",
+              "corporateEvent": "Corporate event",
+              "festival": "Festival",
+              "other": "Other"
+            }
+          },
+          "place": { "label": "Place name / address", "placeholder": "The Ledbury" },
+          "message": {
+            "label": "Message",
+            "placeholder": "Tell me a few words about your event - guest count, hours, music expectations"
+          },
+          "terms": {
+            "label": "I agree to my data being processed in order to answer this enquiry."
+          }
+        },
+        "formButton": "Send enquiry",
+        "formDescription": "Fields marked with * are required. I usually reply within 24 hours."
+      }
+    },
     "Footer": {
       "navTitle": "Navigation",
       "clientTitle": "Client",

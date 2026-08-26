@@ -1,4 +1,5 @@
 import { About } from "@/components/sections/about/about";
+import { Contact } from "@/components/sections/contact/contact";
 import { FAQ } from "@/components/sections/faq/faq";
 import { Gallery } from "@/components/sections/gallery";
 import { Hero } from "@/components/sections/hero";
@@ -18,6 +19,7 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <Newsletter />
+      <Contact />
     </main>
   );
 }
