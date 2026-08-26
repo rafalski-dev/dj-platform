@@ -1,22 +1,16 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldContent, FieldLabel, FieldError } from "@/components/ui/field";
+import { CheckboxDescriptionProps } from "@/types/formComponents";
 
-type CheckboxDescriptionProps = {
-  label: string;
-  description?: string;
-  name: string;
-  error: string | null;
-};
-
-export function CheckboxField({ label, name, error }: CheckboxDescriptionProps) {
+export function CheckboxField({ label, name, error, fieldStyle }: CheckboxDescriptionProps) {
   return (
-    <Field orientation="horizontal">
-      <Checkbox name={name} id="termsCheckbox" />
+    <Field orientation="horizontal" className={fieldStyle}>
+      <Checkbox name={name} id={name} />
       <FieldContent>
-        <FieldLabel htmlFor="termsCheckbox" className="text-muted-foreground/80 text-[13.5px]">
+        <FieldLabel htmlFor={name} className="text-muted-foreground/80 text-[13.5px]">
           {label}
         </FieldLabel>
-        <FieldError>{error}</FieldError>
+        {error && <FieldError>{error}</FieldError>}
       </FieldContent>
     </Field>
   );
