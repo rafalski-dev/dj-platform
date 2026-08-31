@@ -242,11 +242,31 @@
       },
       "coverage": "All of Poland",
       "contactForm": {
+        "acknowledgement": "Thank you for message!",
         "formInputs": {
-          "fullName": { "label": "Full name", "placeholder": "Steven Johnson" },
-          "eventDate": { "label": "Event date", "placeholder": "13.10.2027" },
-          "email": { "label": "E-mail", "placeholder": "sample@email.com" },
-          "phone": { "label": "Phone", "placeholder": "07890 123456" },
+          "fullName": {
+            "label": "Full name",
+            "placeholder": "Steven Johnson",
+            "required": "Provide full name",
+            "validation": "Full name must contains 2 words"
+          },
+          "email": {
+            "label": "E-mail",
+            "placeholder": "sample@email.com",
+            "required": "Provide e-mail address",
+            "validation": "Provide correct e-mail address"
+          },
+          "phone": {
+            "label": "Phone",
+            "placeholder": "07890 123456",
+            "required": "Provide phone number",
+            "validation": "Provide correct phone number, number must contains at least 9 digits."
+          },
+          "eventDate": {
+            "label": "Event date",
+            "placeholder": "13.10.2027",
+            "validation": "Provide correct date format DD.MM.YYYY"
+          },
           "eventType": {
             "label": "Event type",
             "options": {
@@ -259,18 +279,33 @@
               "corporateEvent": "Corporate event",
               "festival": "Festival",
               "other": "Other"
-            }
+            },
+            "required": "Select event type. If you don't know select option - Other"
           },
-          "place": { "label": "Place name / address", "placeholder": "The Ledbury" },
+          "place": {
+            "label": "Place name / address",
+            "placeholder": "The Ledbury",
+            "validation": "Place name must contains at least 3 characters"
+          },
           "message": {
             "label": "Message",
-            "placeholder": "Tell me a few words about your event - guest count, hours, music expectations"
+            "placeholder": "Tell me a few words about your event - guest count, hours, music expectations",
+            "validationMin": "Message must contains min 20 characters",
+            "validationMax": "Message must contains max 2000 characters"
           },
           "terms": {
-            "label": "I agree to my data being processed in order to answer this enquiry."
+            "label": "I agree to my data being processed in order to answer this enquiry.",
+            "required": "You must agree terms & condition"
           }
         },
-        "formButton": "Send enquiry",
+        "serverMessage": {
+          "validationError": "Check highlighted fields and please try again.",
+          "sendingError": "Something went wrong while sending your message. Please try again.",
+          "success": "Congratulations! Message submitted. We will contact you shortly.",
+          "serverError": "Something went wrong. Please try again."
+        },
+        "submitButton": "Send enquiry",
+        "processButton": "Processing",
         "formDescription": "Fields marked with * are required. I usually reply within 24 hours."
       }
     },
