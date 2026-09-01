@@ -121,6 +121,7 @@
   * {
     border-color: var(--border);
     outline-color: var(--ring);
+    scroll-behavior: smooth;
   }
   body {
     background-color: var(--background);

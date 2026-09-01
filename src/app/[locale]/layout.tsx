@@ -26,7 +26,11 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const messages = await getMessages();
   return (
-    <html lang={locale} className={`${cormorant.variable} ${manrope.variable}`}>
+    <html
+      lang={locale}
+      className={`${cormorant.variable} ${manrope.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider messages={messages}>
           <Header />
