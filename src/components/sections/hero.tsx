@@ -11,7 +11,7 @@ export async function Hero() {
   const t = await getTranslations("LandingPage.Hero");
 
   return (
-    <section className="pt-25 pb-16 md:pt-35 md:pb-24 lg:flex lg:min-h-dvh lg:items-center lg:pb-32">
+    <section className="pt-25 pb-16 md:pt-35 md:pb-24 lg:flex lg:min-h-245 lg:items-center lg:pb-32">
       <Wrapper>
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12">
           <div className="flex w-full flex-col lg:w-1/2">
