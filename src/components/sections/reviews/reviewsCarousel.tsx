@@ -6,22 +6,18 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import { TestimonialsCard } from "./testimonialsCard";
+import { ReviewsCard } from "./reviewsCard";
 import { Button } from "@/components/ui/button";
-import { TestimonialDataType } from "@/types/testimonials";
+import { ReviewDataType } from "@/types/reviews";
 
-export function TestimonialsCarousel({
-  testimonialsData,
-}: {
-  testimonialsData: TestimonialDataType[];
-}) {
+export function ReviewsCarousel({ reviewsData }: { reviewsData: ReviewDataType[] }) {
   return (
     <Carousel className="w-full">
       <CarouselContent>
-        {testimonialsData.map(({ id, ...rest }) => {
+        {reviewsData.map(({ id, ...rest }) => {
           return (
             <CarouselItem key={id} className="md:basis-1/2 lg:basis-1/3">
-              <TestimonialsCard id={id} {...rest} />
+              <ReviewsCard id={id} {...rest} />
             </CarouselItem>
           );
         })}

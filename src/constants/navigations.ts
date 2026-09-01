@@ -1,7 +1,7 @@
 import { ClientItem, NavItem } from "@/types/navigation";
 
 export const navItems: NavItem[] = [
-  { navKey: "aboutMe", path: "#about-me" },
+  { navKey: "aboutMe", path: "#about" },
   { navKey: "services", path: "#services" },
   { navKey: "reviews", path: "#reviews" },
   { navKey: "contact", path: "#contact" },

@@ -1,17 +1,17 @@
 import { StarIcon } from "@/components/icons/starIcon";
-import { TestimonialDataType } from "@/types/testimonials";
+import { ReviewDataType } from "@/types/reviews";
 import { Dot } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 
-export function TestimonialsCard({
+export function ReviewsCard({
   id,
   femaleFullName,
   maleFullName,
   venue,
   date,
   rate,
-}: TestimonialDataType) {
-  const t = useTranslations("LandingPage.Testimonials");
+}: ReviewDataType) {
+  const t = useTranslations("LandingPage.Reviews");
   const format = useFormatter();
   const dateTime = new Date(date);
 
@@ -41,9 +41,7 @@ export function TestimonialsCard({
                 );
               })}
           </div>
-          <p className="text-card-foreground font-serif text-xl italic">
-            {t(`testimonials.${id}`)}
-          </p>
+          <p className="text-card-foreground font-serif text-xl italic">{t(`reviews.${id}`)}</p>
         </div>
       </header>
       <footer className="border-border/10 flex flex-row items-center gap-5 border-t pt-5">
