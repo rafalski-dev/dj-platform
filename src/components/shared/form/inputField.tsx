@@ -1,36 +1,38 @@
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { InputProps } from "@/types/formComponents";
-import { CircleAlert } from "lucide-react";
+import { ControlledInputProps } from "@/types/formComponents";
+import { Controller, type FieldValues } from "react-hook-form";
 
-export function InputField({
+export function ControlledInput<T extends FieldValues>({
   name,
+  control,
   label,
-  required,
+  placeholder,
   type = "text",
-  error,
-  inputStyles,
-  ...rest
-}: InputProps) {
+  autoComplete = "off",
+  required,
+}: ControlledInputProps<T>) {
   return (
-    <Field>
-      <FieldLabel htmlFor={name}>
-        {label} {required && <span className="text-accent">*</span>}
-      </FieldLabel>
-      <Input
-        name={name}
-        id={name}
-        type={type}
-        className={inputStyles}
-        aria-invalid={!!error}
-        {...rest}
-      />
-      {error && (
-        <FieldError className="flex items-center gap-1.5">
-          <CircleAlert size={15} />
-          {error}
-        </FieldError>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field, fieldState }) => (
+        <Field data-invalid={fieldState.invalid}>
+          <FieldLabel htmlFor={field.name}>
+            {label}
+            {required && <span className="text-accent">*</span>}
+          </FieldLabel>
+          <Input
+            id={field.name}
+            aria-invalid={fieldState.invalid}
+            placeholder={placeholder}
+            autoComplete={autoComplete}
+            type={type}
+            {...field}
+          />
+          {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+        </Field>
       )}
-    </Field>
+    />
   );
 }

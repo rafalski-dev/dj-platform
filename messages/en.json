@@ -234,7 +234,7 @@
     "Contact": {
       "sectionLabel": "Contact",
       "sectionTitle": "Let's check whether your date is free.",
-      "sectionDescription": "Want to ask about wedding, birthday, prom, anniversary, conference of anything else? Leave a message and I usually reply within 24 hours.",
+      "sectionDescription": "Want to ask about wedding, birthday, prom, anniversary, conference or anything else? Leave a message and I usually reply within 24 hours.",
       "contactDetails": {
         "email": "E-mail",
         "phone": "Phone",
@@ -242,25 +242,26 @@
       },
       "coverage": "All of Poland",
       "contactForm": {
-        "acknowledgement": "Thank you for message!",
+        "acknowledgement": "Thank you for your message!",
+        "btnAgain": "Send new enquiry",
         "formInputs": {
           "fullName": {
             "label": "Full name",
             "placeholder": "Steven Johnson",
             "required": "Provide full name",
-            "validation": "Full name must contains 2 words"
+            "validation": "Full name must contain at least 2 words"
           },
           "email": {
             "label": "E-mail",
             "placeholder": "sample@email.com",
             "required": "Provide e-mail address",
-            "validation": "Provide correct e-mail address"
+            "validation": "Provide a correct e-mail"
           },
           "phone": {
             "label": "Phone",
             "placeholder": "07890 123456",
             "required": "Provide phone number",
-            "validation": "Provide correct phone number, number must contains at least 9 digits."
+            "validation": "Provide correct phone number, number must contain at least 9 digits."
           },
           "eventDate": {
             "label": "Event date",
@@ -269,18 +270,18 @@
           },
           "eventType": {
             "label": "Event type",
+            "placeholder": "Choose event type",
             "options": {
-              "placeholder": "Choose event type",
               "wedding": "Wedding",
               "prom": "Prom",
               "anniversary": "Anniversary",
-              "18th birthday": "18th birthday",
+              "eighteenthBirthday": "18th birthday",
               "conference": "Conference",
               "corporateEvent": "Corporate event",
               "festival": "Festival",
               "other": "Other"
             },
-            "required": "Select event type. If you don't know select option - Other"
+            "required": "Select event type "
           },
           "place": {
             "label": "Place name / address",
@@ -290,18 +291,19 @@
           "message": {
             "label": "Message",
             "placeholder": "Tell me a few words about your event - guest count, hours, music expectations",
-            "validationMin": "Message must contains min 20 characters",
-            "validationMax": "Message must contains max 2000 characters"
+            "validationMin": "Message must contain at least 20 characters",
+            "validationMax": "Message must contain at most 2000 characters",
+            "hint": "min 20 characters"
           },
           "terms": {
-            "label": "I agree to my data being processed in order to answer this enquiry.",
-            "required": "You must agree terms & condition"
+            "label": "I agree to my data being processed in order to answer this enquiry. ",
+            "required": "You must agree to the terms & condition"
           }
         },
         "serverMessage": {
-          "validationError": "Check highlighted fields and please try again.",
-          "sendingError": "Something went wrong while sending your message. Please try again.",
-          "success": "Congratulations! Message submitted. We will contact you shortly.",
+          "validationError": "Please check the highlighted fields and please try again.",
+          "sendingError": "Something went wrong while sending your form. Please try again.",
+          "success": "Congratulations! Form submitted. I will contact you shortly.",
           "serverError": "Something went wrong. Please try again."
         },
         "submitButton": "Send enquiry",

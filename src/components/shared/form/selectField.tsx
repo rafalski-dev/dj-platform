@@ -2,42 +2,46 @@ import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SelectProps } from "@/types/formComponents";
-import { CircleAlert } from "lucide-react";
+import { ControlledSelectProps } from "@/types/formComponents";
+import { Controller, type FieldValues } from "react-hook-form";
 
-export function SelectField({ name, label, items, required, error }: SelectProps) {
+export function ControlledSelect<T extends FieldValues>({
+  name,
+  control,
+  label,
+  placeholder,
+  list,
+  required,
+}: ControlledSelectProps<T>) {
   return (
-    <Field>
-      <FieldLabel htmlFor={name}>
-        {label} {required && <span className="text-accent">*</span>}
-      </FieldLabel>
-      <Select items={items} name={name}>
-        <SelectTrigger id={name} aria-invalid={!!error}>
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            {items.map(({ label, value }) => {
-              return (
+    <Controller
+      name={name}
+      control={control}
+      render={({ field, fieldState }) => (
+        <Field data-invalid={fieldState.invalid}>
+          <FieldLabel>
+            {label}
+            {required && <span className="text-accent">*</span>}
+          </FieldLabel>
+          <Select items={list} name={field.name} value={field.value} onValueChange={field.onChange}>
+            <SelectTrigger id={field.name} aria-invalid={fieldState.invalid}>
+              <SelectValue placeholder={placeholder} />
+            </SelectTrigger>
+            <SelectContent>
+              {list.map(({ label, value }) => (
                 <SelectItem key={value} value={value}>
                   {label}
                 </SelectItem>
-              );
-            })}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-      {error && (
-        <FieldError className="flex items-center gap-1.5">
-          <CircleAlert size={15} />
-          {error}
-        </FieldError>
+              ))}
+            </SelectContent>
+          </Select>
+          {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+        </Field>
       )}
-    </Field>
+    />
   );
 }

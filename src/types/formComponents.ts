@@ -1,24 +1,35 @@
-export type CheckboxDescriptionProps = {
+import { type FieldValues, type Control, type FieldPath } from "react-hook-form";
+
+export type ControlledCheckboxProps<T extends FieldValues> = {
+  name: FieldPath<T>;
+  control: Control<T>;
   label: string;
-  name: string;
-  error?: string | null;
-  fieldStyle?: string;
 };
 
-export type InputProps = {
-  name: string;
+export type ControlledInputProps<T extends FieldValues> = {
+  name: FieldPath<T>;
+  control: Control<T>;
   label: string;
-  type?: string;
-  placeholder?: string;
+  placeholder: string;
+  autoComplete?: string;
+  type?: "text" | "email" | "tel";
   required?: boolean;
-  error?: string;
-  inputStyles?: string;
 };
 
-export type SelectProps = {
+export type ControlledSelectProps<T extends FieldValues> = {
+  name: FieldPath<T>;
+  control: Control<T>;
   label: string;
-  name: string;
-  items: { label: string; value: string | null }[];
-  error?: string;
+  placeholder: string;
+  list: { label: string; value: string }[];
+  required?: boolean;
+};
+
+export type ControlledTextareaProps<T extends FieldValues> = {
+  name: FieldPath<T>;
+  control: Control<T>;
+  label: string;
+  placeholder: string;
+  hint: string;
   required?: boolean;
 };

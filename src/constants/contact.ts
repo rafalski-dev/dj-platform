@@ -16,11 +16,10 @@ export const contactDetailsData: contactDataItemType[] = [
 ];
 
 export const eventTypeKeys = [
-  { labelKey: "placeholder", value: null },
   { labelKey: "wedding", value: "wedding" },
   { labelKey: "prom", value: "prom" },
   { labelKey: "anniversary", value: "anniversary" },
-  { labelKey: "18th birthday", value: "18th birthday" },
+  { labelKey: "eighteenthBirthday", value: "eighteenthBirthday" },
   { labelKey: "conference", value: "conference" },
   { labelKey: "corporateEvent", value: "corporateEvent" },
   { labelKey: "festival", value: "festival" },

@@ -1,13 +1,24 @@
+"use client";
+
 import { SectionDescription } from "@/components/shared/sectionDescription";
+import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
 export type ContactFormSuccessProps = {
   message: string | null;
   title: string;
   ref?: React.Ref<HTMLDivElement>;
+  btnMessage: string;
+  handleReset: () => void;
 };
 
-export function ContactFormSuccess({ message, title, ref }: ContactFormSuccessProps) {
+export function ContactFormSuccess({
+  message,
+  title,
+  ref,
+  handleReset,
+  btnMessage,
+}: ContactFormSuccessProps) {
   return (
     <div
       ref={ref}
@@ -21,6 +32,9 @@ export function ContactFormSuccess({ message, title, ref }: ContactFormSuccessPr
         {title}
       </p>
       <SectionDescription className="text-center text-[16px]">{message}</SectionDescription>
+      <Button className="mt-5" onClick={handleReset}>
+        {btnMessage}
+      </Button>
     </div>
   );
 }

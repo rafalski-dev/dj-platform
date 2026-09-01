@@ -1,17 +1,33 @@
 import { Checkbox } from "@/components/ui/checkbox";
-import { Field, FieldContent, FieldLabel, FieldError } from "@/components/ui/field";
-import { CheckboxDescriptionProps } from "@/types/formComponents";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { ControlledCheckboxProps } from "@/types/formComponents";
+import { Controller, type FieldValues } from "react-hook-form";
 
-export function CheckboxField({ label, name, error, fieldStyle }: CheckboxDescriptionProps) {
+export function ControlledCheckbox<T extends FieldValues>({
+  name,
+  control,
+  label,
+}: ControlledCheckboxProps<T>) {
   return (
-    <Field orientation="horizontal" className={fieldStyle}>
-      <Checkbox name={name} id={name} />
-      <FieldContent>
-        <FieldLabel htmlFor={name} className="text-muted-foreground/80 text-[13.5px]">
-          {label}
-        </FieldLabel>
-        {error && <FieldError>{error}</FieldError>}
-      </FieldContent>
-    </Field>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field, fieldState }) => (
+        <div className="mt-3 flex flex-col gap-1">
+          <Field className="items-start" orientation="horizontal" data-invalid={fieldState.invalid}>
+            <Checkbox
+              className="mt-0.5"
+              id={field.name}
+              name={field.name}
+              checked={field.value}
+              onCheckedChange={field.onChange}
+              aria-invalid={fieldState.invalid}
+            />
+            <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
+          </Field>
+          {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+        </div>
+      )}
+    />
   );
 }
