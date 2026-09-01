@@ -49,8 +49,8 @@ export async function Hero() {
                     return <StarIcon color="#ebd3a0" size={15} key={index} />;
                   })}
               </div>
-              <div className="text-muted-foreground flex gap-1">
-                {t("rating")} 5/5 <span className="hidden md:inline">{t("and")}</span>
+              <div className="text-popover-foreground flex gap-1">
+                {t("rating")} 4.8/5 <span className="hidden md:inline">{t("and")}</span>
                 <span className="text-foreground/85 ml-1">380+</span>
                 {t("events")}
               </div>
