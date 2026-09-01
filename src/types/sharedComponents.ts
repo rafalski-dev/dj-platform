@@ -16,6 +16,7 @@ export type SectionDescriptionProps = {
 
 export type SectionProps = {
   children: React.ReactNode;
+  anchorLink?: string;
   className?: string;
 };
 

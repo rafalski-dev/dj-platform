@@ -11,7 +11,7 @@ import { ContactForm } from "./contactForm";
 export async function Contact() {
   const t = await getTranslations("LandingPage.Contact");
   return (
-    <Section>
+    <Section anchorLink="contact">
       <Wrapper>
         <div className="flex flex-col gap-10 lg:flex-row">
           <div className="flex flex-col items-start gap-8 lg:w-1/2">

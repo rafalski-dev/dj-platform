@@ -13,7 +13,7 @@ const aboutCardsData: string[] = ["experience", "events", "feedback", "reliabili
 export async function About() {
   const t = await getTranslations("LandingPage.About");
   return (
-    <Section>
+    <Section anchorLink="about">
       <Wrapper>
         <div className="flex flex-col gap-12 lg:gap-18">
           <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
