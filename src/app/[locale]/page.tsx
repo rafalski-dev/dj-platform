@@ -7,10 +7,14 @@ import { Newsletter } from "@/components/sections/newsletter/newsletter";
 import { Offer } from "@/components/sections/offer/offer";
 import { Process } from "@/components/sections/process/process";
 import { Reviews } from "@/components/sections/reviews/reviews";
+import { Test } from "@/components/sections/test";
+import { FloatingBackground } from "@/components/shared/decorations/floatingBackground";
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative">
+      <FloatingBackground />
+      {/* <Test /> */}
       <Hero />
       <About />
       <Offer />
