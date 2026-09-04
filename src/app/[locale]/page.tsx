@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main className="relative">
       <FloatingBackground />
-      {/* <Test /> */}
+      <Test />
       <Hero />
       <About />
       <Offer />

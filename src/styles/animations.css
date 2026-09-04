@@ -28,3 +28,23 @@
     translate: calc(var(--base-floating) * 1px) 0;
   }
 }
+
+@keyframes risingGlowOrbs {
+  0% {
+    transform: translateY(110vh);
+  }
+
+  100% {
+    transform: translateY(-10vh);
+  }
+}
+
+@keyframes floatingGlowOrbs {
+  0%,
+  100% {
+    translate: calc(-50% - var(--base-floating) * 1px) 0;
+  }
+  50% {
+    translate: calc(-50% + var(--base-floating) * 1px) 0;
+  }
+}
