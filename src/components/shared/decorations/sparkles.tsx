@@ -1,17 +1,5 @@
 import { cn } from "@/lib/utils";
-
-type SparkleProps = {
-  className?: string;
-  width: string;
-  height: string;
-  left: string;
-  baseOpacity: string;
-  baseFloating: string;
-  rising: string;
-  pulsing: string;
-  floating: string;
-  display: string;
-};
+import { SparkleProps } from "@/types/decorations";
 
 export function Sparkle({
   className,
@@ -24,6 +12,7 @@ export function Sparkle({
   pulsing,
   floating,
   display,
+  ...rest
 }: SparkleProps) {
   return (
     <div
@@ -31,7 +20,7 @@ export function Sparkle({
       style={
         {
           top: 0,
-          left: `${left}%`,
+          left: left ? `${left}%` : undefined,
           width: `${width}px`,
           height: `${height}px`,
           background:
@@ -45,6 +34,7 @@ export function Sparkle({
           "--base-floating": string;
         }
       }
+      {...rest}
     />
   );
 }
