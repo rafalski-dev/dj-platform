@@ -92,7 +92,7 @@ export function ContactForm({ className }: { className?: string }) {
     );
 
   return (
-    <div className={cn("border-border/20 bg-card rounded-2xl border p-5 md:p-6 lg:p-7", className)}>
+    <div className={cn("border-border/12 bg-card rounded-2xl border p-5 md:p-6 lg:p-7", className)}>
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <FieldGroup>
           <div className="flex flex-col gap-2.5 md:flex-row">

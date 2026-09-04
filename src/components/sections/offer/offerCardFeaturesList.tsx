@@ -19,7 +19,7 @@ export function OfferCardFeatureList({ cardNameKey, featuresList }: OfferCardFea
             return (
               <li
                 key={featureNameKey}
-                className="border-border/15 flex items-center gap-3 border-t py-3"
+                className="border-border/12 flex items-center gap-3 border-t py-3"
               >
                 <span className="sr-only">{t("notIncluded")}</span>
                 <span className="text-accent-foreground/30 bg-popover-foreground/15 rounded-full p-1">
@@ -34,7 +34,7 @@ export function OfferCardFeatureList({ cardNameKey, featuresList }: OfferCardFea
           return (
             <li
               key={featureNameKey}
-              className="border-border/15 flex items-center gap-3 border-t py-3"
+              className="border-border/12 flex items-center gap-3 border-t py-3"
             >
               <span className="sr-only">{t("included")}</span>
               <span className="text-accent-foreground bg-popover-foreground/30 rounded-full p-1">

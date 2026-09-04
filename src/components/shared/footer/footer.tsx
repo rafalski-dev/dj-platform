@@ -12,7 +12,7 @@ export async function Footer() {
   const t = await getTranslations("LandingPage.Footer");
 
   return (
-    <footer className="border-border/20 border-t pt-15 pb-8">
+    <footer className="border-border/10 border-t pt-15 pb-8">
       <Wrapper>
         <div className="flex flex-col gap-10">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-[40%_1fr_1fr_1fr]">
@@ -26,7 +26,7 @@ export async function Footer() {
             <FooterSection title={t("clientTitle")} linksList={clientItems} />
             <FooterSocialSection title={t("socialTitle")} linksList={socialMedia} />
           </div>
-          <div className="border-border/20 text-popover-foreground flex justify-between border-t pt-7">
+          <div className="border-border/10 text-popover-foreground flex justify-between border-t pt-7">
             <p className="text-[13.5px] lg:text-[14px]">
               {t("developerCredit")}{" "}
               <span className="text-accent-foreground text-[14px] lg:text-base">

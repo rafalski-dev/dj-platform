@@ -12,7 +12,7 @@ export async function Newsletter() {
   return (
     <Section className="border-t-0 pt-4 md:pt-6 lg:pt-8">
       <Wrapper>
-        <div className="border-border/15 from-card to-popover relative m-auto max-w-250 overflow-hidden rounded-4xl border bg-linear-to-tr px-8 py-12 md:px-10 lg:px-12 lg:py-16">
+        <div className="border-border/12 from-card to-popover relative m-auto max-w-250 overflow-hidden rounded-4xl border bg-linear-to-tr px-8 py-12 md:px-10 lg:px-12 lg:py-16">
           <GlowOrb className="-top-23 -right-13 h-100 w-100" />
           <div className="relative flex flex-col items-center gap-7">
             <div className="flex flex-col items-center">

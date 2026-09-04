@@ -16,7 +16,7 @@ export function CustomImage({
   return (
     <div
       className={cn(
-        "border-border/20 shadow-accent/10 relative aspect-3/2 overflow-hidden rounded-4xl border shadow-lg",
+        "border-border/15 shadow-accent/10 relative aspect-3/2 overflow-hidden rounded-4xl border shadow-lg",
         ratio,
         width,
       )}

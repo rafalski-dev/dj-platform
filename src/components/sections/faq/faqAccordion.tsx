@@ -8,7 +8,7 @@ export async function FAQAccordion({ FAQData }: { FAQData: string[] }) {
     <Accordion className="border-border/15 border-t border-b md:max-w-150 lg:max-w-225">
       {FAQData.map((questionKey) => {
         return (
-          <AccordionItem key={questionKey} className="border-border/15 px-1">
+          <AccordionItem key={questionKey} className="border-border/12 px-1">
             <AccordionTrigger className="cursor-pointer py-5 text-[22px] lg:text-2xl">
               {t(`items.${questionKey}.question`)}
             </AccordionTrigger>

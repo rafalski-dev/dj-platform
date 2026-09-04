@@ -7,7 +7,7 @@ export async function AboutCardsList({ itemsList }: { itemsList: string[] }) {
       {itemsList.map((card) => (
         <div
           key={card}
-          className="border-border/20 bg-secondary flex min-h-42 flex-col justify-between gap-4 rounded-4xl border px-6 py-5 backdrop-blur-sm md:py-6"
+          className="border-border/12 bg-secondary flex min-h-42 flex-col justify-between gap-4 rounded-4xl border px-6 py-5 backdrop-blur-sm md:py-6"
         >
           <span className="text-accent-foreground font-serif text-[36px] md:text-[48px]">
             {t(`stats.${card}.number`)}

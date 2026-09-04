@@ -8,7 +8,7 @@ export async function ProcessStepsList({ processStepsData }: { processStepsData:
         return (
           <li key={step}>
             <article>
-              <header className="border-border/20 mb-4 border-b pb-3">
+              <header className="border-border/12 mb-4 border-b pb-3">
                 <span className="text-accent/50 font-serif text-[46px]">{`0${index + 1}`}</span>
               </header>
               <div className="flex flex-col gap-2">

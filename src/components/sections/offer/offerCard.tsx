@@ -13,7 +13,7 @@ export async function OfferCard({ cardNameKey, mostPopular, featuresList }: Offe
     <article
       className={clsx(
         "bg-card relative flex flex-col gap-6 rounded-4xl border px-6 py-8 md:p-6",
-        mostPopular ? "border-accent/65 shadow-accent/50 shadow-xl/30" : "border-border/20",
+        mostPopular ? "border-accent/55 shadow-accent/50 shadow-xl/30" : "border-border/12",
       )}
     >
       {mostPopular && (
