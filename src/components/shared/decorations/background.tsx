@@ -51,34 +51,44 @@ const staticGlowOrbsData = [
   {
     id: 1,
     size: "34",
-    top: "-10",
-    left: "-6",
+    maxSize: "800",
+    position: "top-[-10%] left-[-6%]",
     baseOpacity: "0.10",
     animationDuration: "22",
   },
-  { id: 2, size: "28", top: "40", left: "45", baseOpacity: "0.08", animationDuration: "26" },
-  { id: 3, size: "48", bottom: "-12", right: "-10", baseOpacity: "0.10", animationDuration: "28" },
+  {
+    id: 2,
+    size: "28",
+    maxSize: "800",
+    position: "top-[40%] left-[45%]",
+    baseOpacity: "0.08",
+    animationDuration: "26",
+  },
+  {
+    id: 3,
+    size: "48",
+    maxSize: "1200",
+    position: "bottom-[-12%] right-[-10%]",
+    baseOpacity: "0.10",
+    animationDuration: "28",
+  },
 ];
 
 export function Background() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 motion-reduce:hidden">
-      {staticGlowOrbsData.map(
-        ({ id, size, top, right, bottom, left, baseOpacity, animationDuration }) => {
-          return (
-            <BgGlowOrb
-              key={id}
-              size={size}
-              top={top}
-              right={right}
-              bottom={bottom}
-              left={left}
-              baseOpacity={baseOpacity}
-              animationDuration={animationDuration}
-            />
-          );
-        },
-      )}
+      {staticGlowOrbsData.map(({ id, size, maxSize, position, baseOpacity, animationDuration }) => {
+        return (
+          <BgGlowOrb
+            key={id}
+            size={size}
+            maxSize={maxSize}
+            position={position}
+            baseOpacity={baseOpacity}
+            animationDuration={animationDuration}
+          />
+        );
+      })}
       {sparklesData.map(
         ({ id, size, left, baseOpacity, baseFloating, rising, pulsing, floating, display }) => {
           return (

@@ -15,25 +15,21 @@ export function GlowOrb({ className, ...rest }: GlowOrbProps) {
 
 export function BgGlowOrb({
   className,
-  top,
-  left,
-  right,
-  bottom,
+  position,
   size,
+  maxSize,
   baseOpacity,
   animationDuration,
   ...rest
 }: BgGlowOrbProps) {
   return (
     <div
-      className={cn("absolute rounded-full mix-blend-screen", className)}
+      className={cn("absolute rounded-full mix-blend-screen", position, className)}
       style={{
-        top: top ? `${top}%` : undefined,
-        right: right ? `${right}%` : undefined,
-        bottom: bottom ? `${bottom}%` : undefined,
-        left: left ? `${left}%` : undefined,
         width: `${size}vw`,
         height: `${size}vw`,
+        maxWidth: maxSize ? `${maxSize}px` : undefined,
+        maxHeight: maxSize ? `${maxSize}px` : undefined,
         opacity: baseOpacity,
         background: `radial-gradient(circle, rgba(214, 176, 116), transparent 65%)`,
         animation: `glowDrift ${animationDuration}s ease-in-out infinite`,

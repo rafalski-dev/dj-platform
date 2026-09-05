@@ -5,10 +5,8 @@ export type GlowOrbProps = {
 export type BgGlowOrbProps = {
   className?: string;
   size: string;
-  top?: string;
-  right?: string;
-  bottom?: string;
-  left?: string;
+  maxSize?: string;
+  position: string;
   baseOpacity: string;
   animationDuration: string;
 };

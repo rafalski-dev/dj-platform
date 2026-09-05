@@ -6,12 +6,20 @@ import { MoveRight } from "lucide-react";
 import { StarIcon } from "../icons/starIcon";
 import { getTranslations } from "next-intl/server";
 import { CustomImage } from "../shared/customImage";
+import { BgGlowOrb } from "../shared/decorations/glowOrbs";
 
 export async function Hero() {
   const t = await getTranslations("LandingPage.Hero");
 
   return (
-    <section className="pt-25 pb-16 md:pt-35 md:pb-24 lg:flex lg:min-h-245 lg:items-center lg:pb-32">
+    <section className="relative pt-25 pb-16 md:pt-35 md:pb-24 lg:flex lg:min-h-245 lg:items-center lg:pb-32">
+      <BgGlowOrb
+        position="bottom-[-15%] left-[-5%] 3xl:left-[17%]"
+        size="43"
+        maxSize="850"
+        baseOpacity="0.09"
+        animationDuration="40"
+      />
       <Wrapper>
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12">
           <div className="flex w-full flex-col lg:w-1/2">
