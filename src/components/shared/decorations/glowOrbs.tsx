@@ -24,7 +24,7 @@ export function BgGlowOrb({
 }: BgGlowOrbProps) {
   return (
     <div
-      className={cn("absolute rounded-full mix-blend-screen", position, className)}
+      className={cn("absolute rounded-full", position, className)}
       style={{
         width: `${size}vw`,
         height: `${size}vw`,
@@ -53,7 +53,7 @@ export function FloatingGlowOrb({
 }: FloatingGlowOrbProps) {
   return (
     <div
-      className={cn("absolute z-[-5] rounded-full mix-blend-screen", className, display)}
+      className={cn("absolute z-[-5] rounded-full", className, display)}
       style={
         {
           top: "0",

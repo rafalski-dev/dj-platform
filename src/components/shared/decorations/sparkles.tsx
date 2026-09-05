@@ -16,7 +16,7 @@ export function Sparkle({
 }: SparkleProps) {
   return (
     <div
-      className={cn("absolute rounded-full mix-blend-screen", className, display)}
+      className={cn("absolute rounded-full", className, display)}
       style={
         {
           top: 0,

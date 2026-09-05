@@ -17,7 +17,7 @@ export async function Hero() {
         position="bottom-[-15%] left-[-5%] 3xl:left-[17%]"
         size="43"
         maxSize="850"
-        baseOpacity="0.09"
+        baseOpacity="0.08"
         animationDuration="40"
       />
       <Wrapper>
