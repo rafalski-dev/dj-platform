@@ -1,7 +1,7 @@
 import { Wrapper } from "../shared/wrapper";
 import { SectionLabel } from "../shared/sectionLabel";
 import { SectionDescription } from "../shared/sectionDescription";
-import { Button, buttonVariants } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 import { MoveRight } from "lucide-react";
 import { StarIcon } from "../icons/starIcon";
 import { getTranslations } from "next-intl/server";
