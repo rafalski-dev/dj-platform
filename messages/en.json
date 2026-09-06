@@ -6,7 +6,7 @@
     },
     "Navigation": {
       "aboutMe": "About",
-      "services": "Services",
+      "services": "Offer",
       "reviews": "Reviews",
       "contact": "Contact",
       "dashboard": "Client Dashboard",
@@ -19,8 +19,8 @@
       "titleHighlighted": "remember for years.",
       "sectionDescriptionNarrow": "Music, lighting, and hosting of the highest class. Every entrance, dance, and tear of joy happens at exactly the right moment.",
       "sectionDescriptionWide": "Music, lighting, and hosting of the highest class. With years of experience reading the room, I make sure every entrance, dance, and tear of joy happens at exactly the right moment.",
-      "primaryButton": "Check availability",
-      "secondaryButton": "See offer",
+      "PrimaryCTA": "Check availability",
+      "SecondaryCTA": "See offer",
       "rating": "Rated",
       "and": "and",
       "events": "events performed"

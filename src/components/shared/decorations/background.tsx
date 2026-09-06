@@ -6,7 +6,7 @@ const numberOfSparkles = 80;
 
 const sparklesData = Array.from({ length: numberOfSparkles }, (_, index) => {
   let display = "block";
-  if (index >= 20) display = "hidden md:block";
+  if (index >= 17) display = "hidden md:block";
   if (index >= 40) display = "hidden xl:block";
   if (index >= 60) display = "hidden 3xl:block";
 

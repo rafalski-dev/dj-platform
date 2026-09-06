@@ -1,7 +1,7 @@
 import { Wrapper } from "../shared/wrapper";
 import { SectionLabel } from "../shared/sectionLabel";
 import { SectionDescription } from "../shared/sectionDescription";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { MoveRight } from "lucide-react";
 import { StarIcon } from "../icons/starIcon";
 import { getTranslations } from "next-intl/server";
@@ -40,18 +40,18 @@ export async function Hero() {
               </SectionDescription>
             </div>
             <div className="hidden md:block md:max-w-160">
-              <SectionDescription className="mb-8 text-[18px]/8 md:text-[19px]">
+              <SectionDescription className="mb-7 text-[18px]/8 md:text-[19px]">
                 {t("sectionDescriptionWide")}
               </SectionDescription>
             </div>
             <div className="flex flex-wrap gap-3 lg:mt-2 lg:gap-5">
-              <Button size="lg">
-                {t("primaryButton")}
+              <a href="#contact" className={buttonVariants({ variant: "default", size: "lg" })}>
+                {t("PrimaryCTA")}
                 <MoveRight />
-              </Button>
-              <Button variant="outline" size="lg">
-                {t("secondaryButton")}
-              </Button>
+              </a>
+              <a href="#services" className={buttonVariants({ variant: "outline", size: "lg" })}>
+                {t("SecondaryCTA")}
+              </a>
             </div>
             <div className="mt-6 flex items-center md:gap-2">
               <div className="mr-2 flex gap-0.75">
