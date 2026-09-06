@@ -156,6 +156,11 @@
       var(--tw-shadow, 0 0 #0000) !important;
     transition: background-color 9999999s ease-in-out 0s !important;
   }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 @utility bg-gold-gradient {
