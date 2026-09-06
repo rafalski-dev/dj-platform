@@ -13,7 +13,7 @@ export function Header() {
       <Wrapper>
         <div className={"flex items-center justify-between py-4"}>
           <div className="flex w-full items-center">
-            <Logo iconSize={22} className="w-30 text-[24px] lg:text-[20px]" />
+            <Logo iconSize={22} className="mb-0.75 w-30 text-[24px] lg:text-[20px]" />
             <div className="hidden w-full lg:block">
               <NavDesktop navItems={navItems} />
             </div>

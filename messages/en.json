@@ -1,8 +1,8 @@
 {
   "LandingPage": {
     "Header": {
-      "signIn": "Sign In",
-      "availability": "Check Availability"
+      "SecondaryCTA": "Sign In",
+      "PrimaryCTA": "Check availability"
     },
     "Navigation": {
       "aboutMe": "About",

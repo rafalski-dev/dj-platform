@@ -7,7 +7,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu, Moon, XIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { NavItem } from "@/types/navigation";
 import { getTranslations } from "next-intl/server";
@@ -49,8 +49,8 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
           </nav>
         </SheetHeader>
         <SheetFooter>
-          <Button variant="outline">{th("signIn")}</Button>
-          <Button>{th("availability")}</Button>
+          <Button variant="outline">{th("PrimaryCTA")}</Button>
+          <Button>{th("SecondaryCTA")}</Button>
         </SheetFooter>
       </SheetContent>
     </Sheet>
@@ -61,14 +61,14 @@ export async function NavDesktop({ navItems }: { navItems: NavItem[] }) {
   const th = await getTranslations("LandingPage.Header");
   const tn = await getTranslations("LandingPage.Navigation");
   return (
-    <div className="flex w-full items-center justify-between gap-5">
-      <nav className="flex gap-2">
+    <div className="items-cetner flex w-full justify-between gap-5">
+      <nav className="flex flex-row items-center gap-1">
         {navItems.map(({ navKey, path }) => {
           return (
             <a
               key={navKey}
               href={path}
-              className="text-muted-foreground hover:text-accent-foreground p-3 transition-colors"
+              className="text-muted-foreground hover:text-accent-foreground/90 p-2 text-[15px] transition-colors"
             >
               {tn(navKey)}
             </a>
@@ -78,17 +78,19 @@ export async function NavDesktop({ navItems }: { navItems: NavItem[] }) {
 
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-3">
-          <Button variant="icon" size="icon-sm" className="text-foreground">
+          <Button variant="secondary" size="icon-sm" className="text-foreground">
             <Moon />
           </Button>
-          <Button variant="icon" size="icon-sm" className="text-foreground">
+          <Button variant="secondary" size="icon-sm" className="text-foreground">
             EN
           </Button>
         </div>
-        <Button variant="outline" size="sm">
-          {th("signIn")}
-        </Button>
-        <Button size="sm">{th("availability")}</Button>
+        <Link href="/signIn" className={buttonVariants({ variant: "outline", size: "sm" })}>
+          {th("SecondaryCTA")}
+        </Link>
+        <a href="#contact" className={buttonVariants({ variant: "default", size: "sm" })}>
+          {th("PrimaryCTA")}
+        </a>
       </div>
     </div>
   );

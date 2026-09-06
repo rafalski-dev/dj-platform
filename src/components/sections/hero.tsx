@@ -7,12 +7,16 @@ import { StarIcon } from "../icons/starIcon";
 import { getTranslations } from "next-intl/server";
 import { CustomImage } from "../shared/customImage";
 import { BgGlowOrb } from "../shared/decorations/glowOrbs";
+import { Section } from "../shared/section";
 
 export async function Hero() {
   const t = await getTranslations("LandingPage.Hero");
 
   return (
-    <section className="relative pt-25 pb-16 md:pt-35 md:pb-24 lg:flex lg:min-h-245 lg:items-center lg:pb-32">
+    <Section
+      anchorLink="#"
+      className="relative pt-25 pb-16 md:pt-35 md:pb-24 lg:flex lg:min-h-245 lg:items-center lg:pb-32"
+    >
       <BgGlowOrb
         position="bottom-[-15%] left-[-5%] 3xl:left-[17%]"
         size="43"
@@ -77,6 +81,6 @@ export async function Hero() {
           </div>
         </div>
       </Wrapper>
-    </section>
+    </Section>
   );
 }
