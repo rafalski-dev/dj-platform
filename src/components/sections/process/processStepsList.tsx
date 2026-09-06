@@ -9,7 +9,7 @@ export async function ProcessStepsList({ processStepsData }: { processStepsData:
           <li key={step}>
             <article>
               <header className="border-border/12 mb-4 border-b pb-3">
-                <span className="text-accent/50 font-serif text-[46px]">{`0${index + 1}`}</span>
+                <span className="text-gold-dark font-serif text-[46px]">{`0${index + 1}`}</span>
               </header>
               <div className="flex flex-col gap-2">
                 <h3 className="font-sans text-lg">{t(`steps.${step}.title`)}</h3>
