@@ -27,6 +27,7 @@
   --color-success-bg: var(--success-bg);
   --color-success-text: var(--success-text);
   --color-success-border: var(--success-border);
+  --color-gold-dark: var(--gold-dark);
 
   /* Fonts */
   --font-sans: var(--font-manrope);
