@@ -1,9 +1,14 @@
+import crowdImg from "../assets/images/gallery/crowd-dancing-with-dj.jpg";
+import weedingVenue from "../assets/images/gallery/wedding-venue.jpg";
+import outdoorWedding from "../assets/images/gallery/outdoor-wedding.jpg";
+import newlyweds from "../assets/images/gallery/newlyweds-dance.jpg";
+import djStand from "../assets/images/gallery/dj-stand.jpg";
 import { GalleryImageType } from "@/types/gallery";
 
 export const galleryData: GalleryImageType[] = [
   {
     id: 1,
-    imgSrc: "/images/gallery/crowd-dancing-with-dj.jpg",
+    imgSrc: crowdImg,
     altKey: "crowd",
     ratio: "aspect-4/3",
     hue: "hue-rotate-15",
@@ -12,7 +17,7 @@ export const galleryData: GalleryImageType[] = [
   },
   {
     id: 2,
-    imgSrc: "/images/gallery/wedding-venue.jpg",
+    imgSrc: weedingVenue,
     altKey: "weddingVenue",
     ratio: "aspect-4/3",
     contrast: "contrast-108",
@@ -22,7 +27,7 @@ export const galleryData: GalleryImageType[] = [
   },
   {
     id: 3,
-    imgSrc: "/images/gallery/outdoor-wedding.jpg",
+    imgSrc: outdoorWedding,
     altKey: "outdoorCeremony",
     ratio: "aspect-4/3",
     contrast: "contrast-130",
@@ -31,7 +36,7 @@ export const galleryData: GalleryImageType[] = [
   },
   {
     id: 4,
-    imgSrc: "/images/gallery/newlyweds-dance.jpg",
+    imgSrc: newlyweds,
     altKey: "newlyWeds",
     ratio: "aspect-4/3",
     contrast: "contrast-110",
@@ -40,7 +45,7 @@ export const galleryData: GalleryImageType[] = [
   },
   {
     id: 5,
-    imgSrc: "/images/gallery/dj-stand.jpg",
+    imgSrc: djStand,
     altKey: "djStand",
     ratio: "aspect-4/3",
     contrast: "contrast-120",
