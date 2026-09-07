@@ -4,6 +4,7 @@ import {
   SheetContent,
   SheetFooter,
   SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu, Moon, XIcon } from "lucide-react";
@@ -11,46 +12,85 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { NavItem } from "@/types/navigation";
 import { getTranslations } from "next-intl/server";
+import { Logo } from "../logo";
 
 export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
-  const th = await getTranslations("LandingPage.Header");
-  const tn = await getTranslations("LandingPage.Navigation");
+  const t = await getTranslations("LandingPage.Header");
 
   return (
     <Sheet>
-      <SheetTrigger render={<Button variant="icon" size="icon" />}>
+      <SheetTrigger render={<Button variant="icon" size="icon" aria-label={t("openMenu")} />}>
         <Menu />
       </SheetTrigger>
-      <SheetContent side="top" className="flex" showCloseButton={false}>
-        <SheetHeader className="flex gap-5">
-          <div className="flex items-center justify-between">
-            <Link
-              href="/"
-              className="text-secondary-foreground bg-background font-serif text-[25px]"
-            >
-              Logo
-            </Link>
-            <SheetClose render={<Button variant="icon" size="icon" />}>
-              <XIcon />
-            </SheetClose>
-          </div>
-          <nav className="flex flex-col">
-            {navItems.map(({ navKey, path }) => (
-              <a
-                key={navKey}
-                href={path}
-                className="border-border/10 hover:border-border/20 group border-b py-3 font-serif transition-all"
+      <SheetContent side="top" className="gap-5" showCloseButton={false}>
+        <div>
+          <SheetHeader className="flex-row justify-between">
+            <SheetTitle className="sr-only">{t("menuLabel")}</SheetTitle>
+            <SheetClose
+              nativeButton={false}
+              render={
+                <Logo
+                  iconSize={22}
+                  className="text-foreground mb-0.75 w-30 text-[24px] lg:text-[20px]"
+                />
+              }
+            ></SheetClose>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="secondary"
+                size="icon-sm"
+                className="text-foreground"
+                aria-label={t("changeTheme")}
               >
-                <span className="group-hover:text-primary inline-block text-3xl transition-all duration-300 group-hover:translate-x-2 md:text-4xl">
-                  {tn(navKey)}
-                </span>
-              </a>
+                <Moon />
+              </Button>
+              <Button
+                variant="secondary"
+                size="icon-sm"
+                className="text-foreground"
+                aria-label={t("changeLanguage")}
+              >
+                EN
+              </Button>
+              <SheetClose
+                render={
+                  <Button variant="icon" size="icon" className="ml-1" aria-label={t("closeMenu")} />
+                }
+              >
+                <XIcon />
+              </SheetClose>
+            </div>
+          </SheetHeader>
+          <nav className="flex flex-col items-start px-5 md:px-6">
+            {navItems.map(({ navKey, path }) => (
+              <SheetClose
+                nativeButton={false}
+                key={navKey}
+                render={
+                  <a
+                    className="text-foreground/90 border-border/12 w-full border-b py-3 text-start font-serif text-3xl md:text-4xl"
+                    href={path}
+                  />
+                }
+              >
+                {t(`navItems.${navKey}`)}
+              </SheetClose>
             ))}
           </nav>
-        </SheetHeader>
+        </div>
         <SheetFooter>
-          <Button variant="outline">{th("PrimaryCTA")}</Button>
-          <Button>{th("SecondaryCTA")}</Button>
+          <SheetClose
+            nativeButton={false}
+            render={<Link href="/signIn" className={buttonVariants({ variant: "outline" })} />}
+          >
+            {t("secondaryCTA")}
+          </SheetClose>
+          <SheetClose
+            nativeButton={false}
+            render={<a href="#contact" className={buttonVariants({ variant: "default" })} />}
+          >
+            {t("primaryCTA")}
+          </SheetClose>
         </SheetFooter>
       </SheetContent>
     </Sheet>
@@ -58,11 +98,10 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
 }
 
 export async function NavDesktop({ navItems }: { navItems: NavItem[] }) {
-  const th = await getTranslations("LandingPage.Header");
-  const tn = await getTranslations("LandingPage.Navigation");
+  const t = await getTranslations("LandingPage.Header");
   return (
-    <div className="items-cetner flex w-full justify-between gap-5">
-      <nav className="flex flex-row items-center gap-1">
+    <div className="flex w-full items-center justify-between gap-5">
+      <nav className="flex flex-row items-center gap-3">
         {navItems.map(({ navKey, path }) => {
           return (
             <a
@@ -70,7 +109,7 @@ export async function NavDesktop({ navItems }: { navItems: NavItem[] }) {
               href={path}
               className="text-muted-foreground hover:text-accent-foreground/90 p-2 text-[15px] transition-colors"
             >
-              {tn(navKey)}
+              {t(`navItems.${navKey}`)}
             </a>
           );
         })}
@@ -78,18 +117,28 @@ export async function NavDesktop({ navItems }: { navItems: NavItem[] }) {
 
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-3">
-          <Button variant="secondary" size="icon-sm" className="text-foreground">
+          <Button
+            variant="secondary"
+            size="icon-sm"
+            className="text-foreground"
+            aria-label={t("changeTheme")}
+          >
             <Moon />
           </Button>
-          <Button variant="secondary" size="icon-sm" className="text-foreground">
+          <Button
+            variant="secondary"
+            size="icon-sm"
+            className="text-foreground"
+            aria-label={t("changeLanguage")}
+          >
             EN
           </Button>
         </div>
         <Link href="/signIn" className={buttonVariants({ variant: "outline", size: "sm" })}>
-          {th("SecondaryCTA")}
+          {t("secondaryCTA")}
         </Link>
         <a href="#contact" className={buttonVariants({ variant: "default", size: "sm" })}>
-          {th("PrimaryCTA")}
+          {t("primaryCTA")}
         </a>
       </div>
     </div>
