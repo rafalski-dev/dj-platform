@@ -1,18 +1,24 @@
 {
   "LandingPage": {
     "Header": {
-      "SecondaryCTA": "Sign In",
-      "PrimaryCTA": "Check availability"
+      "secondaryCTA": "Sign In",
+      "primaryCTA": "Check availability",
+      "menuLabel": "Navigation menu",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "changeTheme": "Change theme",
+      "changeLanguage": "Change language",
+      "navItems": {
+        "aboutMe": "About",
+        "services": "Offer",
+        "reviews": "Reviews",
+        "contact": "Contact",
+        "dashboard": "Client Dashboard",
+        "termsAndConditions": "Terms & Conditions",
+        "privacyPolicy": "Privacy Policy"
+      }
     },
-    "Navigation": {
-      "aboutMe": "About",
-      "services": "Offer",
-      "reviews": "Reviews",
-      "contact": "Contact",
-      "dashboard": "Client Dashboard",
-      "termsAndConditions": "Terms & Conditions",
-      "privacyPolicy": "Privacy Policy"
-    },
+
     "Hero": {
       "sectionLabel": "Dj & Master of ceremonies",
       "titleStart": "Weddings and events your guests",
