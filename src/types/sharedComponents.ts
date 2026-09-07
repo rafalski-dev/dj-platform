@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export type WrapperProps = {
   children: React.ReactNode;
 };
@@ -31,7 +33,7 @@ export type LogoProps = {
 };
 
 export type CustomImageProps = {
-  src: string;
+  src: StaticImageData;
   alt: string;
   ratio: string;
   priority?: boolean;

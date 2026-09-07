@@ -1,6 +1,8 @@
+import { StaticImageData } from "next/image";
+
 export type GalleryImageType = {
   id: number;
-  imgSrc: string;
+  imgSrc: StaticImageData;
   altKey: string;
   ratio: string;
   width?: string;
