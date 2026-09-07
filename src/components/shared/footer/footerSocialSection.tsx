@@ -12,7 +12,7 @@ const mapIcon = {
 export function FooterSocialSection({ title, linksList }: FooterSocialSectionProps) {
   return (
     <div className="flex flex-col gap-3">
-      <h3 className="text-primary text-[20px] lg:text-[22px]">{title}</h3>
+      <h3 className="text-[20px] lg:text-[22px]">{title}</h3>
       <ul className="flex flex-col gap-3">
         {linksList.map(({ name, url, icon }) => (
           <li key={name}>

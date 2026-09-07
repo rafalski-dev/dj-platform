@@ -27,13 +27,10 @@ export async function Footer() {
             <FooterSocialSection title={t("socialTitle")} linksList={socialMedia} />
           </div>
           <div className="border-border/10 text-popover-foreground flex justify-between border-t pt-7">
-            <p className="text-[13.5px] lg:text-[14px]">
-              {t("developerCredit")}{" "}
-              <span className="text-accent-foreground text-[14px] lg:text-base">
-                Jakub Rafalski
-              </span>
+            <p className="text-sm">
+              {t("developerCredit")} <span className="text-gold-dark">Jakub Rafalski</span>
             </p>
-            <p className="hidden lg:block">{`© ${getCurrentYear()} ${siteConfig.name}. ${t("rights")}`}</p>
+            <p className="hidden text-sm lg:block">{`© ${getCurrentYear()} ${siteConfig.name}. ${t("rights")}`}</p>
           </div>
         </div>
       </Wrapper>
