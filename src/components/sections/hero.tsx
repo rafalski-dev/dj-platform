@@ -8,6 +8,7 @@ import { getTranslations } from "next-intl/server";
 import { CustomImage } from "../shared/customImage";
 import { BgGlowOrb } from "../shared/decorations/glowOrbs";
 import { Section } from "../shared/section";
+import heroImg from "../../assets/images/hero.jpg";
 
 export async function Hero() {
   const t = await getTranslations("LandingPage.Hero");
@@ -70,11 +71,10 @@ export async function Hero() {
           </div>
           <div className="w-full lg:w-1/2">
             <CustomImage
-              src="/images/hero.jpg"
+              src={heroImg}
               alt="The crowd and the DJ dances on the dancefloor."
               priority
               ratio="aspect-3/2"
-              loading="eager"
               sizes="(max-width: 1024px) 100vw, 50vw"
               contrast="contrast-105"
             />
