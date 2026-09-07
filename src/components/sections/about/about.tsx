@@ -7,6 +7,7 @@ import { Wrapper } from "../../shared/wrapper";
 import { getTranslations } from "next-intl/server";
 import { AboutCardsList } from "./aboutCardsList";
 import { CustomImage } from "@/components/shared/customImage";
+import aboutImg from "../../../assets/images/about.jpg";
 
 const aboutCardsData: string[] = ["experience", "events", "feedback", "reliability"];
 
@@ -19,7 +20,7 @@ export async function About() {
           <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
             <div className="w-full lg:w-1/2">
               <CustomImage
-                src="/images/about.jpg"
+                src={aboutImg}
                 alt="DJ speaking into a microphone during the event"
                 ratio="aspect-3/2"
                 sizes="(max-width: 1024px) 100vw, 50vw"
