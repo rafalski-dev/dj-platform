@@ -15,7 +15,7 @@ export async function ContactList({ listData }: { listData: contactDataItemType[
       {listData.map(({ nameKey, content, href }) => {
         return (
           <li key={nameKey} className="flex items-center gap-3.5">
-            <div className="border-border/20 bg-muted text-accent-foreground flex size-10 items-center justify-center rounded-md border">
+            <div className="border-border/15 bg-card text-accent flex size-10 items-center justify-center rounded-md border">
               {iconList[nameKey]}
             </div>
             <dl>
