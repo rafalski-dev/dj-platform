@@ -5,7 +5,10 @@ export function Section({ children, className, anchorLink, ...props }: SectionPr
   return (
     <section
       id={anchorLink}
-      className={cn("border-border/10 w-full border-t py-16 md:py-24 lg:py-32", className)}
+      className={cn(
+        `border-border/10 w-full scroll-mt-18 border-t py-16 md:py-24 lg:py-32`,
+        className,
+      )}
       {...props}
     >
       {children}
