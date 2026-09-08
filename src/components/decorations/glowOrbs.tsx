@@ -31,7 +31,7 @@ export function BgGlowOrb({
         maxWidth: maxSize ? `${maxSize}px` : undefined,
         maxHeight: maxSize ? `${maxSize}px` : undefined,
         opacity: baseOpacity,
-        background: `radial-gradient(circle, rgba(214, 176, 116), transparent 65%)`,
+        background: `radial-gradient(circle, var(--glow-orb), transparent 65%)`,
         animation: `glowDrift ${animationDuration}s ease-in-out infinite`,
       }}
       {...rest}
@@ -63,7 +63,7 @@ export function FloatingGlowOrb({
           height: `${height}px`,
           opacity: baseOpacity,
           background:
-            "radial-gradient(circle, rgba(255, 244, 220) 0%, rgba(235, 211, 160, 0.7) 20%, rgba(235, 211, 160, 0) 70%)",
+            "radial-gradient(circle, var(--glow-core) 0%, var(--glow-mid) 20%, var(--glow-edge) 70%)",
           animation: `${rising}, ${floating}`,
           "--base-floating": baseFloating,
         } as React.CSSProperties

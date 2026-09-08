@@ -24,7 +24,7 @@ export function Sparkle({
           width: `${width}px`,
           height: `${height}px`,
           background:
-            "radial-gradient(circle, rgb(255, 244, 220) 0%, rgba(235, 211, 160, 0.7) 25%, rgba(235, 211, 160, 0) 90%)",
+            "radial-gradient(circle, var(--glow-core) 0%, var(--glow-mid) 25%, var(--glow-edge) 90%)",
           opacity: baseOpacity,
           animation: `${rising}, ${pulsing}, ${floating}`,
           "--base-opacity": baseOpacity,

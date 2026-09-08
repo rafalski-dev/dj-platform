@@ -1,4 +1,4 @@
-import "./../../../styles/animations.css";
+import "../../styles/animations.css";
 import { BgGlowOrb, FloatingGlowOrb } from "./glowOrbs";
 import { Sparkle } from "./sparkles";
 
