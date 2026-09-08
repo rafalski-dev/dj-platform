@@ -59,7 +59,7 @@ export function OfferCardFeatureList({ cardNameKey, featuresList }: OfferCardFea
         }
         variant="ghost"
         size="xs"
-        className="text-secondary-foreground hover:text-accent-foreground/95 w-fit"
+        className="text-accent-foreground hover:text-accent-foreground/85 w-fit"
       >
         {numberOfItems === initialNumber ? (
           <>

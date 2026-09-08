@@ -6,7 +6,7 @@ import { MoveRight } from "lucide-react";
 import { StarIcon } from "../icons/starIcon";
 import { getTranslations } from "next-intl/server";
 import { CustomImage } from "../shared/customImage";
-import { BgGlowOrb } from "../shared/decorations/glowOrbs";
+import { BgGlowOrb } from "../decorations/glowOrbs";
 import { Section } from "../shared/section";
 import heroImg from "../../assets/images/hero.jpg";
 

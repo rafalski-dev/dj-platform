@@ -1,6 +1,6 @@
 import { navItems } from "@/constants/navigations";
 import { Wrapper } from "../wrapper";
-import { NavDesktop, NavMobile } from "./nav";
+import { NavDesktop, NavMobile } from "./navigations";
 import { Logo } from "../logo";
 
 export function Header() {

@@ -7,7 +7,7 @@
 @theme inline {
   /* Colors */
   --color-ring: var(--ring);
-  --color-input: var(--input);
+  --color-input: var(--background);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
@@ -49,41 +49,47 @@
 :root {
   --radius: 0.75rem;
 
-  --background: rgb(14, 12, 10);
-  --foreground: rgb(245, 239, 228);
+  --background: rgb(245, 240, 230);
+  --foreground: rgb(28, 23, 16);
 
-  --card: rgb(21, 18, 13);
-  --card-foreground: rgb(237, 230, 214);
+  --card: rgb(252, 249, 244);
+  --card-foreground: rgb(28, 23, 16);
 
-  --popover: rgb(18, 15, 10);
-  --popover-foreground: rgb(143, 133, 111);
+  --popover: rgb(250, 246, 239);
+  --popover-foreground: rgb(92, 82, 66);
 
-  --primary: rgb(214, 176, 116);
-  --primary-foreground: rgb(28, 20, 8);
+  --primary: rgb(152, 112, 50);
+  --primary-foreground: rgb(28, 23, 16);
 
-  --secondary: rgba(245, 245, 245, 0.02);
-  --secondary-foreground: rgb(201, 156, 86);
+  --secondary: rgba(28, 23, 16, 0.04);
+  --secondary-foreground: rgb(28, 23, 16);
 
-  --muted: rgb(28, 25, 23);
-  --muted-foreground: rgb(180, 168, 145);
+  --muted: rgb(236, 230, 219);
+  --muted-foreground: rgb(112, 100, 82);
 
-  --accent: rgb(214, 176, 116);
-  --accent-foreground: rgb(235, 211, 160);
+  --accent: rgb(150, 110, 48);
+  --accent-foreground: rgb(140, 102, 44);
 
-  --destructive: rgb(209, 71, 78);
+  --destructive: rgb(190, 48, 56);
 
   /* Success */
-  --success-bg: rgba(127, 206, 127, 0.1);
-  --success-text: rgb(191, 227, 191);
-  --success-border: rgb(127, 206, 127, 0.28);
+  --success-bg: rgba(34, 128, 54, 0.1);
+  --success-text: rgb(30, 104, 44);
+  --success-border: rgba(34, 128, 54, 0.3);
 
   /* Borders */
-  --border: rgb(232, 214, 178);
-  --input: rgb(232, 214, 178);
-  --ring: rgb(214, 176, 116);
+  --border: rgb(60, 50, 38);
+  --input: rgb(60, 50, 38);
+  --ring: rgb(168, 124, 56);
 
-  --gold-light: rgb(235, 211, 160);
-  --gold-dark: rgb(201, 156, 86);
+  --gold-light: rgb(214, 170, 100);
+  --gold-dark: rgb(160, 116, 52);
+
+  /* Decorative glows */
+  --glow-orb: rgba(180, 140, 80, 0.9);
+  --glow-core: rgba(175, 128, 60, 0.55);
+  --glow-mid: rgba(150, 110, 50, 0.4);
+  --glow-edge: rgba(150, 110, 50, 0);
 }
 
 .dark {
@@ -96,7 +102,7 @@
   --card-foreground: rgb(245, 239, 228);
 
   --popover: rgb(21, 18, 13);
-  --popover-foreground: rgb(245, 239, 228);
+  --popover-foreground: rgb(143, 133, 111);
 
   --primary: rgb(214, 176, 116);
   --primary-foreground: rgb(28, 20, 8);
@@ -114,11 +120,17 @@
 
   /* Borders */
   --border: rgb(232, 214, 178);
-  --input: rgb(229, 229, 229, 0.4);
+  --input: rgb(14, 12, 10);
   --ring: rgb(214, 176, 116);
 
   --gold-light: rgb(235, 211, 160);
   --gold-dark: rgb(201, 156, 86);
+
+  /* Decorative glows */
+  --glow-orb: rgba(214, 176, 116, 1);
+  --glow-core: rgba(255, 244, 220, 1);
+  --glow-mid: rgba(235, 211, 160, 0.7);
+  --glow-edge: rgba(235, 211, 160, 0);
 }
 
 @layer base {

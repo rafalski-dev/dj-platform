@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { getMessages } from "next-intl/server";
 import { Header } from "@/components/shared/header/header";
 import { Footer } from "@/components/shared/footer/footer";
+import { ThemeProvider } from "@/components/themeProvider";
 
 export const metadata: Metadata = {
   title: "DJ-platform",
@@ -30,12 +31,20 @@ export default async function LocaleLayout({ children, params }: Props) {
       lang={locale}
       className={`${cormorant.variable} ${manrope.variable}`}
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider messages={messages}>
-          <Header />
-          {children}
-          <Footer />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

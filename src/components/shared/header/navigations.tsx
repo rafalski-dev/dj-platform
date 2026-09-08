@@ -13,6 +13,7 @@ import { Link } from "@/i18n/navigation";
 import { NavItem } from "@/types/navigation";
 import { getTranslations } from "next-intl/server";
 import { Logo } from "../logo";
+import { ThemeToggle } from "./themeToggle";
 
 export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
   const t = await getTranslations("LandingPage.Header");
@@ -117,14 +118,7 @@ export async function NavDesktop({ navItems }: { navItems: NavItem[] }) {
 
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-3">
-          <Button
-            variant="secondary"
-            size="icon-sm"
-            className="text-foreground"
-            aria-label={t("changeTheme")}
-          >
-            <Moon />
-          </Button>
+          <ThemeToggle ariaLabel={t("changeTheme")} />
           <Button
             variant="secondary"
             size="icon-sm"

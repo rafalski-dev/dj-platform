@@ -1,4 +1,4 @@
-import { GlowOrb } from "@/components/shared/decorations/glowOrbs";
+import { GlowOrb } from "@/components/decorations/glowOrbs";
 import { Section } from "../../shared/section";
 import { SectionDescription } from "../../shared/sectionDescription";
 import { SectionLabel } from "../../shared/sectionLabel";
