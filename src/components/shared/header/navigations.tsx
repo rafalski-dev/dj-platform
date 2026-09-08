@@ -7,16 +7,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu, Moon, XIcon } from "lucide-react";
+import { Menu, XIcon } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { NavItem } from "@/types/navigation";
 import { getTranslations } from "next-intl/server";
 import { Logo } from "../logo";
 import { ThemeToggle } from "./themeToggle";
+import { LanguageToggle } from "./languageToggle";
 
 export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
   const t = await getTranslations("LandingPage.Header");
+  const nav = await getTranslations("LandingPage.Navigation");
 
   return (
     <Sheet>
@@ -37,22 +39,10 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
               }
             ></SheetClose>
             <div className="flex items-center gap-2">
-              <Button
-                variant="secondary"
-                size="icon-sm"
-                className="text-foreground"
-                aria-label={t("changeTheme")}
-              >
-                <Moon />
-              </Button>
-              <Button
-                variant="secondary"
-                size="icon-sm"
-                className="text-foreground"
-                aria-label={t("changeLanguage")}
-              >
-                EN
-              </Button>
+              <div className="flex items-center gap-3">
+                <ThemeToggle ariaLabel={t("changeTheme")} />
+                <LanguageToggle ariaLabel={t("changeLanguage")} />
+              </div>
               <SheetClose
                 render={
                   <Button variant="icon" size="icon" className="ml-1" aria-label={t("closeMenu")} />
@@ -70,11 +60,11 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
                 render={
                   <a
                     className="text-foreground/90 border-border/12 w-full border-b py-3 text-start font-serif text-3xl md:text-4xl"
-                    href={path}
+                    href={nav(`navPaths.${path}`)}
                   />
                 }
               >
-                {t(`navItems.${navKey}`)}
+                {nav(`navItems.${navKey}`)}
               </SheetClose>
             ))}
           </nav>
@@ -88,7 +78,12 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
           </SheetClose>
           <SheetClose
             nativeButton={false}
-            render={<a href="#contact" className={buttonVariants({ variant: "default" })} />}
+            render={
+              <a
+                href={nav("navPaths.contact")}
+                className={buttonVariants({ variant: "default" })}
+              />
+            }
           >
             {t("primaryCTA")}
           </SheetClose>
@@ -100,6 +95,7 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
 
 export async function NavDesktop({ navItems }: { navItems: NavItem[] }) {
   const t = await getTranslations("LandingPage.Header");
+  const nav = await getTranslations("LandingPage.Navigation");
   return (
     <div className="flex w-full items-center justify-between gap-5">
       <nav className="flex flex-row items-center gap-3">
@@ -107,33 +103,29 @@ export async function NavDesktop({ navItems }: { navItems: NavItem[] }) {
           return (
             <a
               key={navKey}
-              href={path}
+              href={nav(`navPaths.${path}`)}
               className="text-muted-foreground hover:text-accent-foreground/90 p-2 text-[15px] transition-colors"
             >
-              {t(`navItems.${navKey}`)}
+              {nav(`navItems.${navKey}`)}
             </a>
           );
         })}
       </nav>
 
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-3">
-          <ThemeToggle ariaLabel={t("changeTheme")} />
-          <Button
-            variant="secondary"
-            size="icon-sm"
-            className="text-foreground"
-            aria-label={t("changeLanguage")}
-          >
-            EN
-          </Button>
-        </div>
         <Link href="/signIn" className={buttonVariants({ variant: "outline", size: "sm" })}>
           {t("secondaryCTA")}
         </Link>
-        <a href="#contact" className={buttonVariants({ variant: "default", size: "sm" })}>
+        <a
+          href={nav("navPaths.contact")}
+          className={buttonVariants({ variant: "default", size: "sm" })}
+        >
           {t("primaryCTA")}
         </a>
+        <div className="flex items-center gap-3">
+          <ThemeToggle ariaLabel={t("changeTheme")} />
+          <LanguageToggle ariaLabel={t("changeLanguage")} />
+        </div>
       </div>
     </div>
   );

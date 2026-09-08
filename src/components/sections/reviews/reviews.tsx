@@ -9,7 +9,7 @@ import { reviewsData } from "@/constants/reviews";
 export async function Reviews() {
   const t = await getTranslations("LandingPage.Reviews");
   return (
-    <Section anchorLink="reviews">
+    <Section anchorLink={t("id")}>
       <Wrapper>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center">

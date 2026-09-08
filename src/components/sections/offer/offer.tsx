@@ -11,7 +11,7 @@ export async function Offer() {
   const t = await getTranslations("LandingPage.Offer");
 
   return (
-    <Section anchorLink="services">
+    <Section anchorLink={t("id")}>
       <Wrapper>
         <div className="flex flex-col items-center gap-12">
           <div className="flex w-full flex-col items-center">

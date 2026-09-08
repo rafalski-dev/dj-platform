@@ -8,6 +8,7 @@ import Link from "next/link";
 
 export async function OfferCard({ cardNameKey, mostPopular, featuresList }: OfferCardsDataType) {
   const t = await getTranslations("LandingPage.Offer");
+  const nav = await getTranslations("LandingPage.Navigation");
 
   return (
     <article
@@ -33,7 +34,7 @@ export async function OfferCard({ cardNameKey, mostPopular, featuresList }: Offe
           variant="outline"
           className="w-full"
           nativeButton={false}
-          render={<Link href="#contact">{t("primaryButton")}</Link>}
+          render={<Link href={nav("navPaths.contact")}>{t("primaryButton")}</Link>}
         ></Button>
       </footer>
     </article>

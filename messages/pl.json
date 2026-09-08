@@ -1,7 +1,340 @@
 {
   "LandingPage": {
+    "Navigation": {
+      "navItems": {
+        "about": "O mnie",
+        "offer": "Oferta",
+        "reviews": "Opinie",
+        "contact": "Kontakt",
+        "dashboard": "Panel klienta",
+        "termsAndConditions": "Regulamin",
+        "privacyPolicy": "Polityka prywatności"
+      },
+      "navPaths": {
+        "about": "#o-mnie",
+        "offer": "#oferta",
+        "reviews": "#opinie",
+        "contact": "#kontakt"
+      }
+    },
+    "Header": {
+      "secondaryCTA": "Zaloguj się",
+      "primaryCTA": "Rezerwacja",
+      "menuLabel": "Menu nawigacji",
+      "openMenu": "Otwórz menu",
+      "closeMenu": "Zamknij menu",
+      "changeTheme": "Zmień motyw",
+      "changeLanguage": "Zmień język"
+    },
     "Hero": {
-      "title": "Witaj świecie!"
+      "sectionLabel": "DJ oraz wodzirej",
+      "titleStart": "Wesela i imprezy, które Twoi goście",
+      "titleHighlighted": "zapamiętają na lata.",
+      "sectionDescriptionNarrow": "Dbam o to, by Wasz wieczór miał idealny rytm — od wzruszających, intymnych momentów po parkietowe szaleństwo.",
+      "sectionDescriptionWide": "Dbam o to, by Wasz wieczór miał idealny rytm — od wzruszających, intymnych momentów po parkietowe szaleństwo. Profesjonalne brzmienie, styl i zero przypadków — od początku do końca.",
+      "PrimaryCTA": "Zarezerwuj termin",
+      "SecondaryCTA": "Zobacz ofertę",
+      "rating": "Ocena",
+      "and": "i",
+      "events": "zagranych imprez"
+    },
+    "About": {
+      "id": "o-mnie",
+      "sectionLabel": "O mnie",
+      "sectionTitle": "Od dwunastu lat prowadzę wesela, które mają własny rytm.",
+      "sectionDescriptionFirst": "Nazywam się Marek Nowicki. Od lat prowadzę wesela, podczas których muzyka, emocje i dobra energia spotykają się w odpowiednim momencie. Nie gram według gotowego scenariusza — obserwuję, reaguję i buduję atmosferę, w której każdy może poczuć się swobodnie.",
+      "sectionDescriptionSecond": "Zależy mi na tym, żeby parkiet żył, a cała oprawa pozostała elegancka i spójna z charakterem Waszego dnia. Profesjonalizm, wyczucie i najwyższa jakość są dla mnie podstawą.",
+      "stats": {
+        "experience": {
+          "number": "12 lat",
+          "label": "prowadzenia imprez"
+        },
+        "events": {
+          "number": "380+",
+          "label": "wesel i imprez"
+        },
+        "feedback": {
+          "number": "4.8/5",
+          "label": "średnia ocena par młodych"
+        },
+        "reliability": {
+          "number": "100%",
+          "label": "zrealizowanych umów"
+        }
+      }
+    },
+    "Offer": {
+      "id": "oferta",
+      "sectionLabel": "Oferta",
+      "sectionTitle": "Trzy pakiety. Jeden cel — niezapomniana atmosfera.",
+      "sectionDescription": "Wesela, studniówki, urodziny i wydarzenia firmowe — każda realizacja wygląda inaczej. Dobiorę zakres oprawy do Waszych potrzeb, miejsca i liczby gości.",
+      "cards": {
+        "classic": {
+          "title": "Classic",
+          "description": "Dla kameralnych przyjęć, na których liczą się dobra muzyka, swobodna atmosfera i parkiet pełen gości.",
+          "features": {
+            "sound": "Profesjonalne nagłośnienie sali",
+            "lighting": "Oświetlenie parkietu",
+            "music": "DJ i pełna oprawa muzyczna",
+            "hosting": "Prowadzenie imprezy",
+            "consultation": "Panel do planowania przyjęcia",
+            "welcoming": "Oprawa wejścia Pary Młodej",
+            "entertainment": "Szeroki wachlarz atrakcji",
+            "effects": "Efekty dźwiękowe, świetlne i dymne",
+            "wishes": "Spersonalizowane życzenia i dedykacje",
+            "personalization": "Pełna personalizacja imprezy",
+            "live": "Muzyka oraz śpiew na żywo",
+            "visuals": "Napis LED",
+            "lowFog": "Ciężki dym do pierwszego tańca",
+            "language": "Obsługa imprezy w wielu językach",
+            "djs": "Dwa sety DJ-skie — różne style"
+          }
+        },
+        "premium": {
+          "title": "Premium",
+          "description": "Kompleksowa oprawa przyjęcia — od pierwszego powitania aż po ostatni utwór na parkiecie.",
+          "features": {
+            "sound": "Profesjonalne nagłośnienie sali",
+            "lighting": "Oświetlenie parkietu",
+            "music": "DJ i pełna oprawa muzyczna",
+            "hosting": "Prowadzenie imprezy",
+            "consultation": "Panel do planowania przyjęcia",
+            "welcoming": "Oprawa wejścia Pary Młodej",
+            "entertainment": "Szeroki wachlarz zabaw i atrakcji",
+            "effects": "Efekty dźwiękowe, świetlne i dymne",
+            "wishes": "Spersonalizowane życzenia i dedykacje",
+            "personalization": "Pełna personalizacja imprezy",
+            "live": "Muzyka oraz śpiew na żywo",
+            "visuals": "Napis LED",
+            "lowFog": "Ciężki dym do pierwszego tańca",
+            "language": "Obsługa imprezy w wielu językach",
+            "djs": "Dwa sety DJ-skie — różne style"
+          }
+        },
+        "signature": {
+          "title": "Signature",
+          "description": "Indywidualna oprawa dopracowana do potrzeb klienta — z muzyką na żywo i scenografią świetlną.",
+          "features": {
+            "sound": "Profesjonalne nagłośnienie sali",
+            "lighting": "Oświetlenie parkietu",
+            "music": "DJ i pełna oprawa muzyczna",
+            "hosting": "Prowadzenie imprezy",
+            "consultation": "Panel do planowania przyjęcia",
+            "welcoming": "Oprawa wejścia Pary Młodej",
+            "entertainment": "Szeroki wachlarz zabaw i atrakcji",
+            "effects": "Efekty dźwiękowe, świetlne i dymne",
+            "wishes": "Spersonalizowane życzenia i dedykacje",
+            "personalization": "Pełna personalizacja imprezy",
+            "live": "Muzyka oraz śpiew na żywo",
+            "visuals": "Napis LED",
+            "lowFog": "Ciężki dym do pierwszego tańca",
+            "language": "Obsługa imprezy w wielu językach",
+            "djs": "Dwa sety DJ-skie — różne style"
+          }
+        }
+      },
+      "included": "W pakiecie:",
+      "notIncluded": "Poza pakietem:",
+      "primaryButton": "Zapytaj o wycenę",
+      "mostPopular": "Najpopularniejszy",
+      "btnShowMore": "Pokaż więcej",
+      "btnShowLess": "Pokaż mniej",
+      "availableAddons": "Dodatki do każdego pakietu",
+      "addons": {
+        "photoBooth": "Fotobudka",
+        "stageSparks": "Fontanny iskier",
+        "liveVocalist": "Wokalista na żywo",
+        "saxophonist": "Saksofonista",
+        "loveSign": "Napis LOVE",
+        "lowFog": "Ciężki dym",
+        "confetti": "Konfetti",
+        "extraDj": "Dodatkowy DJ",
+        "customNeon": "Neon na zamówienie"
+      }
+    },
+    "Process": {
+      "sectionLabel": "Jak to działa",
+      "sectionTitle": "Od pierwszego telefonu po ostatni taniec.",
+      "sectionDescription": "Przejrzysty i bezstresowy proces, w którym macie pełne wsparcie na każdym etapie przygotowań.",
+      "steps": {
+        "availability": {
+          "title": "Pierwszy kontakt",
+          "description": "Sprawdzamy termin i rozmawiamy o Waszych oczekiwaniach  — swobodnie i bez żadnych zobowiązań."
+        },
+        "package": {
+          "title": "Wybór pakietu",
+          "description": "Dopasowujemy optymalny pakiet i elementy dodatkowe do charakteru przyjęcia, miejsca oraz liczby gości."
+        },
+        "details": {
+          "title": "Muzyka i scenariusz",
+          "description": "Wygodnie dopinamy Wasze ulubione utwory oraz harmonogram kluczowych momentów nocy."
+        },
+        "event": {
+          "title": "Czysta celebracja",
+          "description": "Ja dbam o technikę, dźwięk i energię na parkiecie — Wy po prostu świetnie się bawicie i cieszycie swoim dniem."
+        }
+      }
+    },
+    "Gallery": {
+      "sectionLabel": "Nasze realizacje",
+      "images": {
+        "crowd": "Goście i DJ tańczący na głównym parkiecie",
+        "weddingVenue": "Prezentacja zapierającej dech głównej sali weselnej",
+        "outdoorCeremony": "Goście witający parę młodą na ceremonii plenerowej",
+        "newlyWeds": "Goście i para młoda tańczący i bawiący się na świeżym powietrzu",
+        "djStand": "Prezentacja stanowiska DJ-a i jego umiejętności miksowania"
+      }
+    },
+    "Reviews": {
+      "id": "opinie",
+      "sectionLabel": "Opinie",
+      "sectionTitle": "Wasze opinie mówią jak to wygląda w praktyce.",
+      "reviews": {
+        "1": "Nasze wesele było absolutnie magiczne, a parkiet ani na chwilę nie opustoszał! DJ perfekcyjnie wyczuwał gości i utrzymał na parkiecie wszystkich — od babci po najmłodszych.",
+        "2": "Profesjonalizm na najwyższym poziomie. Komunikacja bezproblemowa, a każda prośba o utwór została spełniona. Nagłośnienie i światło robiły ogromne wrażenie. Warto!",
+        "3": "Organizowaliśmy 40. urodziny i szukaliśmy kogoś, kto rozrusza towarzystwo. Strzał w dziesiątkę! Świetna energia, prawdziwy kontakt z gośćmi i muzyka dla każdego.",
+        "4": "Współpraca naprawdę przyjemna, choć przydałoby się nieco więcej klasyki dla starszych gości. Mimo to atmosfera była świetna, a parkiet cały czas pełny.",
+        "5": "Najlepsza decyzja przy planowaniu wesela! Płynne przejścia, świetne wyczucie czasu i mnóstwo energii. Goście do dziś o tym mówią. Dziękujemy!",
+        "6": "Zamówiliśmy na imprezę firmową i było to trafienie w punkt. Profesjonalnie, punktualnie, a muzyka dopasowana do bardzo zróżnicowanego towarzystwa. Na pewno zamówimy ponownie.",
+        "7": "Świetna zabawa i niesamowity klimat! Jedyne, co bym zauważył, to głośność na początku — ale wystarczyło jedno słowo i od razu zostało poprawione.",
+        "8": "Rewelacja od początku do końca. Poprowadził nasze wesele ze świetnym wyczuciem, zabawy były przednie, a muzyka trzymała parkiet w gotowości całą noc!",
+        "9": "Współpraca to czysta przyjemność i naprawdę indywidualne podejście do naszych oczekiwań. Playlista idealna, a parkiet gorący do samego końca.",
+        "10": "Profesjonalne podejście i świetny kontakt. Impreza się udała, choć chcieliśmy dłuższego setu na koniec — dogadaliśmy to na miejscu. Ogólnie bardzo na plus!"
+      }
+    },
+    "FAQ": {
+      "sectionLabel": "Najczęstsze pytania",
+      "sectionTitle": "Zanim do mnie napiszesz",
+      "items": {
+        "availability": {
+          "question": "Czy termin, który Cię interesuje, jest jeszcze wolny?",
+          "answer": "Najlepiej zapytać od razu przez formularz, podając datę oraz lokalizację imprezy. Kalendarz na weekendy i sezony okolicznościowe zapełnia się z wyprzedzeniem, więc warto zarezerwować termin jak najszybciej."
+        },
+        "travel": {
+          "question": "Czy dojeżdżasz na wydarzenia w całej Polsce?",
+          "answer": "Tak, gram w całej Polsce. W promieniu 100 km od Trójmiasta dojazd jest już w cenie, a w przypadku dalszych wyjazdów koszty podróży i ewentualnego noclegu ustalamy przejrzyście na samym początku."
+        },
+        "songs": {
+          "question": "Czy można ustalić własną playlistę i utwory zakazane?",
+          "answer": "Jak najbardziej. Twoje ulubione kawałki i lista utworów, których absolutnie nie chcesz usłyszeć, to dla mnie baza. Podczas imprezy łączę te wytyczne z bieżącą reakcją ludzi na parkiecie, by zabawa nie zwalniała ani na moment."
+        },
+        "ceremony": {
+          "question": "Czy zapewniasz nagłośnienie w plenerze lub dodatkowej strefie?",
+          "answer": "Tak. Dysponuję dodatkowym nagłośnieniem i mikrofonami bezprzewodowymi, co pozwala obsłużyć ceremonię ślubną w ogrodzie, przemówienia, strefę chilloutu na zewnątrz czy drugą salę."
+        },
+        "equipment": {
+          "question": "Co się stanie w przypadku awarii sprzętu?",
+          "answer": "Zawsze mam ze sobą zapasowy sprzęt: dodatkowy mikser, kable, mikrofony oraz rezerwowe źródło muzyki. Jeśli cokolwiek zawiedzie, podmiana trwa chwilę i parkiet nie ma prawa się zatrzymać."
+        },
+        "booking": {
+          "question": "Jak wygląda proces rezerwacji terminu?",
+          "answer": "Zaczynamy od sprawdzenia daty i krótkiej rozmowy o planowanym wydarzeniu. Kiedy wszystko jest ustalone, podpisujemy prostą umowę online i wpłacasz zadatek – od tego momentu termin jest w 100% zablokowany dla Ciebie."
+        }
+      }
+    },
+    "Newsletter": {
+      "sectionLabel": "Newsletter",
+      "sectionTitle": "Dostępne terminy na rok 2026/2027.",
+      "sectionDescription": "Zapisz się, a wyślę Ci wolne terminy i muzyczne inspiracje na Twoje wyjątkowe wydarzenie.",
+      "successMessage": "Dziękujemy. Odezwiemy się z wolnymi terminami.",
+      "btnSignUp": "Zapisz się",
+      "btnProcessing": "Przetwarzanie",
+      "placeholder": "Podaj adres e-mail",
+      "fetchingError": "Wystąpił błąd podczas wysyłania adresu e-mail. Spróbuj ponownie.",
+      "serverError": "Coś poszło nie tak. Spróbuj ponownie.",
+      "errors": {
+        "emptyEmail": "Podaj adres e-mail",
+        "invalidEmail": "Podaj poprawny adres e-mail"
+      }
+    },
+    "Contact": {
+      "id": "kontakt",
+      "sectionLabel": "Kontakt",
+      "sectionTitle": "Sprawdźmy, czy Twój termin jest wolny.",
+      "sectionDescription": "Chcesz zapytać o wesele, urodziny, studniówkę, rocznicę, konferencję lub cokolwiek innego? Zostaw wiadomość, a zwykle odpowiadam w ciągu 24 godzin.",
+      "contactDetails": {
+        "email": "E-mail",
+        "phone": "Telefon",
+        "coverage": "Zasięg"
+      },
+      "coverage": "Cała Polska",
+      "contactForm": {
+        "acknowledgement": "Dziękuję za wiadomość!",
+        "btnAgain": "Wyślij nowe zapytanie",
+        "formInputs": {
+          "fullName": {
+            "label": "Imię i nazwisko",
+            "placeholder": "Jan Kowalski",
+            "required": "Podaj imię i nazwisko",
+            "validation": "Imię i nazwisko musi zawierać co najmniej 2 słowa"
+          },
+          "email": {
+            "label": "E-mail",
+            "placeholder": "jankowalski@email.com",
+            "required": "Podaj adres e-mail",
+            "validation": "Podaj poprawny adres e-mail"
+          },
+          "phone": {
+            "label": "Telefon",
+            "placeholder": "600 123 456",
+            "required": "Podaj numer telefonu",
+            "validation": "Podaj poprawny numer telefonu, numer musi zawierać co najmniej 9 cyfr."
+          },
+          "eventDate": {
+            "label": "Data wydarzenia",
+            "placeholder": "DD.MM.YYYY",
+            "validation": "Podaj poprawny format daty DD.MM.RRRR"
+          },
+          "eventType": {
+            "label": "Rodzaj wydarzenia",
+            "placeholder": "Wybierz rodzaj wydarzenia",
+            "options": {
+              "wedding": "Wesele",
+              "prom": "Studniówka",
+              "anniversary": "Rocznica",
+              "eighteenthBirthday": "18. urodziny",
+              "conference": "Konferencja",
+              "corporateEvent": "Impreza firmowa",
+              "festival": "Festiwal",
+              "other": "Inne"
+            },
+            "required": "Wybierz rodzaj wydarzenia"
+          },
+          "place": {
+            "label": "Nazwa miejsca / adres",
+            "placeholder": "Pałac Mała Wieś",
+            "validation": "Nazwa miejsca musi zawierać co najmniej 3 znaki"
+          },
+          "message": {
+            "label": "Wiadomość",
+            "placeholder": "Napisz kilka słów o swoim wydarzeniu — liczba gości, godziny, oczekiwania muzyczne",
+            "validationMin": "Wiadomość musi zawierać co najmniej 20 znaków",
+            "validationMax": "Wiadomość może zawierać maksymalnie 2000 znaków",
+            "hint": "min. 20 znaków"
+          },
+          "terms": {
+            "label": "Wyrażam zgodę na przetwarzanie moich danych w celu odpowiedzi na to zapytanie. ",
+            "required": "Musisz zaakceptować regulamin"
+          }
+        },
+        "serverMessage": {
+          "validationError": "Sprawdź zaznaczone pola i spróbuj ponownie.",
+          "sendingError": "Coś poszło nie tak podczas wysyłania formularza. Spróbuj ponownie.",
+          "success": "Gratulacje! Formularz wysłany. Wkrótce się odezwę.",
+          "serverError": "Coś poszło nie tak. Spróbuj ponownie."
+        },
+        "submitButton": "Wyślij zapytanie",
+        "processButton": "Wysyłanie",
+        "formDescription": "Pola oznaczone * są wymagane. Zwykle odpowiadam w ciągu 24 godzin."
+      }
+    },
+    "Footer": {
+      "navTitle": "Nawigacja",
+      "clientTitle": "Klient",
+      "socialTitle": "Social media",
+      "description": "Lata doświadczenia, jeden cel — sprawić, by każda impreza była niezapomniana. Zarezerwuj termin i świętujmy.",
+      "developerCredit": "Strona stworzona i zarządzana przez",
+      "rights": "Wszelkie prawa zastrzeżone."
     }
   }
 }

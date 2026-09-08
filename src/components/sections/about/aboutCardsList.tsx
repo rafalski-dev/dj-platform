@@ -1,7 +1,10 @@
-import { getTranslations } from "next-intl/server";
-
-export async function AboutCardsList({ itemsList }: { itemsList: string[] }) {
-  const t = await getTranslations("LandingPage.About");
+export function AboutCardsList({
+  itemsList,
+  t,
+}: {
+  itemsList: string[];
+  t: (key: string) => string;
+}) {
   return (
     <div className="grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-4">
       {itemsList.map((card) => (

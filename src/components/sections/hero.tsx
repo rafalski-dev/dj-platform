@@ -11,7 +11,7 @@ import { Section } from "../shared/section";
 import heroImg from "../../assets/images/hero.jpg";
 
 export async function Hero() {
-  const t = await getTranslations("LandingPage.Hero");
+  const t = await getTranslations("LandingPage");
 
   return (
     <Section
@@ -28,30 +28,36 @@ export async function Hero() {
       <Wrapper>
         <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12">
           <div className="flex w-full flex-col lg:w-1/2">
-            <SectionLabel>{t("sectionLabel")}</SectionLabel>
+            <SectionLabel>{t("Hero.sectionLabel")}</SectionLabel>
             <h1 className="mb-6 max-w-150 text-[44px]/13 md:text-[54px]/13 lg:mt-2 lg:text-[68px]/20">
-              {t("titleStart")}{" "}
+              {t("Hero.titleStart")}{" "}
               <span className="from-foreground to-primary bg-linear-to-r to-50% bg-clip-text text-[44px] text-transparent md:text-[54px] lg:text-[68px]">
-                {t("titleHighlighted")}
+                {t("Hero.titleHighlighted")}
               </span>
             </h1>
             <div className="max-w-140 md:hidden">
               <SectionDescription className="mb-8 text-[18px]/8 md:text-[19px]">
-                {t("sectionDescriptionNarrow")}
+                {t("Hero.sectionDescriptionNarrow")}
               </SectionDescription>
             </div>
             <div className="hidden md:block md:max-w-160">
               <SectionDescription className="mb-7 text-[18px]/8 md:text-[19px]">
-                {t("sectionDescriptionWide")}
+                {t("Hero.sectionDescriptionWide")}
               </SectionDescription>
             </div>
             <div className="flex flex-wrap gap-3 lg:mt-2 lg:gap-5">
-              <a href="#contact" className={buttonVariants({ variant: "default", size: "lg" })}>
-                {t("PrimaryCTA")}
+              <a
+                href={t("Navigation.navPaths.contact")}
+                className={buttonVariants({ variant: "default", size: "lg" })}
+              >
+                {t("Hero.PrimaryCTA")}
                 <MoveRight />
               </a>
-              <a href="#services" className={buttonVariants({ variant: "outline", size: "lg" })}>
-                {t("SecondaryCTA")}
+              <a
+                href={t("Navigation.navPaths.offer")}
+                className={buttonVariants({ variant: "outline", size: "lg" })}
+              >
+                {t("Hero.SecondaryCTA")}
               </a>
             </div>
             <div className="mt-6 flex items-center md:gap-2">
@@ -63,9 +69,9 @@ export async function Hero() {
                   })}
               </div>
               <div className="text-popover-foreground flex gap-1">
-                {t("rating")} 4.8/5 <span className="hidden md:inline">{t("and")}</span>
+                {t("Hero.rating")} 4.8/5 <span className="hidden md:inline">{t("Hero.and")}</span>
                 <span className="text-foreground/85 ml-1">380+</span>
-                {t("events")}
+                {t("Hero.events")}
               </div>
             </div>
           </div>

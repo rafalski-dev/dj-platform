@@ -1,5 +1,22 @@
 {
   "LandingPage": {
+    "Navigation": {
+      "navItems": {
+        "about": "About",
+        "offer": "Offer",
+        "reviews": "Reviews",
+        "contact": "Contact",
+        "dashboard": "Client Dashboard",
+        "termsAndConditions": "Terms & Conditions",
+        "privacyPolicy": "Privacy Policy"
+      },
+      "navPaths": {
+        "about": "#about",
+        "offer": "#offer",
+        "reviews": "#reviews",
+        "contact": "#contact"
+      }
+    },
     "Header": {
       "secondaryCTA": "Sign In",
       "primaryCTA": "Check availability",
@@ -7,18 +24,8 @@
       "openMenu": "Open menu",
       "closeMenu": "Close menu",
       "changeTheme": "Change theme",
-      "changeLanguage": "Change language",
-      "navItems": {
-        "aboutMe": "About",
-        "services": "Offer",
-        "reviews": "Reviews",
-        "contact": "Contact",
-        "dashboard": "Client Dashboard",
-        "termsAndConditions": "Terms & Conditions",
-        "privacyPolicy": "Privacy Policy"
-      }
+      "changeLanguage": "Change language"
     },
-
     "Hero": {
       "sectionLabel": "Dj & Master of ceremonies",
       "titleStart": "Weddings and events your guests",
@@ -32,6 +39,7 @@
       "events": "events performed"
     },
     "About": {
+      "id": "about",
       "sectionLabel": "About me",
       "sectionTitle": "For twelve years I've played every wedding as if it were my own.",
       "sectionDescriptionFirst": "My name is Marek Nowicki and for twelve years I've hosted some of the most beautiful weddings in Poland. I don't just play a playlist — I read the room, sense the moment and build energy so that every guest, from grandma to the youngest, finds their way onto the dance floor.",
@@ -46,7 +54,7 @@
           "label": "weddings & ceremonies"
         },
         "feedback": {
-          "number": "5/5",
+          "number": "4.8/5",
           "label": "average couples rating"
         },
         "reliability": {
@@ -56,6 +64,7 @@
       }
     },
     "Offer": {
+      "id": "offer",
       "sectionLabel": "Offer",
       "sectionTitle": "Three packages. One goal - your perfect evening.",
       "sectionDescription": "Weddings, proms, birthdays, corporate events — every celebration. Each package is tailored to your venue and guest count. Write to me for a made-to-measure quote.",
@@ -177,6 +186,7 @@
       }
     },
     "Reviews": {
+      "id": "reviews",
       "sectionLabel": "Reviews",
       "sectionTitle": "Many couples have trusted me. Here's what they say.",
       "reviews": {
@@ -238,6 +248,7 @@
       }
     },
     "Contact": {
+      "id": "contact",
       "sectionLabel": "Contact",
       "sectionTitle": "Let's check whether your date is free.",
       "sectionDescription": "Want to ask about wedding, birthday, prom, anniversary, conference or anything else? Leave a message and I usually reply within 24 hours.",
@@ -271,7 +282,7 @@
           },
           "eventDate": {
             "label": "Event date",
-            "placeholder": "13.10.2027",
+            "placeholder": "DD.MM.YYYY",
             "validation": "Provide correct date format DD.MM.YYYY"
           },
           "eventType": {
