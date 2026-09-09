@@ -70,7 +70,7 @@
   --accent: rgb(150, 110, 48);
   --accent-foreground: rgb(140, 102, 44);
 
-  --destructive: rgb(190, 48, 56);
+  --destructive: rgb(167, 31, 38);
 
   /* Success */
   --success-bg: rgba(34, 128, 54, 0.1);
@@ -83,7 +83,7 @@
   --ring: rgb(168, 124, 56);
 
   --gold-light: rgb(214, 170, 100);
-  --gold-dark: rgb(160, 116, 52);
+  --gold-dark: rgb(182, 135, 64);
 
   /* Decorative glows */
   --glow-orb: rgba(180, 140, 80, 0.9);
