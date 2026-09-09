@@ -6,10 +6,11 @@ export function SectionLabel({
   textStyle,
   position = "left",
   decoration = true,
+  animation,
 }: SectionLabelProps) {
   if (position === "center") {
     return (
-      <div className={"text-primary mb-5 flex items-center gap-3"}>
+      <div className={"text-primary mb-5 flex items-center gap-3"} style={{ animation: animation }}>
         {decoration && (
           <span className="from-primary block h-px w-8 bg-linear-to-l from-20% to-transparent"></span>
         )}
@@ -29,7 +30,7 @@ export function SectionLabel({
   }
 
   return (
-    <div className={"text-primary mb-5 flex items-center gap-3"}>
+    <div className={"text-primary mb-5 flex items-center gap-3"} style={{ animation: animation }}>
       {decoration && (
         <span className="from-primary block h-px w-8 bg-linear-to-r from-20% to-transparent"></span>
       )}
