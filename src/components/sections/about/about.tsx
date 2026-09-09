@@ -18,7 +18,10 @@ export async function About() {
       <Wrapper>
         <div className="flex flex-col gap-12 lg:gap-18">
           <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
-            <div className="w-full lg:w-1/2">
+            <div
+              className="w-full lg:w-1/2"
+              style={{ animation: "rise 1s cubic-bezier(.22,.61,.36,1) 0.2s both" }}
+            >
               <CustomImage
                 src={aboutImg}
                 alt="DJ speaking into a microphone during the event"
@@ -30,9 +33,19 @@ export async function About() {
               />
             </div>
             <div className="lg:w-1/2">
-              <SectionLabel>{t("sectionLabel")}</SectionLabel>
-              <SectionTitle className="max-w-120 md:max-w-150">{t("sectionTitle")}</SectionTitle>
-              <div className="mb-7 flex flex-col gap-5">
+              <SectionLabel animation="rise 1s cubic-bezier(.22,.61,.36,1) both">
+                {t("sectionLabel")}
+              </SectionLabel>
+              <SectionTitle
+                className="max-w-120 md:max-w-150"
+                animation="rise 1s cubic-bezier(.22,.61,.36,1) 0.08s both"
+              >
+                {t("sectionTitle")}
+              </SectionTitle>
+              <div
+                className="mb-7 flex flex-col gap-5"
+                style={{ animation: "rise 1s cubic-bezier(.22,.61,.36,1) 0.16s both" }}
+              >
                 <SectionDescription className="md:max-w-150 lg:max-w-full">
                   {t("sectionDescriptionFirst")}
                 </SectionDescription>
@@ -40,7 +53,10 @@ export async function About() {
                   {t("sectionDescriptionSecond")}
                 </SectionDescription>
               </div>
-              <SectionLabel textStyle="font-serif text-[24px] tracking-[2px] capitalize italic font-thin md:text-[24px] lg:text-[24px]">
+              <SectionLabel
+                textStyle="font-serif text-[24px] tracking-[2px] capitalize italic font-thin md:text-[24px] lg:text-[24px]"
+                animation="rise 1s cubic-bezier(.22,.61,.36,1) 0.24s both"
+              >
                 {siteConfig.fullName}
               </SectionLabel>
             </div>

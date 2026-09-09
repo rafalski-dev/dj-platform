@@ -9,6 +9,7 @@ export function AboutCardsList({
     <div className="grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-4">
       {itemsList.map((card) => (
         <div
+          style={{ animation: "rise 1s cubic-bezier(.22,.61,.36,1) 0.32s both" }}
           key={card}
           className="border-border/12 bg-secondary flex min-h-42 flex-col justify-between gap-4 rounded-4xl border px-6 py-5 backdrop-blur-sm md:py-6"
         >
