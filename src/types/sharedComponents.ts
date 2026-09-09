@@ -12,6 +12,7 @@ export type SectionLabelProps = {
   textStyle?: string;
   position?: "center" | "left";
   decoration?: boolean;
+  animation?: string;
 };
 
 export type SectionDescriptionProps = {
@@ -28,6 +29,7 @@ export type SectionProps = {
 export type SectionTitleProps = {
   children: string;
   className?: string;
+  animation?: string;
 };
 
 export type LogoProps = {
