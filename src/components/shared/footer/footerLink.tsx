@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { FooterLinkProps } from "@/types/footer";
+import { ComponentProps } from "react";
 
 export function FooterLink({ navKey, path }: FooterLinkProps) {
   const isAnchor = path.startsWith("#");
@@ -8,13 +9,13 @@ export function FooterLink({ navKey, path }: FooterLinkProps) {
 
   if (isAnchor)
     return (
-      <Link href={`/${path}`} className={className}>
+      <Link href={{ pathname: "/", hash: path.slice(1) }} className={className}>
         {navKey}
       </Link>
     );
 
   return (
-    <Link href={path} className={className}>
+    <Link href={path as ComponentProps<typeof Link>["href"]} className={className}>
       {navKey}
     </Link>
   );

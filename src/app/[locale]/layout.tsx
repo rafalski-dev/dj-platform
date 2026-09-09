@@ -5,8 +5,6 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getMessages } from "next-intl/server";
-import { Header } from "@/components/shared/header/header";
-import { Footer } from "@/components/shared/footer/footer";
 import { ThemeProvider } from "@/components/themeProvider";
 
 export const metadata: Metadata = {
@@ -41,9 +39,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             enableSystem
             disableTransitionOnChange
           >
-            <Header />
             {children}
-            <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

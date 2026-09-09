@@ -17,13 +17,40 @@ export async function Footer() {
         <div className="flex flex-col gap-10">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-[40%_1fr_1fr_1fr]">
             <div className="flex w-full flex-col gap-4">
-              <Logo iconSize={28} className="text-[28px] lg:text-[32px]" />
+              <Logo href="/" iconSize={28} className="text-[28px] lg:text-[32px]" />
               <p className="text-popover-foreground max-w-75 text-[14.5px] lg:text-base">
                 {t("description")}
               </p>
             </div>
             <FooterSection title={t("navTitle")} linksList={navItems} />
             <FooterSection title={t("clientTitle")} linksList={clientItems} />
+            <FooterSocialSection title={t("socialTitle")} linksList={socialMedia} />
+          </div>
+          <div className="border-border/10 text-popover-foreground flex justify-between border-t pt-7">
+            <p className="text-sm">
+              {t("developerCredit")} <span className="text-gold-dark">Jakub Rafalski</span>
+            </p>
+            <p className="hidden text-sm lg:block">{`© ${getCurrentYear()} ${siteConfig.name}. ${t("rights")}`}</p>
+          </div>
+        </div>
+      </Wrapper>
+    </footer>
+  );
+}
+
+export async function PrivacyFooter() {
+  const t = await getTranslations("LandingPage.Footer");
+
+  return (
+    <footer className="border-border/10 border-t pt-15 pb-8">
+      <Wrapper>
+        <div className="flex flex-col gap-10">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-[40%_1fr_1fr_1fr]">
+            <div className="flex w-full flex-col gap-4">
+              <Logo href="/" iconSize={28} className="text-[28px] lg:text-[32px]" />
+            </div>
+            <div />
+            <FooterSection title={t("navTitle")} linksList={clientItems} />
             <FooterSocialSection title={t("socialTitle")} linksList={socialMedia} />
           </div>
           <div className="border-border/10 text-popover-foreground flex justify-between border-t pt-7">

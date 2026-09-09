@@ -33,6 +33,7 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
               nativeButton={false}
               render={
                 <Logo
+                  href="/"
                   iconSize={22}
                   className="text-foreground mb-0.75 w-30 text-[24px] lg:text-[20px]"
                 />

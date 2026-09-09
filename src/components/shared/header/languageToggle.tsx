@@ -2,12 +2,13 @@
 
 import { useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { Link, usePathname } from "@/i18n/navigation";
+import { usePathname, getPathname } from "@/i18n/navigation";
 
 export function LanguageToggle({ ariaLabel }: { ariaLabel: string }) {
   const locale = useLocale();
   const pathname = usePathname();
   const other = locale === "pl" ? "en" : "pl";
+  const href = getPathname({ href: pathname, locale: other });
 
   return (
     <Button
@@ -16,7 +17,7 @@ export function LanguageToggle({ ariaLabel }: { ariaLabel: string }) {
       size="icon-sm"
       className="text-foreground"
       aria-label={ariaLabel}
-      render={<Link href={pathname} locale={other} />}
+      render={<a href={href} />}
     >
       {other.toUpperCase()}
     </Button>

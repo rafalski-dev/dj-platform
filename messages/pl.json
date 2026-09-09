@@ -20,6 +20,7 @@
     "Header": {
       "secondaryCTA": "Zaloguj się",
       "primaryCTA": "Rezerwacja",
+      "mainPageBtn": "Strona główna",
       "menuLabel": "Menu nawigacji",
       "openMenu": "Otwórz menu",
       "closeMenu": "Zamknij menu",
@@ -331,10 +332,86 @@
     "Footer": {
       "navTitle": "Nawigacja",
       "clientTitle": "Klient",
+      "contact": "Kontakt",
       "socialTitle": "Social media",
       "description": "Lata doświadczenia, jeden cel — sprawić, by każda impreza była niezapomniana. Zarezerwuj termin i świętujmy.",
       "developerCredit": "Strona stworzona i zarządzana przez",
       "rights": "Wszelkie prawa zastrzeżone."
+    }
+  },
+  "TermsAndConditions": {
+    "sectionTitle": "Regulamin",
+    "terms": {
+      "1": {
+        "title": "Postanowienia ogólne",
+        "content": "Niniejszy regulamin określa zasady korzystania z serwisu internetowego {url}, prowadzonego przez {brandName} z siedzibą pod adresem {address}. Korzystanie z serwisu oznacza akceptację niniejszego regulaminu."
+      },
+      "2": {
+        "title": "Zakres usług",
+        "content": "Serwis {url} służy do prezentacji oferty usług eventowych oraz umożliwia kontakt z firmą w celu uzyskania wyceny lub informacji. Serwis nie stanowi sklepu internetowego ani platformy sprzedażowej."
+      },
+      "3": {
+        "title": "Obowiązki użytkownika",
+        "content": "Użytkownik zobowiązuje się do: korzystania z serwisu zgodnie z obowiązującym prawem; podawania prawdziwych danych w formularzach kontaktowych; nienaruszania praw własności intelektualnej właściciela serwisu; niepodejmowania działań mogących zakłócić funkcjonowanie serwisu."
+      },
+      "4": {
+        "title": "Własność intelektualna",
+        "content": "Wszelkie treści zamieszczone w serwisie — teksty, zdjęcia, grafiki, logotypy — stanowią własność {brandName} lub są wykorzystywane za zgodą właścicieli praw autorskich. Kopiowanie, reprodukowanie lub rozpowszechnianie tych treści bez zgody właściciela jest zabronione."
+      },
+      "5": {
+        "title": "Odpowiedzialność",
+        "content": "Właściciel serwisu dokłada wszelkich starań, aby informacje zamieszczone w serwisie były aktualne i rzetelne. Nie ponosi jednak odpowiedzialności za ewentualne błędy, przerwy w działaniu serwisu ani szkody wynikłe z korzystania z serwisu."
+      },
+      "6": {
+        "title": "Formularze kontaktowe",
+        "content": "Wypełnienie formularza kontaktowego lub wyceny nie stanowi zawarcia umowy. Jest jedynie wyrazem zainteresowania ofertą i podstawą do nawiązania kontaktu przez przedstawiciela firmy."
+      },
+      "7": {
+        "title": "Zmiany regulaminu",
+        "content": "Właściciel serwisu zastrzega sobie prawo do zmiany niniejszego regulaminu. Zmiany wchodzą w życie z chwilą ich opublikowania w serwisie. Dalsze korzystanie z serwisu po wprowadzeniu zmian oznacza ich akceptację."
+      },
+      "8": {
+        "title": "Kontakt",
+        "content": "W sprawach związanych z regulaminem prosimy o kontakt na adres email: {email}"
+      }
+    }
+  },
+  "PrivacyPolicy": {
+    "sectionTitle": "Polityka prywatności",
+    "policy": {
+      "1": {
+        "title": "Administrator danych osobowych",
+        "content": "Administratorem Twoich danych osobowych jest {brandName}, z siedzibą w {address}. W sprawach dotyczących ochrony danych osobowych możesz skontaktować się z nami pod adresem e-mail: {email}"
+      },
+      "2": {
+        "title": "Jakie dane zbieramy",
+        "content": "Zbieramy dane, które podajesz dobrowolnie wypełniając formularz kontaktowy lub wyceny: imię i nazwisko, adres e-mail, numer telefonu, informacje o planowanym wydarzeniu."
+      },
+      "3": {
+        "title": "Cel przetwarzania danych",
+        "content": "Twoje dane przetwarzamy wyłącznie w celu odpowiedzi na zapytanie, przygotowania wyceny usług oraz realizacji umowy. Dane nie są przekazywane podmiotom trzecim ani wykorzystywane w celach marketingowych bez Twojej zgody."
+      },
+      "4": {
+        "title": "Podstawa prawna",
+        "content": "Przetwarzanie danych odbywa się na podstawie art. 6 ust. 1 lit. b RODO — przetwarzanie jest niezbędne do wykonania umowy lub podjęcia działań przed jej zawarciem, a także na podstawie art. 6 ust. 1 lit. a RODO — zgody osoby, której dane dotyczą."
+      },
+      "5": {
+        "title": "Okres przechowywania danych",
+        "content": "Dane przechowujemy przez okres niezbędny do realizacji celu, w jakim zostały zebrane, a po jego zakończeniu przez czas wymagany przepisami prawa (np. przepisami podatkowymi)."
+      },
+      "6": {
+        "title": "Twoje prawa",
+        "content": "Przysługują Ci następujące prawa: prawo dostępu do swoich danych, prawo do sprostowania danych, prawo do usunięcia danych, prawo do ograniczenia przetwarzania, prawo do przenoszenia danych oraz prawo do cofnięcia zgody w dowolnym momencie.",
+        "footer": "Aby skorzystać z powyższych praw, skontaktuj się z nami pod adresem email: {email}"
+      },
+      "7": {
+        "title": "Pliki cookies",
+        "content": "Strona może wykorzystywać pliki cookies wyłącznie w celu poprawnego funkcjonowania serwisu. Możesz zarządzać ustawieniami cookies w swojej przeglądarce."
+      },
+      "8": {
+        "title": "Kontakt",
+        "content": "W razie pytań dotyczących przetwarzania danych osobowych skontaktuj się z nami na email: {email}"
+      }
     }
   }
 }

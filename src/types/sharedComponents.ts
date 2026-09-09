@@ -1,7 +1,10 @@
+import { Link } from "@/i18n/navigation";
 import { StaticImageData } from "next/image";
+import { ComponentProps } from "react";
 
 export type WrapperProps = {
   children: React.ReactNode;
+  className?: string;
 };
 
 export type SectionLabelProps = {
@@ -30,6 +33,7 @@ export type SectionTitleProps = {
 export type LogoProps = {
   iconSize: number;
   className: string;
+  href: ComponentProps<typeof Link>["href"];
 };
 
 export type CustomImageProps = {

@@ -20,6 +20,7 @@
     "Header": {
       "secondaryCTA": "Sign In",
       "primaryCTA": "Check availability",
+      "mainPageBtn": "Back to home",
       "menuLabel": "Navigation menu",
       "openMenu": "Open menu",
       "closeMenu": "Close menu",
@@ -335,6 +336,81 @@
       "description": "Years of experience, one goal - making sure every party is unforgettable. Book now and let's celebrate.",
       "developerCredit": "Website built and managed by",
       "rights": "All Rights Reserved."
+    }
+  },
+  "TermsAndConditions": {
+    "sectionTitle": "Terms & Conditions",
+    "terms": {
+      "1": {
+        "title": "General Provisions",
+        "content": "These terms and conditions set out the rules for using the website {url}, operated by {brandName} with its registered office at {address}. Using the website constitutes acceptance of these terms and conditions."
+      },
+      "2": {
+        "title": "Scope of Services",
+        "content": "The website {url} is used to present our offer of event services and to enable contact with the company in order to obtain a quote or information. The website is not an online store or a sales platform."
+      },
+      "3": {
+        "title": "User Obligations",
+        "content": "The user undertakes to: use the website in accordance with applicable law; provide truthful information in contact forms; not infringe the intellectual property rights of the website owner; refrain from any actions that could disrupt the functioning of the website."
+      },
+      "4": {
+        "title": "Intellectual Property",
+        "content": "All content published on the website — texts, photographs, graphics, logos — is the property of {brandName} or is used with the consent of the copyright holders. Copying, reproducing, or distributing this content without the owner's consent is prohibited."
+      },
+      "5": {
+        "title": "Liability",
+        "content": "The website owner makes every effort to ensure that the information published on the website is current and accurate. However, the owner is not liable for any errors, interruptions in the website's operation, or damage resulting from the use of the website."
+      },
+      "6": {
+        "title": "Contact Forms",
+        "content": "Submitting a contact or quote form does not constitute the conclusion of a contract. It is merely an expression of interest in the offer and a basis for a company representative to get in touch."
+      },
+      "7": {
+        "title": "Changes to the Terms and Conditions",
+        "content": "The website owner reserves the right to amend these terms and conditions. Changes take effect upon their publication on the website. Continued use of the website after changes have been introduced constitutes acceptance of those changes."
+      },
+      "8": {
+        "title": "Contact",
+        "content": "For matters related to these terms and conditions, please contact us at: {email}"
+      }
+    }
+  },
+  "PrivacyPolicy": {
+    "sectionTitle": "Privacy Policy",
+    "policy": {
+      "1": {
+        "title": "Data Controller",
+        "content": "The controller of your personal data is {brandName}, with its registered office at {address}. For matters relating to the protection of personal data, you can contact us at the email address: {email}"
+      },
+      "2": {
+        "title": "What Data We Collect",
+        "content": "We collect the data you provide voluntarily when filling out the contact or quote form: first and last name, email address, phone number, and information about your planned event."
+      },
+      "3": {
+        "title": "Purpose of Data Processing",
+        "content": "We process your data solely to respond to your enquiry, prepare a service quote, and perform the contract. Your data is not shared with third parties or used for marketing purposes without your consent."
+      },
+      "4": {
+        "title": "Legal Basis",
+        "content": "Data processing is carried out on the basis of Article 6(1)(b) GDPR — processing is necessary for the performance of a contract or to take steps prior to entering into a contract — as well as on the basis of Article 6(1)(a) GDPR — the consent of the data subject."
+      },
+      "5": {
+        "title": "Data Retention Period",
+        "content": "We store data for the period necessary to fulfil the purpose for which it was collected, and after that purpose has been fulfilled, for the time required by law (e.g. by tax regulations)."
+      },
+      "6": {
+        "title": "Your Rights",
+        "content": "You have the following rights: the right to access your data, the right to rectify your data, the right to erase your data, the right to restrict processing, the right to data portability, and the right to withdraw consent at any time.",
+        "footer": "To exercise the above rights, please contact us at the email address: {email}"
+      },
+      "7": {
+        "title": "Cookies",
+        "content": "The website may use cookies solely to ensure the correct functioning of the site. You can manage cookie settings in your browser."
+      },
+      "8": {
+        "title": "Contact",
+        "content": "If you have any questions about the processing of personal data, please contact us at: {email}"
+      }
     }
   }
 }
