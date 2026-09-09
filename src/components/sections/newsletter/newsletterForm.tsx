@@ -23,7 +23,7 @@ export function NewsletterForm() {
           <div className="flex flex-col gap-4 md:flex-row md:gap-3">
             <Field>
               <Input
-                className="h-12.5 rounded-full px-5"
+                className="h-12 rounded-lg px-5"
                 defaultValue={state.providedEmail}
                 required
                 name="email"
@@ -39,7 +39,7 @@ export function NewsletterForm() {
                 </FieldError>
               )}
             </Field>
-            <Button disabled={isPending} className="w-full rounded-full py-6 md:w-36" type="submit">
+            <Button disabled={isPending} className="w-full md:w-32" type="submit">
               {isPending ? (
                 <>
                   <Spinner data-icon="inline-start" />
