@@ -413,5 +413,19 @@
         "content": "W razie pytań dotyczących przetwarzania danych osobowych skontaktuj się z nami na email: {email}"
       }
     }
+  },
+  "Metadata": {
+    "title": "{name} | Zaplanuj swoje wydarzenie",
+    "description": "{name} — DJ i wodzirej na wesela i imprezy w całej Polsce. Muzyka, światło oraz największe hity przez całą noc — 12 lat i ponad 380 zagranych imprez.",
+    "keywords": "dj,wodzirej,wesele,konferansjer,impreza",
+    "ogAlt": "DJ Maven — DJ i wodzirej na wesela i imprezy w całej Polsce",
+    "terms": {
+      "title": "Regulamin",
+      "description": "Regulamin korzystania z serwisu {name} — zasady, zakres usług, własność intelektualna i kontakt."
+    },
+    "privacy": {
+      "title": "Polityka prywatności",
+      "description": "Polityka prywatności {name} — jak przetwarzamy i chronimy Twoje dane osobowe zgodnie z RODO."
+    }
   }
 }

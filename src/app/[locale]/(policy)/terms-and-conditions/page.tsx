@@ -3,6 +3,22 @@ import { SectionTitle } from "@/components/shared/sectionTitle";
 import { Wrapper } from "@/components/shared/wrapper";
 import { siteConfig } from "@/config/site";
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata.terms" });
+
+  return {
+    title: t("title"),
+    description: t("description", { name: siteConfig.name }),
+    robots: { index: false, follow: true },
+  };
+}
 
 export default async function TermsAndConditions() {
   const t = await getTranslations("TermsAndConditions");

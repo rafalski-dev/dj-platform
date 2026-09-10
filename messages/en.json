@@ -412,5 +412,19 @@
         "content": "If you have any questions about the processing of personal data, please contact us at: {email}"
       }
     }
+  },
+  "Metadata": {
+    "title": "{name} | Plan your event",
+    "description": "{name} — wedding & event DJ and host across Poland. Music, lighting and hosting of the highest class, backed by 12 years and 380+ events.",
+    "keywords": "wedding dj,event dj,master of ceremonies,mc,party dj,wedding host,dj poland",
+    "ogAlt": "DJ Maven — wedding and event DJ and host across Poland",
+    "terms": {
+      "title": "Terms & Conditions",
+      "description": "Terms and conditions for using the {name} website — rules, scope of services, intellectual property and contact."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "{name} privacy policy — how we process and protect your personal data in line with GDPR."
+    }
   }
 }
