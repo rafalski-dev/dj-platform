@@ -7,6 +7,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { ThemeProvider } from "@/components/themeProvider";
 import { siteConfig } from "@/config/site";
 import { Metadata } from "next";
+import { Background } from "@/components/decorations/background";
 
 type Props = {
   children: React.ReactNode;
@@ -68,6 +69,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
+        <Background />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"

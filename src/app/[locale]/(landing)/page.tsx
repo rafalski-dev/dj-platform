@@ -11,8 +11,7 @@ import { Background } from "@/components/decorations/background";
 
 export default function Home() {
   return (
-    <main className="relative">
-      <Background />
+    <main>
       <Hero />
       <About />
       <Offer />
