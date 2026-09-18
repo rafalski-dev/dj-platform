@@ -139,6 +139,11 @@
     outline-color: var(--ring);
     scroll-behavior: smooth;
   }
+
+  html {
+    scrollbar-gutter: stable;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
