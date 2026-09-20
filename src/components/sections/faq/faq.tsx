@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
-import { Section } from "../../shared/section";
+import { Section } from "../../shared/sections/section";
 import { Wrapper } from "../../shared/wrapper";
-import { SectionLabel } from "../../shared/sectionLabel";
-import { SectionTitle } from "../../shared/sectionTitle";
+import { SectionLabel } from "../../shared/sections/sectionLabel";
+import { SectionTitle } from "../../shared/sections/sectionTitle";
 import { FAQAccordion } from "./faqAccordion";
 import { FAQData } from "@/constants/faq";
 

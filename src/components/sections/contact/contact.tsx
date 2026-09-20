@@ -1,7 +1,7 @@
-import { Section } from "@/components/shared/section";
-import { SectionDescription } from "@/components/shared/sectionDescription";
-import { SectionLabel } from "@/components/shared/sectionLabel";
-import { SectionTitle } from "@/components/shared/sectionTitle";
+import { Section } from "@/components/shared/sections/section";
+import { SectionDescription } from "@/components/shared/sections/sectionDescription";
+import { SectionLabel } from "@/components/shared/sections/sectionLabel";
+import { SectionTitle } from "@/components/shared/sections/sectionTitle";
 import { Wrapper } from "@/components/shared/wrapper";
 import { contactDetailsData } from "@/constants/contact";
 import { getTranslations } from "next-intl/server";

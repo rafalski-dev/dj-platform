@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
-import { Section } from "../../shared/section";
-import { SectionDescription } from "../../shared/sectionDescription";
-import { SectionLabel } from "../../shared/sectionLabel";
-import { SectionTitle } from "../../shared/sectionTitle";
+import { Section } from "../../shared/sections/section";
+import { SectionDescription } from "../../shared/sections/sectionDescription";
+import { SectionLabel } from "../../shared/sections/sectionLabel";
+import { SectionTitle } from "../../shared/sections/sectionTitle";
 import { Wrapper } from "../../shared/wrapper";
 import { offerAddonsData, offerCardsData } from "@/constants/offer";
 import { OfferCardsList } from "./offerCardsList";

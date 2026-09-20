@@ -1,13 +1,13 @@
 import { Wrapper } from "../shared/wrapper";
-import { SectionLabel } from "../shared/sectionLabel";
-import { SectionDescription } from "../shared/sectionDescription";
+import { SectionLabel } from "../shared/sections/sectionLabel";
+import { SectionDescription } from "../shared/sections/sectionDescription";
 import { buttonVariants } from "../ui/button";
 import { MoveRight } from "lucide-react";
 import { StarIcon } from "../icons/starIcon";
 import { getTranslations } from "next-intl/server";
 import { CustomImage } from "../shared/customImage";
 import { BgGlowOrb } from "../decorations/glowOrbs";
-import { Section } from "../shared/section";
+import { Section } from "../shared/sections/section";
 import heroImg from "../../assets/images/hero.jpg";
 
 export async function Hero() {

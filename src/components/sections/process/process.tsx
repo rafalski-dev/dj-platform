@@ -1,9 +1,9 @@
 import { getTranslations } from "next-intl/server";
-import { Section } from "../../shared/section";
-import { SectionLabel } from "../../shared/sectionLabel";
+import { Section } from "../../shared/sections/section";
+import { SectionLabel } from "../../shared/sections/sectionLabel";
 import { Wrapper } from "../../shared/wrapper";
-import { SectionTitle } from "../../shared/sectionTitle";
-import { SectionDescription } from "../../shared/sectionDescription";
+import { SectionTitle } from "../../shared/sections/sectionTitle";
+import { SectionDescription } from "../../shared/sections/sectionDescription";
 import { processStepsData } from "@/constants/process";
 import { ProcessStepsList } from "./processStepsList";
 

@@ -1,5 +1,5 @@
-import { Section } from "@/components/shared/section";
-import { SectionLabel } from "@/components/shared/sectionLabel";
+import { Section } from "@/components/shared/sections/section";
+import { SectionLabel } from "@/components/shared/sections/sectionLabel";
 import { Wrapper } from "@/components/shared/wrapper";
 import { CustomImage } from "../shared/customImage";
 import { getTranslations } from "next-intl/server";
