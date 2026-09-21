@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/themeProvider";
 import { siteConfig } from "@/config/site";
 import { Metadata } from "next";
 import { Background } from "@/components/decorations/background";
+import { Toaster } from "@/components/ui/toast";
 
 type Props = {
   children: React.ReactNode;
@@ -77,6 +78,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             enableSystem
             disableTransitionOnChange
           >
+            <Toaster />
             {children}
           </ThemeProvider>
         </NextIntlClientProvider>

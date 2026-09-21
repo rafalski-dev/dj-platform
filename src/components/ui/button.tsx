@@ -13,10 +13,11 @@ const buttonVariants = cva(
           "text-foreground border border-border/15 bg-secondary hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] hover:border-border/25 ",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
-        ghost: "",
+        input: "text-popover-foreground/80 active:-translate-y-1/2 hover:text-popover-foreground",
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        ghost: "",
         icon: "bg-secondary hover:bg-muted text-primary rounded-sm border transition-colors text-primary border-border/20 hover:border-border/35 ",
       },
       size: {
@@ -28,6 +29,7 @@ const buttonVariants = cva(
         icon: "size-10 [&_svg:not([class*='size-'])]:size-6",
         "icon-xs": "size-8 [&_svg:not([class*='size-'])]:size-3",
         "icon-sm": "h-10 w-10 text-[15px] [&_svg:not([class*='size-'])]:size-4",
+        "icon-md": "h-7 w-7 [&_svg:not([class*='size-'])]:size-5",
         "icon-lg": "size-10.5",
       },
     },

@@ -73,7 +73,7 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
         <SheetFooter>
           <SheetClose
             nativeButton={false}
-            render={<Link href="/signIn" className={buttonVariants({ variant: "outline" })} />}
+            render={<Link href="/login" className={buttonVariants({ variant: "outline" })} />}
           >
             {t("secondaryCTA")}
           </SheetClose>
@@ -114,7 +114,7 @@ export async function NavDesktop({ navItems }: { navItems: NavItem[] }) {
       </nav>
 
       <div className="flex items-center gap-3">
-        <Link href="/signIn" className={buttonVariants({ variant: "outline", size: "sm" })}>
+        <Link href="/login" className={buttonVariants({ variant: "outline", size: "sm" })}>
           {t("secondaryCTA")}
         </Link>
         <a

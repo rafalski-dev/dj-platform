@@ -10,10 +10,11 @@ export type ControlledInputProps<T extends FieldValues> = {
   name: FieldPath<T>;
   control: Control<T>;
   label: string;
-  placeholder: string;
+  placeholder?: string;
   autoComplete?: string;
-  type?: "text" | "email" | "tel";
+  type?: "text" | "email" | "tel" | "password";
   required?: boolean;
+  forgotPassword?: boolean;
 };
 
 export type ControlledSelectProps<T extends FieldValues> = {
