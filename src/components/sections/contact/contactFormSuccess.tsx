@@ -1,6 +1,6 @@
 "use client";
 
-import { SectionDescription } from "@/components/shared/sectionDescription";
+import { SectionDescription } from "@/components/shared/sections/sectionDescription";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 

@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { ContactFormError } from "./contactFormError";
+import { FormError } from "../../shared/form/status/formError";
 import { handleContactForm } from "@/actions/contact";
 import { ContactFormSuccess } from "./contactFormSuccess";
 
@@ -158,7 +158,7 @@ export function ContactForm({ className }: { className?: string }) {
           />
 
           <ControlledCheckbox name="terms" control={control} label={t("formInputs.terms.label")} />
-          {errorMessage && <ContactFormError error={errorMessage} />}
+          {errorMessage && <FormError error={errorMessage} />}
           <Button disabled={isSubmitting} className="my-3 w-full" type="submit">
             {isSubmitting ? (
               <>
