@@ -37,7 +37,8 @@
       "SecondaryCTA": "Zobacz ofertę",
       "rating": "Ocena",
       "and": "i",
-      "events": "zagranych imprez"
+      "events": "zagranych imprez",
+      "imageAlt": "Tłum tańczący z DJ-em na parkiecie"
     },
     "About": {
       "id": "o-mnie",
@@ -62,7 +63,8 @@
           "number": "100%",
           "label": "zrealizowanych umów"
         }
-      }
+      },
+      "imageAlt": "DJ mówiący do mikrofonu podczas wydarzenia"
     },
     "Offer": {
       "id": "oferta",
@@ -283,7 +285,7 @@
           },
           "eventDate": {
             "label": "Data wydarzenia",
-            "placeholder": "DD.MM.YYYY",
+            "placeholder": "DD.MM.RRRR",
             "validation": "Podaj poprawny format daty DD.MM.RRRR"
           },
           "eventType": {
@@ -332,7 +334,6 @@
     "Footer": {
       "navTitle": "Nawigacja",
       "clientTitle": "Klient",
-      "contact": "Kontakt",
       "socialTitle": "Social media",
       "description": "Lata doświadczenia, jeden cel — sprawić, by każda impreza była niezapomniana. Zarezerwuj termin i świętujmy.",
       "developerCredit": "Strona stworzona i zarządzana przez",
@@ -414,6 +415,251 @@
       }
     }
   },
+  "Auth": {
+    "Errors": {
+      "userAlreadyExists": "Konto z tym adresem email już istnieje",
+      "tooManyRequests": "Zbyt wiele prób. Spróbuj ponownie za chwilę",
+      "connection": "Brak połączenia z serwerem. Sprawdź internet i spróbuj ponownie",
+      "failedToCreate": "Nie udało się założyć konta. Spróbuj ponownie za chwilę",
+      "verifyEmail": "Adres email nie został zweryfikowany",
+      "invalidEmailOrPass": "Nieprawidłowy email lub hasło",
+      "default": "Coś poszło nie tak. Spróbuj ponownie",
+      "invalidToken": "Link wygasł lub został już użyty. Poproś o nowy."
+    },
+    "Login": {
+      "label": "Panel klienta",
+      "title": "Witaj ponownie.",
+      "description": "Zaloguj się na swoje konto.",
+      "primaryBtn": "Zaloguj się",
+      "pendingBtn": "Przetwarzanie",
+      "googleBtn": "Zaloguj się przez Google",
+      "footer": "Nie masz jeszcze konta?",
+      "signupLink": "Załóż konto",
+      "forgot-password": "Nie pamiętasz hasła?",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "email@przyklad.pl",
+          "required": "Podaj adres email",
+          "error": "Podaj poprawny adres email"
+        },
+        "password": {
+          "label": "Hasło",
+          "required": "Podaj hasło"
+        },
+        "rememberMe": {
+          "label": "Zapamiętaj mnie"
+        },
+        "server": {
+          "verify": {
+            "title": "Zweryfikuj adres email",
+            "description": "Wysłaliśmy nowy link weryfikacyjny. Sprawdź skrzynkę"
+          },
+          "error": {
+            "title": "Logowanie nieudane",
+            "description": "Coś poszło nie tak. Spróbuj ponownie."
+          },
+          "success": {
+            "title": "Zalogowano pomyślnie",
+            "description": "Możesz teraz zarządzać swoim kontem"
+          },
+          "alreadyExist": {
+            "title": "Konto już istnieje",
+            "description": "Konto z tym adresem email już istnieje. Zaloguj się emailem i hasłem, a wyślemy Ci link weryfikacyjny."
+          }
+        }
+      }
+    },
+    "Register": {
+      "label": "Panel klienta",
+      "title": "Zaczynajmy.",
+      "description": "Załóż konto i zacznij planować swoje wydarzenie.",
+      "primaryBtn": "Załóż konto",
+      "pendingBtn": "Przetwarzanie",
+      "googleBtn": "Załóż konto przez Google",
+      "footer": "Masz już konto?",
+      "loginLink": "Zaloguj się",
+      "form": {
+        "firstName": {
+          "label": "Imię",
+          "placeholder": "Jan",
+          "required": "Podaj imię"
+        },
+        "lastName": {
+          "label": "Nazwisko",
+          "placeholder": "Kowalski",
+          "required": "Podaj nazwisko"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "email@przyklad.pl",
+          "required": "Podaj adres email",
+          "error": "Podaj poprawny adres email"
+        },
+        "password": {
+          "label": "Hasło",
+          "required": "Podaj hasło",
+          "error": "Hasło musi mieć od 8 do 24 znaków oraz zawierać wielką literę, cyfrę i znak specjalny"
+        },
+        "confirmPassword": {
+          "label": "Potwierdź hasło",
+          "error": "Hasła nie są takie same"
+        },
+        "terms": {
+          "label": "Akceptuję regulamin i wyrażam zgodę na przetwarzanie moich danych osobowych.",
+          "required": "Musisz zaakceptować regulamin"
+        },
+        "server": {
+          "error": {
+            "title": "Rejestracja nieudana"
+          },
+          "success": {
+            "title": "Konto zostało utworzone",
+            "description": "Zweryfikuj swój adres email, aby kontynuować."
+          }
+        }
+      }
+    },
+    "VerifyEmail": {
+      "label": "Panel klienta",
+      "title": "Sprawdź skrzynkę.",
+      "description": "Wysłaliśmy Ci link weryfikacyjny. Kliknij go, aby aktywować konto i zacząć planować swoje wydarzenie.",
+      "extraMessage": "Nie widzisz wiadomości? Sprawdź folder ze spamem lub poproś o nowy link.",
+      "primaryBtn": "Wyślij link ponownie",
+      "disableBtn": "Wyślij ponownie za",
+      "footer": "Konto jest już aktywne?",
+      "loginLink": "Zaloguj się",
+      "form": {
+        "server": {
+          "error": {
+            "title": "Nie udało się wysłać linku"
+          },
+          "success": {
+            "title": "Link wysłany ponownie",
+            "description": "Nowa wiadomość jest już w drodze. Sprawdź skrzynkę"
+          }
+        }
+      }
+    },
+    "ResetPassword": {
+      "label": "Odzyskiwanie hasła",
+      "title": "Zresetuj hasło.",
+      "description": "Podaj adres email powiązany z Twoim kontem, a wyślemy Ci instrukcje resetowania hasła.",
+      "primaryBtn": "Wyślij instrukcje",
+      "pendingBtn": "Wysyłanie",
+      "footer": "Pamiętasz hasło?",
+      "loginLink": "Zaloguj się",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "email@przyklad.pl",
+          "required": "Podaj adres email",
+          "error": "Podaj poprawny adres email"
+        },
+        "server": {
+          "success": {
+            "title": "Sprawdź skrzynkę",
+            "description": "Wysłaliśmy Ci email z instrukcjami resetowania hasła."
+          },
+          "error": {
+            "title": "Coś poszło nie tak",
+            "description": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+          }
+        }
+      },
+      "disableBtn": "Wyślij ponownie za"
+    },
+    "UrlExpired": {
+      "label": "Panel klienta",
+      "title": "Link wygasł.",
+      "description": {
+        "password": "Link do ustawienia nowego hasła jest ważny przez godzinę i można go użyć tylko raz. Wypełnij formularz jeszcze raz, a wyślemy Ci nowy.",
+        "verification": "Link potwierdzający adres email jest ważny przez godzinę i można go użyć tylko raz. Zaloguj się, a wyślemy Ci nowy."
+      },
+      "primaryBtn": {
+        "password": "Przywróć hasło",
+        "verification": "Zweryfikuj email"
+      },
+      "footer": {
+        "password": "Pamiętasz hasło?",
+        "verification": "Email jest już zweryfikowany?"
+      },
+      "loginLink": "Zaloguj się"
+    },
+    "NewPassword": {
+      "label": "Odzyskiwanie hasła",
+      "title": "Nowe hasło.",
+      "description": "Ustaw nowe hasło do swojego konta.",
+      "primaryBtn": "Ustaw nowe hasło",
+      "footer": "Pamiętasz hasło?",
+      "pendingBtn": "Przetwarzanie",
+      "loginLink": "Zaloguj się",
+      "form": {
+        "password": {
+          "label": "Hasło",
+          "required": "Podaj hasło",
+          "error": "Hasło musi mieć od 8 do 24 znaków oraz zawierać wielką literę, cyfrę i znak specjalny"
+        },
+        "confirmPassword": {
+          "label": "Potwierdź hasło",
+          "error": "Hasła nie są takie same"
+        },
+        "server": {
+          "error": {
+            "title": "Nie udało się zmienić hasła"
+          },
+          "success": {
+            "title": "Hasło zmienione",
+            "description": "Możesz teraz zalogować się nowym hasłem."
+          }
+        }
+      }
+    }
+  },
+  "Emails": {
+    "ExistingAccount": {
+      "subject": "Ktoś próbował założyć konto na Twój adres",
+      "preview": "Masz już u nas konto — nie utworzyliśmy nowego.",
+      "heading": "Ktoś próbował założyć konto na Twój adres",
+      "greeting": "Cześć {name},",
+      "intro": "Ktoś właśnie próbował utworzyć konto przy użyciu tego adresu email. Masz już u nas konto, więc nie utworzyliśmy nowego.",
+      "button": "Zaloguj się",
+      "resetLink": "Nie pamiętasz hasła? Zresetuj je tutaj",
+      "ignore": "Jeśli to nie Ty, po prostu zignoruj tę wiadomość — nic się nie zmieniło."
+    },
+    "VerifyEmail": {
+      "subject": "Potwierdź swój adres email",
+      "preview": "Jeden klik i Twoje konto będzie gotowe.",
+      "heading": "Potwierdź swój adres email",
+      "greeting": "Cześć {name},",
+      "intro": "Dziękujemy za założenie konta. Kliknij przycisk poniżej, aby potwierdzić swój adres email i przejść do panelu klienta.",
+      "button": "Potwierdź adres email",
+      "expiry": "Link jest ważny przez godzinę i można go użyć tylko raz.",
+      "fallback": "Jeśli przycisk nie działa, skopiuj poniższy adres i wklej go w przeglądarce:",
+      "ignore": "Jeśli to nie Ty zakładałeś konto, zignoruj tę wiadomość — bez potwierdzenia konto pozostanie nieaktywne."
+    },
+    "PasswordChanged": {
+      "subject": "Twoje hasło zostało zmienione",
+      "preview": "Potwierdzenie zmiany hasła do Twojego konta.",
+      "heading": "Hasło zostało zmienione",
+      "greeting": "Cześć {name},",
+      "intro": "Hasło do Twojego konta zostało właśnie zmienione. Od teraz logujesz się przy użyciu nowego hasła.",
+      "sessions": "Ze względów bezpieczeństwa wylogowaliśmy Cię na wszystkich urządzeniach — zaloguj się ponownie.",
+      "button": "Zaloguj się",
+      "warning": "Jeśli to nie Ty zmieniałeś hasło, natychmiast zresetuj je ponownie i skontaktuj się z nami."
+    },
+    "ResetPassword": {
+      "subject": "Resetowanie hasła",
+      "preview": "Link do ustawienia nowego hasła — ważny przez godzinę.",
+      "heading": "Zresetuj swoje hasło",
+      "greeting": "Cześć {name},",
+      "intro": "Otrzymaliśmy prośbę o zresetowanie hasła do Twojego konta. Kliknij przycisk poniżej, aby ustawić nowe hasło.",
+      "button": "Ustaw nowe hasło",
+      "expiry": "Link jest ważny przez godzinę i można go użyć tylko raz.",
+      "fallback": "Jeśli przycisk nie działa, skopiuj poniższy adres i wklej go w przeglądarce:",
+      "ignore": "Jeśli to nie Ty prosiłeś o zmianę hasła, zignoruj tę wiadomość — Twoje hasło pozostaje bez zmian."
+    }
+  },
   "Metadata": {
     "title": "{name} | Zaplanuj swoje wydarzenie",
     "description": "{name} — DJ i wodzirej na wesela i imprezy w całej Polsce. Muzyka, światło oraz największe hity przez całą noc — 12 lat i ponad 380 zagranych imprez.",
@@ -426,6 +672,15 @@
     "privacy": {
       "title": "Polityka prywatności",
       "description": "Polityka prywatności {name} — jak przetwarzamy i chronimy Twoje dane osobowe zgodnie z RODO."
+    }
+  },
+  "Dashboard": {
+    "Welcome": {
+      "label": "Witamy",
+      "title": "Email zweryfikowany.",
+      "description": "Twój adres email został pomyślnie zweryfikowany. Przeniesiemy Cię do panelu klienta za ",
+      "extraMessage": "Nie chcesz czekać? Skorzystaj z przycisku poniżej.",
+      "primaryButton": "Panel klienta"
     }
   }
 }

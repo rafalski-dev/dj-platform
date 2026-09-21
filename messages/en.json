@@ -37,7 +37,8 @@
       "SecondaryCTA": "See offer",
       "rating": "Rated",
       "and": "and",
-      "events": "events performed"
+      "events": "events performed",
+      "imageAlt": "A crowd dancing with the DJ on the dance floor"
     },
     "About": {
       "id": "about",
@@ -62,7 +63,8 @@
           "number": "100%",
           "label": "on-time, every time"
         }
-      }
+      },
+      "imageAlt": "DJ speaking into a microphone during an event"
     },
     "Offer": {
       "id": "offer",
@@ -413,6 +415,251 @@
       }
     }
   },
+  "Auth": {
+    "Errors": {
+      "userAlreadyExists": "An account with this email address already exists",
+      "tooManyRequests": "Too many attempts. Please try again in a moment",
+      "connection": "No connection to the server. Check your internet and try again",
+      "failedToCreate": "We could not create your account. Please try again in a moment",
+      "verifyEmail": "Email not verified",
+      "invalidEmailOrPass": "Invalid email or password",
+      "default": "Something went wrong. Please try again",
+      "invalidToken": "This link has expired or has already been used. Request a new one."
+    },
+    "Login": {
+      "label": "Sign in",
+      "title": "Welcome back.",
+      "description": "Log in to your account.",
+      "primaryBtn": "Log in",
+      "pendingBtn": "Processing",
+      "googleBtn": "Log in with Google",
+      "footer": "Don't have account?",
+      "signupLink": "Sign up",
+      "forgot-password": "Forgot password?",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "email@sample.com",
+          "required": "Provide address email",
+          "error": "Provide correct address email"
+        },
+        "password": {
+          "label": "Password",
+          "required": "Provide password"
+        },
+        "rememberMe": {
+          "label": "Remember me"
+        },
+        "server": {
+          "verify": {
+            "title": "Verify email",
+            "description": "We send verification email. Check your inbox"
+          },
+          "error": {
+            "title": "Login Failed",
+            "description": "Something went wrong. Please try again."
+          },
+          "success": {
+            "title": "Login Success",
+            "description": "You can now manage your account"
+          },
+          "alreadyExist": {
+            "title": "Account already exists",
+            "description": "An account with this email address already exists. Log in with your email and password and we will send you a link to verify your email."
+          }
+        }
+      }
+    },
+    "Register": {
+      "label": "Create account",
+      "title": "Get Started.",
+      "description": "Sign up to begin plan your event.",
+      "primaryBtn": "Create account",
+      "pendingBtn": "Processing",
+      "googleBtn": "Create account with Google",
+      "footer": "Already have an account?",
+      "loginLink": "Log in",
+      "form": {
+        "firstName": {
+          "label": "First name",
+          "placeholder": "Steven",
+          "required": "Provide first name"
+        },
+        "lastName": {
+          "label": "Last name",
+          "placeholder": "Johnson",
+          "required": "Provide last name"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "email@sample.com",
+          "required": "Provide email address",
+          "error": "Provide correct email address"
+        },
+        "password": {
+          "label": "Password",
+          "required": "Provide password",
+          "error": "Password must be 8–24 characters and include at least one uppercase letter, one number and one special character"
+        },
+        "confirmPassword": {
+          "label": "Confirm password",
+          "error": "Passwords do not match"
+        },
+        "terms": {
+          "label": "I agree to my data being processed in order to answer this enquiry.",
+          "required": "You must agree to the terms & condition"
+        },
+        "server": {
+          "error": {
+            "title": "Registration Failed"
+          },
+          "success": {
+            "title": "Account Created",
+            "description": "Verify your email address to continue."
+          }
+        }
+      }
+    },
+    "VerifyEmail": {
+      "label": "Email verification",
+      "title": "Check your inbox.",
+      "description": "We have sent you a verification link. Click it to activate your account.",
+      "extraMessage": "Can't see it? Check your spam or ask for new verification email.",
+      "primaryBtn": "Resend verification email",
+      "disableBtn": "Resend email in",
+      "footer": "Account already active?",
+      "loginLink": "Log in",
+      "form": {
+        "server": {
+          "error": {
+            "title": "Couldn't send the link"
+          },
+          "success": {
+            "title": "Link sent again",
+            "description": "A new message is on its way. Check your inbox"
+          }
+        }
+      }
+    },
+    "ResetPassword": {
+      "label": "Recovery password",
+      "title": "Reset password.",
+      "description": "Include the email address associated with your account and we’ll send you an email with instructions to reset your password.",
+      "primaryBtn": "Set reset instructions",
+      "pendingBtn": "Processing",
+      "footer": "Password reseted?",
+      "loginLink": "Log in",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "email@sample.com",
+          "required": "Provide address email",
+          "error": "Provide correct address email"
+        },
+        "server": {
+          "success": {
+            "title": "Check your inbox",
+            "description": "We've sent you an email with instructions to reset your password."
+          },
+          "error": {
+            "title": "Something went wrong",
+            "description": "We couldn't send the email. Please try again."
+          }
+        }
+      },
+      "disableBtn": "Send again in"
+    },
+    "UrlExpired": {
+      "label": "Link Expired",
+      "title": "Link has expired.",
+      "description": {
+        "password": "A password reset link is valid for one hour and can be used only once. You have to request a new link.",
+        "verification": "A email verification link is valid for one hour and can be used only once. Try to login and we send you verification new link."
+      },
+      "primaryBtn": {
+        "password": "Reset password",
+        "verification": "Verify email"
+      },
+      "footer": {
+        "password": "Remember your password?",
+        "verification": "Verified your email?"
+      },
+      "loginLink": "Log in"
+    },
+    "NewPassword": {
+      "label": "Password recovery",
+      "title": "New password.",
+      "description": "Set the new password for your account.",
+      "primaryBtn": "Set new password",
+      "footer": "Remember your password?",
+      "pendingBtn": "Processing",
+      "loginLink": "Log in",
+      "form": {
+        "password": {
+          "label": "Password",
+          "required": "Provide password",
+          "error": "Password must be 8–24 characters and include at least one uppercase letter, one number and one special character"
+        },
+        "confirmPassword": {
+          "label": "Confirm password",
+          "error": "Passwords do not match"
+        },
+        "server": {
+          "error": {
+            "title": "Password not changed"
+          },
+          "success": {
+            "title": "Password changed",
+            "description": "You can now log in with your new password."
+          }
+        }
+      }
+    }
+  },
+  "Emails": {
+    "ExistingAccount": {
+      "subject": "Someone tried to sign up with your email address",
+      "preview": "You already have an account — we didn't create a new one.",
+      "heading": "Someone tried to sign up with your email address",
+      "greeting": "Hi {name},",
+      "intro": "Someone just tried to create an account using this email address. You already have an account with us, so we did not create a new one.",
+      "button": "Log in",
+      "resetLink": "Forgot your password? Reset it here",
+      "ignore": "If this wasn't you, simply ignore this message — nothing has changed."
+    },
+    "VerifyEmail": {
+      "subject": "Verify your email address",
+      "preview": "One click and your account is ready.",
+      "heading": "Verify your email address",
+      "greeting": "Hi {name},",
+      "intro": "Thanks for creating an account. Click the button below to verify your email address and go straight to your dashboard.",
+      "button": "Verify email address",
+      "expiry": "This link is valid for one hour and can be used only once.",
+      "fallback": "If the button doesn't work, copy the address below and paste it into your browser:",
+      "ignore": "If you didn't create this account, ignore this message — without verification the account stays inactive."
+    },
+    "PasswordChanged": {
+      "subject": "Your password has been changed",
+      "preview": "A confirmation that your account password was changed.",
+      "heading": "Your password has been changed",
+      "greeting": "Hi {name},",
+      "intro": "The password for your account has just been changed. From now on, use the new password to log in.",
+      "sessions": "For security reasons we signed you out on every device — please log in again.",
+      "button": "Log in",
+      "warning": "If you didn't change your password, reset it again immediately and get in touch with us."
+    },
+    "ResetPassword": {
+      "subject": "Reset your password",
+      "preview": "A link to set a new password — valid for one hour.",
+      "heading": "Reset your password",
+      "greeting": "Hi {name},",
+      "intro": "We received a request to reset the password for your account. Click the button below to set a new one.",
+      "button": "Set a new password",
+      "expiry": "This link is valid for one hour and can be used only once.",
+      "fallback": "If the button doesn't work, copy the address below and paste it into your browser:",
+      "ignore": "If you didn't ask for a password reset, ignore this message — your password stays unchanged."
+    }
+  },
   "Metadata": {
     "title": "{name} | Plan your event",
     "description": "{name} — wedding & event DJ and host across Poland. Music, lighting and hosting of the highest class, backed by 12 years and 380+ events.",
@@ -425,6 +672,15 @@
     "privacy": {
       "title": "Privacy Policy",
       "description": "{name} privacy policy — how we process and protect your personal data in line with GDPR."
+    }
+  },
+  "Dashboard": {
+    "Welcome": {
+      "label": "Welcome",
+      "title": "Email verified.",
+      "description": "Your email has been verified successfully. You will be redirected to your dashboard in ",
+      "extraMessage": "Don't want to wait? Use button below.",
+      "primaryButton": "Client dashboard"
     }
   }
 }
