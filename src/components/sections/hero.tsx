@@ -94,7 +94,7 @@ export async function Hero() {
           >
             <CustomImage
               src={heroImg}
-              alt="The crowd and the DJ dances on the dancefloor."
+              alt={t("Hero.imageAlt")}
               priority
               ratio="aspect-3/2"
               sizes="(max-width: 1024px) 100vw, 50vw"

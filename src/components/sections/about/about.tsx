@@ -24,7 +24,7 @@ export async function About() {
             >
               <CustomImage
                 src={aboutImg}
-                alt="DJ speaking into a microphone during the event"
+                alt={t("imageAlt")}
                 ratio="aspect-3/2"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 loading="eager"

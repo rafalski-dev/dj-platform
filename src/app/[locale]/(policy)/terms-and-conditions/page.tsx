@@ -1,5 +1,5 @@
 import { SectionPolicy } from "@/components/shared/sectionPolicy";
-import { SectionTitle } from "@/components/shared/sectionTitle";
+import { SectionTitle } from "@/components/shared/sections/sectionTitle";
 import { Wrapper } from "@/components/shared/wrapper";
 import { siteConfig } from "@/config/site";
 import { getTranslations } from "next-intl/server";
