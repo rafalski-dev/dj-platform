@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import { prisma } from "./prisma";
+import { db } from "./db";
 import { resend } from "./resend";
 import { siteConfig } from "@/config/site";
 import { ForeignUserTemplate } from "@/components/template/foreignUserTemplate";
@@ -33,7 +33,7 @@ export const auth = betterAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     },
   },
-  database: prismaAdapter(prisma, {
+  database: prismaAdapter(db, {
     provider: "postgresql",
   }),
 

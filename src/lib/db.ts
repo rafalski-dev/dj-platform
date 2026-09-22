@@ -9,4 +9,4 @@ if (!databaseUrl) {
 
 const adapter = new PrismaPg({ connectionString: databaseUrl });
 
-export const prisma = new PrismaClient({ adapter });
+export const db = new PrismaClient({ adapter });
