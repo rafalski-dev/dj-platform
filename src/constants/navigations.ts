@@ -1,4 +1,4 @@
-import { ClientItem, NavItem } from "@/types/navigation";
+import { AdminItem, ClientItem, NavItem } from "@/types/navigation";
 
 export const navItems: NavItem[] = [
   { navKey: "about", path: "about" },
@@ -11,4 +11,13 @@ export const clientItems: ClientItem[] = [
   { navKey: "dashboard", path: "/dashboard" },
   { navKey: "termsAndConditions", path: "/terms-and-conditions" },
   { navKey: "privacyPolicy", path: "/privacy-policy" },
+];
+
+export const adminItems: AdminItem[] = [
+  { navKey: "home", path: "/admin" },
+  { navKey: "clients", path: "/admin/clients" },
+  { navKey: "events", path: "/admin/events" },
+  { navKey: "contracts", path: "/admin/contracts" },
+  { navKey: "playlist", path: "/admin/playlists" },
+  { navKey: "details", path: "/admin/personal-details" },
 ];

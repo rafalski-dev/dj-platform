@@ -614,6 +614,11 @@
           }
         }
       }
+    },
+    "Logout": {
+      "success": { "title": "Successfully logged out" },
+      "expectedError": { "title": "Logging out error" },
+      "unexpectedError": { "title": "Logging out error" }
     }
   },
   "Emails": {
@@ -681,6 +686,21 @@
       "description": "Your email has been verified successfully. You will be redirected to your dashboard in ",
       "extraMessage": "Don't want to wait? Use button below.",
       "primaryButton": "Client dashboard"
+    }
+  },
+  "Admin": {
+    "Header": {
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "logoutBtn": "Log out",
+      "nav": {
+        "home": "Home",
+        "clients": "Clients",
+        "events": "Events",
+        "contracts": "Contracts",
+        "playlist": "Playlists",
+        "details": "My details"
+      }
     }
   }
 }

@@ -4,12 +4,11 @@ import { NavDesktop, NavMobile } from "./navigations";
 import { Logo } from "../logo";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "./themeToggle";
 import { LanguageToggle } from "./languageToggle";
-import { MoveLeftIcon } from "lucide-react";
 
-export function Header() {
+export function HeaderLandingpage() {
   return (
     <header
       className={
@@ -33,7 +32,7 @@ export function Header() {
   );
 }
 
-export async function PrivacyHeader() {
+export async function HeaderPrivacy() {
   const t = await getTranslations("LandingPage.Header");
   return (
     <header

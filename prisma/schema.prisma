@@ -9,8 +9,26 @@ datasource db {
 }
 
 enum Role {
-  Client
+  User
   Admin
+}
+
+enum EventType {
+  Wedding
+  Prom
+  Anniversary
+  Birthday_18
+  Conference
+  Corporate_Event
+  Festival
+  Other
+}
+
+enum EventStatus {
+  Inguiry
+  Confirmed
+  Cancelled
+  Fullfilled
 }
 
 model User {
@@ -19,11 +37,14 @@ model User {
   email         String
   emailVerified Boolean   @default(false)
   image         String?
-  role          Role      @default(Client)
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  role          Role      @default(User)
+  
+  events        Event[]
   sessions      Session[]
   accounts      Account[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
   @@unique([email])
   @@map("user")
@@ -75,4 +96,30 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+model Event {
+  id            String      @id @default(cuid())
+  title         String
+  type          EventType
+  status        EventStatus
+
+  phone         String?
+
+  date          DateTime
+  startTime     DateTime?
+  endTime       DateTime
+  location      String
+  city          String
+
+  guestCount    Int?
+  notes         String?
+
+  partner1Name  String?
+  partner2Name  String?
+  clientId      String
+  client        User      @relation(fields: [clientId], references: [id])
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }

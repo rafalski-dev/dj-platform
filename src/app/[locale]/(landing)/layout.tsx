@@ -1,10 +1,10 @@
 import { Footer } from "@/components/shared/footer/footer";
-import { Header } from "@/components/shared/header/header";
+import { HeaderLandingpage } from "@/components/shared/header/headers";
 
 export default function LandingLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Header />
+      <HeaderLandingpage />
       {children}
       <Footer />
     </>

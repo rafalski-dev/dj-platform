@@ -1,9 +1,18 @@
+import { routing } from "@/i18n/routing";
+
+type Pathname = keyof typeof routing.pathnames;
+
 export type NavItem = {
-  navKey: string;
+  navKey: "about" | "offer" | "reviews" | "contact";
   path: string;
 };
 
 export type ClientItem = {
-  navKey: string;
-  path: string;
+  navKey: "dashboard" | "termsAndConditions" | "privacyPolicy";
+  path: Pathname;
+};
+
+export type AdminItem = {
+  navKey: "home" | "clients" | "events" | "contracts" | "playlist" | "details";
+  path: Pathname;
 };

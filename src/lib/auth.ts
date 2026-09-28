@@ -37,6 +37,17 @@ export const auth = betterAuth({
     provider: "postgresql",
   }),
 
+  user: {
+    additionalFields: {
+      role: {
+        type: ["User", "Admin"],
+        required: true,
+        defaultValue: "User",
+        input: false,
+      },
+    },
+  },
+
   emailAndPassword: {
     enabled: true,
     autoSignIn: false,

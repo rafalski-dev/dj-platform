@@ -1,10 +1,10 @@
 import { PrivacyFooter } from "@/components/shared/footer/footer";
-import { PrivacyHeader } from "@/components/shared/header/header";
+import { HeaderPrivacy } from "@/components/shared/header/headers";
 
 export default function LandingLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <PrivacyHeader />
+      <HeaderPrivacy />
       {children}
       <PrivacyFooter />
     </>

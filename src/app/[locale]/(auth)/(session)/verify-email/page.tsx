@@ -14,14 +14,12 @@ import { Suspense } from "react";
 function VerifyEmailCard() {
   const locale = useLocale();
   const t = useTranslations("Auth");
-  const [count, setCount] = useState(20);
-  const isBtnDisable = count > 0;
   const email = useSearchParams().get("email");
   const router = useRouter();
+  const [count, setCount] = useState(20);
+  const isBtnDisable = count > 0;
 
-  if (!email) {
-    redirect({ href: "/login", locale });
-  }
+  if (!email) redirect({ href: "/login", locale });
 
   useEffect(() => {
     async function check() {
