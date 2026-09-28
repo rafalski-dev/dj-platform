@@ -3,7 +3,7 @@ import { routing } from "@/i18n/routing";
 type Pathname = keyof typeof routing.pathnames;
 
 export type NavItem = {
-  navKey: "about" | "offer" | "reviews" | "contact";
+  navKey: string;
   path: string;
 };
 
