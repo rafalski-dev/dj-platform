@@ -1,4 +1,5 @@
 import { StarIcon } from "@/components/icons/starIcon";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ReviewDataType } from "@/types/reviews";
 import { Dot } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
@@ -45,10 +46,11 @@ export function ReviewsCard({
         </div>
       </header>
       <footer className="border-border/10 flex flex-row items-center gap-5 border-t pt-5">
-        <div className="border-border/20 to-background from-muted text-accent-foreground flex h-11 w-11 items-center justify-center gap-px rounded-full border bg-linear-to-br font-serif">
-          <span>{femaleFullName.slice(0, 1)}</span>
-          <span>{maleFullName.slice(0, 1)}</span>
-        </div>
+        <Avatar size="lg">
+          <AvatarFallback className="tracking-widest">
+            {`${femaleFullName.slice(0, 1)}${maleFullName.slice(0, 1)}`}
+          </AvatarFallback>
+        </Avatar>
         <div>
           <span>{`${femaleFullName.split(" ")[0]} & ${maleFullName.split(" ")[0]}`}</span>
           <div className="text-popover-foreground flex flex-row items-center gap-px text-[12.5px] font-light">
