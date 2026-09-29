@@ -692,14 +692,16 @@
     "Header": {
       "openMenu": "Open menu",
       "closeMenu": "Close menu",
-      "logoutBtn": "Log out",
       "nav": {
-        "home": "Home",
-        "clients": "Clients",
-        "events": "Events",
-        "contracts": "Contracts",
-        "playlist": "Playlists",
-        "details": "My details"
+        "logoutBtn": "Log out",
+        "navItems": {
+          "home": "Home",
+          "clients": "Clients",
+          "events": "Events",
+          "contracts": "Contracts",
+          "playlist": "Playlists",
+          "details": "My details"
+        }
       }
     }
   }

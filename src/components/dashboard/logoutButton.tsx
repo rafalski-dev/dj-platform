@@ -7,8 +7,8 @@ import { toast } from "../ui/toast";
 import { getErrorTranslation } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
-export function LogoutButton({ children }: { children: string }) {
-  const t = useTranslations("Auth");
+export function LogoutButton() {
+  const t = useTranslations("");
 
   const { replace } = useRouter();
 
@@ -19,19 +19,19 @@ export function LogoutButton({ children }: { children: string }) {
       if (error) {
         toast.add({
           type: "error",
-          title: t("Logout.expectedError.title"),
+          title: t("Auth.Logout.expectedError.title"),
           description: t(`Errors.${getErrorTranslation(error)}`),
         });
         return;
       }
 
-      toast.add({ type: "success", title: t("Logout.success.title") });
+      toast.add({ type: "success", title: t("Auth.Logout.success.title") });
       replace("/login");
     } catch (err) {
       console.error(err);
       toast.add({
         type: "error",
-        title: t("Logout.unexpectedError.title"),
+        title: t("Auth.Logout.unexpectedError.title"),
         description: t("Errors.default"),
       });
     }
@@ -39,7 +39,7 @@ export function LogoutButton({ children }: { children: string }) {
 
   return (
     <Button variant="outline" onClick={logout}>
-      {children}
+      {t("Admin.Header.nav.logoutBtn")}
     </Button>
   );
 }
