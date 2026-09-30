@@ -24,7 +24,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             <AdminDesktopNavigation />
             <LogoutButton />
           </aside>
-          <main className="py-5 md:py-6 lg:p-9">{children}</main>
+          <main className="py-5 md:py-6 lg:py-9 lg:pl-9">{children}</main>
         </div>
       </Wrapper>
     </>
