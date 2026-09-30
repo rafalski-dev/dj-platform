@@ -43,7 +43,12 @@ export async function SideNavMobile({ display }: { display: string }) {
           </div>
           <SheetClose
             render={
-              <Button variant="icon" size="icon-xs" className="ml-1" aria-label={t("closeMenu")} />
+              <Button
+                variant="outline"
+                size="icon-xs"
+                className="text-accent-foreground ml-1"
+                aria-label={t("closeMenu")}
+              />
             }
           >
             <XIcon />

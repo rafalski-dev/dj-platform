@@ -703,6 +703,11 @@
           "details": "My details"
         }
       }
+    },
+    "Clients": {
+      "title": "Clients",
+      "addingBtn": "Add client",
+      "searchBar": { "placeholder": "Search by name, email..." }
     }
   }
 }
