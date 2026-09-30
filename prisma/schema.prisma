@@ -25,21 +25,27 @@ enum EventType {
 }
 
 enum EventStatus {
-  Inguiry
+  Inquiry
   Confirmed
   Cancelled
-  Fullfilled
+  Fulfilled
+}
+
+enum Gender {
+  Female
+  Male
+  Other
 }
 
 model User {
-  id            String    @id
+  id            String    @id @default(cuid())
   name          String
   email         String
   emailVerified Boolean   @default(false)
   image         String?
   role          Role      @default(User)
   
-  events        Event[]
+  client        Client?
   sessions      Session[]
   accounts      Account[]
 
@@ -98,19 +104,37 @@ model Verification {
   @@map("verification")
 }
 
+model Client {
+  id            String          @id @default(cuid())
+  name          String
+  gender        Gender
+  email         String?         @unique
+  phone         String?         
+
+  userId        String?         @unique
+  user          User?           @relation(fields: [userId], references: [id])
+
+  events        Event[]
+
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  @@map("client")
+}
+
 model Event {
-  id            String      @id @default(cuid())
+  id            String          @id @default(cuid())
   title         String
   type          EventType
-  status        EventStatus
+  status        EventStatus     @default(Inquiry)
 
   phone         String?
 
   date          DateTime
-  startTime     DateTime?
-  endTime       DateTime
-  location      String
-  city          String
+  startTime     String?
+  endTime       String         
+
+  place         String
 
   guestCount    Int?
   notes         String?
@@ -118,8 +142,11 @@ model Event {
   partner1Name  String?
   partner2Name  String?
   clientId      String
-  client        User      @relation(fields: [clientId], references: [id])
+  client        Client      @relation(fields: [clientId], references: [id])
 
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+
+  @@index([clientId])
+  @@map("event")
 }
