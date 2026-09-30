@@ -22,7 +22,16 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
 
   return (
     <Sheet>
-      <SheetTrigger render={<Button variant="icon" size="icon" aria-label={t("openMenu")} />}>
+      <SheetTrigger
+        render={
+          <Button
+            variant="outline"
+            size="icon"
+            aria-label={t("openMenu")}
+            className="text-accent-foreground"
+          />
+        }
+      >
         <Menu />
       </SheetTrigger>
       <SheetContent side="top" className="gap-5" showCloseButton={false}>
@@ -46,7 +55,12 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
               </div>
               <SheetClose
                 render={
-                  <Button variant="icon" size="icon" className="ml-1" aria-label={t("closeMenu")} />
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="text-accent-foreground ml-1"
+                    aria-label={t("closeMenu")}
+                  />
                 }
               >
                 <XIcon />

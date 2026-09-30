@@ -14,8 +14,8 @@ export function ThemeToggle({ ariaLabel }: { ariaLabel: string }) {
   return (
     <Button
       variant="secondary"
-      size="icon-sm"
-      className="text-foreground"
+      size="icon"
+      className="text-foreground [&_svg:not([class*='size-'])]:size-4.5"
       aria-label={ariaLabel}
       onClick={() => {
         if (resolvedTheme === "dark") setTheme("light");

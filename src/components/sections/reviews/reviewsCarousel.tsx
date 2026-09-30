@@ -23,8 +23,16 @@ export function ReviewsCarousel({ reviewsData }: { reviewsData: ReviewDataType[]
         })}
       </CarouselContent>
       <div className="mt-10 flex justify-center gap-5">
-        <CarouselPrevious className="static" render={<Button variant="icon" size="icon" />} />
-        <CarouselNext className="static" render={<Button variant="icon" size="icon" />} />
+        <CarouselPrevious
+          className="[&_svg]:text-accent-foreground static rounded-lg"
+          variant="outline"
+          size="icon-lg"
+        />
+        <CarouselNext
+          className="[&_svg]:text-accent-foreground static rounded-lg"
+          variant="outline"
+          size="icon-lg"
+        />
       </div>
     </Carousel>
   );

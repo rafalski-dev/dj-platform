@@ -14,8 +14,8 @@ export function LanguageToggle({ ariaLabel }: { ariaLabel: string }) {
     <Button
       nativeButton={false}
       variant="secondary"
-      size="icon-sm"
-      className="text-foreground"
+      size="icon"
+      className="text-foreground [&_svg:not([class*='size-'])]:size-4.5"
       aria-label={ariaLabel}
       render={<a href={href} />}
     >
