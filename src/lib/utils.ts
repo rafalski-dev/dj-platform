@@ -10,6 +10,21 @@ export function getCurrentYear() {
   return date.getFullYear();
 }
 
+export function createInitials(name: string) {
+  const splittedName = name.trim().split(/\s+/);
+  const first = splittedName[0][0] ?? "";
+  const second = splittedName[1][0] ?? "";
+  return (first + second).toUpperCase();
+}
+
+export function phoneNumberSplitting(phoneNumber: string | null) {
+  if (!phoneNumber) return;
+  const first = phoneNumber.slice(0, 3);
+  const second = phoneNumber.slice(3, 6);
+  const third = phoneNumber.slice(6, 9);
+  return `${first} ${second} ${third}`;
+}
+
 export function getErrorTranslation(error: { code?: string; status?: number } | null | undefined) {
   if (!error) {
     return "default";
