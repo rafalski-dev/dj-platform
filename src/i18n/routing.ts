@@ -52,12 +52,12 @@ export const routing = defineRouting({
       en: "/admin/contracts",
     },
     "/admin/playlists": {
-      pl: "/admin/listy-utworow",
-      en: "/administrator/playlists",
+      pl: "/administrator/listy-utworow",
+      en: "/admin/playlists",
     },
     "/admin/personal-details": {
-      pl: "/admin/moje-dane",
-      en: "/administrator/personal-details",
+      pl: "/administrator/moje-dane",
+      en: "/admin/personal-details",
     },
     "/dashboard": {
       pl: "/panel-klienta",
