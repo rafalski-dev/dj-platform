@@ -1,16 +1,22 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { CardData } from "@/types/dashboard";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 
-export function CardsList({ data }: { data: CardData[] }) {
+export function CardsList({ description }: { description: { header: string; footer: string }[] }) {
   return (
     <ul className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-      {data.map(({ title }, index) => {
+      {description.map(({ header, footer }, index: number) => {
         return (
-          <Card key={index}>
+          <Card key={index} size="md" className="gap-0">
             <CardHeader>
-              <h3>{title}</h3>
+              <h3 className="text-muted-foreground/90 font-sans text-[12.5px] tracking-wide uppercase">
+                {header}
+              </h3>
             </CardHeader>
-            <CardContent></CardContent>
+            <CardContent>
+              <p className="text-accent-foreground font-serif text-[34px] lg:text-[40px]">{}</p>
+            </CardContent>
+            <CardFooter>
+              <p className="text-popover-foreground text-[13px]">{footer}</p>
+            </CardFooter>
           </Card>
         );
       })}
