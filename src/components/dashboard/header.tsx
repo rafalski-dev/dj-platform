@@ -3,13 +3,12 @@ import { Logo } from "../shared/logo";
 import { SideNavMobile } from "./sideNav";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { getSession } from "@/lib/auth-helpers";
+import { createInitials } from "@/lib/utils";
 
 export async function HeaderAdmin() {
   const session = await getSession();
-  const firstChar = session?.user.name.split(" ")[0].charAt(0);
-  const lastChar = session?.user.name.split(" ")[1].charAt(0);
-  const adminName = session?.user.name;
-  const adminEmail = session?.user.email;
+  const adminName = session?.user.name ?? "";
+  const adminEmail = session?.user.email ?? "";
 
   return (
     <header
@@ -26,7 +25,7 @@ export async function HeaderAdmin() {
             <div className="flex">
               <div className="flex flex-row items-center gap-3">
                 <Avatar size="lg">
-                  <AvatarFallback>{`${firstChar}${lastChar}`}</AvatarFallback>
+                  <AvatarFallback>{createInitials(adminName)}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col">
                   <div className="text-foreground text-nowrap">{adminName}</div>
