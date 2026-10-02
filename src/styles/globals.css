@@ -9,6 +9,7 @@
   --color-ring: var(--ring);
   --color-input: var(--background);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
@@ -131,6 +132,11 @@
   --glow-core: rgba(255, 244, 220, 1);
   --glow-mid: rgba(235, 211, 160, 0.7);
   --glow-edge: rgba(235, 211, 160, 0);
+
+  /* Success */
+  --success-bg: #22803624;
+  --success-text: #80c68c;
+  --success-border: rgba(34, 128, 54, 0.3);
 }
 
 @layer base {
