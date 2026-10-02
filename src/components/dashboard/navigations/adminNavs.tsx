@@ -46,7 +46,7 @@ export function AdminMobileNav() {
                 <Link
                   href={el.path}
                   className={cn(
-                    "text-muted-foreground relative flex items-center justify-start gap-3 px-4 py-2.5 text-[15px] font-light tracking-wide",
+                    "text-muted-foreground/80 relative flex items-center justify-start gap-3 px-4 py-2.5 text-[15px] font-light tracking-wide",
                     isActive &&
                       "ring-border/15 bg-accent-foreground/10 text-accent-foreground rounded-sm ring-1 duration-200",
                   )}
@@ -86,7 +86,7 @@ export function AdminDesktopNavigation() {
               key={el.navKey}
               href={el.path}
               className={cn(
-                "text-muted-foreground relative flex items-center justify-start gap-3 px-4 py-2.5 text-[15px] font-light tracking-wide",
+                "text-muted-foreground/80 relative flex items-center justify-start gap-3 px-4 py-2.5 text-[15px] font-light tracking-wide",
                 isActive &&
                   "ring-border/20 bg-accent-foreground/10 text-accent-foreground rounded-sm ring-1 duration-200",
               )}

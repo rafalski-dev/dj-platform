@@ -5,6 +5,7 @@ import { Wrapper } from "@/components/shared/wrapper";
 
 import { redirect } from "@/i18n/navigation";
 import { getSession } from "@/lib/auth-helpers";
+import { cn } from "@/lib/utils";
 import { getLocale } from "next-intl/server";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -19,8 +20,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     <>
       <HeaderAdmin />
       <Wrapper>
-        <div className="grid min-h-dvh grid-cols-1 pt-18.5 lg:grid-cols-[250px_1fr]">
-          <aside className="border-border/12 hidden h-full border-r pr-5 lg:flex lg:flex-col lg:justify-between lg:py-8">
+        <div className="grid min-h-dvh grid-cols-1 pt-18 lg:grid-cols-[250px_1fr]">
+          <aside className="border-border/12 hidden h-[calc(100dvh-4.5rem)] border-r pr-5 lg:sticky lg:top-18 lg:flex lg:flex-col lg:justify-between lg:py-8">
             <AdminDesktopNavigation />
             <LogoutButton />
           </aside>

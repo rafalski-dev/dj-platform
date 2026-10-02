@@ -6,6 +6,7 @@ import { useRouter } from "@/i18n/navigation";
 import { toast } from "../ui/toast";
 import { getErrorTranslation } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import { LogOutIcon } from "lucide-react";
 
 export function LogoutButton() {
   const t = useTranslations("");
@@ -39,6 +40,7 @@ export function LogoutButton() {
 
   return (
     <Button variant="outline" onClick={logout}>
+      <LogOutIcon />
       {t("Admin.Header.nav.logoutBtn")}
     </Button>
   );
