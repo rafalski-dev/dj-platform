@@ -1,11 +1,11 @@
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-const rowsPerPageData = ["8", "12", "16"] as const;
+const rowsPerPageData = [8, 12, 16] as const;
 
 export type RowsPerPageType = (typeof rowsPerPageData)[number];
 
-export function RowsPerPage({ rowsLimit }: { rowsLimit: RowsPerPageType }) {
+export function RowsPerPage({ rowsLimit }: { rowsLimit: number }) {
   return (
     <div className="my-auto flex items-center gap-3">
       <p className="text-muted-foreground text-[13px]">Per page</p>

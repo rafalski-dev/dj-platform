@@ -22,7 +22,16 @@ export function phoneNumberSplitting(phoneNumber: string | null) {
   const first = phoneNumber.slice(0, 3);
   const second = phoneNumber.slice(3, 6);
   const third = phoneNumber.slice(6, 9);
-  return `${first} ${second} ${third}`;
+  const rest = phoneNumber.slice(9);
+  return `${first} ${second} ${third}${rest}`;
+}
+
+export function getValidPage(page: string | string[] | undefined, totalPages: number) {
+  const pageToNumber = Number(page);
+
+  if (!Number.isInteger(pageToNumber) || pageToNumber < 1) return 1;
+
+  return Math.min(pageToNumber, totalPages);
 }
 
 export function getErrorTranslation(error: { code?: string; status?: number } | null | undefined) {

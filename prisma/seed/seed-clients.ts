@@ -51,6 +51,37 @@ const clientsData: { name: string; gender: Gender; email?: string; phone?: strin
     phone: "608923561",
   },
   { name: "Alex Nowak", gender: Gender.Other, phone: "725297675" },
+  {
+    name: "Anna Lewandowska",
+    gender: Gender.Female,
+    email: "anna.lewandowska@example.com",
+    phone: "602341778",
+  },
+  { name: "Marcin Kowalczyk", gender: Gender.Male, phone: "512908341" },
+  { name: "Ewelina Grabowska", gender: Gender.Female, email: "ewelina.grabowska@example.com" },
+  {
+    name: "Piotr Zieliński",
+    gender: Gender.Male,
+    email: "piotr.zielinski@example.com",
+    phone: "698117420",
+  },
+  { name: "Oliwia Szymańska", gender: Gender.Female, email: "oliwia.szymanska@example.com" },
+  { name: "Grzegorz Wójcik", gender: Gender.Male, phone: "533472906" },
+  {
+    name: "Martyna Krawczyk",
+    gender: Gender.Female,
+    email: "martyna.krawczyk@example.com",
+    phone: "791604215",
+  },
+  { name: "Robert Pietrzak", gender: Gender.Male, email: "robert.pietrzak@example.com" },
+  { name: "Wiktoria Jabłońska", gender: Gender.Female, phone: "667350912" },
+  {
+    name: "Mateusz Król",
+    gender: Gender.Male,
+    email: "mateusz.krol@example.com",
+    phone: "504786133",
+  },
+  { name: "Sam Kaczor", gender: Gender.Other, email: "sam.kaczor@example.com" },
 ];
 
 async function seedClient() {
@@ -59,7 +90,14 @@ async function seedClient() {
   }
   await db.client.deleteMany();
 
-  const clients = await db.client.createMany({ data: clientsData });
+  // Każdy kolejny klient dodany tydzień wcześniej – stałe, powtarzalne daty
+  const WEEK_IN_MS = 7 * 24 * 60 * 60 * 1000;
+  const clientsWithDates = clientsData.map((client, index) => ({
+    ...client,
+    createdAt: new Date(Date.now() - index * WEEK_IN_MS),
+  }));
+
+  const clients = await db.client.createMany({ data: clientsWithDates });
 
   console.log(clients);
 }
