@@ -11,7 +11,7 @@ const statusStyles: Record<ClientStatus, string> = {
     "text-emerald-700 border-emerald-600/25 bg-emerald-500/10 dark:text-emerald-400/80 dark:border-emerald-400/15 dark:bg-emerald-400/5",
   Completed: "text-muted-foreground/80 border-muted-foreground/15 bg-muted-foreground/5",
   Cancelled: "text-destructive/80 border-destructive/20 bg-destructive/5",
-  Archived: "text-muted-foreground/60 border-border/15 bg-background",
+  Archived: "text-muted-foreground/60 border-border bg-background",
 };
 
 export function StatusBadge({ status, className }: { status: ClientStatus; className?: string }) {

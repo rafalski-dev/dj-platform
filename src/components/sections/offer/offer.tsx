@@ -33,7 +33,7 @@ export async function Offer() {
                 return (
                   <li
                     key={addon}
-                    className="border-border/12 bg-secondary m-1.5 flex h-9 items-center rounded-full border px-4"
+                    className="border-border bg-secondary m-1.5 flex h-9 items-center rounded-full border px-4"
                   >
                     <p className="text-muted-foreground text-[14px] font-extralight">
                       {t(`addons.${addon}`)}

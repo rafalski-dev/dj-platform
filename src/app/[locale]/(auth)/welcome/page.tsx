@@ -35,7 +35,7 @@ function WelcomeCard() {
 
   return (
     <Card className="w-full max-w-115 overflow-visible bg-transparent ring-0">
-      <CardHeader className="border-border/15 flex w-full flex-col border-b px-0">
+      <CardHeader className="border-border flex w-full flex-col border-b px-0">
         <div className="text-primary text-xs font-medium tracking-[3px] uppercase lg:text-sm">
           {t("Welcome.label")}
         </div>
@@ -46,7 +46,7 @@ function WelcomeCard() {
           {t("Welcome.description")} <span className="text-accent">{`${count} s.`}</span>
         </CardDescription>
       </CardHeader>
-      <CardFooter className="border-border/15 mb-6 flex w-full flex-col items-center justify-center gap-6 px-0">
+      <CardFooter className="border-border mb-6 flex w-full flex-col items-center justify-center gap-6 px-0">
         <div className="flex w-full flex-col gap-5">
           <p className="text-popover-foreground text-[15px]">{t("Welcome.extraMessage")}</p>
           <Link

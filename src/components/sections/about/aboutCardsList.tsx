@@ -11,7 +11,7 @@ export function AboutCardsList({
         <div
           style={{ animation: "rise 1s cubic-bezier(.22,.61,.36,1) 0.32s both" }}
           key={card}
-          className="border-border/12 bg-secondary flex min-h-42 flex-col justify-between gap-4 rounded-4xl border px-6 py-5 backdrop-blur-sm md:py-6"
+          className="border-border bg-secondary flex min-h-42 flex-col justify-between gap-4 rounded-4xl border px-6 py-5 backdrop-blur-sm md:py-6"
         >
           <span className="text-accent font-serif text-[36px] md:text-[48px]">
             {t(`stats.${card}.number`)}

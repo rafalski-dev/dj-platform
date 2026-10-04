@@ -23,7 +23,7 @@ export function ContactFormSuccess({
     <div
       ref={ref}
       role="status"
-      className="border-border/20 bg-card flex w-full flex-col items-center justify-center rounded-2xl border p-5 py-12 md:p-6 md:py-20 lg:w-1/2 lg:p-7 lg:py-10"
+      className="border-border-strong bg-card flex w-full flex-col items-center justify-center rounded-2xl border p-5 py-12 md:p-6 md:py-20 lg:w-1/2 lg:p-7 lg:py-10"
     >
       <span className="border-success-border bg-success-bg text-success-text mb-4 rounded-full border p-3.5 md:mb-5">
         <Check size={30} />

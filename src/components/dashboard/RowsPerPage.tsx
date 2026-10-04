@@ -9,7 +9,7 @@ export function RowsPerPage({ rowsLimit }: { rowsLimit: RowsPerPageType }) {
   return (
     <div className="my-auto flex items-center gap-3">
       <p className="text-muted-foreground text-[13px]">Per page</p>
-      <div className="bg-secondary border-border/15 flex flex-row gap-px rounded-sm border p-0.5">
+      <div className="bg-secondary border-border flex flex-row gap-px rounded-sm border p-0.5">
         {rowsPerPageData.map((rows, index) => {
           return (
             <Link

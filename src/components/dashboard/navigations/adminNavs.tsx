@@ -48,7 +48,7 @@ export function AdminMobileNav() {
                   className={cn(
                     "text-muted-foreground/80 relative flex items-center justify-start gap-3 px-4 py-2.5 text-[15px] font-light tracking-wide",
                     isActive &&
-                      "ring-border/15 bg-accent-foreground/10 text-accent-foreground rounded-sm ring-1 duration-200",
+                      "ring-border bg-accent-foreground/10 text-accent-foreground rounded-sm ring-1 duration-200",
                   )}
                 />
               }
@@ -88,7 +88,7 @@ export function AdminDesktopNavigation() {
               className={cn(
                 "text-muted-foreground/80 relative flex items-center justify-start gap-3 px-4 py-2.5 text-[15px] font-light tracking-wide",
                 isActive &&
-                  "ring-border/20 bg-accent-foreground/10 text-accent-foreground rounded-sm ring-1 duration-200",
+                  "ring-border-strong bg-accent-foreground/10 text-accent-foreground rounded-sm ring-1 duration-200",
               )}
             >
               {" "}

@@ -74,7 +74,7 @@ export async function NavMobile({ navItems }: { navItems: NavItem[] }) {
                 key={navKey}
                 render={
                   <a
-                    className="text-foreground/90 border-border/12 w-full border-b py-3 text-start font-serif text-3xl md:text-4xl"
+                    className="text-foreground/90 border-border w-full border-b py-3 text-start font-serif text-3xl md:text-4xl"
                     href={nav(`navPaths.${path}`)}
                   />
                 }

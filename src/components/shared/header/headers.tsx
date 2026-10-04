@@ -12,7 +12,7 @@ export function HeaderLandingpage() {
   return (
     <header
       className={
-        "bg-background/70 border-border/10 fixed top-0 left-0 z-50 w-full border-b backdrop-blur-md"
+        "bg-background/70 border-border fixed top-0 left-0 z-50 w-full border-b backdrop-blur-md"
       }
     >
       <Wrapper>
@@ -37,7 +37,7 @@ export async function HeaderPrivacy() {
   return (
     <header
       className={
-        "bg-background/70 border-border/10 fixed top-0 left-0 z-50 w-full border-b backdrop-blur-md"
+        "bg-background/70 border-border fixed top-0 left-0 z-50 w-full border-b backdrop-blur-md"
       }
     >
       <Wrapper>

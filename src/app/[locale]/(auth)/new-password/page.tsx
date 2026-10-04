@@ -72,7 +72,7 @@ function NewPasswordCard() {
   }
   return (
     <Card className="w-full max-w-115 overflow-visible bg-transparent ring-0">
-      <CardHeader className="border-border/15 flex w-full flex-col border-b px-0">
+      <CardHeader className="border-border flex w-full flex-col border-b px-0">
         <div className="text-primary text-xs font-medium tracking-[3px] uppercase lg:text-sm">
           {t("NewPassword.label")}
         </div>
@@ -81,7 +81,7 @@ function NewPasswordCard() {
         </h1>
         <CardDescription>{t("NewPassword.description")}</CardDescription>
       </CardHeader>
-      <CardContent className="border-border/15 flex w-full flex-col items-center justify-center gap-6 px-0">
+      <CardContent className="border-border flex w-full flex-col items-center justify-center gap-6 px-0">
         <form id="new-password-form" onSubmit={handleSubmit(onSubmit)} className="w-full">
           <div className="flex w-full flex-col gap-4">
             <ControlledInput

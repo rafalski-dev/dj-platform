@@ -79,7 +79,8 @@
   --success-border: rgba(34, 128, 54, 0.3);
 
   /* Borders */
-  --border: rgb(60, 50, 38);
+  --border: rgba(60, 50, 38, 0.12);
+  --border-strong: rgba(60, 50, 38, 0.2);
   --input: rgb(60, 50, 38);
   --ring: rgb(168, 124, 56);
 
@@ -120,7 +121,8 @@
   --destructive: rgb(214, 64, 72);
 
   /* Borders */
-  --border: rgb(232, 214, 178);
+  --border: rgba(232, 214, 178, 0.12);
+  --border-strong: rgba(232, 214, 178, 0.2);
   --input: rgb(14, 12, 10);
   --ring: rgb(214, 176, 116);
 

@@ -16,7 +16,7 @@ function UrlExpiredCard() {
 
   return (
     <Card className="w-full max-w-115 overflow-visible bg-transparent ring-0">
-      <CardHeader className="border-border/15 flex w-full flex-col border-b px-0">
+      <CardHeader className="border-border flex w-full flex-col border-b px-0">
         <div className="text-primary text-xs font-medium tracking-[3px] uppercase lg:text-sm">
           {t("label")}
         </div>

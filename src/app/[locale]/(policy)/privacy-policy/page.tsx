@@ -27,7 +27,7 @@ export default async function PrivacyPolicy() {
       <Wrapper>
         <div className="m-auto flex max-w-3xl flex-col items-center gap-10">
           <SectionTitle>{t("sectionTitle")}</SectionTitle>
-          <div className="border-border/15 bg-card flex flex-col gap-6 rounded-2xl border p-4 md:p-6 lg:p-7">
+          <div className="border-border bg-card flex flex-col gap-6 rounded-2xl border p-4 md:p-6 lg:p-7">
             <SectionPolicy
               title={t("policy.1.title")}
               content={t("policy.1.content", {

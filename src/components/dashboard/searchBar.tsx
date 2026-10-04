@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 
 export function SearchBar({ placeholder }: { placeholder: string }) {
   return (
-    <div className="group border-border/15 bg-background flex w-full flex-row items-center gap-3 rounded-md border px-3 py-2">
+    <div className="group border-border bg-background flex w-full flex-row items-center gap-3 rounded-md border px-3 py-2">
       <SearchIcon className="text-popover-foreground size-4 shrink-0" strokeWidth={1.8} />
       <input
         placeholder={placeholder}

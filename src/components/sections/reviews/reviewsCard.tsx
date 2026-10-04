@@ -19,7 +19,7 @@ export function ReviewsCard({
   const formattedDate = format.dateTime(dateTime, { year: "numeric", month: "long" });
 
   return (
-    <article className="border-border/12 bg-card flex h-full flex-col justify-between rounded-4xl border px-6 py-8">
+    <article className="border-border bg-card flex h-full flex-col justify-between rounded-4xl border px-6 py-8">
       <header>
         <div className="flex flex-col gap-4 pb-5">
           <div className="flex gap-0.5" role="img" aria-label={`${rate} out of 5`}>
@@ -45,7 +45,7 @@ export function ReviewsCard({
           <p className="text-card-foreground font-serif text-xl italic">{t(`reviews.${id}`)}</p>
         </div>
       </header>
-      <footer className="border-border/10 flex flex-row items-center gap-5 border-t pt-5">
+      <footer className="border-border flex flex-row items-center gap-5 border-t pt-5">
         <Avatar size="lg">
           <AvatarFallback className="tracking-widest">
             {`${femaleFullName.slice(0, 1)}${maleFullName.slice(0, 1)}`}

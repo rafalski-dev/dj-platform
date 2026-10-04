@@ -21,7 +21,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       <HeaderAdmin />
       <Wrapper>
         <div className="grid min-h-dvh grid-cols-1 pt-18 lg:grid-cols-[250px_1fr]">
-          <aside className="border-border/12 hidden h-[calc(100dvh-4.5rem)] border-r pr-5 lg:sticky lg:top-18 lg:flex lg:flex-col lg:justify-between lg:py-8">
+          <aside className="border-border hidden h-[calc(100dvh-4.5rem)] border-r pr-5 lg:sticky lg:top-18 lg:flex lg:flex-col lg:justify-between lg:py-8">
             <AdminDesktopNavigation />
             <LogoutButton />
           </aside>
