@@ -16,7 +16,7 @@ const statusStyles: Record<ClientStatus, string> = {
 
 export function StatusBadge({ status, className }: { status: ClientStatus; className?: string }) {
   return (
-    <Badge variant="outline" className={cn(statusStyles[status], className)}>
+    <Badge variant="outline" className={cn("pr-3", className, statusStyles[status])}>
       <DotIcon strokeWidth={8} />
       {status}
     </Badge>

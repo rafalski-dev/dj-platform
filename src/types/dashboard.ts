@@ -1,4 +1,4 @@
-import { Client } from "../../generated";
+import { Client, EventStatus } from "../../generated";
 
 export type PageHeaderProps = {
   labelText: string;
@@ -6,7 +6,8 @@ export type PageHeaderProps = {
   buttonText: string;
 };
 
-export type ClientStatus = "New" | "Pending" | "Active" | "Completed" | "Cancelled" | "Archived";
+// Statusy wydarzeń z Prismy + "New" dla klienta bez wydarzeń
+export type ClientStatus = EventStatus | "New";
 
 export type ClientWithStatus = Client & { status: ClientStatus };
 

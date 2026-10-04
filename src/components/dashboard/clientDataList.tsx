@@ -4,10 +4,14 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from ".
 import { createInitials, phoneNumberSplitting } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { StatusBadge } from "./statusBadge";
-import { ClientWithStatus } from "@/types/dashboard";
+import { getPaginationedClients } from "@/data/clients";
+import { getFormatter } from "next-intl/server";
 
-// TODO: przywrócić ClientWithStatus[], gdy będzie getClientStatus
-export async function ClientDataList({ data }: { data: Omit<ClientWithStatus, "status">[] }) {
+// Typ wyliczony z funkcji pobierającej dane – klient razem z jego wydarzeniami (include: { events: true })
+type ClientWithEvents = Awaited<ReturnType<typeof getPaginationedClients>>[number];
+
+export async function ClientDataList({ data }: { data: ClientWithEvents[] }) {
+  const format = await getFormatter();
   const iconSize = 16;
 
   return (
@@ -22,7 +26,11 @@ export async function ClientDataList({ data }: { data: Omit<ClientWithStatus, "s
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map(({ id, name, email, phone }) => {
+        {data.map(({ id, name, email, phone, events }) => {
+          const notCancelled = events.filter((e) => e.eventStatus !== "Cancelled");
+          const nextEvent = notCancelled.find((e) => e.eventDate >= new Date());
+          const event = nextEvent ?? notCancelled.at(-1);
+
           return (
             <TableRow key={id} className="group">
               <TableCell className="text-foreground">
@@ -60,10 +68,25 @@ export async function ClientDataList({ data }: { data: Omit<ClientWithStatus, "s
                 </div>
               </TableCell>
               <TableCell>
-                <div className="text-foreground/80">Wedding</div>
-                <div>20.40.2025</div>
+                {event ? (
+                  <>
+                    <div className="text-foreground/80">{event.eventType}</div>
+                    <div>
+                      {format.dateTime(event.eventDate, {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                        weekday: "short",
+                      })}
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-popover-foreground">No event</div>
+                )}
               </TableCell>
-              <TableCell>{/* <StatusBadge status={status} /> */}</TableCell>
+              <TableCell>
+                {event ? <StatusBadge status={event.eventStatus} /> : <StatusBadge status="New" />}
+              </TableCell>
               <TableCell className="pr-0">
                 <Button variant="secondary" size="icon">
                   <ArrowRight className="text-muted-foreground group-hover:text-accent-foreground size-5 transition-colors" />

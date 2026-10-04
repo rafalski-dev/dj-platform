@@ -7,6 +7,12 @@ export async function getPaginationedClients(rowsLimit: number, page: number) {
     take: rowsLimit,
     skip: rowsToSkip,
     orderBy: [{ createdAt: "desc" }, { id: "asc" }],
+    include: {
+      events: {
+        select: { eventDate: true, eventStatus: true, eventType: true },
+        orderBy: { eventDate: "asc" },
+      },
+    },
   });
 
   return clients;
