@@ -25,10 +25,11 @@ enum EventType {
 }
 
 enum EventStatus {
-  Inquiry
-  Confirmed
+  Pending
+  Active
+  Completed
   Cancelled
-  Fulfilled
+  Archived
 }
 
 enum Gender {
@@ -125,16 +126,16 @@ model Client {
 model Event {
   id            String          @id @default(cuid())
   title         String
-  type          EventType
-  status        EventStatus     @default(Inquiry)
+  eventType     EventType
+  eventStatus   EventStatus     @default(Pending)
 
   phone         String?
 
-  date          DateTime
+  eventDate     DateTime
   startTime     String?
   endTime       String         
 
-  place         String
+  eventPlace         String
 
   guestCount    Int?
   notes         String?
