@@ -34,6 +34,36 @@ export function getValidPage(page: string | string[] | undefined, totalPages: nu
   return Math.min(pageToNumber, totalPages);
 }
 
+export type PaginationItem = number | "ellipsis-left" | "ellipsis-right";
+
+export function getPaginationItems(page: number, totalPages: number): PaginationItem[] {
+  // small amount of pages
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, index) => index + 1);
+  }
+
+  // near start: 1 2 3 4 5 … 10
+  if (page <= 4) {
+    return [1, 2, 3, 4, 5, "ellipsis-right", totalPages];
+  }
+
+  // near end: 1 … 6 7 8 9 10
+  if (page >= totalPages - 3) {
+    return [
+      1,
+      "ellipsis-left",
+      totalPages - 4,
+      totalPages - 3,
+      totalPages - 2,
+      totalPages - 1,
+      totalPages,
+    ];
+  }
+
+  // center
+  return [1, "ellipsis-left", page - 1, page, page + 1, "ellipsis-right", totalPages];
+}
+
 export function getErrorTranslation(error: { code?: string; status?: number } | null | undefined) {
   if (!error) {
     return "default";
