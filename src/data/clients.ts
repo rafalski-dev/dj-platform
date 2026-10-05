@@ -1,3 +1,4 @@
+import { EventStatus } from "./../../generated/index.d";
 import { db } from "@/lib/db";
 
 function getClientsWhere(query?: string) {
@@ -20,10 +21,14 @@ export async function getPaginationedClients(rowsLimit: number, page: number, qu
     take: rowsLimit,
     skip: rowsToSkip,
     orderBy: [{ createdAt: "desc" }, { id: "asc" }],
-    include: {
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      phone: true,
       events: {
-        select: { eventDate: true, eventStatus: true, eventType: true },
-        orderBy: { eventDate: "asc" },
+        select: { eventDate: true, eventType: true, eventStatus: true },
+        orderBy: { createdAt: "asc" },
       },
     },
   });
@@ -36,4 +41,12 @@ export async function getCountClients(query?: string) {
     where: getClientsWhere(query),
   });
   return numberOfclients;
+}
+
+export async function getCountAllClients() {
+  const date = new Date("01-01-2026");
+  console.log(date);
+  const allClients = await db.client.count({});
+
+  console.log(allClients);
 }
