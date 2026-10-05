@@ -7,10 +7,12 @@ export function Pagination({
   page,
   totalPages,
   rowsLimit,
+  query,
 }: {
   page: number;
   totalPages: number;
   rowsLimit: number;
+  query?: string;
 }) {
   return (
     <nav className="mx-auto flex flex-row items-center gap-x-1.5" aria-label="Pagination">
@@ -21,7 +23,7 @@ export function Pagination({
             key={item}
             href={{
               pathname: "/admin/clients",
-              query: { page: item, limit: rowsLimit },
+              query: { page: item, limit: rowsLimit, query: query },
             }}
             className={cn(
               buttonVariants({ variant: item === page ? "default" : "outline", size: "sm" }),
@@ -50,10 +52,12 @@ function ArrowLeft({
   isDisabled,
   page,
   rowsLimit,
+  query,
 }: {
   isDisabled: boolean;
   page: number;
   rowsLimit: number;
+  query?: string;
 }) {
   if (isDisabled)
     return (
@@ -71,7 +75,10 @@ function ArrowLeft({
   return (
     <Link
       aria-label="Previous page"
-      href={{ pathname: "/admin/clients", query: { page: page - 1, limit: rowsLimit } }}
+      href={{
+        pathname: "/admin/clients",
+        query: { page: page - 1, limit: rowsLimit, query: query },
+      }}
       className={cn(buttonVariants({ variant: "outline", size: "sm" }), "h-8 w-10 px-0")}
     >
       <ChevronLeft className="text-accent-foreground" />
@@ -83,10 +90,12 @@ function ArrowRight({
   isDisabled,
   page,
   rowsLimit,
+  query,
 }: {
   isDisabled: boolean;
   page: number;
   rowsLimit: number;
+  query?: string;
 }) {
   if (isDisabled)
     return (
@@ -98,7 +107,10 @@ function ArrowRight({
   return (
     <Link
       aria-label="Next page"
-      href={{ pathname: "/admin/clients", query: { page: page + 1, limit: rowsLimit } }}
+      href={{
+        pathname: "/admin/clients",
+        query: { page: page + 1, limit: rowsLimit, query: query },
+      }}
       className={cn(buttonVariants({ variant: "outline", size: "sm" }), "h-8 w-10 px-0")}
     >
       <ChevronRight className="text-accent-foreground" />

@@ -5,7 +5,7 @@ const rowsPerPageData = [8, 12, 16] as const;
 
 export type RowsPerPageType = (typeof rowsPerPageData)[number];
 
-export function RowsPerPage({ rowsLimit }: { rowsLimit: number }) {
+export function RowsPerPage({ rowsLimit, query }: { rowsLimit: number; query?: string }) {
   return (
     <div className="my-auto flex items-center gap-3">
       <p className="text-muted-foreground text-[13px]">Per page</p>
@@ -18,7 +18,7 @@ export function RowsPerPage({ rowsLimit }: { rowsLimit: number }) {
                 rows === rowsLimit && "bg-accent-foreground/10 text-accent-foreground",
               )}
               key={index}
-              href={{ pathname: "/admin/clients", query: { limit: rows } }}
+              href={{ pathname: "/admin/clients", query: { limit: rows, query: query } }}
               scroll={false}
             >
               {rows}
