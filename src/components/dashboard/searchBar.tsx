@@ -4,6 +4,7 @@ import { SearchIcon, XIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDebounceCallback } from "@/hooks/useDebounceCallback";
 
 export function SearchBar({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
@@ -16,6 +17,10 @@ export function SearchBar({ placeholder }: { placeholder: string }) {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     if (urlQuery === "") setSearchValue("");
   }, [urlQuery]);
+
+  const [debouncedHandleChange, cancel] = useDebounceCallback(handleChange, 400);
+
+  useEffect(() => cancel, [cancel]);
 
   function handleChange(term: string) {
     const params = new URLSearchParams(searchParams);
@@ -31,6 +36,7 @@ export function SearchBar({ placeholder }: { placeholder: string }) {
   }
 
   function clearInput() {
+    cancel();
     setSearchValue("");
     handleChange("");
   }
@@ -45,7 +51,7 @@ export function SearchBar({ placeholder }: { placeholder: string }) {
         className="placeholder:text-popover-foreground w-full font-light ring-0 outline-0 placeholder:font-light focus:ring-0 active:ring-0 [&::-webkit-search-cancel-button]:hidden"
         onChange={(e) => {
           setSearchValue(e.target.value);
-          handleChange(e.target.value);
+          debouncedHandleChange(e.target.value);
         }}
         onKeyDown={(e) => {
           if (e.key === "Escape") clearInput();
