@@ -57,11 +57,11 @@ export async function ClientDataList({
     <Table className="table-fixed">
       <TableHeader>
         <TableRow className="hover:bg-card">
-          <TableHead className="w-[30%]">Client</TableHead>
-          <TableHead className="w-[35%]">Contact</TableHead>
+          <TableHead className="w-[30%] xl:w-[25%]">Client</TableHead>
+          <TableHead className="w-[40%] xl:w-[32.5%]">Contact</TableHead>
           <TableHead className="w-[20%]">Event</TableHead>
-          <TableHead className="w-[20%]">Status</TableHead>
-          <TableHead className="w-[5%]">More</TableHead>
+          <TableHead className="hidden xl:table-cell">Status</TableHead>
+          <TableHead className="w-16 text-right">More</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -112,8 +112,8 @@ export async function ClientDataList({
                   <TableCell>
                     {event ? (
                       <>
-                        <div className="text-foreground/80">{event.eventType}</div>
-                        <div>
+                        <div className="text-foreground/80 truncate">{event.eventType}</div>
+                        <div className="truncate">
                           {format.dateTime(event.eventDate, {
                             month: "short",
                             day: "numeric",
@@ -126,16 +126,16 @@ export async function ClientDataList({
                       <div className="text-popover-foreground">No event</div>
                     )}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="hidden xl:table-cell">
                     {event ? (
                       <StatusBadge status={event.eventStatus} />
                     ) : (
                       <StatusBadge status="New" />
                     )}
                   </TableCell>
-                  <TableCell className="pr-0">
+                  <TableCell className="pr-0 text-right">
                     <Button variant="secondary" size="icon">
-                      <ArrowRight className="text-muted-foreground group-hover:text-accent-foreground size-5 transition-colors" />
+                      <ArrowRight className="text-muted-foreground group-hover:text-accent-foreground size-5 pr-0 transition-colors" />
                     </Button>
                   </TableCell>
                 </TableRow>
