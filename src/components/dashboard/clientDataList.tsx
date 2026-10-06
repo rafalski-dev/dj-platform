@@ -54,7 +54,7 @@ export async function ClientDataList({
   );
 
   return (
-    <Table>
+    <Table className="table-fixed">
       <TableHeader>
         <TableRow className="hover:bg-card">
           <TableHead className="w-[30%]">Client</TableHead>
@@ -80,7 +80,7 @@ export async function ClientDataList({
                       <Avatar className="size-9">
                         <AvatarFallback>{createInitials(name)}</AvatarFallback>
                       </Avatar>
-                      <span className="text-sm">{name}</span>
+                      <span className="truncate text-sm">{name}</span>
                     </div>
                   </TableCell>
                   <TableCell>
@@ -88,7 +88,7 @@ export async function ClientDataList({
                       {email ? (
                         <div className="flex items-center gap-2">
                           <MailIcon size={iconSize} className="text-muted-foreground/50" />
-                          <span>{email}</span>
+                          <span className="truncate">{email}</span>
                         </div>
                       ) : (
                         <div className="text-muted-foreground/50 flex items-center gap-2">
