@@ -1,4 +1,4 @@
-import { EventStatus } from "./../../generated/index.d";
+import { getCurrentYear } from "@/lib/utils";
 import { db } from "@/lib/db";
 
 function getClientsWhere(query?: string) {
@@ -43,10 +43,23 @@ export async function getCountClients(query?: string) {
   return numberOfclients;
 }
 
-export async function getCountAllClients() {
-  const date = new Date("01-01-2026");
-  console.log(date);
-  const allClients = await db.client.count({});
+// cards data
+export async function getClientsStats() {
+  const startOfYear = new Date(getCurrentYear(), 0, 1);
+  const upcomingEvent = {
+    eventDate: { gte: new Date() },
+    eventStatus: { not: "Cancelled" as const },
+  };
 
-  console.log(allClients);
+  const [newThisSeason, activeClients, withoutEvent, needsAttention] = await Promise.all([
+    db.client.count({ where: { createdAt: { gte: startOfYear } } }),
+
+    db.client.count({ where: { events: { some: upcomingEvent } } }),
+
+    db.client.count({ where: { events: { none: {} } } }),
+
+    db.client.count({ where: { OR: [{ email: null }, { phone: null }] } }),
+  ]);
+
+  return { newThisSeason, activeClients, withoutEvent, needsAttention };
 }
