@@ -2,19 +2,10 @@ import { HeaderAdmin } from "@/components/dashboard/header";
 import { LogoutButton } from "@/components/dashboard/logoutButton";
 import { AdminDesktopNavigation } from "@/components/dashboard/navigations/adminNavs";
 import { Wrapper } from "@/components/shared/wrapper";
-
-import { redirect } from "@/i18n/navigation";
-import { getSession } from "@/lib/auth-helpers";
-import { cn } from "@/lib/utils";
-import { getLocale } from "next-intl/server";
+import { adminCheck } from "@/lib/auth-helpers";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  const locale = await getLocale();
-  const session = await getSession();
-
-  if (!session) return redirect({ href: "/login", locale });
-
-  if (session.user.role !== "Admin") return redirect({ href: "/dashboard", locale });
+  await adminCheck();
 
   return (
     <>
