@@ -1,7 +1,13 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export function useDebounceCallback(fn: (arg: string) => void, delay: number) {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   const debouncedHandleChange = (value: string) => {
     if (timerRef.current) clearTimeout(timerRef.current);
