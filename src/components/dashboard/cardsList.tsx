@@ -16,7 +16,7 @@ export function CardsList({
               </h3>
             </CardHeader>
             <CardContent>
-              <p className="text-accent-foreground font-serif text-[34px] leading-none lining-nums lg:text-[40px]">
+              <p className="text-accent-foreground font-serif text-[34px] leading-none lining-nums lg:text-[38px]">
                 {content}
               </p>
             </CardContent>
