@@ -616,9 +616,15 @@
       }
     },
     "Logout": {
-      "success": { "title": "Successfully logged out" },
-      "expectedError": { "title": "Logging out error" },
-      "unexpectedError": { "title": "Logging out error" }
+      "success": {
+        "title": "Successfully logged out"
+      },
+      "expectedError": {
+        "title": "Logging out error"
+      },
+      "unexpectedError": {
+        "title": "Logging out error"
+      }
     }
   },
   "Emails": {
@@ -704,10 +710,87 @@
         }
       }
     },
+    "StatusBadge": {
+      "New": "New",
+      "Pending": "Pending",
+      "Active": "Active",
+      "Completed": "Completed",
+      "Cancelled": "Cancelled",
+      "Archived": "Archived"
+    },
+    "Pagination": {
+      "label": "Pagination",
+      "previous": "Previous page",
+      "next": "Next page",
+      "perPage": "Per page"
+    },
     "Clients": {
       "title": "Clients",
-      "addingBtn": "Add client",
-      "searchBar": { "placeholder": "Search by name, email..." }
+      "addingBtn": "New client",
+      "searchBar": {
+        "placeholder": "Search by name, email or phone...",
+        "clear": "Clear search"
+      },
+      "count": "{count, plural, one {# client} other {# clients}}",
+      "filters": {
+        "all": "All",
+        "active": "Active",
+        "past": "Past",
+        "no-event": "No event"
+      },
+      "stats": {
+        "newThisSeason": {
+          "header": "New this season",
+          "footer": "season {year}"
+        },
+        "activeClients": {
+          "header": "Active clients",
+          "footer": "with upcoming event"
+        },
+        "withoutEvent": {
+          "header": "Without event",
+          "footer": "no event booked yet"
+        },
+        "needsAttention": {
+          "header": "Needs attention",
+          "footer": "missing email or phone"
+        }
+      },
+      "table": {
+        "headers": {
+          "client": "Client",
+          "contact": "Contact",
+          "event": "Event",
+          "status": "Status",
+          "more": "More"
+        },
+        "addEmail": "Add email",
+        "addPhone": "Add phone",
+        "noEvent": "No event",
+        "details": "View details: {name}",
+        "eventTypes": {
+          "Wedding": "Wedding",
+          "Prom": "Prom",
+          "Anniversary": "Anniversary",
+          "Birthday_18": "18th birthday",
+          "Conference": "Conference",
+          "Corporate_Event": "Corporate event",
+          "Festival": "Festival",
+          "Other": "Other"
+        }
+      },
+      "empty": {
+        "noClients": {
+          "title": "No clients yet",
+          "description": "You haven't added any clients yet. Get started by adding your first client."
+        },
+        "noResults": {
+          "title": "No clients found",
+          "descriptionQuery": "No clients match “{query}”.",
+          "descriptionFilter": "No clients match the selected filter.",
+          "action": "Clear filters"
+        }
+      }
     }
   }
 }

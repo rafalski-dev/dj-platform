@@ -682,5 +682,104 @@
       "extraMessage": "Nie chcesz czekać? Skorzystaj z przycisku poniżej.",
       "primaryButton": "Panel klienta"
     }
+  },
+  "Admin": {
+    "Header": {
+      "openMenu": "Otwórz menu",
+      "closeMenu": "Zamknij menu",
+      "nav": {
+        "logoutBtn": "Wyloguj się",
+        "navItems": {
+          "home": "Strona główna",
+          "clients": "Klienci",
+          "events": "Wydarzenia",
+          "contracts": "Umowy",
+          "playlist": "Playlisty",
+          "details": "Moje dane"
+        }
+      }
+    },
+    "StatusBadge": {
+      "New": "Nowy",
+      "Pending": "Oczekujące",
+      "Active": "Aktywne",
+      "Completed": "Zakończone",
+      "Cancelled": "Anulowane",
+      "Archived": "Zarchiwizowane"
+    },
+    "Pagination": {
+      "label": "Paginacja",
+      "previous": "Poprzednia strona",
+      "next": "Następna strona",
+      "perPage": "Na stronę"
+    },
+    "Clients": {
+      "title": "Klienci",
+      "addingBtn": "Dodaj klienta",
+      "count": "{count, plural, one {# klient} few {# klienci} many {# klientów} other {# klienta}}",
+      "searchBar": {
+        "placeholder": "Szukaj po imieniu, emailu lub telefonie...",
+        "clear": "Wyczyść wyszukiwanie"
+      },
+      "filters": {
+        "all": "Wszyscy",
+        "active": "Aktywni",
+        "past": "Byli",
+        "no-event": "Bez wydarzenia"
+      },
+      "stats": {
+        "newThisSeason": {
+          "header": "Nowi w tym sezonie",
+          "footer": "sezon {year}"
+        },
+        "activeClients": {
+          "header": "Aktywni klienci",
+          "footer": "z nadchodzącym wydarzeniem"
+        },
+        "withoutEvent": {
+          "header": "Bez wydarzenia",
+          "footer": "jeszcze bez rezerwacji"
+        },
+        "needsAttention": {
+          "header": "Wymagają uwagi",
+          "footer": "brak emaila lub telefonu"
+        }
+      },
+      "table": {
+        "headers": {
+          "client": "Klient",
+          "contact": "Kontakt",
+          "event": "Wydarzenie",
+          "status": "Status",
+          "more": "Więcej"
+        },
+        "addEmail": "Dodaj email",
+        "addPhone": "Dodaj telefon",
+        "noEvent": "Brak wydarzenia",
+        "details": "Zobacz szczegóły: {name}",
+        "eventTypes": {
+          "Wedding": "Wesele",
+          "Prom": "Studniówka",
+          "Anniversary": "Rocznica",
+          "Birthday_18": "18-nastka",
+          "Conference": "Konferencja",
+          "Corporate_Event": "Impreza firmowa",
+          "Festival": "Festiwal",
+          "Other": "Inne"
+        }
+      },
+      "empty": {
+        "noClients": {
+          "title": "Brak klientów",
+          "description": "Nie masz jeszcze żadnych klientów. Zacznij od dodania pierwszego."
+        },
+        "noResults": {
+          "title": "Nie znaleziono klientów",
+          "descriptionQuery": "Żaden klient nie pasuje do „{query}”.",
+          "descriptionFilter": "Żaden klient nie pasuje do wybranego filtra.",
+          "action": "Wyczyść filtry"
+        }
+      }
+    }
   }
 }

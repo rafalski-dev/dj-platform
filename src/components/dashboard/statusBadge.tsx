@@ -2,6 +2,7 @@ import { DotIcon } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { cn } from "@/lib/utils";
 import { ClientStatus } from "@/types/dashboard";
+import { useTranslations } from "next-intl";
 
 const statusStyles: Record<ClientStatus, string> = {
   New: "text-foreground/80 border-foreground/15 bg-foreground/5",
@@ -15,10 +16,12 @@ const statusStyles: Record<ClientStatus, string> = {
 };
 
 export function StatusBadge({ status, className }: { status: ClientStatus; className?: string }) {
+  const t = useTranslations("Admin.StatusBadge");
+
   return (
     <Badge variant="outline" className={cn("pr-3", className, statusStyles[status])}>
       <DotIcon strokeWidth={8} />
-      {status}
+      {t(status)}
     </Badge>
   );
 }
