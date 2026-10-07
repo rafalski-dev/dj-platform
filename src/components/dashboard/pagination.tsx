@@ -2,28 +2,39 @@ import { ChevronLeft, ChevronRight, EllipsisIcon } from "lucide-react";
 import { Button, buttonVariants } from "../ui/button";
 import { Link } from "@/i18n/navigation";
 import { cn, getPaginationItems } from "@/lib/utils";
+import { PersistedParams } from "@/lib/searchParams";
+import { Pathname } from "@/types/navigation";
+import { useTranslations } from "next-intl";
 
 export function Pagination({
-  page,
   totalPages,
-  rowsLimit,
-  query,
+  pathname,
+  persistedParams: { page, limit, query, filter },
 }: {
-  page: number;
   totalPages: number;
-  rowsLimit: number;
-  query?: string;
+  persistedParams: PersistedParams;
+  pathname: Pathname;
 }) {
+  const t = useTranslations("Admin.Pagination");
+  const paginationOption = getPaginationItems(page, totalPages);
+
   return (
-    <nav className="mx-auto flex flex-row items-center gap-x-1.5" aria-label="Pagination">
-      <ArrowLeft isDisabled={page === 1} page={page} rowsLimit={rowsLimit} />
-      {getPaginationItems(page, totalPages).map((item) =>
+    <nav className="mx-auto flex flex-row items-center gap-x-1.5" aria-label={t("label")}>
+      <ArrowLeft
+        isDisabled={page === 1}
+        pathname={pathname}
+        page={page}
+        limit={limit}
+        query={query}
+        filter={filter}
+      />
+      {paginationOption.map((item) =>
         typeof item === "number" ? (
           <Link
             key={item}
             href={{
-              pathname: "/admin/clients",
-              query: { page: item, limit: rowsLimit, query: query },
+              pathname: pathname,
+              query: { page: item, limit: limit, query: query, filter: filter },
             }}
             className={cn(
               buttonVariants({ variant: item === page ? "default" : "outline", size: "sm" }),
@@ -43,7 +54,14 @@ export function Pagination({
           </span>
         ),
       )}
-      <ArrowRight isDisabled={page === totalPages} page={page} rowsLimit={rowsLimit} />
+      <ArrowRight
+        isDisabled={page === totalPages}
+        pathname={pathname}
+        page={page}
+        limit={limit}
+        query={query}
+        filter={filter}
+      />
     </nav>
   );
 }
@@ -51,14 +69,13 @@ export function Pagination({
 function ArrowLeft({
   isDisabled,
   page,
-  rowsLimit,
+  limit,
   query,
-}: {
-  isDisabled: boolean;
-  page: number;
-  rowsLimit: number;
-  query?: string;
-}) {
+  filter,
+  pathname,
+}: { isDisabled: boolean; pathname: Pathname } & PersistedParams) {
+  const t = useTranslations("Admin.Pagination");
+
   if (isDisabled)
     return (
       <Button
@@ -66,7 +83,7 @@ function ArrowLeft({
         size="sm"
         className="h-8 w-10 px-0"
         disabled
-        aria-label="Previous page"
+        aria-label={t("previous")}
       >
         <ChevronLeft className="text-accent-foreground" />
       </Button>
@@ -74,10 +91,10 @@ function ArrowLeft({
 
   return (
     <Link
-      aria-label="Previous page"
+      aria-label={t("previous")}
       href={{
-        pathname: "/admin/clients",
-        query: { page: page - 1, limit: rowsLimit, query: query },
+        pathname: pathname,
+        query: { page: page - 1, limit: limit, query: query, filter: filter },
       }}
       className={cn(buttonVariants({ variant: "outline", size: "sm" }), "h-8 w-10 px-0")}
     >
@@ -89,27 +106,26 @@ function ArrowLeft({
 function ArrowRight({
   isDisabled,
   page,
-  rowsLimit,
+  limit,
   query,
-}: {
-  isDisabled: boolean;
-  page: number;
-  rowsLimit: number;
-  query?: string;
-}) {
+  filter,
+  pathname,
+}: { isDisabled: boolean; pathname: Pathname } & PersistedParams) {
+  const t = useTranslations("Admin.Pagination");
+
   if (isDisabled)
     return (
-      <Button variant="outline" size="sm" className="h-8 w-10 px-0" disabled aria-label="Next page">
+      <Button variant="outline" size="sm" className="h-8 w-10 px-0" disabled aria-label={t("next")}>
         <ChevronRight className="text-accent-foreground" />
       </Button>
     );
 
   return (
     <Link
-      aria-label="Next page"
+      aria-label={t("next")}
       href={{
-        pathname: "/admin/clients",
-        query: { page: page + 1, limit: rowsLimit, query: query },
+        pathname: pathname,
+        query: { page: page + 1, limit: limit, query: query, filter: filter },
       }}
       className={cn(buttonVariants({ variant: "outline", size: "sm" }), "h-8 w-10 px-0")}
     >

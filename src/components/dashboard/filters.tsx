@@ -1,29 +1,40 @@
-import { FiltersProps } from "@/types/dashboard";
-import { Button } from "../ui/button";
+import { Link } from "@/i18n/navigation";
+import { Pathname } from "@/types/navigation";
+import { buttonVariants } from "../ui/button";
+import { FilterType, PersistedParams } from "@/lib/searchParams";
+import type { getTranslations } from "next-intl/server";
 
-export function Filters({ all, firstCategory, secondCategory, thirdCategory }: FiltersProps) {
+type FiltersProps = {
+  t: Awaited<ReturnType<typeof getTranslations>>;
+  pathname: Pathname;
+  filters: { keyLabel: string; filterOption: FilterType }[];
+  persistedParams: PersistedParams;
+};
+
+export function Filters({
+  t,
+  pathname,
+  filters,
+  persistedParams: { query, limit, filter },
+}: FiltersProps) {
   return (
     <div className="flex flex-row gap-2">
-      {all && (
-        <Button variant="outline" size="sm" className="md:h-10.5">
-          {all}
-        </Button>
-      )}
-      {firstCategory && (
-        <Button variant="outline" size="sm" className="md:h-10.5">
-          {firstCategory}
-        </Button>
-      )}
-      {secondCategory && (
-        <Button variant="outline" size="sm" className="md:h-10.5">
-          {secondCategory}
-        </Button>
-      )}
-      {thirdCategory && (
-        <Button variant="outline" size="sm" className="md:h-10.5">
-          {thirdCategory}
-        </Button>
-      )}
+      {filters.map(({ keyLabel, filterOption }, index: number) => {
+        const buttonVariant = filterOption === filter ? "default" : "outline";
+
+        return (
+          <Link
+            key={index}
+            href={{
+              pathname: pathname,
+              query: { page: 1, filter: filterOption, query, limit },
+            }}
+            className={buttonVariants({ variant: buttonVariant, size: "sm" })}
+          >
+            {t(`filters.${keyLabel}`)}
+          </Link>
+        );
+      })}
     </div>
   );
 }

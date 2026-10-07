@@ -4,34 +4,36 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from ".
 import { createInitials, phoneNumberSplitting } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { StatusBadge } from "./statusBadge";
-import { getPaginationedClients } from "@/data/clients";
-import { getFormatter } from "next-intl/server";
+import { getFormatter, getTranslations } from "next-intl/server";
 import { ShowEmpty } from "./empty";
+import { PersistedParams } from "@/lib/searchParams";
+import { getPaginationedClients, getStartOfToday } from "@/data/clients";
 
-// Typ wyliczony z funkcji pobierającej dane – klient razem z jego wydarzeniami (include: { events: true })
 type ClientWithEvents = Awaited<ReturnType<typeof getPaginationedClients>>[number];
+
+type ClientDataListProps = {
+  data: ClientWithEvents[];
+  persistedParams: PersistedParams;
+};
 
 export async function ClientDataList({
   data,
-  totalClients,
-  query,
-}: {
-  data: ClientWithEvents[];
-  totalClients: number;
-  query?: string;
-}) {
+  persistedParams: { query, filter },
+}: ClientDataListProps) {
   const format = await getFormatter();
+  const t = await getTranslations("Admin.Clients");
   const iconSize = 16;
+  const today = getStartOfToday();
 
   const noClients = (
     <TableRow className="hover:bg-card">
       <TableCell colSpan={5} className="whitespace-normal">
         <ShowEmpty
           icon={<UsersIcon strokeWidth={1.5} />}
-          title="No clients yet"
-          description="You haven't added any clients yet. Get started by adding your first client."
+          title={t("empty.noClients.title")}
+          description={t("empty.noClients.description")}
           action={{
-            label: "Add client",
+            label: t("addingBtn"),
             href: "/admin/clients",
             icon: <PlusIcon className="size-3" strokeWidth={3} />,
           }}
@@ -45,34 +47,41 @@ export async function ClientDataList({
       <TableCell colSpan={5} className="whitespace-normal">
         <ShowEmpty
           icon={<SearchXIcon strokeWidth={1.5} />}
-          title="No clients found"
-          description={`No clients match “${query}”.`}
-          action={{ label: "Clear search", href: "/admin/clients" }}
+          title={t("empty.noResults.title")}
+          description={
+            query
+              ? t("empty.noResults.descriptionQuery", { query })
+              : t("empty.noResults.descriptionFilter")
+          }
+          action={{ label: t("empty.noResults.action"), href: "/admin/clients" }}
         />
       </TableCell>
     </TableRow>
   );
 
+  const isFiltered = query || filter ? true : false;
+  const selectEmptyState = isFiltered ? noResults : noClients;
+
   return (
     <Table className="table-fixed">
       <TableHeader>
         <TableRow className="hover:bg-card">
-          <TableHead className="w-[30%] xl:w-[25%]">Client</TableHead>
-          <TableHead className="w-[40%] xl:w-[32.5%]">Contact</TableHead>
-          <TableHead className="w-[20%]">Event</TableHead>
-          <TableHead className="hidden xl:table-cell">Status</TableHead>
-          <TableHead className="w-16 text-right">More</TableHead>
+          <TableHead className="w-[30%] xl:w-[25%]">{t("table.headers.client")}</TableHead>
+          <TableHead className="w-[40%] xl:w-[32.5%]">{t("table.headers.contact")}</TableHead>
+          <TableHead className="w-[20%]">{t("table.headers.event")}</TableHead>
+          <TableHead className="hidden xl:table-cell">{t("table.headers.status")}</TableHead>
+          <TableHead className="w-16 text-right">{t("table.headers.more")}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {totalClients === 0
-          ? query
-            ? noResults
-            : noClients
+        {data.length === 0
+          ? selectEmptyState
           : data.map(({ id, name, email, phone, events }) => {
               const notCancelled = events.filter((e) => e.eventStatus !== "Cancelled");
-              const nextEvent = notCancelled.find((e) => e.eventDate >= new Date());
-              const event = nextEvent ?? notCancelled.at(-1);
+              const nextEvent = notCancelled.find((e) => e.eventDate >= today);
+              const event = nextEvent ?? notCancelled.at(-1) ?? events.at(-1);
+
+              const formattedPhoneNumber = phoneNumberSplitting(phone);
               return (
                 <TableRow key={id} className="group">
                   <TableCell className="text-foreground">
@@ -93,18 +102,18 @@ export async function ClientDataList({
                       ) : (
                         <div className="text-muted-foreground/50 flex items-center gap-2">
                           <PlusIcon size={iconSize} />
-                          <span>Add email</span>
+                          <span>{t("table.addEmail")}</span>
                         </div>
                       )}
-                      {phoneNumberSplitting(phone) ? (
+                      {formattedPhoneNumber ? (
                         <div className="flex items-center gap-2">
                           <PhoneIcon size={iconSize} className="text-muted-foreground/50" />
-                          <span>{phoneNumberSplitting(phone)}</span>
+                          <span>{formattedPhoneNumber}</span>
                         </div>
                       ) : (
                         <div className="text-muted-foreground/50 flex items-center gap-2">
                           <PlusIcon size={iconSize} />
-                          <span>Add phone</span>
+                          <span>{t("table.addPhone")}</span>
                         </div>
                       )}
                     </div>
@@ -112,7 +121,9 @@ export async function ClientDataList({
                   <TableCell>
                     {event ? (
                       <>
-                        <div className="text-foreground/80 truncate">{event.eventType}</div>
+                        <div className="text-foreground/80 truncate">
+                          {t(`table.eventTypes.${event.eventType}`)}
+                        </div>
                         <div className="truncate">
                           {format.dateTime(event.eventDate, {
                             month: "short",
@@ -123,7 +134,7 @@ export async function ClientDataList({
                         </div>
                       </>
                     ) : (
-                      <div className="text-popover-foreground">No event</div>
+                      <div className="text-popover-foreground">{t("table.noEvent")}</div>
                     )}
                   </TableCell>
                   <TableCell className="hidden xl:table-cell">
@@ -133,8 +144,12 @@ export async function ClientDataList({
                       <StatusBadge status="New" />
                     )}
                   </TableCell>
-                  <TableCell className="pr-0 text-right">
-                    <Button variant="secondary" size="icon">
+                  <TableCell className="pr-0">
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      aria-label={t("table.details", { name })}
+                    >
                       <ArrowRight className="text-muted-foreground group-hover:text-accent-foreground size-5 pr-0 transition-colors" />
                     </Button>
                   </TableCell>

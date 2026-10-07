@@ -6,7 +6,13 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDebounceCallback } from "@/hooks/useDebounceCallback";
 
-export function SearchBar({ placeholder }: { placeholder: string }) {
+export function SearchBar({
+  placeholder,
+  clearLabel,
+}: {
+  placeholder: string;
+  clearLabel: string;
+}) {
   const searchParams = useSearchParams();
   const urlQuery = searchParams.get("query") ?? "";
   const [searchValue, setSearchValue] = useState(urlQuery);
@@ -19,8 +25,6 @@ export function SearchBar({ placeholder }: { placeholder: string }) {
   }, [urlQuery]);
 
   const [debouncedHandleChange, cancel] = useDebounceCallback(handleChange, 400);
-
-  useEffect(() => cancel, [cancel]);
 
   function handleChange(term: string) {
     const params = new URLSearchParams(searchParams);
@@ -42,7 +46,7 @@ export function SearchBar({ placeholder }: { placeholder: string }) {
   }
 
   return (
-    <div className="bg-background focus-within:border-ring/80 focus-within:ring-ring/40 flex h-10.5 w-full flex-row items-center gap-3 rounded-md border px-3 py-2 duration-200 focus-within:ring-3">
+    <div className="bg-background focus-within:border-ring/80 focus-within:ring-ring/40 flex h-10 w-full flex-row items-center gap-3 rounded-md border px-3 py-2 duration-200 focus-within:ring-3">
       <SearchIcon className="text-popover-foreground size-4 shrink-0" strokeWidth={1.8} />
       <input
         type="search"
@@ -60,7 +64,7 @@ export function SearchBar({ placeholder }: { placeholder: string }) {
       />
 
       {searchValue && (
-        <Button variant="input" size="icon-sm" onClick={clearInput} aria-label="Clear search">
+        <Button variant="input" size="icon-sm" onClick={clearInput} aria-label={clearLabel}>
           <XIcon />
         </Button>
       )}

@@ -5,61 +5,79 @@ import { Pagination } from "@/components/dashboard/pagination";
 import { RowsPerPage } from "@/components/dashboard/RowsPerPage";
 import { SearchBar } from "@/components/dashboard/searchBar";
 import { PageHeader } from "@/components/dashboard/shared/pageHeader";
+import { filtersClientsData } from "@/constants/filtersOptions";
 import { getCountClients, getPaginationedClients } from "@/data/clients";
-import { getValidPage } from "@/lib/utils";
+import {
+  getFormattedFilter,
+  getFormattedLimit,
+  getFormattedPage,
+  getFormattedQuery,
+  PersistedParams,
+} from "@/lib/searchParams";
 import { getTranslations } from "next-intl/server";
 
 export default async function Clients({
   searchParams,
 }: {
   searchParams: Promise<{
-    page?: string | string[];
     limit?: string | string[];
+    page?: string | string[];
     query?: string | string[];
+    filter?: string | string[];
   }>;
 }) {
   const t = await getTranslations("Admin.Clients");
-  const { query, page, limit } = await searchParams;
 
-  const formattedQuery = typeof query === "string" ? query.trim() : undefined;
-  const totalClients = await getCountClients(formattedQuery);
+  const { limit, page, query, filter } = await searchParams;
+  const formattedLimit = getFormattedLimit(limit);
+  const formattedPage = getFormattedPage(page);
+  const formattedQuery = getFormattedQuery(query);
+  const formattedFilter = getFormattedFilter(filter);
 
-  const formattedLimit = limit === "8" || limit === "12" || limit === "16" ? Number(limit) : 8;
+  const totalClients = await getCountClients(formattedQuery, formattedFilter);
   const totalPages = totalClients === 0 ? 1 : Math.ceil(totalClients / formattedLimit);
-  const formattedPage = getValidPage(page, totalPages);
+  const currentPage = formattedPage > totalPages ? totalPages : formattedPage;
+
+  const persistedParams: PersistedParams = {
+    page: currentPage,
+    limit: formattedLimit,
+    query: formattedQuery,
+    filter: formattedFilter,
+  };
 
   const paginationedData = await getPaginationedClients(
     formattedLimit,
-    formattedPage,
+    currentPage,
     formattedQuery,
+    formattedFilter,
   );
 
   return (
     <div className="flex flex-col gap-4">
       <PageHeader
-        labelText={`${totalClients} clients`}
+        labelText={t("count", { count: totalClients })}
         titleText={t("title")}
         buttonText={t("addingBtn")}
       />
       <ClientsStatsCards />
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
-        <SearchBar placeholder={t("searchBar.placeholder")} />
-        <Filters all="All" firstCategory="Newst" secondCategory="Oldest" />
+        <SearchBar placeholder={t("searchBar.placeholder")} clearLabel={t("searchBar.clear")} />
+        <Filters
+          t={t}
+          pathname="/admin/clients"
+          filters={filtersClientsData}
+          persistedParams={persistedParams}
+        />
       </div>
       <div className="flex flex-col gap-4">
-        <ClientDataList
-          data={paginationedData}
-          totalClients={totalClients}
-          query={formattedQuery}
-        />
+        <ClientDataList data={paginationedData} persistedParams={persistedParams} />
         {totalClients > 0 && (
           <div className="grid grid-cols-3 grid-rows-1">
-            <RowsPerPage rowsLimit={formattedLimit} query={formattedQuery} />
+            <RowsPerPage persistedParams={persistedParams} pathname="/admin/clients" />
             <Pagination
-              page={formattedPage}
+              persistedParams={persistedParams}
               totalPages={totalPages}
-              rowsLimit={formattedLimit}
-              query={formattedQuery}
+              pathname="/admin/clients"
             />
           </div>
         )}

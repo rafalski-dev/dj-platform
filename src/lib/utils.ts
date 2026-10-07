@@ -13,7 +13,7 @@ export function getCurrentYear() {
 export function createInitials(name: string) {
   const splittedName = name.trim().split(/\s+/);
   const first = splittedName[0][0] ?? "";
-  const second = splittedName[1][0] ?? "";
+  const second = splittedName[1]?.[0] ?? "";
   return (first + second).toUpperCase();
 }
 
@@ -24,14 +24,6 @@ export function phoneNumberSplitting(phoneNumber: string | null) {
   const third = phoneNumber.slice(6, 9);
   const rest = phoneNumber.slice(9);
   return `${first} ${second} ${third}${rest}`;
-}
-
-export function getValidPage(page: string | string[] | undefined, totalPages: number) {
-  const pageToNumber = Number(page);
-
-  if (!Number.isInteger(pageToNumber) || pageToNumber < 1) return 1;
-
-  return Math.min(pageToNumber, totalPages);
 }
 
 export type PaginationItem = number | "ellipsis-left" | "ellipsis-right";
