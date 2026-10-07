@@ -1,9 +1,9 @@
 import { Client, EventStatus } from "../../generated";
 
 export type PageHeaderProps = {
-  labelText: string;
   titleText: string;
-  buttonText: string;
+  labelText?: string;
+  buttonText?: string;
 };
 
 // Statusy wydarzeń z Prismy + "New" dla klienta bez wydarzeń
