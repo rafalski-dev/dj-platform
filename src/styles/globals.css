@@ -30,6 +30,7 @@
   --color-success-border: var(--success-border);
   --color-gold-dark: var(--gold-dark);
   --color-skeleton-base: var(--skeleton-base);
+  --color-skeleton-second: var(--skeleton-second);
 
   /* Fonts */
   --font-sans: var(--font-manrope);
@@ -143,6 +144,7 @@
 
   /* Skeleton */
   --skeleton-base: rgb(33, 28, 20);
+  --skeleton-second: rgb(27, 23, 17);
 }
 
 @layer base {
