@@ -1,27 +1,30 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { getCurrentYear } from "@/lib/utils";
+import { getTranslations } from "next-intl/server";
 
-export function CardsList({
-  localData,
-}: {
-  localData: { header: string; content: string | number; footer: string }[];
-}) {
+export async function CardsList({ data }: { data: { key: string; content: null | number }[] }) {
+  const t = await getTranslations("Admin.Clients.stats");
+  const year = getCurrentYear();
+
   return (
     <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-      {localData.map(({ header, content, footer }, index: number) => {
+      {data.map(({ key, content }) => {
         return (
-          <Card key={index} size="md" className="gap-2">
+          <Card key={key} size="sm" className="min-h-30 justify-between gap-1.5">
             <CardHeader>
               <h3 className="text-muted-foreground/90 font-sans text-[12.5px] tracking-wide uppercase">
-                {header}
+                {t(`${key}.header`)}
               </h3>
             </CardHeader>
             <CardContent>
-              <p className="text-accent-foreground font-serif text-[34px] leading-none lining-nums lg:text-[38px]">
+              <p className="text-accent-foreground font-serif text-[30px] leading-none lining-nums lg:text-[36px]">
                 {content}
               </p>
             </CardContent>
             <CardFooter>
-              <p className="text-popover-foreground text-[13px]">{footer}</p>
+              <p className="text-popover-foreground text-[13px]">
+                {t(`${key}.footer`)} {key === "newThisSeason" && year}
+              </p>
             </CardFooter>
           </Card>
         );

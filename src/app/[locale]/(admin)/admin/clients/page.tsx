@@ -5,6 +5,8 @@ import { Pagination } from "@/components/dashboard/pagination";
 import { RowsPerPage } from "@/components/dashboard/RowsPerPage";
 import { SearchBar } from "@/components/dashboard/searchBar";
 import { PageHeader } from "@/components/dashboard/shared/pageHeader";
+import { CardsSkeleton } from "@/components/dashboard/skeletons/cardsSkeleton";
+import { cardsData } from "@/constants/admin";
 import { filtersClientsData } from "@/constants/filtersOptions";
 import { getCountClients, getPaginationedClients } from "@/data/clients";
 import {
@@ -15,6 +17,7 @@ import {
   PersistedParams,
 } from "@/lib/searchParams";
 import { getTranslations } from "next-intl/server";
+import { Suspense } from "react";
 
 export default async function Clients({
   searchParams,
@@ -59,7 +62,11 @@ export default async function Clients({
         titleText={t("title")}
         buttonText={t("addingBtn")}
       />
-      <ClientsStatsCards />
+
+      <Suspense fallback={<CardsSkeleton count={cardsData.length} />}>
+        <ClientsStatsCards />
+      </Suspense>
+
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
         <SearchBar placeholder={t("searchBar.placeholder")} clearLabel={t("searchBar.clear")} />
         <Filters

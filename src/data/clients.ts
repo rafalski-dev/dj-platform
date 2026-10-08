@@ -87,6 +87,8 @@ export async function getCountClients(query?: string, filter?: FilterType) {
 export async function getClientsStats() {
   await adminCheck();
 
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+
   const [newThisSeason, activeClients, withoutEvent, needsAttention] = await Promise.all([
     db.client.count({ where: { createdAt: { gte: new Date(getCurrentYear(), 0, 1) } } }),
 
