@@ -741,7 +741,7 @@
       "stats": {
         "newThisSeason": {
           "header": "New this season",
-          "footer": "season"
+          "footer": "season {year}"
         },
         "activeClients": {
           "header": "Active clients",

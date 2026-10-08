@@ -21,7 +21,6 @@ export function Filters({
     <div className="flex flex-row gap-2">
       {filters.map(({ keyLabel, filterOption }, index: number) => {
         const buttonVariant = filterOption === filter ? "default" : "outline";
-
         return (
           <Link
             key={index}

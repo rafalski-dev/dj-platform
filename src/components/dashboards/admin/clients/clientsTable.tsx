@@ -11,13 +11,13 @@ import { ShowEmpty } from "@/components/dashboards/shared/empty";
 import { StatusBadge } from "@/components/dashboards/shared/statusBadge";
 import { Button } from "@/components/ui/button";
 
-type ClientDataListProps = {
+type ClientsTableProps = {
   persistedParams: PersistedParams;
 };
 
 export async function ClientsTable({
   persistedParams: { limit, page, query, filter },
-}: ClientDataListProps) {
+}: ClientsTableProps) {
   const t = await getTranslations("Admin.Clients");
 
   const format = await getFormatter();
@@ -143,7 +143,7 @@ export async function ClientsTable({
                       size="icon"
                       aria-label={t("table.details", { name })}
                     >
-                      <ArrowRight className="text-muted-foreground group-hover:text-accent-foreground size-5 pr-0 transition-colors" />
+                      <ArrowRight className="text-muted-foreground group-hover:text-accent-foreground size-5 transition-colors" />
                     </Button>
                   </TableCell>
                 </TableRow>

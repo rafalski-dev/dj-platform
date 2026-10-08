@@ -1,7 +1,7 @@
 import { ClientsTable } from "@/components/dashboards/admin/clients/clientsTable";
 import { ClientsStatsCards } from "@/components/dashboards/admin/clients/clientsStatsCards";
 import { Filters } from "@/components/dashboards/shared/filters";
-import { RowsPerPage } from "@/components/dashboards/shared/RowsPerPage";
+import { RowsPerPage } from "@/components/dashboards/shared/rowsPerPage";
 import { SearchBar } from "@/components/dashboards/shared/searchBar";
 import { PageHeader } from "@/components/dashboards/shared/pageHeader";
 import { CardsSkeleton } from "@/components/dashboards/skeletons/cardsSkeleton";
@@ -56,11 +56,9 @@ export default async function Clients({
         titleText={t("title")}
         buttonText={t("addingBtn")}
       />
-
       <Suspense fallback={<CardsSkeleton count={cardsData.length} />}>
         <ClientsStatsCards />
       </Suspense>
-
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
         <SearchBar placeholder={t("searchBar.placeholder")} clearLabel={t("searchBar.clear")} />
         <Filters

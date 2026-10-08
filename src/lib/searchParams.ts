@@ -5,8 +5,6 @@ export type PersistedParams = {
   filter: ReturnType<typeof getFormattedFilter>;
 };
 
-export type limitType = ReturnType<typeof getFormattedLimit>;
-
 export const ROWS_PER_PAGE = [6, 12, 18, 24] as const;
 
 export function getFormattedLimit(rawLimit: string | string[] | undefined) {
