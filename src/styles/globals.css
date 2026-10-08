@@ -29,6 +29,7 @@
   --color-success-text: var(--success-text);
   --color-success-border: var(--success-border);
   --color-gold-dark: var(--gold-dark);
+  --color-skeleton-base: var(--skeleton-base);
 
   /* Fonts */
   --font-sans: var(--font-manrope);
@@ -139,6 +140,9 @@
   --success-bg: #22803624;
   --success-text: #80c68c;
   --success-border: rgba(34, 128, 54, 0.3);
+
+  /* Skeleton */
+  --skeleton-base: rgb(33, 28, 20);
 }
 
 @layer base {
