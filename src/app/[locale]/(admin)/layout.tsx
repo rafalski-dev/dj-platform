@@ -1,6 +1,6 @@
-import { HeaderAdmin } from "@/components/dashboard/header";
-import { LogoutButton } from "@/components/dashboard/logoutButton";
-import { AdminDesktopNavigation } from "@/components/dashboard/navigations/adminNavs";
+import { HeaderAdmin } from "@/components/dashboards/admin/header";
+import { AdminDesktopNavigation } from "@/components/dashboards/shared/adminNavs";
+import { LogoutButton } from "@/components/dashboards/shared/logoutButton";
 import { Wrapper } from "@/components/shared/wrapper";
 import { adminCheck } from "@/lib/auth-helpers";
 

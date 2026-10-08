@@ -1,14 +1,14 @@
-import { ClientDataList } from "@/components/dashboard/clientDataList";
-import { ClientsStatsCards } from "@/components/dashboard/clientsStatsCards";
-import { Filters } from "@/components/dashboard/filters";
-import { Pagination } from "@/components/dashboard/pagination";
-import { RowsPerPage } from "@/components/dashboard/RowsPerPage";
-import { SearchBar } from "@/components/dashboard/searchBar";
-import { PageHeader } from "@/components/dashboard/shared/pageHeader";
-import { CardsSkeleton } from "@/components/dashboard/skeletons/cardsSkeleton";
+import { ClientsTable } from "@/components/dashboards/admin/clients/clientsTable";
+import { ClientsStatsCards } from "@/components/dashboards/admin/clients/clientsStatsCards";
+import { Filters } from "@/components/dashboards/shared/filters";
+import { RowsPerPage } from "@/components/dashboards/shared/RowsPerPage";
+import { SearchBar } from "@/components/dashboards/shared/searchBar";
+import { PageHeader } from "@/components/dashboards/shared/pageHeader";
+import { CardsSkeleton } from "@/components/dashboards/skeletons/cardsSkeleton";
+import { ClientsTableSkeleton } from "@/components/dashboards/skeletons/clientsTableSkeleton";
 import { cardsData } from "@/constants/admin";
 import { filtersClientsData } from "@/constants/filtersOptions";
-import { getCountClients, getPaginationedClients } from "@/data/clients";
+import { getCountClients } from "@/data/clients";
 import {
   getFormattedFilter,
   getFormattedLimit,
@@ -18,6 +18,7 @@ import {
 } from "@/lib/searchParams";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
+import { Pagination } from "@/components/dashboards/shared/pagination";
 
 export default async function Clients({
   searchParams,
@@ -48,13 +49,6 @@ export default async function Clients({
     filter: formattedFilter,
   };
 
-  const paginationedData = await getPaginationedClients(
-    formattedLimit,
-    currentPage,
-    formattedQuery,
-    formattedFilter,
-  );
-
   return (
     <div className="flex flex-col gap-4">
       <PageHeader
@@ -77,7 +71,13 @@ export default async function Clients({
         />
       </div>
       <div className="flex flex-col gap-4">
-        <ClientDataList data={paginationedData} persistedParams={persistedParams} />
+        <Suspense
+          key={`${currentPage}-${formattedLimit}-${formattedQuery}-${formattedFilter}`}
+          fallback={<ClientsTableSkeleton count={formattedLimit} />}
+        >
+          <ClientsTable persistedParams={persistedParams} />
+        </Suspense>
+
         {totalClients > 0 && (
           <div className="grid grid-cols-3 grid-rows-1">
             <RowsPerPage persistedParams={persistedParams} pathname="/admin/clients" />
