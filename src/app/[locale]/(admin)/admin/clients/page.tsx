@@ -1,5 +1,5 @@
-import { ClientsTable } from "@/components/dashboards/admin/clients/clientsTable";
-import { ClientsStatsCards } from "@/components/dashboards/admin/clients/clientsStatsCards";
+import { ClientsTable } from "@/components/dashboards/admin/clients/tableClients/clientsTable";
+import { ClientsStatsCards } from "@/components/dashboards/admin/clients/tableClients/clientsStatsCards";
 import { Filters } from "@/components/dashboards/shared/filters";
 import { RowsPerPage } from "@/components/dashboards/shared/rowsPerPage";
 import { SearchBar } from "@/components/dashboards/shared/searchBar";

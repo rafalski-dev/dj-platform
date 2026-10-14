@@ -6,7 +6,7 @@ import { createInitials, phoneNumberSplitting } from "@/lib/utils";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { PersistedParams } from "@/lib/searchParams";
 import { getPaginationedClients, getStartOfToday } from "@/data/clients";
-import { ClientsTableHeader } from "@/components/dashboards/admin/clients/clientsTableHeader";
+import { ClientsTableHeader } from "@/components/dashboards/admin/clients/tableClients/clientsTableHeader";
 import { ShowEmpty } from "@/components/dashboards/shared/empty";
 import { StatusBadge } from "@/components/dashboards/shared/statusBadge";
 import { Button } from "@/components/ui/button";
