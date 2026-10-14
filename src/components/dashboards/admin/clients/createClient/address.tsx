@@ -36,10 +36,10 @@ export function Address() {
       </div>
       <div className="flex flex-col gap-3 md:flex-row">
         <ControlledInput
-          name="addressDetails.state"
+          name="addressDetails.region"
           control={control}
-          label={t("fields.state.label")}
-          placeholder={t("fields.state.placeholder")}
+          label={t("fields.region.label")}
+          placeholder={t("fields.region.placeholder")}
         />
         <ControlledInput
           name="addressDetails.country"

@@ -132,7 +132,7 @@ model Client {
   streetAndNumber      String?
   postcode             String?
   city                 String?
-  state                String?
+  region               String?
   country              String?
 
   note                 String?

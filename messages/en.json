@@ -830,15 +830,18 @@
         "fields": {
           "firstName": {
             "label": "First name",
-            "placeholder": "Jan"
+            "placeholder": "Jan",
+            "required": "Provide first name"
           },
           "lastName": {
             "label": "Last name",
-            "placeholder": "Kowalski"
+            "placeholder": "Kowalski",
+            "required": "Provide last name"
           },
           "idCardNumber": {
             "label": "ID card number",
-            "placeholder": "ABC 123456"
+            "placeholder": "ABC 123456",
+            "validation": "Provide a correct ID card number, e.g. ABC 123456"
           },
           "gender": {
             "label": "Gender",
@@ -847,23 +850,30 @@
               "Male": "Male",
               "Female": "Female",
               "Other": "Other"
-            }
+            },
+            "required": "Select gender"
           },
           "businessName": {
             "label": "Business / institution name",
-            "placeholder": "TechConf Polska Sp. z o.o."
+            "placeholder": "TechConf Polska Sp. z o.o.",
+            "required": "Provide business name"
           },
           "taxId": {
             "label": "Tax ID (NIP)",
-            "placeholder": "677-123-45-67"
+            "placeholder": "677-123-45-67",
+            "required": "Provide Tax ID (NIP)",
+            "validation": "Provide a correct Tax ID (NIP), it must contain 10 digits"
           },
           "email": {
             "label": "Email address",
-            "placeholder": "jan.kowalski@example.com"
+            "placeholder": "jan.kowalski@example.com",
+            "required": "Provide email address",
+            "validation": "Provide a correct email address"
           },
           "phone": {
             "label": "Phone number",
-            "placeholder": "600 123 456"
+            "placeholder": "600 123 456",
+            "validation": "Provide a correct phone number, e.g. 600 123 456"
           },
           "streetAndNumber": {
             "label": "Street and house number",
@@ -871,13 +881,14 @@
           },
           "postcode": {
             "label": "Postcode",
-            "placeholder": "31-000"
+            "placeholder": "31-000",
+            "validation": "Provide a correct postcode, e.g. 31-000"
           },
           "city": {
             "label": "City",
             "placeholder": "Kraków"
           },
-          "state": {
+          "region": {
             "label": "Region",
             "placeholder": "Lesser Poland"
           },
