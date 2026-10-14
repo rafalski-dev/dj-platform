@@ -15,7 +15,10 @@ export default async function Loading() {
 
   return (
     <div className="flex flex-col gap-4">
-      <PageHeaderSkeleton titleText={t("title")} buttonText={t("addingBtn")} />
+      <PageHeaderSkeleton
+        title={t("title")}
+        action={{ btnLabel: t("addingBtn"), pathname: "/admin/clients/create" }}
+      />
       <CardsSkeleton count={cardsData.length} />
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
         <SearchBar placeholder={t("searchBar.placeholder")} clearLabel={t("searchBar.clear")} />
