@@ -51,7 +51,7 @@ export function BusinessSummary() {
           />
           <SummaryRow label={t("fields.postcode.label")} name="addressDetails.postcode" />
           <SummaryRow label={t("fields.city.label")} name="addressDetails.city" />
-          <SummaryRow label={t("fields.state.label")} name="addressDetails.state" />
+          <SummaryRow label={t("fields.region.label")} name="addressDetails.region" />
           <SummaryRow label={t("fields.country.label")} name="addressDetails.country" />
         </dl>
       </div>

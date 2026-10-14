@@ -819,15 +819,18 @@
         "fields": {
           "firstName": {
             "label": "Imię",
-            "placeholder": "Jan"
+            "placeholder": "Jan",
+            "required": "Podaj imię"
           },
           "lastName": {
             "label": "Nazwisko",
-            "placeholder": "Kowalski"
+            "placeholder": "Kowalski",
+            "required": "Podaj nazwisko"
           },
           "idCardNumber": {
             "label": "Numer dowodu osobistego",
-            "placeholder": "ABC 123456"
+            "placeholder": "ABC 123456",
+            "validation": "Podaj poprawny numer dowodu, np. ABC 123456"
           },
           "gender": {
             "label": "Płeć",
@@ -836,23 +839,30 @@
               "Male": "Mężczyzna",
               "Female": "Kobieta",
               "Other": "Inna"
-            }
+            },
+            "required": "Wybierz płeć"
           },
           "businessName": {
             "label": "Nazwa firmy / instytucji",
-            "placeholder": "TechConf Polska Sp. z o.o."
+            "placeholder": "TechConf Polska Sp. z o.o.",
+            "required": "Podaj nazwę firmy"
           },
           "taxId": {
             "label": "NIP",
-            "placeholder": "677-123-45-67"
+            "placeholder": "677-123-45-67",
+            "required": "Podaj NIP",
+            "validation": "Podaj poprawny NIP, musi zawierać 10 cyfr"
           },
           "email": {
             "label": "Adres e-mail",
-            "placeholder": "jan.kowalski@example.com"
+            "placeholder": "jan.kowalski@example.com",
+            "required": "Podaj adres e-mail",
+            "validation": "Podaj poprawny adres e-mail"
           },
           "phone": {
             "label": "Numer telefonu",
-            "placeholder": "600 123 456"
+            "placeholder": "600 123 456",
+            "validation": "Podaj poprawny numer telefonu, np. 600 123 456"
           },
           "streetAndNumber": {
             "label": "Ulica i numer domu",
@@ -860,13 +870,14 @@
           },
           "postcode": {
             "label": "Kod pocztowy",
-            "placeholder": "31-000"
+            "placeholder": "31-000",
+            "validation": "Podaj poprawny kod pocztowy, np. 31-000"
           },
           "city": {
             "label": "Miejscowość",
             "placeholder": "Kraków"
           },
-          "state": {
+          "region": {
             "label": "Województwo",
             "placeholder": "Małopolskie"
           },

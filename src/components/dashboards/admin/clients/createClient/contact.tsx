@@ -32,7 +32,7 @@ export function Contact() {
           />
         </div>
       )}
-      <div className="flex flex-col gap-3 md:flex-row">
+      <div className="flex flex-col gap-3 md:flex-row lg:flex-col">
         <ControlledInput
           name="contactDetails.email"
           control={control}

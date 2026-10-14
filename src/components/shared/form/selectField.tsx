@@ -43,7 +43,7 @@ export function ControlledSelect<T extends FieldValues>({
       </FieldLabel>
       <Select
         name={field.name}
-        value={field.value}
+        value={field.value ?? ""}
         onValueChange={field.onChange}
         inputRef={field.ref}
         items={items}

@@ -33,7 +33,7 @@ export function ClientType() {
       <RadioGroup
         aria-label={t("title")}
         className="sm:grid-cols-2"
-        value={field.value}
+        value={field.value ?? ""}
         onValueChange={field.onChange}
       >
         {CLIENT_TYPE.map(({ value, tags, icon }) => (

@@ -384,14 +384,14 @@ const clientsData: { name: string; gender: Gender; email?: string; phone?: strin
   },
 ];
 
-const DEFAULT_STATE = "Małopolskie";
+const DEFAULT_REGION = "Małopolskie";
 const DEFAULT_COUNTRY = "Polska";
 
 type SeedAddress = {
   streetAndNumber: string;
   postcode: string;
   city: string;
-  state?: string;
+  region?: string;
   country?: string;
 };
 
@@ -429,7 +429,7 @@ function individualAddress(index: number): SeedAddress {
     streetAndNumber: `${street} ${houseNumber}${apartment}`,
     postcode,
     city,
-    state: DEFAULT_STATE,
+    region: DEFAULT_REGION,
     country: DEFAULT_COUNTRY,
   };
 }
@@ -441,7 +441,7 @@ type BusinessSeed = {
   phone?: string;
   // osoba kontaktowa – zapisywana w firstName / lastName
   contact: { firstName: string; lastName: string };
-  // state i country domyślnie: Małopolskie, Polska
+  // region i country domyślnie: Małopolskie, Polska
   address: SeedAddress;
 };
 
@@ -480,7 +480,7 @@ const businessClientsData: BusinessSeed[] = [
       streetAndNumber: "ul. Prosta 51",
       postcode: "00-838",
       city: "Warszawa",
-      state: "Mazowieckie",
+      region: "Mazowieckie",
     },
   },
   {
@@ -578,7 +578,7 @@ async function seedClient() {
     ({ businessName, contact, address, ...client }) => ({
       ...client,
       ...contact,
-      state: DEFAULT_STATE,
+      region: DEFAULT_REGION,
       country: DEFAULT_COUNTRY,
       ...address,
       clientType: ClientType.Business,

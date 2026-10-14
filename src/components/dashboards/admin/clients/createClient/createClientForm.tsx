@@ -11,22 +11,25 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { BusinessSummary } from "./businessSummary";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createClientSchema, CreateClientType } from "@/validation/newClient";
+import { useMemo } from "react";
 
-export const defaultValues = {
-  clientType: "",
-  personalDetails: { firstName: "", lastName: "", gender: "", idCardNumber: "" },
+const defaultValues = {
+  personalDetails: { firstName: "", lastName: "", idCardNumber: "" },
   businessDetails: { businessName: "", taxId: "" },
   contactDetails: { email: "", phone: "" },
-  addressDetails: { streetAndNumber: "", postcode: "", city: "", state: "", country: "" },
+  addressDetails: { streetAndNumber: "", postcode: "", city: "", region: "", country: "" },
 };
 
 export function CreateClientForm() {
-  const t = useTranslations("Admin.Clients.Create.actions");
-  const formMethods = useForm({ defaultValues });
+  const t = useTranslations("Admin.Clients.Create");
+  const schema = useMemo(() => createClientSchema(t), [t]);
+  const formMethods = useForm<CreateClientType>({ defaultValues, resolver: zodResolver(schema) });
   const { handleSubmit, control } = formMethods;
   const clientType = useWatch({ control, name: "clientType" });
 
-  function onSubmit(data: unknown) {
+  async function onSubmit(data: CreateClientType) {
     console.log(data);
   }
   return (
@@ -43,9 +46,9 @@ export function CreateClientForm() {
               </div>
               <div className="flex flex-col gap-5 lg:sticky lg:top-23 lg:w-2/5 lg:self-start">
                 {clientType === "Individual" ? <IndividualSummary /> : <BusinessSummary />}
-                <Button type="submit">{t("submit")}</Button>
+                <Button type="submit">{t("actions.submit")}</Button>
                 <Link href="/admin/clients" className={buttonVariants({ variant: "outline" })}>
-                  {t("cancel")}
+                  {t("actions.cancel")}
                 </Link>
               </div>
             </div>
