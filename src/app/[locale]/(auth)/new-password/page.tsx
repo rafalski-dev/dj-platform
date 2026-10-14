@@ -1,6 +1,6 @@
 "use client";
 
-import { ControlledInput } from "@/components/shared/form/inputField";
+import { ControlledPasswordInput } from "@/components/shared/form/inputFields";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
 import { Spinner } from "@/components/ui/spinner";
@@ -84,14 +84,14 @@ function NewPasswordCard() {
       <CardContent className="border-border flex w-full flex-col items-center justify-center gap-6 px-0">
         <form id="new-password-form" onSubmit={handleSubmit(onSubmit)} className="w-full">
           <div className="flex w-full flex-col gap-4">
-            <ControlledInput
+            <ControlledPasswordInput
               name="password"
               control={control}
               label={t("NewPassword.form.password.label")}
               type="password"
               autoComplete="new-password"
             />
-            <ControlledInput
+            <ControlledPasswordInput
               name="confirmPassword"
               control={control}
               label={t("NewPassword.form.confirmPassword.label")}

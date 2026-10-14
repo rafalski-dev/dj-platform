@@ -1,6 +1,6 @@
 "use client";
 
-import { ControlledInput } from "@/components/shared/form/inputField";
+import { ControlledInput } from "@/components/shared/form/inputFields";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
 import { Spinner } from "@/components/ui/spinner";

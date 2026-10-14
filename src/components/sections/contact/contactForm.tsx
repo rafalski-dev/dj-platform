@@ -1,7 +1,7 @@
 "use client";
 
 import { ControlledCheckbox } from "@/components/shared/form/checkboxField";
-import { ControlledInput } from "@/components/shared/form/inputField";
+import { ControlledInput } from "@/components/shared/form/inputFields";
 import { ControlledSelect } from "@/components/shared/form/selectField";
 import { ControlledTextarea } from "@/components/shared/form/textareaField";
 import { Button } from "@/components/ui/button";
@@ -136,7 +136,7 @@ export function ContactForm({ className }: { className?: string }) {
             control={control}
             label={t("formInputs.eventType.label")}
             placeholder={t("formInputs.eventType.placeholder")}
-            list={eventTypeKeys.map(({ labelKey, value }) => ({
+            items={eventTypeKeys.map(({ labelKey, value }) => ({
               label: t(`formInputs.eventType.options.${labelKey}`),
               value: value,
             }))}

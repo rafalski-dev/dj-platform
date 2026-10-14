@@ -1,6 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
-import { ControlledCheckboxProps } from "@/types/formComponents";
+import { ControlledCheckboxProps } from "@/types/form";
 import { Controller, type FieldValues } from "react-hook-form";
 
 export function ControlledCheckbox<T extends FieldValues>({

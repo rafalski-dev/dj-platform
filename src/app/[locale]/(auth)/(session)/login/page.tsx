@@ -2,7 +2,7 @@
 
 import { GoogleIcon } from "@/components/icons/googleIcon";
 import { ControlledCheckbox } from "@/components/shared/form/checkboxField";
-import { ControlledInput } from "@/components/shared/form/inputField";
+import { ControlledInput, ControlledPasswordInput } from "@/components/shared/form/inputFields";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -154,7 +154,7 @@ function LoginCard() {
               autoComplete="email"
               type="email"
             />
-            <ControlledInput
+            <ControlledPasswordInput
               name="password"
               control={control}
               label={t("Login.form.password.label")}
@@ -162,6 +162,7 @@ function LoginCard() {
               type="password"
               forgotPassword
             />
+
             <ControlledCheckbox
               name="rememberMe"
               control={control}

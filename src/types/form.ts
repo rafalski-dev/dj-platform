@@ -6,17 +6,6 @@ export type ControlledCheckboxProps<T extends FieldValues> = {
   label: string;
 };
 
-export type ControlledInputProps<T extends FieldValues> = {
-  name: FieldPath<T>;
-  control: Control<T>;
-  label: string;
-  placeholder?: string;
-  autoComplete?: string;
-  type?: "text" | "email" | "tel" | "password";
-  required?: boolean;
-  forgotPassword?: boolean;
-};
-
 export type ControlledSelectProps<T extends FieldValues> = {
   name: FieldPath<T>;
   control: Control<T>;
