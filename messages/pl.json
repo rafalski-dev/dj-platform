@@ -779,6 +779,111 @@
           "descriptionFilter": "Żaden klient nie pasuje do wybranego filtra.",
           "action": "Wyczyść filtry"
         }
+      },
+      "Create": {
+        "page": {
+          "title": "Dodaj nowego klienta",
+          "description": "Uzupełnij podstawowe informacje o kliencie"
+        },
+        "clientType": {
+          "title": "Kim jest klient?",
+          "description": "Od tego zależy, jakie dane są potrzebne do umowy i rozliczeń.",
+          "options": {
+            "Individual": {
+              "title": "Osoba prywatna",
+              "description": "Wszystkie dane i umowa opierają się na dowodzie osobistym klienta, a nie na NIP-ie firmy."
+            },
+            "Business": {
+              "title": "Firma",
+              "description": "Wszystkie dane i umowa opierają się na NIP-ie firmy, a nie na dowodzie osobistym."
+            }
+          },
+          "tags": {
+            "fullName": "Imię i nazwisko",
+            "privateAddress": "Adres prywatny",
+            "idCard": "Dowód osobisty",
+            "companyName": "Nazwa firmy",
+            "companyAddress": "Adres firmy",
+            "taxId": "NIP"
+          }
+        },
+        "sections": {
+          "personalDetails": "Dane osobowe",
+          "businessDetails": "Dane firmy",
+          "contactDetails": "Dane kontaktowe",
+          "contactPerson": "Osoba kontaktowa",
+          "homeAddress": "Adres zamieszkania",
+          "businessAddress": "Adres firmy",
+          "preview": "Podgląd klienta"
+        },
+        "fields": {
+          "firstName": {
+            "label": "Imię",
+            "placeholder": "Jan"
+          },
+          "lastName": {
+            "label": "Nazwisko",
+            "placeholder": "Kowalski"
+          },
+          "idCardNumber": {
+            "label": "Numer dowodu osobistego",
+            "placeholder": "ABC 123456"
+          },
+          "gender": {
+            "label": "Płeć",
+            "placeholder": "Wybierz płeć",
+            "options": {
+              "Male": "Mężczyzna",
+              "Female": "Kobieta",
+              "Other": "Inna"
+            }
+          },
+          "businessName": {
+            "label": "Nazwa firmy / instytucji",
+            "placeholder": "TechConf Polska Sp. z o.o."
+          },
+          "taxId": {
+            "label": "NIP",
+            "placeholder": "677-123-45-67"
+          },
+          "email": {
+            "label": "Adres e-mail",
+            "placeholder": "jan.kowalski@example.com"
+          },
+          "phone": {
+            "label": "Numer telefonu",
+            "placeholder": "600 123 456"
+          },
+          "streetAndNumber": {
+            "label": "Ulica i numer domu",
+            "placeholder": "ul. Długa 12/4"
+          },
+          "postcode": {
+            "label": "Kod pocztowy",
+            "placeholder": "31-000"
+          },
+          "city": {
+            "label": "Miejscowość",
+            "placeholder": "Kraków"
+          },
+          "state": {
+            "label": "Województwo",
+            "placeholder": "Małopolskie"
+          },
+          "country": {
+            "label": "Kraj",
+            "placeholder": "Polska"
+          }
+        },
+        "preview": {
+          "fullNamePlaceholder": "Imię i nazwisko",
+          "businessNamePlaceholder": "Nazwa firmy",
+          "notProvided": "Nie podano"
+        },
+        "actions": {
+          "submit": "Dodaj klienta",
+          "cancel": "Anuluj"
+        }
       }
     }
   }

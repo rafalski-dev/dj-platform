@@ -267,19 +267,19 @@
         "formInputs": {
           "fullName": {
             "label": "Full name",
-            "placeholder": "Steven Johnson",
+            "placeholder": "Jan Kowalski",
             "required": "Provide full name",
             "validation": "Full name must contain at least 2 words"
           },
           "email": {
             "label": "E-mail",
-            "placeholder": "sample@email.com",
+            "placeholder": "jankowalski@email.com",
             "required": "Provide e-mail address",
             "validation": "Provide a correct e-mail"
           },
           "phone": {
             "label": "Phone",
-            "placeholder": "07890 123456",
+            "placeholder": "600 123 456",
             "required": "Provide phone number",
             "validation": "Provide correct phone number, number must contain at least 9 digits."
           },
@@ -305,7 +305,7 @@
           },
           "place": {
             "label": "Place name / address",
-            "placeholder": "The Ledbury",
+            "placeholder": "Pałac Mała Wieś",
             "validation": "Place name must contains at least 3 characters"
           },
           "message": {
@@ -439,7 +439,7 @@
       "form": {
         "email": {
           "label": "Email",
-          "placeholder": "email@sample.com",
+          "placeholder": "email@przyklad.pl",
           "required": "Provide address email",
           "error": "Provide correct address email"
         },
@@ -482,17 +482,17 @@
       "form": {
         "firstName": {
           "label": "First name",
-          "placeholder": "Steven",
+          "placeholder": "Jan",
           "required": "Provide first name"
         },
         "lastName": {
           "label": "Last name",
-          "placeholder": "Johnson",
+          "placeholder": "Kowalski",
           "required": "Provide last name"
         },
         "email": {
           "label": "Email",
-          "placeholder": "email@sample.com",
+          "placeholder": "email@przyklad.pl",
           "required": "Provide email address",
           "error": "Provide correct email address"
         },
@@ -552,7 +552,7 @@
       "form": {
         "email": {
           "label": "Email",
-          "placeholder": "email@sample.com",
+          "placeholder": "email@przyklad.pl",
           "required": "Provide address email",
           "error": "Provide correct address email"
         },
@@ -789,6 +789,111 @@
           "descriptionQuery": "No clients match “{query}”.",
           "descriptionFilter": "No clients match the selected filter.",
           "action": "Clear filters"
+        }
+      },
+      "Create": {
+        "page": {
+          "title": "Create new client",
+          "description": "Fill in the basic information about the client"
+        },
+        "clientType": {
+          "title": "Who is the client?",
+          "description": "This determines which details are needed for the contract and billing.",
+          "options": {
+            "Individual": {
+              "title": "Individual",
+              "description": "All details and the contract are based on the client's ID card, not a company Tax ID."
+            },
+            "Business": {
+              "title": "Business",
+              "description": "All details and the contract are based on the company's Tax ID, not a personal ID card."
+            }
+          },
+          "tags": {
+            "fullName": "Full name",
+            "privateAddress": "Private address",
+            "idCard": "ID card",
+            "companyName": "Company name",
+            "companyAddress": "Company address",
+            "taxId": "Tax ID"
+          }
+        },
+        "sections": {
+          "personalDetails": "Personal details",
+          "businessDetails": "Business details",
+          "contactDetails": "Contact details",
+          "contactPerson": "Contact person",
+          "homeAddress": "Home address",
+          "businessAddress": "Business address",
+          "preview": "Client preview"
+        },
+        "fields": {
+          "firstName": {
+            "label": "First name",
+            "placeholder": "Jan"
+          },
+          "lastName": {
+            "label": "Last name",
+            "placeholder": "Kowalski"
+          },
+          "idCardNumber": {
+            "label": "ID card number",
+            "placeholder": "ABC 123456"
+          },
+          "gender": {
+            "label": "Gender",
+            "placeholder": "Select gender",
+            "options": {
+              "Male": "Male",
+              "Female": "Female",
+              "Other": "Other"
+            }
+          },
+          "businessName": {
+            "label": "Business / institution name",
+            "placeholder": "TechConf Polska Sp. z o.o."
+          },
+          "taxId": {
+            "label": "Tax ID (NIP)",
+            "placeholder": "677-123-45-67"
+          },
+          "email": {
+            "label": "Email address",
+            "placeholder": "jan.kowalski@example.com"
+          },
+          "phone": {
+            "label": "Phone number",
+            "placeholder": "600 123 456"
+          },
+          "streetAndNumber": {
+            "label": "Street and house number",
+            "placeholder": "ul. Długa 12/4"
+          },
+          "postcode": {
+            "label": "Postcode",
+            "placeholder": "31-000"
+          },
+          "city": {
+            "label": "City",
+            "placeholder": "Kraków"
+          },
+          "state": {
+            "label": "Region",
+            "placeholder": "Lesser Poland"
+          },
+          "country": {
+            "label": "Country",
+            "placeholder": "Poland"
+          }
+        },
+        "preview": {
+          "fullNamePlaceholder": "Full name",
+          "businessNamePlaceholder": "Business name",
+          "notProvided": "Not provided"
+        },
+        "actions": {
+          "submit": "Create client",
+          "cancel": "Cancel"
         }
       }
     }
