@@ -64,7 +64,7 @@ export function SearchBar({
       />
 
       {searchValue && (
-        <Button variant="input" size="icon-sm" onClick={clearInput} aria-label={clearLabel}>
+        <Button variant="ghost" size="icon-sm" onClick={clearInput} aria-label={clearLabel}>
           <XIcon />
         </Button>
       )}
