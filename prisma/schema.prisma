@@ -13,6 +13,11 @@ enum Role {
   Admin
 }
 
+enum ClientType {
+	Business
+	Individual
+}
+
 enum EventType {
   Wedding
   Prom
@@ -106,48 +111,94 @@ model Verification {
 }
 
 model Client {
-  id            String          @id @default(cuid())
-  name          String
-  gender        Gender
-  email         String?         @unique
-  phone         String?         
+  id                   String       @id @default(cuid())
+  clientType           ClientType
+  name                 String       // display name: "Jan Kowalski" or business name
 
-  userId        String?         @unique
-  user          User?           @relation(fields: [userId], references: [id])
+  // private client
+  firstName            String?
+  lastName             String?
+  gender               Gender?
+  idCardNumber         String?
 
-  events        Event[]
+  // business client
+  businessName         String?
+  taxId                String?      @unique
 
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
+  email                String?      @unique
+  phone                String?
+
+  // address
+  streetAndNumber      String?
+  postcode             String?
+  city                 String?
+  state                String?
+  country              String?
+
+  note                 String?
+
+  userId               String?      @unique
+  user                 User?        @relation(fields: [userId], references: [id])
+
+  events               Event[]
+
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
 
   @@map("client")
 }
 
 model Event {
-  id            String          @id @default(cuid())
-  title         String
-  eventType     EventType
-  eventStatus   EventStatus     @default(Pending)
+  id                   String       @id @default(cuid())
+  title                String
+  eventType            EventType
+  eventStatus          EventStatus  @default(Pending)
 
-  phone         String?
+  eventDate            DateTime     @db.Date
+  startsAt             DateTime?
+  endsAt               DateTime?
 
-  eventDate     DateTime
-  startTime     String?
-  endTime       String         
+  eventPlace           String
+  city                 String
 
-  eventPlace         String
+  guestCount           Int?
+  notes                String?
+  secondPartnerName    String?
 
-  guestCount    Int?
-  notes         String?
+  clientId             String
+  client               Client       @relation(fields: [clientId], references: [id])
 
-  partner1Name  String?
-  partner2Name  String?
-  clientId      String
-  client        Client      @relation(fields: [clientId], references: [id])
+  contract             Contract?
+  playlist             Playlist?
 
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
 
   @@index([clientId])
+  @@index([eventDate])
   @@map("event")
+}
+
+model Contract {
+  id                   String       @id @default(cuid())
+
+  eventId              String       @unique
+  event                Event        @relation(fields: [eventId], references: [id])
+
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  @@map("contract")
+}
+
+model Playlist {
+  id                   String       @id @default(cuid())
+
+  eventId              String       @unique
+  event                Event        @relation(fields: [eventId], references: [id])
+
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  @@map("playlist")
 }
