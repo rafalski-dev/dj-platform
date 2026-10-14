@@ -1,13 +1,31 @@
 import { db } from "@/lib/db";
-import { EventStatus, EventType } from "../../generated";
+import { EventStatus, EventType, Prisma } from "../../generated";
+import { toEventDates } from "@/lib/eventDates";
 
-const eventsData = [
+type SeedEvent = {
+  clientName: string;
+  date: string;
+  startTime?: string;
+  endTime?: string;
+  eventPlace: string;
+  city: string;
+  title: string;
+  guestCount?: number;
+  notes?: string;
+  partner1Name?: string;
+  partner2Name?: string;
+  eventType: EventType;
+  eventStatus?: EventStatus;
+};
+
+const eventsData: SeedEvent[] = [
   {
     clientName: "Monika Rusin",
-    eventDate: new Date("12-12-2026"),
+    date: "2026-12-12",
     startTime: "15:00",
     endTime: "03:00",
     eventPlace: "Zajazd pod gruszą",
+    city: "Wieliczka",
     title: "Wesele Moniki & Adama",
     guestCount: 150,
     partner1Name: "Monika Rusin",
@@ -16,13 +34,13 @@ const eventsData = [
   },
   {
     clientName: "Magdalena Adamczyk",
-    eventDate: new Date("2026-05-23"),
+    date: "2026-05-23",
     startTime: "16:00",
     endTime: "04:00",
-    eventPlace: "Dwór Pod Lipami, Niepołomice",
+    eventPlace: "Dwór Pod Lipami",
+    city: "Niepołomice",
     title: "Wesele Magdaleny & Piotra",
     guestCount: 130,
-    phone: "692447015",
     partner1Name: "Magdalena Adamczyk",
     partner2Name: "Piotr Lewandowski",
     notes: "Pierwszy taniec: walc angielski. Oczepiny o północy.",
@@ -31,10 +49,11 @@ const eventsData = [
   },
   {
     clientName: "Katarzyna Zając",
-    eventDate: new Date("2026-06-20"),
+    date: "2026-06-20",
     startTime: "17:00",
     endTime: "03:00",
-    eventPlace: "Stara Stodoła, Zabierzów",
+    eventPlace: "Stara Stodoła",
+    city: "Zabierzów",
     title: "Wesele Katarzyny & Michała",
     guestCount: 90,
     partner1Name: "Katarzyna Zając",
@@ -44,9 +63,10 @@ const eventsData = [
   },
   {
     clientName: "Łukasz Górecki",
-    eventDate: new Date("2026-07-18"),
+    date: "2026-07-18",
     endTime: "00:00",
     eventPlace: "Restauracja Nad Stawem",
+    city: "Skawina",
     title: "25. rocznica ślubu Góreckich",
     partner1Name: "Ewa Górecka",
     partner2Name: "Marek Górecki",
@@ -55,69 +75,72 @@ const eventsData = [
   },
   {
     clientName: "Joanna Kaczmarek",
-    eventDate: new Date("2026-08-29"),
+    date: "2026-08-29",
     startTime: "18:00",
     endTime: "02:00",
-    eventPlace: "Klub Piwnica, Kraków",
+    eventPlace: "Klub Piwnica",
+    city: "Kraków",
     title: "18. urodziny Oli",
     guestCount: 45,
-    phone: "664318204",
     notes: "Bez disco polo. Dużo muzyki z lat 2000.",
     eventType: EventType.Birthday_18,
     eventStatus: EventStatus.Completed,
   },
   {
-    clientName: "Krzysztof Sikora",
-    eventDate: new Date("2026-09-05"),
+    clientName: "Miejski Ośrodek Kultury",
+    date: "2026-09-05",
     startTime: "20:00",
     endTime: "23:30",
     eventPlace: "Rynek, scena plenerowa",
+    city: "Myślenice",
     title: "Dni Miasta - scena taneczna",
-    phone: "733170971",
     notes: "Odwołane przez organizatora z powodu pogody.",
     eventType: EventType.Festival,
     eventStatus: EventStatus.Cancelled,
   },
   {
-    clientName: "Paweł Majewski",
-    eventDate: new Date("2026-09-11"),
+    clientName: "Panorama Group",
+    date: "2026-09-11",
     startTime: "19:00",
     endTime: "01:00",
     eventPlace: "Hotel Panorama, sala bankietowa",
+    city: "Kraków",
     title: "Jubileusz 10-lecia firmy",
     guestCount: 80,
     eventType: EventType.Corporate_Event,
     eventStatus: EventStatus.Completed,
   },
   {
-    clientName: "Dawid Lis",
-    eventDate: new Date("2026-11-06"),
+    clientName: "Młyn Events",
+    date: "2026-11-06",
     startTime: "09:00",
     endTime: "17:00",
     eventPlace: "Centrum Konferencyjne Młyn",
+    city: "Kraków",
     title: "Konferencja branżowa - oprawa muzyczna",
-    phone: "551281837",
     notes: "Potrzebne 2 mikrofony bezprzewodowe i nagłośnienie sali.",
     eventType: EventType.Conference,
     eventStatus: EventStatus.Active,
   },
   {
     clientName: "Alex Nowak",
-    eventDate: new Date("2026-11-28"),
+    date: "2026-11-28",
     startTime: "20:00",
     endTime: "03:00",
-    eventPlace: "Klub Piwnica, Kraków",
+    eventPlace: "Klub Piwnica",
+    city: "Kraków",
     title: "Impreza andrzejkowa",
     guestCount: 60,
     eventType: EventType.Other,
     eventStatus: EventStatus.Active,
   },
   {
-    clientName: "Paweł Majewski",
-    eventDate: new Date("2026-12-18"),
+    clientName: "Panorama Group",
+    date: "2026-12-18",
     startTime: "18:00",
     endTime: "00:00",
     eventPlace: "Hotel Panorama, sala bankietowa",
+    city: "Kraków",
     title: "Wigilia firmowa",
     guestCount: 120,
     notes: "Pierwsza godzina tylko kolędy i muzyka w tle.",
@@ -126,10 +149,11 @@ const eventsData = [
   },
   {
     clientName: "Natalia Baran",
-    eventDate: new Date("2027-01-23"),
+    date: "2027-01-23",
     startTime: "19:00",
     endTime: "04:00",
-    eventPlace: "Dwór Pod Lipami, Niepołomice",
+    eventPlace: "Dwór Pod Lipami",
+    city: "Niepołomice",
     title: "Studniówka klas maturalnych",
     guestCount: 220,
     notes: "Polonez o 19:30 - własne nagranie od szkoły.",
@@ -138,22 +162,23 @@ const eventsData = [
   },
   {
     clientName: "Aleksandra Kubiak",
-    eventDate: new Date("2027-03-06"),
+    date: "2027-03-06",
     endTime: "01:00",
     eventPlace: "Restauracja Nad Stawem",
+    city: "Skawina",
     title: "18. urodziny Aleksandry",
     guestCount: 30,
     eventType: EventType.Birthday_18,
   },
   {
     clientName: "Zuzanna Michalska",
-    eventDate: new Date("2027-06-19"),
+    date: "2027-06-19",
     startTime: "16:30",
     endTime: "04:00",
-    eventPlace: "Stara Stodoła, Zabierzów",
+    eventPlace: "Stara Stodoła",
+    city: "Zabierzów",
     title: "Wesele Zuzanny & Kacpra",
     guestCount: 140,
-    phone: "608923561",
     partner1Name: "Zuzanna Michalska",
     partner2Name: "Kacper Zieliński",
     eventType: EventType.Wedding,
@@ -161,18 +186,20 @@ const eventsData = [
   },
   {
     clientName: "Agnieszka Wróbel",
-    eventDate: new Date("2027-08-21"),
+    date: "2027-08-21",
     endTime: "04:00",
     eventPlace: "Do ustalenia",
+    city: "Kraków",
     title: "Wesele Agnieszki",
     partner1Name: "Agnieszka Wróbel",
     eventType: EventType.Wedding,
   },
   {
     clientName: "Karolina Wieczorek",
-    eventDate: new Date("2027-09-11"),
+    date: "2027-09-11",
     endTime: "03:00",
     eventPlace: "Pałacyk Leśny",
+    city: "Wieliczka",
     title: "Wesele Karoliny & Marcina",
     partner1Name: "Karolina Wieczorek",
     partner2Name: "Marcin Pietrzak",
@@ -181,10 +208,11 @@ const eventsData = [
   },
   {
     clientName: "Tomasz Nowicki",
-    eventDate: new Date("2026-04-25"),
+    date: "2026-04-25",
     startTime: "16:00",
     endTime: "03:00",
     eventPlace: "Dwór Zieleniec",
+    city: "Zielonki",
     title: "Wesele Tomasza & Ewy",
     guestCount: 110,
     partner1Name: "Ewa Malinowska",
@@ -194,10 +222,11 @@ const eventsData = [
   },
   {
     clientName: "Weronika Dudek",
-    eventDate: new Date("2026-05-09"),
+    date: "2026-05-09",
     startTime: "18:00",
     endTime: "01:00",
-    eventPlace: "Klub Forty, Kraków",
+    eventPlace: "Klub Forty",
+    city: "Kraków",
     title: "18. urodziny Weroniki",
     guestCount: 50,
     eventType: EventType.Birthday_18,
@@ -205,13 +234,13 @@ const eventsData = [
   },
   {
     clientName: "Michał Pawlak",
-    eventDate: new Date("2026-06-06"),
+    date: "2026-06-06",
     startTime: "17:00",
     endTime: "04:00",
-    eventPlace: "Pałac Goetz, Brzesko",
+    eventPlace: "Pałac Goetz",
+    city: "Brzesko",
     title: "Wesele Michała & Kingi",
     guestCount: 160,
-    phone: "559155133",
     partner1Name: "Kinga Sowa",
     partner2Name: "Michał Pawlak",
     eventType: EventType.Wedding,
@@ -219,10 +248,11 @@ const eventsData = [
   },
   {
     clientName: "Sebastian Czarnecki",
-    eventDate: new Date("2026-07-04"),
+    date: "2026-07-04",
     startTime: "19:00",
     endTime: "23:00",
     eventPlace: "Bulwary Wiślane, scena letnia",
+    city: "Kraków",
     title: "Letni festiwal nad Wisłą",
     notes: "Set 120-128 BPM, house i nu-disco.",
     eventType: EventType.Festival,
@@ -230,10 +260,11 @@ const eventsData = [
   },
   {
     clientName: "Julia Kołodziej",
-    eventDate: new Date("2026-08-15"),
+    date: "2026-08-15",
     startTime: "16:00",
     endTime: "03:00",
     eventPlace: "Zajazd pod gruszą",
+    city: "Wieliczka",
     title: "Wesele Julii & Szymona",
     guestCount: 95,
     partner1Name: "Julia Kołodziej",
@@ -244,34 +275,35 @@ const eventsData = [
   },
   {
     clientName: "Anna Lewandowska",
-    eventDate: new Date("2026-10-17"),
+    date: "2026-10-17",
     startTime: "19:00",
     endTime: "02:00",
     eventPlace: "Hotel Panorama, sala bankietowa",
+    city: "Kraków",
     title: "40. urodziny Anny",
     guestCount: 70,
-    phone: "602341778",
     eventType: EventType.Other,
     eventStatus: EventStatus.Active,
   },
   {
-    clientName: "Piotr Zieliński",
-    eventDate: new Date("2026-10-24"),
+    clientName: "TechConf Polska",
+    date: "2026-10-24",
     startTime: "09:00",
     endTime: "16:00",
     eventPlace: "ICE Kraków, sala B",
+    city: "Kraków",
     title: "TechConf Polska - oprawa muzyczna",
-    phone: "698117420",
     notes: "Muzyka w przerwach + intro prelegentów.",
     eventType: EventType.Conference,
     eventStatus: EventStatus.Active,
   },
   {
-    clientName: "Kamil Mazur",
-    eventDate: new Date("2026-11-14"),
+    clientName: "Mazur Logistics",
+    date: "2026-11-14",
     startTime: "20:00",
     endTime: "02:00",
     eventPlace: "Restauracja Wierzynek",
+    city: "Kraków",
     title: "Impreza firmowa Mazur Logistics",
     guestCount: 85,
     eventType: EventType.Corporate_Event,
@@ -279,22 +311,23 @@ const eventsData = [
   },
   {
     clientName: "Martyna Krawczyk",
-    eventDate: new Date("2027-01-16"),
+    date: "2027-01-16",
     startTime: "19:00",
     endTime: "04:00",
     eventPlace: "Pałacyk Leśny",
+    city: "Wieliczka",
     title: "Studniówka II LO",
     guestCount: 180,
-    phone: "791604215",
     eventType: EventType.Prom,
     eventStatus: EventStatus.Active,
   },
   {
     clientName: "Magdalena Adamczyk",
-    eventDate: new Date("2027-05-22"),
+    date: "2027-05-22",
     startTime: "18:00",
     endTime: "01:00",
-    eventPlace: "Dwór Pod Lipami, Niepołomice",
+    eventPlace: "Dwór Pod Lipami",
+    city: "Niepołomice",
     title: "1. rocznica ślubu Magdaleny & Piotra",
     guestCount: 40,
     partner1Name: "Magdalena Adamczyk",
@@ -303,9 +336,10 @@ const eventsData = [
   },
   {
     clientName: "Mateusz Król",
-    eventDate: new Date("2027-05-29"),
+    date: "2027-05-29",
     endTime: "04:00",
     eventPlace: "Do ustalenia",
+    city: "Kraków",
     title: "Wesele Mateusza & Oliwii",
     partner1Name: "Oliwia Szymańska",
     partner2Name: "Mateusz Król",
@@ -313,13 +347,13 @@ const eventsData = [
   },
   {
     clientName: "Emilia Kaczmarek",
-    eventDate: new Date("2027-06-26"),
+    date: "2027-06-26",
     startTime: "16:00",
     endTime: "03:00",
-    eventPlace: "Stara Stodoła, Zabierzów",
+    eventPlace: "Stara Stodoła",
+    city: "Zabierzów",
     title: "Wesele Emilii & Adama",
     guestCount: 120,
-    phone: "600523645",
     partner1Name: "Emilia Kaczmarek",
     partner2Name: "Adam Wójcik",
     eventType: EventType.Wedding,
@@ -327,23 +361,24 @@ const eventsData = [
   },
   {
     clientName: "Patrycja Sobczak",
-    eventDate: new Date("2027-07-10"),
+    date: "2027-07-10",
     startTime: "18:00",
     endTime: "02:00",
-    eventPlace: "Klub Piwnica, Kraków",
+    eventPlace: "Klub Piwnica",
+    city: "Kraków",
     title: "18. urodziny Patrycji",
     guestCount: 40,
     eventType: EventType.Birthday_18,
   },
   {
     clientName: "Adrian Jasiński",
-    eventDate: new Date("2027-08-07"),
+    date: "2027-08-07",
     startTime: "17:00",
     endTime: "04:00",
     eventPlace: "Dwór Zieleniec",
+    city: "Zielonki",
     title: "Wesele Adriana & Moniki",
     guestCount: 150,
-    phone: "555218485",
     partner1Name: "Monika Lis",
     partner2Name: "Adrian Jasiński",
     eventType: EventType.Wedding,
@@ -351,9 +386,10 @@ const eventsData = [
   },
   {
     clientName: "Alicja Nowak",
-    eventDate: new Date("2027-09-25"),
+    date: "2027-09-25",
     endTime: "00:00",
     eventPlace: "Restauracja Nad Stawem",
+    city: "Skawina",
     title: "30. rocznica ślubu Nowaków",
     partner1Name: "Alicja Nowak",
     partner2Name: "Jerzy Nowak",
@@ -368,16 +404,31 @@ async function seedingEventsData() {
 
   const clients = await db.client.findMany({ select: { id: true, name: true } });
 
-  const eventsDataWithClientId = eventsData.map(({ clientName, ...event }) => {
-    const client = clients.find((el) => el.name === clientName);
+  const eventsDataWithClientId: Prisma.EventCreateManyInput[] = eventsData.map(
+    ({ clientName, date, startTime, endTime, partner1Name, partner2Name, ...event }) => {
+      const client = clients.find((el) => el.name === clientName);
 
-    if (!client) {
-      throw new Error(`Client "${clientName}" not found`);
-    }
+      if (!client) {
+        throw new Error(`Client "${clientName}" not found`);
+      }
 
-    return { ...event, clientId: client.id };
-  });
+      // the client is one of the partners, the other one is stored as secondPartnerName
+      const partners = [partner1Name, partner2Name].filter((name) => name !== undefined);
+      const secondPartnerName = partners.includes(clientName)
+        ? (partners.find((name) => name !== clientName) ?? null)
+        : null;
 
+      return {
+        ...event,
+        ...toEventDates(date, startTime, endTime),
+        secondPartnerName,
+        clientId: client.id,
+      };
+    },
+  );
+
+  await db.contract.deleteMany();
+  await db.playlist.deleteMany();
   await db.event.deleteMany();
 
   const events = await db.event.createMany({ data: eventsDataWithClientId });
