@@ -52,9 +52,9 @@ export default async function Clients({
   return (
     <div className="flex flex-col gap-4">
       <PageHeader
-        labelText={t("count", { count: totalClients })}
-        titleText={t("title")}
-        buttonText={t("addingBtn")}
+        label={t("count", { count: totalClients })}
+        title={t("title")}
+        action={{ btnLabel: t("addingBtn"), pathname: "/admin/clients/create" }}
       />
       <Suspense fallback={<CardsSkeleton count={cardsData.length} />}>
         <ClientsStatsCards />
