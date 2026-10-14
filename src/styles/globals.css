@@ -14,6 +14,7 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
+  --color-subtle-foreground: var(--subtle-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
@@ -28,6 +29,7 @@
   --color-success-bg: var(--success-bg);
   --color-success-text: var(--success-text);
   --color-success-border: var(--success-border);
+  --color-gold-light: var(--gold-light);
   --color-gold-dark: var(--gold-dark);
   --color-skeleton-base: var(--skeleton-base);
   --color-skeleton-second: var(--skeleton-second);
@@ -116,6 +118,7 @@
 
   --muted: rgb(21, 18, 13);
   --muted-foreground: rgb(183, 171, 148);
+  --subtle-foreground: rgb(143, 133, 111);
 
   --accent: rgb(214, 176, 116);
   --accent-foreground: rgb(214, 176, 116);
