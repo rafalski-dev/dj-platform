@@ -137,10 +137,11 @@ export async function ClientsTable({
                       <StatusBadge status="New" />
                     )}
                   </TableCell>
-                  <TableCell className="pr-0">
+                  <TableCell className="text-right">
                     <Button
                       variant="secondary"
                       size="icon"
+
                       aria-label={t("table.details", { name })}
                     >
                       <ArrowRight className="text-muted-foreground group-hover:text-accent-foreground size-5 transition-colors" />
