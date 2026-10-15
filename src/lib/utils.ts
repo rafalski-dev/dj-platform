@@ -1,3 +1,4 @@
+import { CreateClientType } from "@/validation/newClient";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -84,4 +85,52 @@ export function getErrorTranslation(error: { code?: string; status?: number } | 
     default:
       return "default";
   }
+}
+
+export function clientDataFormatter(data: CreateClientType) {
+  const {
+    clientType,
+    personalDetails: { firstName, lastName },
+    contactDetails: { email, phone },
+    addressDetails: { streetAndNumber, postcode, city, region, country },
+  } = data;
+
+  function emptyToNull(value: string) {
+    if (value === "") return null;
+    return value;
+  }
+
+  if (data.clientType === "Individual") {
+    return {
+      clientType,
+      name: `${firstName} ${lastName}`,
+      firstName,
+      lastName,
+      idCardNumber: emptyToNull(data.personalDetails.idCardNumber),
+      gender: data.personalDetails.gender,
+      email,
+      phone: emptyToNull(phone),
+      streetAndNumber: emptyToNull(streetAndNumber),
+      postcode: emptyToNull(postcode),
+      city: emptyToNull(city),
+      region: emptyToNull(region),
+      country: emptyToNull(country),
+    };
+  }
+
+  return {
+    clientType,
+    businessName: data.businessDetails.businessName,
+    name: data.businessDetails.businessName,
+    taxId: data.businessDetails.taxId,
+    firstName,
+    lastName,
+    email,
+    phone: emptyToNull(phone),
+    streetAndNumber: emptyToNull(streetAndNumber),
+    postcode: emptyToNull(postcode),
+    city: emptyToNull(city),
+    region: emptyToNull(region),
+    country: emptyToNull(country),
+  };
 }

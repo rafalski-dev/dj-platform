@@ -894,6 +894,16 @@
         "actions": {
           "submit": "Dodaj klienta",
           "cancel": "Anuluj"
+        },
+        "serverMessage": {
+          "invalid": "Niektóre pola wymagają poprawy. Sprawdź zaznaczone pola i spróbuj ponownie.",
+          "success": "Dodano {name} do Twoich klientów.",
+          "duplicate": "Klient z tym adresem e-mail lub NIP-em już istnieje. Sprawdź listę klientów.",
+          "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+        },
+        "toast": {
+          "successTitle": "Klient został dodany",
+          "errorTitle": "Nie udało się dodać klienta"
         }
       }
     }
