@@ -31,12 +31,12 @@ export function ControlledTextarea<T extends FieldValues>({
   return (
     <Field data-invalid={invalid}>
       <FieldLabel htmlFor={name}>
-        <div>
+        <div className="flex w-full flex-row items-center justify-between">
           <div>
             {label}
             {required && <Required />}
           </div>
-          {hint && <div>{hint}</div>}
+          {hint && <div className="text-accent-foreground text-xs">{hint}</div>}
         </div>
       </FieldLabel>
       <Textarea aria-invalid={invalid} id={name} {...field} {...inputProps} />
