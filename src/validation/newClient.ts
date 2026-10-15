@@ -21,24 +21,23 @@ export function createClientSchema(t: CreateClientTranslator) {
       .trim()
       .min(1, { error: t("fields.email.required") })
       .email({ error: t("fields.email.validation") }),
-    phone: z.union([
-      z.literal(""),
-      z
-        .string()
-        .trim()
-        .regex(/^(?:\+48)?(?:[\s-]?\d){9}$/, { error: t("fields.phone.validation") }),
-    ]),
+    phone: z
+      .string()
+      .trim()
+      .refine((val) => val === "" || /^(?:\+48)?(?:[\s-]?\d){9}$/.test(val), {
+        error: t("fields.phone.validation"),
+      })
+      .transform((val) => val.replace(/\D/g, "").slice(-9)),
   });
 
   const address = z.object({
     streetAndNumber: z.string().trim(),
-    postcode: z.union([
-      z.literal(""),
-      z
-        .string()
-        .trim()
-        .regex(/^[0-9]{2}-[0-9]{3}$/, { error: t("fields.postcode.validation") }),
-    ]),
+    postcode: z
+      .string()
+      .trim()
+      .refine((val) => val === "" || /^[0-9]{2}-[0-9]{3}$/.test(val), {
+        error: t("fields.postcode.validation"),
+      }),
     city: z.string().trim(),
     region: z.string().trim(),
     country: z.string().trim(),
@@ -49,14 +48,14 @@ export function createClientSchema(t: CreateClientTranslator) {
       clientType: z.literal("Individual"),
       personalDetails: z.object({
         ...personalDetails,
-        idCardNumber: z.union([
-          z.literal(""),
-          z
-            .string()
-            .trim()
-            .toUpperCase()
-            .regex(/^[A-Z]{3} [0-9]{6}$/, { error: t("fields.idCardNumber.validation") }),
-        ]),
+        idCardNumber: z
+          .string()
+          .trim()
+          .toUpperCase()
+          .refine((val) => val === "" || /^[A-Z]{3} [0-9]{6}$/.test(val), {
+            error: t("fields.idCardNumber.validation"),
+          }),
+
         gender: z.enum(["Male", "Female", "Other"], { error: t("fields.gender.required") }),
       }),
       contactDetails: contactDetails,
