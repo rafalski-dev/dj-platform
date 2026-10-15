@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { cormorant, manrope } from "@/components/fonts/fonts";
+import { cormorant, manrope } from "@/components/ui/fonts/fonts";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";

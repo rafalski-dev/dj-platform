@@ -1,6 +1,6 @@
 "use server";
 
-import { EmailTemplate } from "@/components/template/emailTemplate";
+import { EmailTemplate } from "@/components/templates/emailTemplate";
 import { resend } from "@/lib/resend";
 import { ContactFormResult } from "@/types/contact";
 import { ContactSchema, createContactSchema } from "@/validation/contact";
