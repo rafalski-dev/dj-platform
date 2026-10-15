@@ -154,6 +154,7 @@ export function ContactForm({ className }: { className?: string }) {
             label={t("formInputs.message.label")}
             placeholder={t("formInputs.message.placeholder")}
             hint={t("formInputs.message.hint")}
+            className="min-h-30"
             required
           />
 
