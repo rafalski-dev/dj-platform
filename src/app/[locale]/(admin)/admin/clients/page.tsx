@@ -77,7 +77,7 @@ export default async function Clients({
         </Suspense>
 
         {totalClients > 0 && (
-          <div className="flex flex-row justify-center px-4 md:justify-between md:px-0">
+          <div className="flex flex-row justify-between px-4 md:px-0">
             <RowsPerPage persistedParams={persistedParams} pathname="/admin/clients" />
             <Pagination
               persistedParams={persistedParams}
