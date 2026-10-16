@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/empty";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Pathname } from "@/types/navigation";
 
 type ShowEmptyProps = {
   icon: ReactNode;
@@ -17,7 +18,7 @@ type ShowEmptyProps = {
   description: string;
   action?: {
     label: string;
-    href: ComponentProps<typeof Link>["href"];
+    href: Pathname;
     icon?: ReactNode;
   };
 };

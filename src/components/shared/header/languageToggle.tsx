@@ -1,14 +1,17 @@
 "use client";
 
 import { useLocale } from "next-intl";
+import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { usePathname, getPathname } from "@/i18n/navigation";
 
 export function LanguageToggle({ ariaLabel }: { ariaLabel: string }) {
   const locale = useLocale();
   const pathname = usePathname();
+  const params = useParams();
   const other = locale === "pl" ? "en" : "pl";
-  const href = getPathname({ href: pathname, locale: other });
+  // @ts-expect-error -- params always match the current pathname
+  const href = getPathname({ href: { pathname, params }, locale: other });
 
   return (
     <Button
