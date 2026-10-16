@@ -1,11 +1,10 @@
-import { ClientsTable } from "@/components/dashboards/admin/clients/tableClients/clientsTable";
 import { ClientsStatsCards } from "@/components/dashboards/admin/clients/tableClients/clientsStatsCards";
 import { Filters } from "@/components/dashboards/shared/filters";
 import { RowsPerPage } from "@/components/dashboards/shared/rowsPerPage";
 import { SearchBar } from "@/components/dashboards/shared/searchBar";
 import { PageHeader } from "@/components/dashboards/shared/pageHeader";
 import { CardsSkeleton } from "@/components/dashboards/skeletons/cardsSkeleton";
-import { ClientsTableSkeleton } from "@/components/dashboards/skeletons/clientsTableSkeleton";
+import { ClientsListSkeleton } from "@/components/dashboards/skeletons/clientsListSkeleton";
 import { cardsData } from "@/constants/admin";
 import { filtersClientsData } from "@/constants/filtersOptions";
 import { getCountClients } from "@/data/clients";
@@ -19,6 +18,7 @@ import {
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import { Pagination } from "@/components/dashboards/shared/pagination";
+import { ClientsList } from "@/components/dashboards/admin/clients/tableClients/clientsList";
 
 export default async function Clients({
   searchParams,
@@ -50,7 +50,7 @@ export default async function Clients({
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-5">
       <PageHeader
         label={t("count", { count: totalClients })}
         title={t("title")}
@@ -71,13 +71,13 @@ export default async function Clients({
       <div className="flex flex-col gap-4">
         <Suspense
           key={`${currentPage}-${formattedLimit}-${formattedQuery}-${formattedFilter}`}
-          fallback={<ClientsTableSkeleton count={formattedLimit} />}
+          fallback={<ClientsListSkeleton count={formattedLimit} />}
         >
-          <ClientsTable persistedParams={persistedParams} />
+          <ClientsList persistedParams={persistedParams} />
         </Suspense>
 
         {totalClients > 0 && (
-          <div className="grid grid-cols-3 grid-rows-1">
+          <div className="flex flex-row justify-center px-4 md:justify-between md:px-0">
             <RowsPerPage persistedParams={persistedParams} pathname="/admin/clients" />
             <Pagination
               persistedParams={persistedParams}

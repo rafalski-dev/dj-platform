@@ -711,7 +711,8 @@
       "label": "Paginacja",
       "previous": "Poprzednia strona",
       "next": "Następna strona",
-      "perPage": "Na stronę"
+      "perPage": "Na stronę",
+      "pageOf": "{page} z {total}"
     },
     "Clients": {
       "title": "Klienci",
@@ -752,8 +753,10 @@
           "event": "Wydarzenie",
           "status": "Status",
           "more": "Więcej"
-        },
-        "addEmail": "Dodaj email",
+        }
+      },
+      "list": {
+        "addEmail": "Dodaj e-mail",
         "addPhone": "Dodaj telefon",
         "noEvent": "Brak wydarzenia",
         "details": "Zobacz szczegóły: {name}",

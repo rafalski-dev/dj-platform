@@ -722,7 +722,8 @@
       "label": "Pagination",
       "previous": "Previous page",
       "next": "Next page",
-      "perPage": "Per page"
+      "perPage": "Per page",
+      "pageOf": "{page} of {total}"
     },
     "Clients": {
       "title": "Clients",
@@ -763,7 +764,9 @@
           "event": "Event",
           "status": "Status",
           "more": "More"
-        },
+        }
+      },
+      "list": {
         "addEmail": "Add email",
         "addPhone": "Add phone",
         "noEvent": "No event",

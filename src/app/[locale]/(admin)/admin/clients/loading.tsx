@@ -1,6 +1,6 @@
 import { SearchBar } from "@/components/dashboards/shared/searchBar";
 import { CardsSkeleton } from "@/components/dashboards/skeletons/cardsSkeleton";
-import { ClientsTableSkeleton } from "@/components/dashboards/skeletons/clientsTableSkeleton";
+import { ClientsListSkeleton } from "@/components/dashboards/skeletons/clientsListSkeleton";
 import { FiltersSkeleton } from "@/components/dashboards/skeletons/filtersSkeleton";
 import { PageHeaderSkeleton } from "@/components/dashboards/skeletons/pageHeaderSkeleton";
 import { PaginationSkeleton } from "@/components/dashboards/skeletons/paginationSkeleton";
@@ -25,9 +25,11 @@ export default async function Loading() {
         <FiltersSkeleton count={filtersClientsData.length} />
       </div>
       <div className="flex flex-col gap-4">
-        <ClientsTableSkeleton count={ROWS_PER_PAGE[0]} />
-        <div className="grid grid-cols-3 grid-rows-1">
-          <RowsPerPageSkeleton />
+        <ClientsListSkeleton count={ROWS_PER_PAGE[0]} />
+        <div className="flex justify-center md:grid md:grid-cols-3 md:grid-rows-1">
+          <div className="hidden md:block">
+            <RowsPerPageSkeleton />
+          </div>
           <PaginationSkeleton />
         </div>
       </div>

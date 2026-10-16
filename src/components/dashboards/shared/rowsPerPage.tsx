@@ -15,7 +15,7 @@ export function RowsPerPage({
 
   return (
     <div className="my-auto flex items-center gap-3">
-      <p className="text-muted-foreground text-[13px]">{t("perPage")}</p>
+      <p className="text-muted-foreground hidden text-[13px] md:block">{t("perPage")}</p>
       <div className="bg-secondary border-border flex flex-row gap-px rounded-sm border p-1">
         {ROWS_PER_PAGE.map((rows) => {
           return (
