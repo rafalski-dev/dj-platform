@@ -52,7 +52,7 @@ export function SearchBar({
         type="search"
         placeholder={placeholder}
         aria-label={placeholder}
-        className="placeholder:text-popover-foreground w-full font-light ring-0 outline-0 placeholder:font-light focus:ring-0 active:ring-0 [&::-webkit-search-cancel-button]:hidden"
+        className="placeholder:text-popover-foreground h-11 w-full text-base font-light ring-0 outline-0 placeholder:font-light focus:ring-0 active:ring-0 [&::-webkit-search-cancel-button]:hidden"
         onChange={(e) => {
           setSearchValue(e.target.value);
           debouncedHandleChange(e.target.value);
