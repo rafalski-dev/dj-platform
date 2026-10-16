@@ -43,6 +43,10 @@ export const routing = defineRouting({
       pl: "/administrator/klienci",
       en: "/admin/clients",
     },
+    "/admin/clients/[clientId]": {
+      pl: "/administrator/klienci/[clientId]",
+      en: "/admin/clients/[clientId]",
+    },
     "/admin/clients/create": {
       pl: "/administrator/klienci/dodaj",
       en: "/admin/clients/create",
