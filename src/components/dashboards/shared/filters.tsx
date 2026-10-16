@@ -18,7 +18,7 @@ export function Filters({
   persistedParams: { query, limit, filter },
 }: FiltersProps) {
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row justify-between gap-3">
       {filters.map(({ keyLabel, filterOption }, index: number) => {
         const buttonVariant = filterOption === filter ? "default" : "outline";
         return (
@@ -28,7 +28,11 @@ export function Filters({
               pathname: pathname,
               query: { page: 1, filter: filterOption, query, limit },
             }}
-            className={buttonVariants({ variant: buttonVariant, size: "sm" })}
+            className={buttonVariants({
+              variant: buttonVariant,
+              size: "sm",
+              className: "h-11 grow",
+            })}
           >
             {t(`filters.${keyLabel}`)}
           </Link>
