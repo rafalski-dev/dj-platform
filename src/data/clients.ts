@@ -1,3 +1,5 @@
+import "server-only";
+
 import { getCurrentYear } from "@/lib/utils";
 import { db } from "@/lib/db";
 import { FilterType } from "@/lib/searchParams";
