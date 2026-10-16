@@ -18,7 +18,7 @@ export function Filters({
   persistedParams: { query, limit, filter },
 }: FiltersProps) {
   return (
-    <div className="flex flex-row justify-between gap-3">
+    <div className="flex flex-row flex-wrap justify-between gap-3 md:flex-nowrap">
       {filters.map(({ keyLabel, filterOption }, index: number) => {
         const buttonVariant = filterOption === filter ? "default" : "outline";
         return (
