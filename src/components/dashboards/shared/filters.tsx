@@ -31,7 +31,7 @@ export function Filters({
             className={buttonVariants({
               variant: buttonVariant,
               size: "sm",
-              className: "h-11 grow",
+              className: "h-11 flex-1",
             })}
           >
             {t(`filters.${keyLabel}`)}
