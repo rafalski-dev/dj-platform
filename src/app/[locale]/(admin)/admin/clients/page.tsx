@@ -1,4 +1,4 @@
-import { ClientsStatsCards } from "@/components/dashboards/admin/clients/tableClients/clientsStatsCards";
+import { ClientsStatsCards } from "@/components/dashboards/admin/clients/clientList/clientsStatsCards";
 import { Filters } from "@/components/dashboards/shared/filters";
 import { RowsPerPage } from "@/components/dashboards/shared/rowsPerPage";
 import { SearchBar } from "@/components/dashboards/shared/searchBar";
@@ -18,7 +18,7 @@ import {
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import { Pagination } from "@/components/dashboards/shared/pagination";
-import { ClientsList } from "@/components/dashboards/admin/clients/tableClients/clientsList";
+import { ClientsList } from "@/components/dashboards/admin/clients/clientList/clientsList";
 
 export default async function Clients({
   searchParams,

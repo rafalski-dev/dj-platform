@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { createInitials, phoneNumberSplitting } from "@/lib/utils";
 import { getFormatter, getTranslations } from "next-intl/server";
-import { ClientsTableHeader } from "@/components/dashboards/admin/clients/tableClients/clientsTableHeader";
+import { ClientsTableHeader } from "@/components/dashboards/admin/clients/clientList/clientsTableHeader";
 import { StatusBadge } from "@/components/dashboards/shared/statusBadge";
 import { buttonVariants } from "@/components/ui/button";
 import { ClientWithEvent } from "@/types/dashboard";

@@ -1,4 +1,4 @@
-import { ClientsTableHeader } from "@/components/dashboards/admin/clients/tableClients/clientsTableHeader";
+import { ClientsTableHeader } from "@/components/dashboards/admin/clients/clientList/clientsTableHeader";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 import { AvatarSkeleton } from "@/components/dashboards/skeletons/subskeletons/avatar";

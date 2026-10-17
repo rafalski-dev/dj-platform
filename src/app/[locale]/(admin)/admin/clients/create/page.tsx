@@ -1,4 +1,4 @@
-import { CreateClientForm } from "@/components/dashboards/admin/clients/createClient/createClientForm";
+import { CreateClientForm } from "@/components/dashboards/admin/clients/clientCreate/createClientForm";
 import { Breadcrumbs } from "@/components/dashboards/shared/breadcrumbs";
 import { PageHeader } from "@/components/dashboards/shared/pageHeader";
 import { getTranslations } from "next-intl/server";
