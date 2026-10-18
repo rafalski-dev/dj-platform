@@ -43,25 +43,53 @@ export const routing = defineRouting({
       pl: "/administrator/klienci",
       en: "/admin/clients",
     },
+    "/admin/clients/create": {
+      pl: "/administrator/klienci/dodaj",
+      en: "/admin/clients/create",
+    },
     "/admin/clients/[clientId]": {
       pl: "/administrator/klienci/[clientId]",
       en: "/admin/clients/[clientId]",
     },
-    "/admin/clients/create": {
-      pl: "/administrator/klienci/dodaj",
-      en: "/admin/clients/create",
+    "/admin/clients/[clientId]/edit": {
+      pl: "/administrator/klienci/[clientId]/edytuj",
+      en: "/admin/clients/[clientId]/edit",
     },
     "/admin/events": {
       pl: "/administrator/wydarzenia",
       en: "/admin/events",
     },
+    "/admin/events/create": {
+      pl: "/administrator/wydarzenia/dodaj",
+      en: "/admin/events/create",
+    },
+    "/admin/events/[eventId]": {
+      pl: "/administrator/wydarzenia/[eventId]",
+      en: "/admin/events/[eventId]",
+    },
     "/admin/contracts": {
       pl: "/administrator/umowy",
       en: "/admin/contracts",
     },
+    "/admin/contracts/create": {
+      pl: "/administrator/umowy/dodaj",
+      en: "/admin/contracts/create",
+    },
+    "/admin/contracts/[contractId]": {
+      pl: "/administrator/umowy/[contractId]",
+      en: "/admin/contracts/[contractId]",
+    },
     "/admin/playlists": {
       pl: "/administrator/listy-utworow",
       en: "/admin/playlists",
+    },
+    "/admin/playlists/create": {
+      pl: "/administrator/listy-utworow/dodaj",
+      en: "/admin/playlists/create",
+    },
+    "/admin/playlists/[playlistId]": {
+      pl: "/administrator/listy-utworow/[playlistId]",
+      en: "/admin/playlists/[playlistId]",
     },
     "/admin/personal-details": {
       pl: "/administrator/moje-dane",
