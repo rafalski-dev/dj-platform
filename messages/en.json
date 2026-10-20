@@ -725,6 +725,20 @@
       "perPage": "Per page",
       "pageOf": "{page} of {total}"
     },
+    "Breadcrumbs": {
+      "label": "Breadcrumbs",
+      "home": "Home",
+      "clients": "Clients",
+      "events": "Events",
+      "contracts": "Contracts",
+      "playlists": "Playlists",
+      "personal-details": "My details",
+      "create": "New",
+      "edit": "Edit"
+    },
+    "GeneralCardHeader": {
+      "add": "Add"
+    },
     "Clients": {
       "title": "Clients",
       "addingBtn": "New client",
@@ -792,6 +806,11 @@
           "descriptionQuery": "No clients match “{query}”.",
           "descriptionFilter": "No clients match the selected filter.",
           "action": "Clear filters"
+        },
+        "notFound": {
+          "title": "Client not found",
+          "description": "This client doesn't exist or has been deleted.",
+          "action": "Back to clients"
         }
       },
       "Create": {
@@ -918,6 +937,61 @@
         "toast": {
           "successTitle": "Client created successfully",
           "errorTitle": "Client not created"
+        }
+      },
+      "Details": {
+        "header": {
+          "created": "Created",
+          "lastEdited": "Last edited",
+          "edit": "Edit client",
+          "delete": "Delete client"
+        },
+        "info": {
+          "title": "Client details",
+          "sections": {
+            "basic": "Basic information",
+            "contact": "Contact details",
+            "address": "Address"
+          },
+          "fields": {
+            "fullName": "Full name",
+            "businessName": "Name",
+            "gender": "Gender",
+            "idCardNumber": "ID card number",
+            "taxId": "Tax ID",
+            "contactPerson": "Contact person",
+            "email": "Email",
+            "phone": "Phone",
+            "streetAndNumber": "Street and house number",
+            "postcode": "Postcode",
+            "city": "City",
+            "region": "Region",
+            "country": "Country"
+          }
+        },
+        "events": {
+          "title": "Events",
+          "lastUpdated": "Last updated",
+          "empty": {
+            "title": "No events",
+            "description": "This client has no events yet."
+          }
+        },
+        "contracts": {
+          "title": "Contracts",
+          "created": "Created",
+          "empty": {
+            "title": "No contracts",
+            "description": "This client has no contracts yet."
+          }
+        },
+        "playlists": {
+          "title": "Playlists",
+          "lastUpdated": "Last updated",
+          "empty": {
+            "title": "No playlists",
+            "description": "This client has no playlists yet."
+          }
         }
       }
     }

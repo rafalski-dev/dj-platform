@@ -614,6 +614,17 @@
           }
         }
       }
+    },
+    "Logout": {
+      "success": {
+        "title": "Wylogowano pomyślnie"
+      },
+      "expectedError": {
+        "title": "Błąd wylogowania"
+      },
+      "unexpectedError": {
+        "title": "Błąd wylogowania"
+      }
     }
   },
   "Emails": {
@@ -714,6 +725,20 @@
       "perPage": "Na stronę",
       "pageOf": "{page} z {total}"
     },
+    "Breadcrumbs": {
+      "label": "Ścieżka nawigacji",
+      "home": "Strona główna",
+      "clients": "Klienci",
+      "events": "Wydarzenia",
+      "contracts": "Umowy",
+      "playlists": "Playlisty",
+      "personal-details": "Moje dane",
+      "create": "Dodaj",
+      "edit": "Edytuj"
+    },
+    "GeneralCardHeader": {
+      "add": "Dodaj"
+    },
     "Clients": {
       "title": "Klienci",
       "addingBtn": "Dodaj klienta",
@@ -781,6 +806,11 @@
           "descriptionQuery": "Żaden klient nie pasuje do „{query}”.",
           "descriptionFilter": "Żaden klient nie pasuje do wybranego filtra.",
           "action": "Wyczyść filtry"
+        },
+        "notFound": {
+          "title": "Nie znaleziono klienta",
+          "description": "Ten klient nie istnieje lub został usunięty.",
+          "action": "Wróć do listy klientów"
         }
       },
       "Create": {
@@ -907,6 +937,61 @@
         "toast": {
           "successTitle": "Klient został dodany",
           "errorTitle": "Nie udało się dodać klienta"
+        }
+      },
+      "Details": {
+        "header": {
+          "created": "Utworzono",
+          "lastEdited": "Ostatnia edycja",
+          "edit": "Edytuj klienta",
+          "delete": "Usuń klienta"
+        },
+        "info": {
+          "title": "Dane klienta",
+          "sections": {
+            "basic": "Podstawowe informacje",
+            "contact": "Dane kontaktowe",
+            "address": "Adres"
+          },
+          "fields": {
+            "fullName": "Imię i nazwisko",
+            "businessName": "Nazwa",
+            "gender": "Płeć",
+            "idCardNumber": "Numer dowodu osobistego",
+            "taxId": "NIP",
+            "contactPerson": "Osoba kontaktowa",
+            "email": "Email",
+            "phone": "Telefon",
+            "streetAndNumber": "Ulica i numer domu",
+            "postcode": "Kod pocztowy",
+            "city": "Miasto",
+            "region": "Województwo",
+            "country": "Kraj"
+          }
+        },
+        "events": {
+          "title": "Wydarzenia",
+          "lastUpdated": "Ostatnia aktualizacja",
+          "empty": {
+            "title": "Brak wydarzeń",
+            "description": "Ten klient nie ma jeszcze żadnych wydarzeń."
+          }
+        },
+        "contracts": {
+          "title": "Umowy",
+          "created": "Utworzono",
+          "empty": {
+            "title": "Brak umów",
+            "description": "Ten klient nie ma jeszcze żadnych umów."
+          }
+        },
+        "playlists": {
+          "title": "Playlisty",
+          "lastUpdated": "Ostatnia aktualizacja",
+          "empty": {
+            "title": "Brak playlist",
+            "description": "Ten klient nie ma jeszcze żadnych playlist."
+          }
         }
       }
     }
