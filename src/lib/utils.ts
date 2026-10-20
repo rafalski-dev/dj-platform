@@ -1,3 +1,4 @@
+import type { EventStatus } from "../../generated";
 import { CreateClientType } from "@/validation/newClient";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -133,4 +134,20 @@ export function clientDataFormatter(data: CreateClientType) {
     region: emptyToNull(region),
     country: emptyToNull(country),
   };
+}
+
+export function getStartOfToday() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return today;
+}
+
+type EventStatusType = { eventDate: Date; eventStatus: EventStatus };
+
+export function getRelevantEvent<T extends EventStatusType>(events: T[]) {
+  const avoidCancelled = events.filter((el) => el.eventStatus !== "Cancelled");
+  const upcomingEvent = avoidCancelled.find((el) => el.eventDate >= getStartOfToday());
+
+  return upcomingEvent ?? avoidCancelled.at(-1) ?? events.at(-1);
 }

@@ -1,4 +1,4 @@
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import {
   Empty,
@@ -12,8 +12,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Pathname } from "@/types/navigation";
 
-type ShowEmptyProps = {
-  icon: ReactNode;
+type EmptyStateProps = {
+  icon?: ReactNode;
   title: string;
   description: string;
   action?: {
@@ -21,18 +21,21 @@ type ShowEmptyProps = {
     href: Pathname;
     icon?: ReactNode;
   };
+  className?: string;
 };
 
-export function ShowEmpty({ icon, title, description, action }: ShowEmptyProps) {
+export function EmptyState({ icon, title, description, action, className }: EmptyStateProps) {
   return (
-    <Empty className="gap-6 px-4 py-10 md:py-14">
+    <Empty className={cn("gap-6 px-4 py-10 md:py-14", className)}>
       <EmptyHeader className="gap-3">
-        <EmptyMedia
-          variant="icon"
-          className="border-border bg-accent-foreground/10 text-accent-foreground mb-1 size-12 rounded-xl border [&_svg:not([class*='size-'])]:size-5"
-        >
-          {icon}
-        </EmptyMedia>
+        {icon && (
+          <EmptyMedia
+            variant="icon"
+            className="border-border bg-accent-foreground/10 text-accent-foreground mb-1 size-12 rounded-xl border [&_svg:not([class*='size-'])]:size-5"
+          >
+            {icon}
+          </EmptyMedia>
+        )}
         <EmptyTitle className="text-foreground font-serif text-2xl font-normal tracking-normal">
           {title}
         </EmptyTitle>

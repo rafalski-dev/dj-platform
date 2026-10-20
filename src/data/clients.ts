@@ -1,6 +1,6 @@
 import "server-only";
 
-import { getCurrentYear } from "@/lib/utils";
+import { getCurrentYear, getStartOfToday } from "@/lib/utils";
 import { db } from "@/lib/db";
 import { FilterType } from "@/lib/searchParams";
 import { adminCheck } from "@/lib/auth-helpers";
@@ -17,12 +17,6 @@ function getClientsWhere(query?: string) {
       { phone: { contains: phoneQuery } },
     ],
   };
-}
-
-export function getStartOfToday() {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return today;
 }
 
 function getUpcomingEventWhere() {

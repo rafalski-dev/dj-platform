@@ -1,8 +1,9 @@
-import { getPaginationedClients, getStartOfToday } from "@/data/clients";
+import { getPaginationedClients } from "@/data/clients";
+import { getRelevantEvent } from "@/lib/utils";
 import { ClientsTable } from "./clientsTable";
 import { PersistedParams } from "@/lib/searchParams";
 import { ClientsCards } from "./clientsCards";
-import { ShowEmpty } from "@/components/dashboards/shared/empty";
+import { EmptyState } from "@/components/dashboards/shared/emptyState";
 import { PlusIcon, SearchXIcon, UsersIcon } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
@@ -17,14 +18,11 @@ export async function ClientsList({ persistedParams }: { persistedParams: Persis
   );
 
   const sortedEvents = fetchedData.map((client) => {
-    const notCancelled = client.events.filter((event) => event.eventStatus !== "Cancelled");
-    const nextEvent = notCancelled.find((event) => event.eventDate >= getStartOfToday());
-    const event = nextEvent ?? notCancelled.at(-1) ?? client.events.at(-1);
-    return { ...client, event: event };
+    return { ...client, event: getRelevantEvent(client.events) };
   });
 
   const noClients = (
-    <ShowEmpty
+    <EmptyState
       icon={<UsersIcon strokeWidth={1.5} />}
       title={t("empty.noClients.title")}
       description={t("empty.noClients.description")}
@@ -37,7 +35,7 @@ export async function ClientsList({ persistedParams }: { persistedParams: Persis
   );
 
   const noResults = (
-    <ShowEmpty
+    <EmptyState
       icon={<SearchXIcon strokeWidth={1.5} />}
       title={t("empty.noResults.title")}
       description={
