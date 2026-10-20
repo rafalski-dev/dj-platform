@@ -992,6 +992,25 @@
             "title": "No playlists",
             "description": "This client has no playlists yet."
           }
+        },
+        "delete": {
+          "dialog": {
+            "title": "Delete this client?",
+            "description": "This action cannot be undone. The client will be permanently deleted together with all of their events, contracts and playlists.",
+            "cancel": "Cancel",
+            "confirm": "Delete client",
+            "pending": "Deleting..."
+          },
+          "toast": {
+            "successTitle": "Client deleted",
+            "errorTitle": "Client not deleted"
+          },
+          "serverMessage": {
+            "success": "{name} has been deleted.",
+            "notFound": "This client no longer exists.",
+            "inUse": "This client can't be deleted because other records still depend on it.",
+            "unknown": "Something went wrong. Please try again."
+          }
         }
       }
     }

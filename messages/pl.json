@@ -992,6 +992,25 @@
             "title": "Brak playlist",
             "description": "Ten klient nie ma jeszcze żadnych playlist."
           }
+        },
+        "delete": {
+          "dialog": {
+            "title": "Usunąć tego klienta?",
+            "description": "Tej operacji nie można cofnąć. Klient zostanie trwale usunięty razem ze wszystkimi wydarzeniami, umowami i playlistami.",
+            "cancel": "Anuluj",
+            "confirm": "Usuń klienta",
+            "pending": "Usuwanie..."
+          },
+          "toast": {
+            "successTitle": "Klient usunięty",
+            "errorTitle": "Nie udało się usunąć klienta"
+          },
+          "serverMessage": {
+            "success": "Klient {name} został usunięty.",
+            "notFound": "Ten klient już nie istnieje.",
+            "inUse": "Nie można usunąć klienta, bo inne dane są z nim nadal powiązane.",
+            "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+          }
         }
       }
     }

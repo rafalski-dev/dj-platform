@@ -47,3 +47,21 @@ export async function createClientAction(formData: CreateClientType) {
     };
   }
 }
+
+export async function deleteClient(clientId: string) {
+  const t = await getTranslations("Admin.Clients.Details.delete.serverMessage");
+  await adminCheck();
+
+  let clientName: string;
+
+  try {
+    const client = await db.client.delete({ where: { id: clientId } });
+    clientName = client.name;
+  } catch (error) {
+    const kind = getDbErrorKind(error);
+    if (kind === "unknown") console.error(error);
+    return { status: "error", success: false, message: t(kind === "duplicate" ? "unknown" : kind) };
+  }
+
+  return { status: "success", success: true, message: t("success", { name: clientName }) };
+}

@@ -1,4 +1,3 @@
-import { DialogButton } from "@/components/dashboards/shared/dialogButton";
 import { StatusBadge } from "@/components/dashboards/shared/statusBadge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +8,7 @@ import { Link } from "@/i18n/navigation";
 import { createInitials, getRelevantEvent } from "@/lib/utils";
 import { CalendarIcon, ClockIcon, EditIcon, Trash2Icon } from "lucide-react";
 import { getFormatter, getTranslations } from "next-intl/server";
+import { DeleteDialog } from "./deleteDialog";
 
 type ClientHeaderProps = {
   fetchedData: NonNullable<Awaited<ReturnType<typeof getClientDetails>>>;
@@ -78,7 +78,8 @@ export async function ClientHeader({ fetchedData }: ClientHeaderProps) {
           <EditIcon />
           {tHeader("edit")}
         </Link>
-        <DialogButton
+        <DeleteDialog
+          clientId={id}
           label={
             <>
               <Trash2Icon />
