@@ -116,15 +116,14 @@ model Client {
   name                 String       // display name: "Jan Kowalski" or business name
 
   // private client
-  firstName            String?
-  lastName             String?
+  firstName            String
+  lastName             String
   gender               Gender?
   idCardNumber         String?
 
   // business client
   businessName         String?
   taxId                String?      @unique
-
   email                String?      @unique
   phone                String?
 
@@ -135,10 +134,10 @@ model Client {
   region               String?
   country              String?
 
-  note                 String?
-
   userId               String?      @unique
   user                 User?        @relation(fields: [userId], references: [id])
+
+  notes                ClientNote[]
 
   events               Event[]
 
@@ -181,6 +180,8 @@ model Event {
 
 model Contract {
   id                   String       @id @default(cuid())
+  number               Int          @unique @default(autoincrement())       
+  contractNumber       String?      @unique
 
   eventId              String       @unique
   event                Event        @relation(fields: [eventId], references: [id])
@@ -192,13 +193,41 @@ model Contract {
 }
 
 model Playlist {
-  id                   String       @id @default(cuid())
+  id                   String           @id @default(cuid())
+  name                 String?
+  songs                Song[]
 
-  eventId              String       @unique
-  event                Event        @relation(fields: [eventId], references: [id])
+  eventId              String           @unique
+  event                Event            @relation(fields: [eventId], references: [id])
+
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+
+  @@map("playlist")
+}
+
+model Song {
+  id                   String       @id @default(cuid())
+  name                 String
+
+  playlistId           String       
+  playlist             Playlist     @relation(fields: [playlistId], references: [id], onDelete: Cascade)
 
   createdAt            DateTime     @default(now())
   updatedAt            DateTime     @updatedAt
 
-  @@map("playlist")
+  @@map("song")
+}
+
+model ClientNote {
+  id            String      @id @default(cuid())
+  content       String      
+
+  clientId      String      
+  client        Client      @relation( fields:[clientId] , references:[id], onDelete: Cascade)
+
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt()
+
+  @@map("client_note")
 }
