@@ -165,7 +165,7 @@ model Event {
   secondPartnerName    String?
 
   clientId             String
-  client               Client       @relation(fields: [clientId], references: [id])
+  client               Client       @relation(fields: [clientId], references: [id], onDelete: Cascade)
 
   contract             Contract?
   playlist             Playlist?
@@ -184,7 +184,7 @@ model Contract {
   contractNumber       String?      @unique
 
   eventId              String       @unique
-  event                Event        @relation(fields: [eventId], references: [id])
+  event                Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
 
   createdAt            DateTime     @default(now())
   updatedAt            DateTime     @updatedAt
@@ -198,7 +198,7 @@ model Playlist {
   songs                Song[]
 
   eventId              String           @unique
-  event                Event            @relation(fields: [eventId], references: [id])
+  event                Event            @relation(fields: [eventId], references: [id], onDelete: Cascade)
 
   createdAt            DateTime         @default(now())
   updatedAt            DateTime         @updatedAt
