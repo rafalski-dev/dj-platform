@@ -50,7 +50,7 @@ export default async function Clients({
   };
 
   return (
-    <div className="flex flex-col gap-5">
+    <>
       <PageHeader
         label={t("count", { count: totalClients })}
         title={t("title")}
@@ -87,6 +87,6 @@ export default async function Clients({
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }
