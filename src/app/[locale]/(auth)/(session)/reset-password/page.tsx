@@ -7,7 +7,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { toast } from "@/components/ui/toast";
 import { getPathname, Link } from "@/i18n/navigation";
 import { authClient } from "@/lib/auth-client";
-import { createResetPasswordSchema } from "@/validation/reset-password";
+import { createResetPasswordSchema } from "@/validation/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
