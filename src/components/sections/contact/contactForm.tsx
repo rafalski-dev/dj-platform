@@ -15,7 +15,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FormError } from "../../shared/form/status/formError";
-import { handleContactForm } from "@/actions/contact";
+import { handleContactForm } from "@/actions/landing";
 import { ContactFormSuccess } from "./contactFormSuccess";
 
 export function ContactForm({ className }: { className?: string }) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { handleSubmit } from "@/actions/newsletter";
+import { handleSubmit } from "@/actions/landing";
 import { Button } from "@/components/ui/button";
 import { FieldGroup, Field, FieldError } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
