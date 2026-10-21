@@ -3,7 +3,7 @@
 import { adminCheck } from "@/lib/auth-helpers";
 import { db } from "@/lib/db";
 import { getDbErrorKind } from "@/lib/prismaErrors";
-import { clientDataFormatter } from "@/lib/utils";
+import { clientDataFormatter, formatZodErrors } from "@/lib/utils";
 import { createClientSchema, CreateClientType } from "@/validation/clients";
 import { getTranslations } from "next-intl/server";
 
@@ -15,16 +15,14 @@ export async function createClientAction(formData: CreateClientType) {
   const schema = createClientSchema(t);
   const validatedValues = schema.safeParse(formData);
 
+  console.log(validatedValues);
+
   if (!validatedValues.success) {
     return {
       status: "invalid",
       success: false,
       message: t("serverMessage.invalid"),
-      errors: Object.fromEntries(
-        validatedValues.error.issues
-          .map((issue) => [issue.path.join("."), issue.message] as const)
-          .reverse(),
-      ),
+      errors: formatZodErrors(validatedValues.error),
     };
   }
 
@@ -80,11 +78,7 @@ export async function editClientAction(formData: CreateClientType, clientId: str
       status: "invalid",
       success: false,
       message: t("serverMessage.invalid"),
-      errors: Object.fromEntries(
-        validatedValues.error.issues
-          .map((issue) => [issue.path.join("."), issue.message] as const)
-          .reverse(),
-      ),
+      errors: formatZodErrors(validatedValues.error),
     };
   }
 

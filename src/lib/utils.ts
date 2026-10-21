@@ -3,6 +3,7 @@ import type { EventStatus } from "../../generated";
 import { CreateClientType } from "@/validation/clients";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import type { ZodError } from "zod";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -139,6 +140,12 @@ export function clientDataFormatter(data: CreateClientType) {
     gender: null,
     idCardNumber: null,
   };
+}
+
+export function formatZodErrors(error: ZodError) {
+  return Object.fromEntries(
+    error.issues.map((issue) => [issue.path.join("."), issue.message] as const).reverse(),
+  );
 }
 
 export function getStartOfToday() {
