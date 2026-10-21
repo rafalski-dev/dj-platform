@@ -28,7 +28,6 @@ const icons = {
 export function AdminMobileNav() {
   const t = useTranslations("Admin.Header");
   const pathname = usePathname();
-  console.log(adminItems);
 
   return (
     <div>

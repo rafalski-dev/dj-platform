@@ -15,8 +15,6 @@ export async function createClientAction(formData: CreateClientType) {
   const schema = createClientSchema(t);
   const validatedValues = schema.safeParse(formData);
 
-  console.log(validatedValues);
-
   if (!validatedValues.success) {
     return {
       status: "invalid",
