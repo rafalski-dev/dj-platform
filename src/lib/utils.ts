@@ -116,6 +116,8 @@ export function clientDataFormatter(data: CreateClientType) {
       city: emptyToNull(city),
       region: emptyToNull(region),
       country: emptyToNull(country),
+      businessName: null,
+      taxId: null,
     };
   }
 
@@ -133,6 +135,8 @@ export function clientDataFormatter(data: CreateClientType) {
     city: emptyToNull(city),
     region: emptyToNull(region),
     country: emptyToNull(country),
+    gender: null,
+    idCardNumber: null,
   };
 }
 
