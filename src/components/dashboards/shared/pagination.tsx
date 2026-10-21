@@ -52,7 +52,7 @@ export function Pagination({
             <span
               key={item}
               aria-hidden="true"
-              className="text-muted-foreground flex size-6 items-center justify-center"
+              className="text-muted-foreground flex size-6 items-end justify-center"
             >
               <EllipsisIcon className="size-4" />
             </span>
