@@ -12,9 +12,9 @@ import { BusinessSummary } from "./businessSummary";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createClientSchema, CreateClientType } from "@/validation/newClient";
+import { createClientSchema, CreateClientType } from "@/validation/clients";
 import { useMemo } from "react";
-import { createClientAction } from "@/actions/client";
+import { createClientAction } from "@/actions/clients";
 import { toast } from "@/components/ui/toast";
 import { Spinner } from "@/components/ui/spinner";
 

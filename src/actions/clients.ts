@@ -4,7 +4,7 @@ import { adminCheck } from "@/lib/auth-helpers";
 import { db } from "@/lib/db";
 import { getDbErrorKind } from "@/lib/prismaErrors";
 import { clientDataFormatter } from "@/lib/utils";
-import { createClientSchema, CreateClientType } from "@/validation/newClient";
+import { createClientSchema, CreateClientType } from "@/validation/clients";
 import { getTranslations } from "next-intl/server";
 
 export async function createClientAction(formData: CreateClientType) {

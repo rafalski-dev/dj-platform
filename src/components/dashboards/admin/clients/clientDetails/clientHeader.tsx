@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { getClientDetails } from "@/data/singleClient";
+import { getClientDetails } from "@/data/clients";
 import { Link } from "@/i18n/navigation";
 import { createInitials, getRelevantEvent } from "@/lib/utils";
 import { CalendarIcon, ClockIcon, EditIcon, Trash2Icon } from "lucide-react";

@@ -12,7 +12,7 @@ import {
   getClientDetails,
   getClientEvents,
   getClientPlaylists,
-} from "@/data/singleClient";
+} from "@/data/clients";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 

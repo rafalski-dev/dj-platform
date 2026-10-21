@@ -13,11 +13,11 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { Spinner } from "@/components/ui/spinner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMemo } from "react";
-import { createClientSchema, CreateClientType } from "@/validation/newClient";
+import { createClientSchema, CreateClientType } from "@/validation/clients";
 import { useTranslations } from "next-intl";
-import { editClient } from "@/actions/client";
+import { editClient } from "@/actions/clients";
 import { toast } from "@/components/ui/toast";
-import { getClientToEdit } from "@/data/singleClient";
+import { getClientToEdit } from "@/data/clients";
 
 type EditClientFormProps = {
   fetchedData: NonNullable<Awaited<ReturnType<typeof getClientToEdit>>>;

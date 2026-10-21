@@ -4,7 +4,7 @@ import { EmptyState } from "@/components/dashboards/shared/emptyState";
 import { ClientListItem } from "./clientListItem";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { ClockIcon, DotIcon } from "lucide-react";
-import { getClientContracts, getClientEvents, getClientPlaylists } from "@/data/singleClient";
+import { getClientContracts, getClientEvents, getClientPlaylists } from "@/data/clients";
 
 type EventsInfoCardProps = {
   fetchedData: Awaited<ReturnType<typeof getClientEvents>>;

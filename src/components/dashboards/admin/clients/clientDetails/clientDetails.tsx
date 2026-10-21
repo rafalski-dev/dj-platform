@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { GeneralCardHeader } from "@/components/dashboards/shared/generalCardHeader";
 import { MinusIcon } from "lucide-react";
 import { phoneNumberSplitting } from "@/lib/utils";
-import { getClientDetails } from "@/data/singleClient";
+import { getClientDetails } from "@/data/clients";
 import { useTranslations } from "next-intl";
 
 type ClientDetailsProps = {

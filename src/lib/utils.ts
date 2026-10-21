@@ -1,6 +1,6 @@
 import { Pathname } from "@/types/navigation";
 import type { EventStatus } from "../../generated";
-import { CreateClientType } from "@/validation/newClient";
+import { CreateClientType } from "@/validation/clients";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
