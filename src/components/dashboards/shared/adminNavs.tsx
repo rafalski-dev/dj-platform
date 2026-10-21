@@ -3,7 +3,7 @@
 import { SheetClose } from "@/components/ui/sheet";
 import { adminItems } from "@/constants/navigations";
 import { Link, usePathname } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
+import { cn, isNavItemActive } from "@/lib/utils";
 import { AdminItem } from "@/types/navigation";
 import {
   CalendarDaysIcon,
@@ -21,13 +21,14 @@ const icons = {
   clients: <UsersIcon size={19} strokeWidth={1.4} />,
   events: <CalendarDaysIcon size={19} strokeWidth={1.4} />,
   contracts: <FilesIcon size={19} strokeWidth={1.4} />,
-  playlist: <ListMusicIcon size={19} strokeWidth={1.4} />,
-  details: <UserPenIcon size={19} strokeWidth={1.4} />,
+  playlists: <ListMusicIcon size={19} strokeWidth={1.4} />,
+  "personal-details": <UserPenIcon size={19} strokeWidth={1.4} />,
 };
 
 export function AdminMobileNav() {
   const t = useTranslations("Admin.Header");
   const pathname = usePathname();
+  console.log(adminItems);
 
   return (
     <div>
@@ -36,7 +37,7 @@ export function AdminMobileNav() {
       </p>
       <nav className="flex flex-col gap-1.5 py-3">
         {adminItems.map((el: AdminItem) => {
-          const isActive = el.path === pathname;
+          const isActive = isNavItemActive(pathname, el.path);
 
           return (
             <SheetClose
@@ -46,9 +47,10 @@ export function AdminMobileNav() {
                 <Link
                   href={el.path}
                   className={cn(
-                    "text-muted-foreground/80 relative flex items-center justify-start gap-3 px-4 py-2.5 text-[15px] font-light tracking-wide",
-                    isActive &&
-                      "ring-border bg-accent-foreground/10 text-accent-foreground rounded-sm ring-1 duration-200",
+                    "text-muted-foreground/80 relative flex items-center justify-start gap-3 rounded-sm px-4 py-2.5 text-[15px] font-light tracking-wide transition-colors duration-200",
+                    isActive
+                      ? "ring-border bg-accent-foreground/10 text-accent-foreground ring-1"
+                      : "hover:bg-accent-foreground/5 hover:text-accent-foreground",
                   )}
                 />
               }
@@ -79,16 +81,17 @@ export function AdminDesktopNavigation() {
       </p>
       <nav className="flex flex-col gap-1.5 py-3">
         {adminItems.map((el: AdminItem) => {
-          const isActive = el.path === pathname;
+          const isActive = isNavItemActive(pathname, el.path);
 
           return (
             <Link
               key={el.navKey}
               href={el.path}
               className={cn(
-                "text-muted-foreground/80 relative flex items-center justify-start gap-3 px-4 py-2.5 text-[15px] font-light tracking-wide",
-                isActive &&
-                  "ring-border-strong bg-accent-foreground/10 text-accent-foreground rounded-sm ring-1 duration-200",
+                "text-muted-foreground/80 relative flex items-center justify-start gap-3 rounded-sm px-4 py-2.5 text-[15px] font-light tracking-wide transition-colors duration-200",
+                isActive
+                  ? "ring-border-strong bg-accent-foreground/10 text-accent-foreground ring-1"
+                  : "hover:bg-accent-foreground/5 hover:text-accent-foreground",
               )}
             >
               {" "}

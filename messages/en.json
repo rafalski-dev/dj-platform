@@ -705,8 +705,8 @@
           "clients": "Clients",
           "events": "Events",
           "contracts": "Contracts",
-          "playlist": "Playlists",
-          "details": "My details"
+          "playlists": "Playlists",
+          "personal-details": "My details"
         }
       }
     },

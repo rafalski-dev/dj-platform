@@ -18,6 +18,6 @@ export const adminItems: AdminItem[] = [
   { navKey: "clients", path: "/admin/clients" },
   { navKey: "events", path: "/admin/events" },
   { navKey: "contracts", path: "/admin/contracts" },
-  { navKey: "playlist", path: "/admin/playlists" },
-  { navKey: "details", path: "/admin/personal-details" },
+  { navKey: "playlists", path: "/admin/playlists" },
+  { navKey: "personal-details", path: "/admin/personal-details" },
 ];
