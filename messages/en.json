@@ -808,9 +808,14 @@
           "action": "Clear filters"
         },
         "notFound": {
-          "title": "Client not found",
-          "description": "This client doesn't exist or has been deleted.",
+          "title": "Page not found",
+          "description": "This page or client doesn't exist or has been deleted. Check the address and try again.",
           "action": "Back to clients"
+        },
+        "error": {
+          "title": "Couldn't load data",
+          "description": "Please try again in a moment. If the problem persists, refresh the page.",
+          "action": "Try again"
         }
       },
       "Form": {

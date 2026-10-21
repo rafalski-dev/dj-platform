@@ -121,7 +121,6 @@ export async function getClientEvents(clientId: string) {
 
 export async function getClientContracts(clientId: string) {
   await adminCheck();
-
   return await db.contract.findMany({
     where: { event: { clientId: clientId } },
     select: { id: true, contractNumber: true, createdAt: true },

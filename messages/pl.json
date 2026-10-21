@@ -808,9 +808,14 @@
           "action": "Wyczyść filtry"
         },
         "notFound": {
-          "title": "Nie znaleziono klienta",
-          "description": "Ten klient nie istnieje lub został usunięty.",
+          "title": "Nie znaleziono strony",
+          "description": "Ta strona lub klient nie istnieje albo został usunięty. Sprawdź adres i spróbuj ponownie.",
           "action": "Wróć do listy klientów"
+        },
+        "error": {
+          "title": "Nie udało się wczytać danych",
+          "description": "Spróbuj ponownie za chwilę. Jeśli problem się powtarza, odśwież stronę.",
+          "action": "Spróbuj ponownie"
         }
       },
       "Form": {
