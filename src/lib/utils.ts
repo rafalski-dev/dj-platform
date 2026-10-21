@@ -1,3 +1,4 @@
+import { Pathname } from "@/types/navigation";
 import type { EventStatus } from "../../generated";
 import { CreateClientType } from "@/validation/newClient";
 import { clsx, type ClassValue } from "clsx";
@@ -154,4 +155,10 @@ export function getRelevantEvent<T extends EventStatusType>(events: T[]) {
   const upcomingEvent = avoidCancelled.find((el) => el.eventDate >= getStartOfToday());
 
   return upcomingEvent ?? avoidCancelled.at(-1) ?? events.at(-1);
+}
+
+export function isNavItemActive(pathname: Pathname, navPath: Pathname) {
+  return navPath === "/admin"
+    ? pathname === navPath
+    : pathname === navPath || pathname.startsWith(navPath);
 }
