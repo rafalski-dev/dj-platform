@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMemo } from "react";
 import { createClientSchema, CreateClientType } from "@/validation/clients";
 import { useTranslations } from "next-intl";
-import { editClient } from "@/actions/clients";
+import { editClientAction } from "@/actions/clients";
 import { toast } from "@/components/ui/toast";
 import { getClientToEdit } from "@/data/clients";
 
@@ -69,7 +69,7 @@ export function EditClientForm({ fetchedData, clientId }: EditClientFormProps) {
   const clientType = useWatch({ control, name: "clientType" });
 
   async function onSubmit(formData: CreateClientType) {
-    const response = await editClient(formData, clientId);
+    const response = await editClientAction(formData, clientId);
 
     if (response.success) {
       toast.add({

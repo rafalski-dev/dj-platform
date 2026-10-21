@@ -15,7 +15,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FormError } from "../../shared/form/status/formError";
-import { handleContactForm } from "@/actions/landing";
+import { sendContactFormAction } from "@/actions/landing";
 import { ContactFormSuccess } from "./contactFormSuccess";
 
 export function ContactForm({ className }: { className?: string }) {
@@ -57,7 +57,7 @@ export function ContactForm({ className }: { className?: string }) {
 
   async function onSubmit(formData: ContactSchema) {
     clearErrors("root.serverError");
-    const res = await handleContactForm(formData);
+    const res = await sendContactFormAction(formData);
 
     if (res.success) {
       setSuccess(res.message);

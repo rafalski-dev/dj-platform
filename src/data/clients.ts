@@ -40,7 +40,7 @@ function getFilterWhere(filter?: FilterType) {
   return {};
 }
 
-export async function getPaginationedClients(
+export async function getPaginatedClients(
   rowsLimit: number,
   page: number,
   query?: string,

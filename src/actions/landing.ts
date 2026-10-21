@@ -8,7 +8,7 @@ import { ContactSchema, createContactSchema, createNewsletterSchema } from "@/va
 import { getTranslations } from "next-intl/server";
 import z from "zod";
 
-export async function handleContactForm(formData: ContactSchema): Promise<ContactFormResult> {
+export async function sendContactFormAction(formData: ContactSchema): Promise<ContactFormResult> {
   const t = await getTranslations("LandingPage.Contact.contactForm");
   const schema = createContactSchema(t);
   const result = schema.safeParse(formData);
@@ -49,7 +49,10 @@ export async function handleContactForm(formData: ContactSchema): Promise<Contac
   }
 }
 
-export async function handleSubmit(prevState: State, formData: FormData): Promise<State> {
+export async function subscribeNewsletterAction(
+  prevState: State,
+  formData: FormData,
+): Promise<State> {
   const t = await getTranslations("LandingPage.Newsletter");
   const schema = createNewsletterSchema(t("errors.emptyEmail"), t("errors.invalidEmail"));
   const email = formData.get("email")?.toString().trim() ?? "";

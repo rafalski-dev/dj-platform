@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteClient } from "@/actions/clients";
+import { deleteClientAction } from "@/actions/clients";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -27,7 +27,7 @@ export function DeleteDialog({ clientId, label }: DialogButtonProps) {
   const { push } = useRouter();
 
   async function onDeleteButtonClick(id: string) {
-    const result = await deleteClient(id);
+    const result = await deleteClientAction(id);
 
     if (result.success) {
       toast.add({

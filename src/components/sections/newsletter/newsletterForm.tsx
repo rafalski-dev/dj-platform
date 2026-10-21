@@ -1,6 +1,6 @@
 "use client";
 
-import { handleSubmit } from "@/actions/landing";
+import { subscribeNewsletterAction } from "@/actions/landing";
 import { Button } from "@/components/ui/button";
 import { FieldGroup, Field, FieldError } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -12,7 +12,10 @@ import { useTranslations } from "next-intl";
 
 export function NewsletterForm() {
   const t = useTranslations("LandingPage.Newsletter");
-  const [state, dispatchAction, isPending] = useActionState(handleSubmit, initialState);
+  const [state, dispatchAction, isPending] = useActionState(
+    subscribeNewsletterAction,
+    initialState,
+  );
 
   return (
     <form className="flex w-full flex-col items-center justify-center" action={dispatchAction}>

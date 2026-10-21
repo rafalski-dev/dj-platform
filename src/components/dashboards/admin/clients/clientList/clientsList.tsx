@@ -1,4 +1,4 @@
-import { getPaginationedClients } from "@/data/clients";
+import { getPaginatedClients } from "@/data/clients";
 import { getRelevantEvent } from "@/lib/utils";
 import { ClientsTable } from "./clientsTable";
 import { PersistedParams } from "@/lib/searchParams";
@@ -10,7 +10,7 @@ import { getTranslations } from "next-intl/server";
 export async function ClientsList({ persistedParams }: { persistedParams: PersistedParams }) {
   const t = await getTranslations("Admin.Clients");
 
-  const fetchedData = await getPaginationedClients(
+  const fetchedData = await getPaginatedClients(
     persistedParams.limit,
     persistedParams.page,
     persistedParams.query,

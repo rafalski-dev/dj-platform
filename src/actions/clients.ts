@@ -49,7 +49,7 @@ export async function createClientAction(formData: CreateClientType) {
   }
 }
 
-export async function deleteClient(clientId: string) {
+export async function deleteClientAction(clientId: string) {
   const t = await getTranslations("Admin.Clients.Details.delete.serverMessage");
   await adminCheck();
 
@@ -67,7 +67,7 @@ export async function deleteClient(clientId: string) {
   return { status: "success", success: true, message: t("success", { name: clientName }) };
 }
 
-export async function editClient(formData: CreateClientType, clientId: string) {
+export async function editClientAction(formData: CreateClientType, clientId: string) {
   await adminCheck();
   const t = await getTranslations("Admin.Clients.Form");
   const tEdit = await getTranslations("Admin.Clients.Edit");
