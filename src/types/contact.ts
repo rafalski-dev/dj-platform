@@ -1,4 +1,4 @@
-import type { ContactSchema } from "@/validation/contact";
+import type { ContactSchema } from "@/validation/landing";
 
 export type contactDataItemType = {
   nameKey: string;

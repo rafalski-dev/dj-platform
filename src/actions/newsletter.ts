@@ -4,7 +4,7 @@ import { resend } from "@/lib/resend";
 import { State } from "@/types/newsletter";
 import z from "zod";
 import { getTranslations } from "next-intl/server";
-import { createNewsletterSchema } from "@/validation/newsletter";
+import { createNewsletterSchema } from "@/validation/landing";
 
 export async function handleSubmit(prevState: State, formData: FormData): Promise<State> {
   const t = await getTranslations("LandingPage.Newsletter");

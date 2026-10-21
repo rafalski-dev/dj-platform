@@ -1,5 +1,12 @@
 import z from "zod";
 import type { useTranslations } from "next-intl";
+
+export function createNewsletterSchema(emptyEmail: string, invalidEmail: string) {
+  return z.object({
+    email: z.string().nonempty({ error: emptyEmail }).email({ error: invalidEmail }),
+  });
+}
+
 type Translator = ReturnType<typeof useTranslations>;
 
 export function createContactSchema(t: Translator) {

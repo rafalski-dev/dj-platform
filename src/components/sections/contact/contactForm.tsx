@@ -9,7 +9,7 @@ import { FieldDescription, FieldGroup } from "@/components/ui/field";
 import { Spinner } from "@/components/ui/spinner";
 import { eventTypeKeys } from "@/constants/contact";
 import { cn } from "@/lib/utils";
-import { ContactSchema, createContactSchema } from "@/validation/contact";
+import { ContactSchema, createContactSchema } from "@/validation/landing";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
