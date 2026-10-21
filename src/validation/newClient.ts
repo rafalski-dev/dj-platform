@@ -1,7 +1,7 @@
 import type { useTranslations } from "next-intl";
 import z from "zod";
 
-type CreateClientTranslator = ReturnType<typeof useTranslations<"Admin.Clients.Create">>;
+type CreateClientTranslator = ReturnType<typeof useTranslations<"Admin.Clients.Form">>;
 
 export function createClientSchema(t: CreateClientTranslator) {
   const personalDetails = {

@@ -16,7 +16,7 @@ type ClientHeaderProps = {
 
 export async function ClientHeader({ fetchedData }: ClientHeaderProps) {
   const format = await getFormatter();
-  const t = await getTranslations("Admin.Clients.Create");
+  const t = await getTranslations("Admin.Clients.Form");
   const tHeader = await getTranslations("Admin.Clients.Details.header");
   const { id, name, clientType, createdAt, updatedAt, events } = fetchedData;
 

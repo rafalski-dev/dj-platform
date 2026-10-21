@@ -43,3 +43,12 @@ export async function getClientPlaylists(clientId: string) {
     orderBy: { createdAt: "desc" },
   });
 }
+
+export async function getClientToEdit(clientId: string) {
+  await adminCheck();
+
+  return db.client.findUnique({
+    where: { id: clientId },
+    omit: { updatedAt: true, createdAt: true },
+  });
+}

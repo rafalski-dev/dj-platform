@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 
 export function BusinessDetails() {
   const { control } = useFormContext();
-  const t = useTranslations("Admin.Clients.Create");
+  const t = useTranslations("Admin.Clients.Form");
   return (
     <FormSection title={t("sections.businessDetails")}>
       <ControlledInput

@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 
 export function Contact() {
   const { control } = useFormContext();
-  const t = useTranslations("Admin.Clients.Create");
+  const t = useTranslations("Admin.Clients.Form");
   const clientType = useWatch({ control, name: "clientType" });
 
   return (

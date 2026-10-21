@@ -14,7 +14,7 @@ import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createClientSchema, CreateClientType } from "@/validation/newClient";
 import { useMemo } from "react";
-import { createClientAction } from "@/actions/admin";
+import { createClientAction } from "@/actions/client";
 import { toast } from "@/components/ui/toast";
 import { Spinner } from "@/components/ui/spinner";
 
@@ -26,7 +26,8 @@ const defaultValues = {
 };
 
 export function CreateClientForm() {
-  const t = useTranslations("Admin.Clients.Create");
+  const t = useTranslations("Admin.Clients.Form");
+  const tCreate = useTranslations("Admin.Clients.Create");
   const schema = useMemo(() => createClientSchema(t), [t]);
   const formMethods = useForm<CreateClientType>({ defaultValues, resolver: zodResolver(schema) });
   const {
@@ -45,7 +46,7 @@ export function CreateClientForm() {
     if (response.success) {
       toast.add({
         type: "success",
-        title: t("toast.successTitle"),
+        title: tCreate("toast.successTitle"),
         description: response.message,
       });
       push("/admin/clients");
@@ -54,7 +55,7 @@ export function CreateClientForm() {
 
     toast.add({
       type: "error",
-      title: t("toast.errorTitle"),
+      title: tCreate("toast.errorTitle"),
       description: response.message,
       timeout: 8000,
     });
@@ -83,10 +84,10 @@ export function CreateClientForm() {
                   {isSubmitting ? (
                     <>
                       <Spinner />
-                      <>{"Submitting"}</>
+                      <>{t("actions.submitting")}</>
                     </>
                   ) : (
-                    <>{t("actions.submit")}</>
+                    <>{tCreate("submit")}</>
                   )}
                 </Button>
                 <Link href="/admin/clients" className={buttonVariants({ variant: "outline" })}>

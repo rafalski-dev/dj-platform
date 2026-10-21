@@ -27,7 +27,7 @@ const CLIENT_TYPE = [
 export function ClientType() {
   const { control } = useFormContext();
   const { field } = useController({ name: "clientType", control });
-  const t = useTranslations("Admin.Clients.Create.clientType");
+  const t = useTranslations("Admin.Clients.Form.clientType");
   return (
     <FormSection title={t("title")} description={t("description")}>
       <RadioGroup

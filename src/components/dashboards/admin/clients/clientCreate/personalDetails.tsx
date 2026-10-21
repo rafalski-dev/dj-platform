@@ -10,7 +10,7 @@ const GENDERS = ["Male", "Female", "Other"];
 
 export function PersonalDetails() {
   const { control } = useFormContext();
-  const t = useTranslations("Admin.Clients.Create");
+  const t = useTranslations("Admin.Clients.Form");
   return (
     <FormSection title={t("sections.personalDetails")}>
       <div className="flex flex-col gap-3 md:flex-row">

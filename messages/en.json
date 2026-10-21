@@ -813,11 +813,7 @@
           "action": "Back to clients"
         }
       },
-      "Create": {
-        "page": {
-          "title": "Create new client",
-          "description": "Fill in the basic information about the client"
-        },
+      "Form": {
         "clientType": {
           "title": "Who is the client?",
           "description": "This determines which details are needed for the contract and billing.",
@@ -925,18 +921,38 @@
           "notProvided": "Not provided"
         },
         "actions": {
-          "submit": "Create client",
-          "cancel": "Cancel"
+          "cancel": "Cancel",
+          "submitting": "Saving"
         },
         "serverMessage": {
           "invalid": "Some fields need your attention. Check the highlighted fields and try again.",
-          "success": "{name} has been added to your clients.",
           "duplicate": "A client with this email or Tax ID already exists. Check your clients.",
+          "notFound": "This client no longer exists.",
           "unknown": "Something went wrong. Please try again."
+        }
+      },
+      "Create": {
+        "page": {
+          "title": "Create new client",
+          "description": "Fill in the basic information about the client"
         },
+        "submit": "Create client",
+        "success": "{name} has been added to your clients.",
         "toast": {
           "successTitle": "Client created successfully",
           "errorTitle": "Client not created"
+        }
+      },
+      "Edit": {
+        "page": {
+          "title": "Edit client",
+          "description": "Update the client's information"
+        },
+        "submit": "Save changes",
+        "success": "{name} has been updated.",
+        "toast": {
+          "successTitle": "Changes saved",
+          "errorTitle": "Changes not saved"
         }
       },
       "Details": {

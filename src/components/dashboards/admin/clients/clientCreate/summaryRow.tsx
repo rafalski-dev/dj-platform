@@ -5,7 +5,7 @@ import { useFormContext, useWatch } from "react-hook-form";
 import { useTranslations } from "next-intl";
 
 export function SummaryItem({ label, value }: { label: string; value?: string }) {
-  const t = useTranslations("Admin.Clients.Create.preview");
+  const t = useTranslations("Admin.Clients.Form.preview");
   return (
     <div className="flex flex-row items-center justify-between gap-3">
       <dt className="text-popover-foreground shrink-0 text-[13.5px]">{label}</dt>

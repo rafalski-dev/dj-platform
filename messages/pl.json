@@ -813,11 +813,7 @@
           "action": "Wróć do listy klientów"
         }
       },
-      "Create": {
-        "page": {
-          "title": "Dodaj nowego klienta",
-          "description": "Uzupełnij podstawowe informacje o kliencie"
-        },
+      "Form": {
         "clientType": {
           "title": "Kim jest klient?",
           "description": "Od tego zależy, jakie dane są potrzebne do umowy i rozliczeń.",
@@ -925,18 +921,38 @@
           "notProvided": "Nie podano"
         },
         "actions": {
-          "submit": "Dodaj klienta",
-          "cancel": "Anuluj"
+          "cancel": "Anuluj",
+          "submitting": "Zapisywanie"
         },
         "serverMessage": {
           "invalid": "Niektóre pola wymagają poprawy. Sprawdź zaznaczone pola i spróbuj ponownie.",
-          "success": "Dodano {name} do Twoich klientów.",
           "duplicate": "Klient z tym adresem e-mail lub NIP-em już istnieje. Sprawdź listę klientów.",
+          "notFound": "Ten klient już nie istnieje.",
           "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+        }
+      },
+      "Create": {
+        "page": {
+          "title": "Dodaj nowego klienta",
+          "description": "Uzupełnij podstawowe informacje o kliencie"
         },
+        "submit": "Dodaj klienta",
+        "success": "Dodano {name} do Twoich klientów.",
         "toast": {
           "successTitle": "Klient został dodany",
           "errorTitle": "Nie udało się dodać klienta"
+        }
+      },
+      "Edit": {
+        "page": {
+          "title": "Edytuj klienta",
+          "description": "Zaktualizuj informacje o kliencie"
+        },
+        "submit": "Zapisz zmiany",
+        "success": "Zaktualizowano dane klienta {name}.",
+        "toast": {
+          "successTitle": "Zmiany zostały zapisane",
+          "errorTitle": "Nie udało się zapisać zmian"
         }
       },
       "Details": {

@@ -8,7 +8,8 @@ import { createClientSchema, CreateClientType } from "@/validation/newClient";
 import { getTranslations } from "next-intl/server";
 
 export async function createClientAction(formData: CreateClientType) {
-  const t = await getTranslations("Admin.Clients.Create");
+  const t = await getTranslations("Admin.Clients.Form");
+  const tCreate = await getTranslations("Admin.Clients.Create");
   await adminCheck();
 
   const schema = createClientSchema(t);
@@ -35,7 +36,7 @@ export async function createClientAction(formData: CreateClientType) {
     return {
       status: "success",
       success: true,
-      message: t("serverMessage.success", { name: client.name }),
+      message: tCreate("success", { name: client.name }),
     };
   } catch (error) {
     console.error(error);
@@ -58,10 +59,56 @@ export async function deleteClient(clientId: string) {
     const client = await db.client.delete({ where: { id: clientId } });
     clientName = client.name;
   } catch (error) {
+    console.error(error);
     const kind = getDbErrorKind(error);
-    if (kind === "unknown") console.error(error);
     return { status: "error", success: false, message: t(kind === "duplicate" ? "unknown" : kind) };
   }
 
   return { status: "success", success: true, message: t("success", { name: clientName }) };
+}
+
+export async function editClient(formData: CreateClientType, clientId: string) {
+  await adminCheck();
+  const t = await getTranslations("Admin.Clients.Form");
+  const tEdit = await getTranslations("Admin.Clients.Edit");
+
+  const schema = createClientSchema(t);
+  const validatedValues = schema.safeParse(formData);
+
+  if (!validatedValues.success) {
+    return {
+      status: "invalid",
+      success: false,
+      message: t("serverMessage.invalid"),
+      errors: Object.fromEntries(
+        validatedValues.error.issues
+          .map((issue) => [issue.path.join("."), issue.message] as const)
+          .reverse(),
+      ),
+    };
+  }
+
+  try {
+    const validatedData = validatedValues.data;
+
+    const client = await db.client.update({
+      where: { id: clientId },
+      data: clientDataFormatter(validatedData),
+    });
+
+    return {
+      status: "success",
+      success: true,
+      message: tEdit("success", { name: client.name }),
+    };
+  } catch (error) {
+    console.error(error);
+    const kind = getDbErrorKind(error);
+    const messageKey = kind === "duplicate" || kind === "notFound" ? kind : "unknown";
+    return {
+      status: "error",
+      success: false,
+      message: t(`serverMessage.${messageKey}`),
+    };
+  }
 }

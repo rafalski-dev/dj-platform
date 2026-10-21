@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 
 export function BusinessSummary() {
   const { control } = useFormContext();
-  const t = useTranslations("Admin.Clients.Create");
+  const t = useTranslations("Admin.Clients.Form");
   const [clientType, businessName, firstName, lastName] = useWatch({
     control,
     name: [

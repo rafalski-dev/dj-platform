@@ -11,7 +11,7 @@ type ClientDetailsProps = {
 
 export function ClientDetails({ fetchedData }: ClientDetailsProps) {
   const t = useTranslations("Admin.Clients.Details.info");
-  const tGender = useTranslations("Admin.Clients.Create.fields.gender.options");
+  const tGender = useTranslations("Admin.Clients.Form.fields.gender.options");
 
   const isIndividual = fetchedData.clientType === "Individual";
 
