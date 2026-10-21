@@ -157,7 +157,7 @@ export function getRelevantEvent<T extends EventStatusType>(events: T[]) {
   return upcomingEvent ?? avoidCancelled.at(-1) ?? events.at(-1);
 }
 
-export function isNavItemActive(pathname: Pathname, navPath: Pathname) {
+export function isNavItemActive(pathname: string, navPath: Pathname) {
   return navPath === "/admin"
     ? pathname === navPath
     : pathname === navPath || pathname.startsWith(navPath);
