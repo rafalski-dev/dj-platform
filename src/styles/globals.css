@@ -29,6 +29,8 @@
   --color-success-bg: var(--success-bg);
   --color-success-text: var(--success-text);
   --color-success-border: var(--success-border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
   --color-gold-light: var(--gold-light);
   --color-gold-dark: var(--gold-dark);
   --color-skeleton-base: var(--skeleton-base);
@@ -144,6 +146,10 @@
   --success-bg: #22803624;
   --success-text: #80c68c;
   --success-border: rgba(34, 128, 54, 0.3);
+
+  /* Status */
+  --success: rgb(0, 212, 146);
+  --warning: rgb(255, 185, 0);
 
   /* Skeleton */
   --skeleton-base: rgb(33, 28, 20);
