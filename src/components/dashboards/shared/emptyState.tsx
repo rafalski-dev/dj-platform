@@ -16,7 +16,7 @@ type EmptyStateProps = {
   icon?: ReactNode;
   title: string;
   description: string;
-  error?: {
+  retry?: {
     label: string;
     onClick: () => void;
   };
@@ -33,7 +33,7 @@ export function EmptyState({
   title,
   description,
   action,
-  error,
+  retry,
   className,
 }: EmptyStateProps) {
   return (
@@ -63,9 +63,9 @@ export function EmptyState({
           </Link>
         </EmptyContent>
       )}
-      {error && (
+      {retry && (
         <EmptyContent>
-          <Button onClick={error.onClick}>{error.label}</Button>
+          <Button onClick={retry.onClick}>{retry.label}</Button>
         </EmptyContent>
       )}
     </Empty>

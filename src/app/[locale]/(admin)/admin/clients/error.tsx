@@ -24,7 +24,7 @@ export default function Error({
         icon={<CircleXIcon />}
         title={t("title")}
         description={t("description")}
-        error={{ label: t("action"), onClick: () => unstable_retry() }}
+        retry={{ label: t("action"), onClick: () => unstable_retry() }}
       />
     </>
   );
