@@ -93,7 +93,6 @@ export function AdminDesktopNavigation() {
                   : "hover:bg-accent-foreground/5 hover:text-accent-foreground",
               )}
             >
-              {" "}
               {icons[el.navKey]}
               {t(`nav.navItems.${el.navKey}`)}
               {isActive && (
