@@ -705,6 +705,7 @@
       "openMenu": "Otwórz menu",
       "closeMenu": "Zamknij menu",
       "nav": {
+        "title": "Panel administratora",
         "logoutBtn": "Wyloguj się",
         "navItems": {
           "home": "Strona główna",

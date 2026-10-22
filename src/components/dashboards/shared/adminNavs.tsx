@@ -32,7 +32,7 @@ export function AdminMobileNav() {
   return (
     <div>
       <p className="text-popover-foreground/80 mt-6 font-sans text-xs tracking-[2px] uppercase">
-        Admin panel
+        {t("nav.title")}
       </p>
       <nav className="flex flex-col gap-1.5 py-3">
         {adminItems.map((el: AdminItem) => {
@@ -76,7 +76,7 @@ export function AdminDesktopNavigation() {
   return (
     <div>
       <p className="text-popover-foreground/80 font-sans text-xs tracking-[2px] uppercase">
-        Admin panel
+        {t("nav.title")}
       </p>
       <nav className="flex flex-col gap-1.5 py-3">
         {adminItems.map((el: AdminItem) => {

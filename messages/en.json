@@ -705,6 +705,7 @@
       "openMenu": "Open menu",
       "closeMenu": "Close menu",
       "nav": {
+        "title": "Admin panel",
         "logoutBtn": "Log out",
         "navItems": {
           "home": "Home",
