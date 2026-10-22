@@ -7,7 +7,9 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
   return (
     <main className="grid min-h-dvh w-full grid-cols-1 gap-x-10 lg:grid-cols-2">
       <div className="border-border relative hidden w-full border-r p-10 lg:sticky lg:top-0 lg:flex lg:h-dvh lg:items-end lg:justify-start">
-        <Image src={authImg} fill className="-z-10 object-cover" alt="" preload sizes="50vw" />
+        <div className="absolute inset-0 -z-10">
+          <Image src={authImg} fill className="-z-10 object-cover" alt="" preload sizes="50vw" />
+        </div>
         <div className="bg-background/40 absolute inset-0 h-full w-full" />
       </div>
       <div className="relative flex w-full pt-18">
