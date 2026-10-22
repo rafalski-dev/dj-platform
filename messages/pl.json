@@ -672,7 +672,6 @@
     }
   },
   "NotFoundPage": {
-    "label": "Błąd 404",
     "title": "Nie znaleziono strony",
     "description": "Strona, której szukasz, nie istnieje lub została przeniesiona. Sprawdź adres albo wróć na stronę główną.",
     "action": "Wróć na stronę główną"
