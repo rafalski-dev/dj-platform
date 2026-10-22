@@ -626,6 +626,10 @@
       "unexpectedError": {
         "title": "Błąd wylogowania"
       }
+    },
+    "PasswordInput": {
+      "show": "Pokaż hasło",
+      "hide": "Ukryj hasło"
     }
   },
   "Emails": {

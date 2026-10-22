@@ -626,6 +626,10 @@
       "unexpectedError": {
         "title": "Logging out error"
       }
+    },
+    "PasswordInput": {
+      "show": "Show password",
+      "hide": "Hide password"
     }
   },
   "Emails": {

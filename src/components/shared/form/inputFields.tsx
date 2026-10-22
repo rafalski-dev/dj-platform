@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Control, FieldValues, Path, useController } from "react-hook-form";
 
@@ -73,6 +74,7 @@ export function ControlledPasswordInput<T extends FieldValues>({
   ...inputProps
 }: ControlledPasswordInputType<T>) {
   const [isOn, setIsOn] = useState(false);
+  const t = useTranslations("Auth.PasswordInput");
 
   const {
     field,
@@ -100,6 +102,7 @@ export function ControlledPasswordInput<T extends FieldValues>({
           className="text-accent/60 absolute inset-y-0 right-2 my-auto [&_svg:not([class*='size-'])]:size-4.5"
           size="icon-md"
           variant="ghost"
+          aria-label={isOn ? t("hide") : t("show")}
           onClick={() => setIsOn((prev) => !prev)}
         >
           {isOn ? <EyeOffIcon /> : <EyeIcon />}
