@@ -34,12 +34,9 @@ export function NewsletterForm() {
                 placeholder={t("placeholder")}
                 aria-label={t("placeholder")}
                 aria-invalid={!!state?.errors?.email}
-                aria-describedby={state?.errors?.email ? "email-error" : undefined}
               />
               {state?.errors?.email && (
-                <FieldError id="email" className="px-6">
-                  {state.errors.email[0]}
-                </FieldError>
+                <FieldError className="px-6">{state.errors.email[0]}</FieldError>
               )}
             </Field>
             <Button disabled={isPending} className="w-full md:w-32" type="submit">
