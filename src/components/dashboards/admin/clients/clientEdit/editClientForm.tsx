@@ -77,7 +77,7 @@ export function EditClientForm({ fetchedData, clientId }: EditClientFormProps) {
         title: tEdit("toast.successTitle"),
         description: response.message,
       });
-      push("/admin/clients");
+      push({ pathname: "/admin/clients/[clientId]", params: { clientId: clientId } });
       return;
     }
 
