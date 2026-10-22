@@ -5,7 +5,13 @@ import { CircleXIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
-export default function Error({ error, retry }: { error: unknown; retry: () => void }) {
+export default function Error({
+  error,
+  unstable_retry,
+}: {
+  error: unknown;
+  unstable_retry: () => void;
+}) {
   const t = useTranslations("Admin.Clients.empty.error");
 
   useEffect(() => {
@@ -18,7 +24,7 @@ export default function Error({ error, retry }: { error: unknown; retry: () => v
         icon={<CircleXIcon />}
         title={t("title")}
         description={t("description")}
-        error={{ label: t("action"), onClick: () => retry() }}
+        error={{ label: t("action"), onClick: () => unstable_retry() }}
       />
     </>
   );

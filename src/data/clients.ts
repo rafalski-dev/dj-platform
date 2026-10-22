@@ -55,7 +55,7 @@ export async function getPaginatedClients(
   filter?: FilterType,
 ) {
   await adminCheck();
-
+  throw new Error("");
   const rowsToSkip = (page - 1) * rowsLimit;
 
   const clients = await db.client.findMany({
