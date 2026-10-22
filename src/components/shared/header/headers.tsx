@@ -65,7 +65,7 @@ export async function HeaderAuth() {
           <Logo href="/" iconSize={22} className="mb-0.75 w-30 text-[24px]" />
           <div className="flex items-center gap-3">
             <Link href="/" className={buttonVariants({ variant: "outline", size: "sm" })}>
-              Home
+              {t("mainPageBtn")}
             </Link>
             <ThemeToggle ariaLabel={t("changeTheme")} />
             <LanguageToggle ariaLabel={t("changeLanguage")} />

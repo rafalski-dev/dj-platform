@@ -22,7 +22,7 @@ export function ReviewsCard({
     <article className="border-border bg-card flex h-full flex-col justify-between rounded-4xl border px-6 py-8">
       <header>
         <div className="flex flex-col gap-4 pb-5">
-          <div className="flex gap-0.5" role="img" aria-label={`${rate} out of 5`}>
+          <div className="flex gap-0.5" role="img" aria-label={t("rating", { rate })}>
             {Array(rate)
               .fill(null)
               .map((_, index) => {

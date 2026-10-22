@@ -192,6 +192,7 @@
       "id": "opinie",
       "sectionLabel": "Opinie",
       "sectionTitle": "Wasze opinie mówią jak to wygląda w praktyce.",
+      "rating": "Ocena: {rate} na 5",
       "reviews": {
         "1": "Nasze wesele było absolutnie magiczne, a parkiet ani na chwilę nie opustoszał! DJ perfekcyjnie wyczuwał gości i utrzymał na parkiecie wszystkich — od babci po najmłodszych.",
         "2": "Profesjonalizm na najwyższym poziomie. Komunikacja bezproblemowa, a każda prośba o utwór została spełniona. Nagłośnienie i światło robiły ogromne wrażenie. Warto!",

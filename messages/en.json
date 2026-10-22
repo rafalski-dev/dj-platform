@@ -192,6 +192,7 @@
       "id": "reviews",
       "sectionLabel": "Reviews",
       "sectionTitle": "Many couples have trusted me. Here's what they say.",
+      "rating": "Rated {rate} out of 5",
       "reviews": {
         "1": "Our wedding was absolutely magical and the dance floor never emptied! The DJ read the crowd perfectly, keeping everyone dancing from grandma to the youngest guests.",
         "2": "Professionalism at the highest level. Communication was effortless and every song request was honored. The sound and lighting were seriously impressive. Worth it!",
