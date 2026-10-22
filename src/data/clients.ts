@@ -8,13 +8,15 @@ import { adminCheck } from "@/lib/auth-helpers";
 function getClientsWhere(query?: string) {
   if (!query) return {};
 
-  const phoneQuery = query.replace(/[\s-]/g, "") || query;
+  const digits = query.replace(/\D/g, "");
+  const hasPrefix = query.startsWith("+48") || digits.length > 9;
+  const phoneQuery = hasPrefix && digits.startsWith("48") ? digits.slice(2) : digits;
 
   return {
     OR: [
       { name: { contains: query, mode: "insensitive" as const } },
       { email: { contains: query, mode: "insensitive" as const } },
-      { phone: { contains: phoneQuery } },
+      ...(phoneQuery ? [{ phone: { contains: phoneQuery } }] : []),
     ],
   };
 }
