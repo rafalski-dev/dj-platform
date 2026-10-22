@@ -4,6 +4,7 @@ import { getCurrentYear, getStartOfToday } from "@/lib/utils";
 import { db } from "@/lib/db";
 import { FilterType } from "@/lib/searchParams";
 import { adminCheck } from "@/lib/auth-helpers";
+import { Prisma } from "../../generated";
 
 function getClientsWhere(query?: string) {
   if (!query) return {};
@@ -12,12 +13,17 @@ function getClientsWhere(query?: string) {
   const hasPrefix = query.startsWith("+48") || digits.length > 9;
   const phoneQuery = hasPrefix && digits.startsWith("48") ? digits.slice(2) : digits;
 
+  const condition: Prisma.ClientWhereInput[] = [
+    { name: { contains: query, mode: "insensitive" } },
+    { email: { contains: query, mode: "insensitive" } },
+    { firstName: { contains: query, mode: "insensitive" } },
+    { lastName: { contains: query, mode: "insensitive" } },
+  ];
+
+  if (phoneQuery) condition.push({ phone: { contains: phoneQuery } });
+
   return {
-    OR: [
-      { name: { contains: query, mode: "insensitive" as const } },
-      { email: { contains: query, mode: "insensitive" as const } },
-      ...(phoneQuery ? [{ phone: { contains: phoneQuery } }] : []),
-    ],
+    OR: condition,
   };
 }
 
