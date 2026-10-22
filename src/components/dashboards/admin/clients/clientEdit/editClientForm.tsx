@@ -107,7 +107,7 @@ export function EditClientForm({ fetchedData, clientId }: EditClientFormProps) {
                 <Contact />
                 <Address />
               </div>
-              <div className="flex flex-col gap-5 lg:w-2/5">
+              <div className="flex flex-col gap-5 lg:sticky lg:top-23 lg:w-2/5 lg:self-start">
                 {clientType === "Individual" ? <IndividualSummary /> : <BusinessSummary />}
                 <Button disabled={isSubmitting} type="submit">
                   {isSubmitting ? (
