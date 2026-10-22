@@ -671,6 +671,12 @@
       "ignore": "Jeśli to nie Ty prosiłeś o zmianę hasła, zignoruj tę wiadomość — Twoje hasło pozostaje bez zmian."
     }
   },
+  "NotFoundPage": {
+    "label": "Błąd 404",
+    "title": "Nie znaleziono strony",
+    "description": "Strona, której szukasz, nie istnieje lub została przeniesiona. Sprawdź adres albo wróć na stronę główną.",
+    "action": "Wróć na stronę główną"
+  },
   "Metadata": {
     "title": "{name} | Zaplanuj swoje wydarzenie",
     "description": "{name} — DJ i wodzirej na wesela i imprezy w całej Polsce. Muzyka, światło oraz największe hity przez całą noc — 12 lat i ponad 380 zagranych imprez.",
