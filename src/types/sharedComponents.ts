@@ -42,7 +42,7 @@ export type CustomImageProps = {
   src: StaticImageData;
   alt: string;
   ratio: string;
-  priority?: boolean;
+  preload?: boolean;
   sizes?: string;
   loading?: "eager" | "lazy";
   contrast?: string;

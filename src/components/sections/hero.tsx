@@ -96,7 +96,7 @@ export async function Hero() {
             <CustomImage
               src={heroImg}
               alt={t("Hero.imageAlt")}
-              priority
+              preload
               ratio="aspect-3/2"
               sizes="(max-width: 1024px) 100vw, 50vw"
               contrast="contrast-105"

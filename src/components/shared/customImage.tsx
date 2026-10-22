@@ -7,7 +7,7 @@ export function CustomImage({
   alt,
   ratio,
   loading,
-  priority,
+  preload,
   sizes,
   contrast,
   hue,
@@ -26,7 +26,7 @@ export function CustomImage({
         alt={alt}
         fill
         loading={loading}
-        priority={priority}
+        preload={preload}
         sizes={sizes}
         className={cn("object-cover", contrast, hue)}
       />
