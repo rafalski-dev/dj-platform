@@ -9,7 +9,7 @@ export default function Error({
   error,
   unstable_retry,
 }: {
-  error: unknown;
+  error: Error & { digest?: string };
   unstable_retry: () => void;
 }) {
   const t = useTranslations("Admin.Clients.empty.error");
@@ -19,13 +19,11 @@ export default function Error({
   }, [error]);
 
   return (
-    <>
-      <EmptyState
-        icon={<CircleXIcon />}
-        title={t("title")}
-        description={t("description")}
-        retry={{ label: t("action"), onClick: () => unstable_retry() }}
-      />
-    </>
+    <EmptyState
+      icon={<CircleXIcon />}
+      title={t("title")}
+      description={t("description")}
+      retry={{ label: t("action"), onClick: () => unstable_retry() }}
+    />
   );
 }
