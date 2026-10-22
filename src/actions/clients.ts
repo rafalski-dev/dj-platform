@@ -8,9 +8,9 @@ import { createClientSchema, CreateClientType } from "@/validation/clients";
 import { getTranslations } from "next-intl/server";
 
 export async function createClientAction(formData: CreateClientType) {
+  await adminCheck();
   const t = await getTranslations("Admin.Clients.Form");
   const tCreate = await getTranslations("Admin.Clients.Create");
-  await adminCheck();
 
   const schema = createClientSchema(t);
   const validatedValues = schema.safeParse(formData);
@@ -46,8 +46,8 @@ export async function createClientAction(formData: CreateClientType) {
 }
 
 export async function deleteClientAction(clientId: string) {
-  const t = await getTranslations("Admin.Clients.Details.delete.serverMessage");
   await adminCheck();
+  const t = await getTranslations("Admin.Clients.Details.delete.serverMessage");
 
   let clientName: string;
 
