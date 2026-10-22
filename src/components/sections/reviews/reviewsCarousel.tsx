@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/carousel";
 
 import { ReviewsCard } from "./reviewsCard";
-import { Button } from "@/components/ui/button";
 import { ReviewDataType } from "@/types/reviews";
 
 export function ReviewsCarousel({ reviewsData }: { reviewsData: ReviewDataType[] }) {
