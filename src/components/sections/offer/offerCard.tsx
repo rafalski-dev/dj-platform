@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { OfferCardsDataType } from "@/types/offer";
 
 import { getTranslations } from "next-intl/server";
 import { OfferCardFeatureList } from "./offerCardFeaturesList";
 import clsx from "clsx";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 export async function OfferCard({ cardNameKey, mostPopular, featuresList }: OfferCardsDataType) {
   const t = await getTranslations("LandingPage.Offer");
@@ -30,12 +30,12 @@ export async function OfferCard({ cardNameKey, mostPopular, featuresList }: Offe
       </header>
       <OfferCardFeatureList cardNameKey={cardNameKey} featuresList={featuresList} />
       <footer>
-        <Button
-          variant="outline"
-          className="w-full"
-          nativeButton={false}
-          render={<Link href={nav("navPaths.contact")}>{t("primaryButton")}</Link>}
-        ></Button>
+        <Link
+          href={{ pathname: "/", hash: nav("navPaths.contact") }}
+          className={buttonVariants({ variant: "outline", className: "w-full" })}
+        >
+          {t("primaryButton")}
+        </Link>
       </footer>
     </article>
   );

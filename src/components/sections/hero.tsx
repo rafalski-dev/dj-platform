@@ -9,6 +9,7 @@ import { CustomImage } from "../shared/customImage";
 import { BgGlowOrb } from "../decorations/glowOrbs";
 import { Section } from "../shared/sections/section";
 import heroImg from "../../assets/images/hero.jpg";
+import { Link } from "@/i18n/navigation";
 
 export async function Hero() {
   const t = await getTranslations("LandingPage");
@@ -56,19 +57,19 @@ export async function Hero() {
               className="flex flex-wrap gap-3 lg:mt-2 lg:gap-5"
               style={{ animation: "rise 1s cubic-bezier(.22,.61,.36,1) 0.24s both" }}
             >
-              <a
-                href={t("Navigation.navPaths.contact")}
+              <Link
+                href={{ pathname: "/", hash: t("Navigation.navPaths.contact") }}
                 className={buttonVariants({ variant: "default", size: "lg" })}
               >
                 {t("Hero.PrimaryCTA")}
                 <MoveRight />
-              </a>
-              <a
-                href={t("Navigation.navPaths.offer")}
+              </Link>
+              <Link
+                href={{ pathname: "/", hash: t("Navigation.navPaths.offer") }}
                 className={buttonVariants({ variant: "outline", size: "lg" })}
               >
                 {t("Hero.SecondaryCTA")}
-              </a>
+              </Link>
             </div>
             <div
               className="mt-6 flex items-center md:gap-2"

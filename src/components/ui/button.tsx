@@ -15,14 +15,14 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "text-muted-foreground hover:text-accent-foreground/90 transition-colors font-medium!",
         ghost: "text-accent-foreground/70 hover:bg-foreground/5 ",
       },
       size: {
         default:
           "h-11 gap-2 px-4.5 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5 md:h-12",
         xs: "h-8.5 gap-1 px-3 text-[13px] has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 [&_svg:not([class*='size-'])]:size-4",
-        sm: "h-10 gap-1 px-4 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 text-sm font-semibold",
+        sm: "h-10 gap-1 px-4 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 text-sm",
         lg: "h-12 gap-2.5 px-5 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3 ",
         icon: "size-10 [&_svg:not([class*='size-'])]:size-6",
         "icon-xs": "size-6 [&_svg:not([class*='size-'])]:size-4 rounded",

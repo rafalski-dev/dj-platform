@@ -11,10 +11,10 @@
         "privacyPolicy": "Polityka prywatności"
       },
       "navPaths": {
-        "about": "#o-mnie",
-        "offer": "#oferta",
-        "reviews": "#opinie",
-        "contact": "#kontakt"
+        "about": "o-mnie",
+        "offer": "oferta",
+        "reviews": "opinie",
+        "contact": "kontakt"
       }
     },
     "Header": {

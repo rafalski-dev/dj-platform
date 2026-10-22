@@ -11,10 +11,10 @@
         "privacyPolicy": "Privacy Policy"
       },
       "navPaths": {
-        "about": "#about",
-        "offer": "#offer",
-        "reviews": "#reviews",
-        "contact": "#contact"
+        "about": "about",
+        "offer": "offer",
+        "reviews": "reviews",
+        "contact": "contact"
       }
     },
     "Header": {

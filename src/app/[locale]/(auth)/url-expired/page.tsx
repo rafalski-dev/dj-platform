@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Card, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
@@ -27,12 +27,12 @@ function UrlExpiredCard() {
       </CardHeader>
       <CardFooter className="flex flex-col gap-5 px-0">
         <div className="flex w-full flex-col gap-5">
-          <Button
-            className="w-full text-[15px]"
-            render={<Link href={searchError === "verification" ? "/login" : "/reset-password"} />}
+          <Link
+            href={searchError === "verification" ? "/login" : "/reset-password"}
+            className={buttonVariants({ variant: "default", className: "w-full text-[15px]" })}
           >
             {t(`primaryBtn.${searchError}`)}
-          </Button>
+          </Link>
         </div>
         <div className="flex gap-2">
           <p className="text-muted-foreground">{t(`footer.${searchError}`)}</p>

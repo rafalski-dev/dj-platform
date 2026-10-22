@@ -17,14 +17,14 @@ export function HeaderLandingpage() {
     >
       <Wrapper>
         <div className={"flex items-center justify-between py-4"}>
-          <div className="flex w-full items-center">
+          <div className="flex w-full items-center justify-between">
             <Logo href="/" iconSize={22} className="mb-0.75 w-30 text-[24px] lg:text-[20px]" />
             <div className="hidden w-full lg:block">
               <NavDesktop navItems={navItems} />
             </div>
-          </div>
-          <div className="lg:hidden">
-            <NavMobile navItems={navItems} />
+            <div className="lg:hidden">
+              <NavMobile navItems={navItems} />
+            </div>
           </div>
         </div>
       </Wrapper>
