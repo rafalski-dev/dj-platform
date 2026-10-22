@@ -6,9 +6,10 @@ import { SummaryRow } from "./summaryRow";
 import { createInitials } from "@/lib/utils";
 import { UserIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { CreateClientType } from "@/validation/clients";
 
 export function IndividualSummary() {
-  const { control } = useFormContext();
+  const { control } = useFormContext<CreateClientType>();
   const t = useTranslations("Admin.Clients.Form");
   const [clientType, firstName, lastName] = useWatch({
     control,

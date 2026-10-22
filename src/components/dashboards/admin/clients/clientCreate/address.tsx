@@ -4,9 +4,10 @@ import { ControlledInput } from "@/components/shared/form/inputFields";
 import { FormSection } from "./formSection";
 import { useFormContext, useWatch } from "react-hook-form";
 import { useTranslations } from "next-intl";
+import { CreateClientType } from "@/validation/clients";
 
 export function Address() {
-  const { control } = useFormContext();
+  const { control } = useFormContext<CreateClientType>();
   const t = useTranslations("Admin.Clients.Form");
   const clientType = useWatch({ control, name: "clientType" });
 

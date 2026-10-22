@@ -1,8 +1,9 @@
 "use client";
 
 import { MinusIcon } from "lucide-react";
-import { useFormContext, useWatch } from "react-hook-form";
+import { FieldPathByValue, useFormContext, useWatch } from "react-hook-form";
 import { useTranslations } from "next-intl";
+import { CreateClientType } from "@/validation/clients";
 
 export function SummaryItem({ label, value }: { label: string; value?: string }) {
   const t = useTranslations("Admin.Clients.Form.preview");
@@ -23,12 +24,12 @@ export function SummaryItem({ label, value }: { label: string; value?: string })
 
 type SummaryRowProps = {
   label: string;
-  name: string;
+  name: FieldPathByValue<CreateClientType, string>;
   formatValue?: (value: string) => string;
 };
 
 export function SummaryRow({ label, name, formatValue }: SummaryRowProps) {
-  const { control } = useFormContext();
+  const { control } = useFormContext<CreateClientType>();
   const watchedValue = useWatch({ control, name: name });
   const value = watchedValue && formatValue ? formatValue(watchedValue) : watchedValue;
   return <SummaryItem label={label} value={value} />;

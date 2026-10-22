@@ -5,11 +5,12 @@ import { ControlledSelect } from "@/components/shared/form/selectField";
 import { useFormContext } from "react-hook-form";
 import { FormSection } from "./formSection";
 import { useTranslations } from "next-intl";
+import { CreateClientType } from "@/validation/clients";
 
 const GENDERS = ["Male", "Female", "Other"];
 
 export function PersonalDetails() {
-  const { control } = useFormContext();
+  const { control } = useFormContext<CreateClientType>();
   const t = useTranslations("Admin.Clients.Form");
   return (
     <FormSection title={t("sections.personalDetails")}>

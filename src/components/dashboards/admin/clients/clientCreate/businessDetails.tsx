@@ -2,9 +2,10 @@ import { ControlledInput } from "@/components/shared/form/inputFields";
 import { FormSection } from "./formSection";
 import { useFormContext } from "react-hook-form";
 import { useTranslations } from "next-intl";
+import { CreateClientType } from "@/validation/clients";
 
 export function BusinessDetails() {
-  const { control } = useFormContext();
+  const { control } = useFormContext<CreateClientType>();
   const t = useTranslations("Admin.Clients.Form");
   return (
     <FormSection title={t("sections.businessDetails")}>

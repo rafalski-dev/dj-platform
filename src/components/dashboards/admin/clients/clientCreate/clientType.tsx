@@ -10,6 +10,7 @@ import { BuildingIcon, UserIcon } from "lucide-react";
 import { useController, useFormContext } from "react-hook-form";
 import { FormSection } from "./formSection";
 import { useTranslations } from "next-intl";
+import { CreateClientType } from "@/validation/clients";
 
 const CLIENT_TYPE = [
   {
@@ -25,7 +26,7 @@ const CLIENT_TYPE = [
 ];
 
 export function ClientType() {
-  const { control } = useFormContext();
+  const { control } = useFormContext<CreateClientType>();
   const { field } = useController({ name: "clientType", control });
   const t = useTranslations("Admin.Clients.Form.clientType");
   return (
