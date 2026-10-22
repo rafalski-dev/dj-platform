@@ -62,7 +62,7 @@ export function EditClientForm({ fetchedData, clientId }: EditClientFormProps) {
   const {
     handleSubmit,
     control,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isDirty },
     setError,
   } = methods;
 
@@ -109,7 +109,7 @@ export function EditClientForm({ fetchedData, clientId }: EditClientFormProps) {
               </div>
               <div className="flex flex-col gap-5 lg:sticky lg:top-23 lg:w-2/5 lg:self-start">
                 {clientType === "Individual" ? <IndividualSummary /> : <BusinessSummary />}
-                <Button disabled={isSubmitting} type="submit">
+                <Button disabled={isSubmitting || !isDirty} type="submit">
                   {isSubmitting ? (
                     <>
                       <Spinner /> {t("actions.submitting")}
