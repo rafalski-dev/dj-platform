@@ -777,6 +777,11 @@
       "count": "{count, plural, one {# umowa} few {# umowy} many {# umów} other {# umowy}}",
       "addingBtn": "Wygeneruj umowę"
     },
+    "Playlists": {
+      "title": "Playlisty",
+      "count": "{count, plural, one {# playlista} few {# playlisty} many {# playlist} other {# playlisty}}",
+      "addingBtn": "Utwórz playlistę"
+    },
     "Clients": {
       "title": "Klienci",
       "addingBtn": "Dodaj klienta",
