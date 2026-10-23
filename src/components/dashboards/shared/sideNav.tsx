@@ -23,9 +23,9 @@ export async function SideNavMobile({ display }: { display: string }) {
 
   return (
     <Sheet>
-      <SheetTrigger className={display}>
+      <SheetTrigger className={display} aria-label={t("openMenu")}>
         <Avatar size="lg">
-          <AvatarFallback aria-label={t("openMenu")}>{createInitials(adminName)}</AvatarFallback>
+          <AvatarFallback>{createInitials(adminName)}</AvatarFallback>
         </Avatar>
       </SheetTrigger>
       <SheetContent side="left" showCloseButton={false} className={cn("", display)}>
