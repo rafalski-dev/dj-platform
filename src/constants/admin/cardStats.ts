@@ -6,7 +6,7 @@ export const clientStatsKeys = [
 ] as const;
 
 export const homeStatsKeys = [
-  { key: "events" },
+  { key: "contracts" },
   { key: "pending" },
   { key: "activeWithoutContract" },
   { key: "activeWithoutPlaylist" },

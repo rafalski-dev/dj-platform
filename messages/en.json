@@ -754,9 +754,9 @@
       "title": "Season overview",
       "label": "Hello, {name}",
       "stats": {
-        "events": {
-          "header": "Events in {year}",
-          "footer": "booked this season"
+        "contracts": {
+          "header": "Contracts",
+          "footer": "all signed so far"
         },
         "pending": {
           "header": "To confirm",
@@ -771,6 +771,11 @@
           "footer": "in the next 30 days"
         }
       }
+    },
+    "Contracts": {
+      "title": "Contracts",
+      "count": "{count, plural, one {# contract} other {# contracts}}",
+      "addingBtn": "Generate contract"
     },
     "Clients": {
       "title": "Clients",

@@ -754,9 +754,9 @@
       "title": "Przegląd sezonu",
       "label": "Cześć, {name}",
       "stats": {
-        "events": {
-          "header": "Wydarzenia w {year}",
-          "footer": "zarezerwowane w tym sezonie"
+        "contracts": {
+          "header": "Umowy",
+          "footer": "wszystkie dotychczas"
         },
         "pending": {
           "header": "Do potwierdzenia",
@@ -771,6 +771,11 @@
           "footer": "w ciągu najbliższych 30 dni"
         }
       }
+    },
+    "Contracts": {
+      "title": "Umowy",
+      "count": "{count, plural, one {# umowa} few {# umowy} many {# umów} other {# umowy}}",
+      "addingBtn": "Wygeneruj umowę"
     },
     "Clients": {
       "title": "Klienci",

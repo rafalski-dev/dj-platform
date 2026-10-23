@@ -1,6 +1,5 @@
 import { CardsGroup } from "../../shared/cardsGroup";
 import { getTranslations } from "next-intl/server";
-import { getCurrentYear } from "@/lib/utils";
 import { getHomeStats } from "@/data/home";
 import { homeStatsKeys } from "@/constants/admin/cardStats";
 
@@ -10,7 +9,7 @@ export async function HomeStatsCards() {
 
   const mappedKeys = homeStatsKeys.map(({ key }) => ({
     key,
-    header: t(`${key}.header`, { year: getCurrentYear() }),
+    header: t(`${key}.header`),
     content: stats[key],
     footer: t(`${key}.footer`),
   }));
