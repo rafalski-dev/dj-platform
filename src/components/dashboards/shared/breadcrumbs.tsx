@@ -32,7 +32,7 @@ export function Breadcrumbs({ dynamicLabel }: { dynamicLabel?: string }) {
   });
 
   function checkLength(arry: Crumb[]): Crumb[] {
-    if (arry.length >= 4) {
+    if (arry.length >= 5) {
       return [arry[0], { label: "...", path: "/" }, arry.at(-2)!, arry.at(-1)!];
     }
     return arry;
