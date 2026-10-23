@@ -53,8 +53,18 @@ export function createClientSchema(t: CreateClientTranslator) {
           .string()
           .trim()
           .toUpperCase()
-          .refine((val) => val === "" || /^[A-Z]{3} [0-9]{6}$/.test(val), {
-            error: t("fields.idCardNumber.validation"),
+          .refine(
+            (val) =>
+              val === "" || /^[A-Z]{3}[0-9]{6}$/.test(val) || /^[A-Z]{3} [0-9]{6}$/.test(val),
+            {
+              error: t("fields.idCardNumber.validation"),
+            },
+          )
+          .transform((val) => {
+            if (val === "") return val;
+            const start = val.replace(" ", "").slice(0, 3);
+            const end = val.replace(" ", "").slice(3);
+            return `${start} ${end}`;
           }),
 
         gender: z.enum(["Male", "Female", "Other"], { error: t("fields.gender.required") }),
