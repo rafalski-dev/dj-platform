@@ -34,8 +34,16 @@ function getUpcomingEventWhere() {
   };
 }
 
-function getFilterWhere(filter?: FilterType) {
-  if (filter === "active") return { events: { some: getUpcomingEventWhere() } };
+function getFilterWhere(filter?: FilterType): Prisma.ClientWhereInput {
+  if (filter === "active")
+    return {
+      events: {
+        some: {
+          eventDate: { gte: getStartOfToday() },
+          eventStatus: { notIn: ["Cancelled", "Pending"] },
+        },
+      },
+    };
 
   if (filter === "past") {
     return {
@@ -93,7 +101,16 @@ export async function getClientsStats() {
   const [newThisSeason, activeClients, withoutEvent, needsAttention] = await Promise.all([
     db.client.count({ where: { createdAt: { gte: new Date(getCurrentYear(), 0, 1) } } }),
 
-    db.client.count({ where: { events: { some: getUpcomingEventWhere() } } }),
+    db.client.count({
+      where: {
+        events: {
+          some: {
+            eventDate: { gte: getStartOfToday() },
+            eventStatus: { notIn: ["Cancelled", "Pending"] },
+          },
+        },
+      },
+    }),
 
     db.client.count({ where: { events: { none: {} } } }),
 
