@@ -3,29 +3,29 @@ import { Link } from "@/i18n/navigation";
 import { Pathname } from "@/types/navigation";
 import { PlusIcon } from "lucide-react";
 
-export type PageHeaderActionProps = { btnLabel: string; pathname: Pathname };
+export type SectionHeaderActionProps = { btnLabel: string; pathname: Pathname };
 
-type PageHeaderProps = {
+type SectionHeaderProps = {
   title: string;
   label?: string;
   description?: string;
-  action?: PageHeaderActionProps;
+  action?: SectionHeaderActionProps;
 };
 
-export function PageHeader({ label, title, description, action }: PageHeaderProps) {
+export function SectionHeader({ label, title, description, action }: SectionHeaderProps) {
   return (
     <header className="flex flex-col gap-2">
       {label && <p className="text-muted-foreground/90 mb-2 text-sm font-light">{label}</p>}
       <div className="flex items-center justify-between gap-4">
         <h1 className="text-[32px] leading-none md:text-[36px] lg:text-[40px]">{title}</h1>
-        {action && <PageHeaderAction {...action} />}
+        {action && <SectionHeaderAction {...action} />}
       </div>
       {description && <p className="text-muted-foreground text-sm">{description}</p>}
     </header>
   );
 }
 
-export function PageHeaderAction({ btnLabel, pathname }: PageHeaderActionProps) {
+export function SectionHeaderAction({ btnLabel, pathname }: SectionHeaderActionProps) {
   return (
     <Link
       href={pathname}

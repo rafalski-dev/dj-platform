@@ -2,7 +2,7 @@ import { ClientsStatsCards } from "@/components/admin/sections/clients/clientLis
 import { Filters } from "@/components/admin/shared/filters";
 import { RowsPerPage } from "@/components/admin/shared/rowsPerPage";
 import { SearchBar } from "@/components/admin/shared/searchBar";
-import { PageHeader } from "@/components/admin/shared/pageHeader";
+import { SectionHeader } from "@/components/admin/shared/section/sectionHeader";
 import { CardsSkeleton } from "@/components/admin/skeletons/cardsSkeleton";
 import { ClientsListSkeleton } from "@/components/admin/skeletons/clientsListSkeleton";
 import { cardsData } from "@/constants/admin";
@@ -51,7 +51,7 @@ export default async function Clients({
 
   return (
     <>
-      <PageHeader
+      <SectionHeader
         label={t("count", { count: totalClients })}
         title={t("title")}
         action={{ btnLabel: t("addingBtn"), pathname: "/admin/clients/create" }}

@@ -1,6 +1,6 @@
 import { CreateClientForm } from "@/components/admin/sections/clients/clientCreate/createClientForm";
 import { Breadcrumbs } from "@/components/admin/shared/breadcrumbs";
-import { PageHeader } from "@/components/admin/shared/pageHeader";
+import { SectionHeader } from "@/components/admin/shared/section/sectionHeader";
 import { getTranslations } from "next-intl/server";
 
 export default async function CreateClient() {
@@ -9,7 +9,7 @@ export default async function CreateClient() {
   return (
     <>
       <Breadcrumbs />
-      <PageHeader title={t("title")} description={t("description")} />
+      <SectionHeader title={t("title")} description={t("description")} />
       <CreateClientForm />
     </>
   );

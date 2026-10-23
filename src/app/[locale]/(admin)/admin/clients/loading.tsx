@@ -2,7 +2,7 @@ import { SearchBar } from "@/components/admin/shared/searchBar";
 import { CardsSkeleton } from "@/components/admin/skeletons/cardsSkeleton";
 import { ClientsListSkeleton } from "@/components/admin/skeletons/clientsListSkeleton";
 import { FiltersSkeleton } from "@/components/admin/skeletons/filtersSkeleton";
-import { PageHeaderSkeleton } from "@/components/admin/skeletons/pageHeaderSkeleton";
+import { SectionHeaderSkeleton } from "@/components/admin/skeletons/sectionHeaderSkeleton";
 import { PaginationSkeleton } from "@/components/admin/skeletons/paginationSkeleton";
 import { RowsPerPageSkeleton } from "@/components/admin/skeletons/rowsPerPageSkeleton";
 import { cardsData } from "@/constants/admin";
@@ -15,7 +15,7 @@ export default async function Loading() {
 
   return (
     <div className="flex flex-col gap-4">
-      <PageHeaderSkeleton
+      <SectionHeaderSkeleton
         title={t("title")}
         action={{ btnLabel: t("addingBtn"), pathname: "/admin/clients/create" }}
       />

@@ -1,4 +1,4 @@
-import { PageHeader } from "@/components/admin/shared/pageHeader";
+import { SectionHeader } from "@/components/admin/shared/section/sectionHeader";
 import { BreadcrumbsSkeleton } from "@/components/admin/skeletons/breadcrumbsSkeleton";
 import { ClientFormSkeleton } from "@/components/admin/skeletons/clientFormSkeleton";
 import { getTranslations } from "next-intl/server";
@@ -9,7 +9,7 @@ export default async function Loading() {
   return (
     <>
       <BreadcrumbsSkeleton />
-      <PageHeader title={t("title")} description={t("description")} />
+      <SectionHeader title={t("title")} description={t("description")} />
       <ClientFormSkeleton />
     </>
   );
