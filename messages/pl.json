@@ -750,6 +750,28 @@
     "GeneralCardHeader": {
       "add": "Dodaj"
     },
+    "Home": {
+      "title": "Przegląd sezonu",
+      "label": "Cześć, {name}",
+      "stats": {
+        "events": {
+          "header": "Wydarzenia w {year}",
+          "footer": "zarezerwowane w tym sezonie"
+        },
+        "pending": {
+          "header": "Do potwierdzenia",
+          "footer": "zapytania czekają na decyzję"
+        },
+        "activeWithoutContract": {
+          "header": "Bez umowy",
+          "footer": "nadchodzące potwierdzone wydarzenia"
+        },
+        "activeWithoutPlaylist": {
+          "header": "Bez playlisty",
+          "footer": "w ciągu najbliższych 30 dni"
+        }
+      }
+    },
     "Clients": {
       "title": "Klienci",
       "addingBtn": "Dodaj klienta",

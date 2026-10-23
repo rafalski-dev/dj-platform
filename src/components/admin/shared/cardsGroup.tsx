@@ -1,17 +1,17 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/shadcn/card";
 
-type StatCard = {
+type CardsDataType = {
   key: string;
   header: string;
-  value: number;
+  content: string | number;
   footer: string;
-};
+}[];
 
-export function CardsGroup({ cards }: { cards: StatCard[] }) {
+export function CardsGroup({ cardsData }: { cardsData: CardsDataType }) {
   return (
     <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-      {cards.map(({ key, header, value, footer }) => (
-        <Card key={key} size="sm" className="min-h-30 justify-between gap-1.5">
+      {cardsData.map(({ key, header, content, footer }) => (
+        <Card key={key} size="sm" className="min-h-30 justify-start gap-1.5">
           <CardHeader>
             <h3 className="text-muted-foreground/90 font-sans text-[12.5px] tracking-wide uppercase">
               {header}
@@ -19,7 +19,7 @@ export function CardsGroup({ cards }: { cards: StatCard[] }) {
           </CardHeader>
           <CardContent>
             <p className="text-accent-foreground font-serif text-[30px] leading-none lining-nums lg:text-[36px]">
-              {value}
+              {content}
             </p>
           </CardContent>
           <CardFooter>

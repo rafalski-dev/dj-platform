@@ -750,20 +750,31 @@
     "GeneralCardHeader": {
       "add": "Add"
     },
+    "Home": {
+      "title": "Season overview",
+      "label": "Hello, {name}",
+      "stats": {
+        "events": {
+          "header": "Events in {year}",
+          "footer": "booked this season"
+        },
+        "pending": {
+          "header": "To confirm",
+          "footer": "inquiries awaiting your decision"
+        },
+        "activeWithoutContract": {
+          "header": "Without contract",
+          "footer": "upcoming confirmed events"
+        },
+        "activeWithoutPlaylist": {
+          "header": "Without playlist",
+          "footer": "in the next 30 days"
+        }
+      }
+    },
     "Clients": {
       "title": "Clients",
       "addingBtn": "New client",
-      "searchBar": {
-        "placeholder": "Search by name, email or phone...",
-        "clear": "Clear search"
-      },
-      "count": "{count, plural, one {# client} other {# clients}}",
-      "filters": {
-        "all": "All",
-        "active": "Active",
-        "past": "Past",
-        "no-event": "No event"
-      },
       "stats": {
         "newThisSeason": {
           "header": "New this season",
@@ -782,6 +793,19 @@
           "footer": "missing email or phone"
         }
       },
+      "searchBar": {
+        "placeholder": "Search by name, email or phone...",
+        "clear": "Clear search"
+      },
+      "count": "{count, plural, one {# client} other {# clients}}",
+
+      "filters": {
+        "all": "All",
+        "active": "Active",
+        "past": "Past",
+        "no-event": "No event"
+      },
+
       "table": {
         "headers": {
           "client": "Client",

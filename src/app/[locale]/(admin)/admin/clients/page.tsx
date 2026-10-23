@@ -5,7 +5,7 @@ import { SearchBar } from "@/components/admin/shared/searchBar";
 import { SectionHeader } from "@/components/admin/shared/section/sectionHeader";
 import { CardsSkeleton } from "@/components/admin/skeletons/cardsSkeleton";
 import { ClientsListSkeleton } from "@/components/admin/skeletons/clientsListSkeleton";
-import { cardsData } from "@/constants/admin";
+import { clientStatsKeys } from "@/constants/admin/cardStats";
 import { filtersClientsData } from "@/constants/filtersOptions";
 import { getCountClients } from "@/data/clients";
 import {
@@ -56,7 +56,7 @@ export default async function Clients({
         title={t("title")}
         action={{ btnLabel: t("addingBtn"), pathname: "/admin/clients/create" }}
       />
-      <Suspense fallback={<CardsSkeleton count={cardsData.length} />}>
+      <Suspense fallback={<CardsSkeleton count={clientStatsKeys.length} />}>
         <ClientsStatsCards />
       </Suspense>
       <div className="flex flex-col gap-4 md:flex-row md:items-center">

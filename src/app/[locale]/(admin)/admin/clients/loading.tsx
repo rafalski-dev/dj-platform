@@ -5,7 +5,7 @@ import { FiltersSkeleton } from "@/components/admin/skeletons/filtersSkeleton";
 import { SectionHeaderSkeleton } from "@/components/admin/skeletons/sectionHeaderSkeleton";
 import { PaginationSkeleton } from "@/components/admin/skeletons/paginationSkeleton";
 import { RowsPerPageSkeleton } from "@/components/admin/skeletons/rowsPerPageSkeleton";
-import { cardsData } from "@/constants/admin";
+import { clientStatsKeys } from "@/constants/admin/cardStats";
 import { filtersClientsData } from "@/constants/filtersOptions";
 import { ROWS_PER_PAGE } from "@/lib/searchParams";
 import { getTranslations } from "next-intl/server";
@@ -19,7 +19,7 @@ export default async function Loading() {
         title={t("title")}
         action={{ btnLabel: t("addingBtn"), pathname: "/admin/clients/create" }}
       />
-      <CardsSkeleton count={cardsData.length} />
+      <CardsSkeleton count={clientStatsKeys.length} />
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
         <SearchBar placeholder={t("searchBar.placeholder")} clearLabel={t("searchBar.clear")} />
         <FiltersSkeleton count={filtersClientsData.length} />
