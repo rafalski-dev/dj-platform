@@ -15,10 +15,7 @@ export async function Hero() {
   const t = await getTranslations("LandingPage");
 
   return (
-    <Section
-      anchorLink="#"
-      className="relative pt-25 pb-16 md:pt-35 md:pb-24 lg:flex lg:min-h-245 lg:items-center lg:pb-32"
-    >
+    <Section className="relative pt-25 pb-16 md:pt-35 md:pb-24 lg:flex lg:min-h-245 lg:items-center lg:pb-32">
       <BgGlowOrb
         position="bottom-[-15%] left-[-5%] 3xl:left-[17%]"
         size="43"
