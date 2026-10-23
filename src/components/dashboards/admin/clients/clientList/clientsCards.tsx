@@ -7,21 +7,21 @@ import { MailIcon, PhoneIcon, PlusIcon } from "lucide-react";
 import { getFormatter, getTranslations } from "next-intl/server";
 
 type ClientsCardsProps = {
-  sortedEvents: ClientWithEvent[];
+  clients: ClientWithEvent[];
   selectEmptyState: React.ReactNode;
 };
 
-export async function ClientsCards({ sortedEvents, selectEmptyState }: ClientsCardsProps) {
+export async function ClientsCards({ clients, selectEmptyState }: ClientsCardsProps) {
   const t = await getTranslations("Admin.Clients");
   const format = await getFormatter();
   const iconSizes = 16;
 
   return (
     <ul className="flex flex-col gap-3 lg:hidden">
-      {sortedEvents.length === 0 ? (
+      {clients.length === 0 ? (
         <li className="bg-card rounded-2xl border">{selectEmptyState}</li>
       ) : (
-        sortedEvents.map(({ id, name, email, phone, event }) => {
+        clients.map(({ id, name, email, phone, event }) => {
           const formattedPhoneNumber = phoneNumberSplitting(phone);
           return (
             <li key={id}>

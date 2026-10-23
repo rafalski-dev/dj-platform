@@ -17,7 +17,7 @@ export async function ClientsList({ persistedParams }: { persistedParams: Persis
     persistedParams.filter,
   );
 
-  const sortedEvents = fetchedData.map((client) => {
+  const clients = fetchedData.map((client) => {
     return { ...client, event: getRelevantEvent(client.events) };
   });
 
@@ -52,8 +52,8 @@ export async function ClientsList({ persistedParams }: { persistedParams: Persis
 
   return (
     <>
-      <ClientsTable sortedEvents={sortedEvents} selectEmptyState={selectEmptyState} />
-      <ClientsCards sortedEvents={sortedEvents} selectEmptyState={selectEmptyState} />
+      <ClientsTable clients={clients} selectEmptyState={selectEmptyState} />
+      <ClientsCards clients={clients} selectEmptyState={selectEmptyState} />
     </>
   );
 }

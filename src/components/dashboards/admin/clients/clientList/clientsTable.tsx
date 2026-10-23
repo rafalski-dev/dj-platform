@@ -10,11 +10,11 @@ import { ClientWithEvent } from "@/types/dashboard";
 import { Link } from "@/i18n/navigation";
 
 type ClientsTableProps = {
-  sortedEvents: ClientWithEvent[];
+  clients: ClientWithEvent[];
   selectEmptyState: React.ReactNode;
 };
 
-export async function ClientsTable({ sortedEvents, selectEmptyState }: ClientsTableProps) {
+export async function ClientsTable({ clients, selectEmptyState }: ClientsTableProps) {
   const t = await getTranslations("Admin.Clients");
   const format = await getFormatter();
   const iconSizes = 16;
@@ -24,7 +24,7 @@ export async function ClientsTable({ sortedEvents, selectEmptyState }: ClientsTa
       <Table className="table-fixed">
         <ClientsTableHeader />
         <TableBody>
-          {sortedEvents.length === 0 ? (
+          {clients.length === 0 ? (
             // results no exists
             <TableRow className="hover:bg-card">
               <TableCell colSpan={5} className="whitespace-normal">
@@ -33,7 +33,7 @@ export async function ClientsTable({ sortedEvents, selectEmptyState }: ClientsTa
             </TableRow>
           ) : (
             // results exists
-            sortedEvents.map(({ id, name, email, phone, event }) => {
+            clients.map(({ id, name, email, phone, event }) => {
               const formattedPhoneNumber = phoneNumberSplitting(phone);
               return (
                 <TableRow key={id} className="group">
