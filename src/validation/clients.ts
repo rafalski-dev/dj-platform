@@ -19,6 +19,7 @@ export function createClientSchema(t: CreateClientTranslator) {
     email: z
       .string()
       .trim()
+      .toLowerCase()
       .min(1, { error: t("fields.email.required") })
       .email({ error: t("fields.email.validation") }),
     phone: z
