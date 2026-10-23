@@ -782,6 +782,10 @@
       "count": "{count, plural, one {# playlista} few {# playlisty} many {# playlist} other {# playlisty}}",
       "addingBtn": "Utwórz playlistę"
     },
+    "PersonalDetails": {
+      "title": "Moje dane",
+      "description": "Edytuj swoje dane i zmień hasło. Dane zostaną dodane do generowanych umów."
+    },
     "Clients": {
       "title": "Klienci",
       "addingBtn": "Dodaj klienta",

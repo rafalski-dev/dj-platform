@@ -782,6 +782,10 @@
       "count": "{count, plural, one {# playlist} other {# playlists}}",
       "addingBtn": "Create playlist"
     },
+    "PersonalDetails": {
+      "title": "My details",
+      "description": "Edit your details and change your password. Your details will be added to generated contracts."
+    },
     "Clients": {
       "title": "Clients",
       "addingBtn": "New client",
