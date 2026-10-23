@@ -750,6 +750,9 @@
     "GeneralCardHeader": {
       "add": "Add"
     },
+    "SearchBar": {
+      "clear": "Clear search"
+    },
     "Home": {
       "title": "Season overview",
       "label": "Hello, {name}",
@@ -808,8 +811,7 @@
         }
       },
       "searchBar": {
-        "placeholder": "Search by name, email or phone...",
-        "clear": "Clear search"
+        "placeholder": "Search by name, email or phone..."
       },
       "count": "{count, plural, one {# client} other {# clients}}",
 

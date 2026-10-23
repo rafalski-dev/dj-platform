@@ -21,7 +21,7 @@ export default async function Loading() {
       />
       <CardsSkeleton count={clientStatsKeys.length} />
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
-        <SearchBar placeholder={t("searchBar.placeholder")} clearLabel={t("searchBar.clear")} />
+        <SearchBar placeholder={t("searchBar.placeholder")} />
         <FiltersSkeleton count={filtersClientsData.length} />
       </div>
       <div className="flex flex-col gap-4">

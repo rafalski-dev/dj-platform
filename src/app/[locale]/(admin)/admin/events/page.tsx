@@ -1,3 +1,4 @@
+import { SearchBar } from "@/components/admin/shared/searchBar";
 import { SectionHeader } from "@/components/admin/shared/section/sectionHeader";
 import { getTranslations } from "next-intl/server";
 
@@ -13,6 +14,7 @@ export default async function Events() {
         label={t("label", { events: countEvents })}
         action={{ btnLabel: t("addingBtn"), pathname: "/admin/events/create" }}
       />
+      <SearchBar placeholder={"Search by title, date, client..."} />
     </>
   );
 }

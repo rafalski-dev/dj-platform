@@ -60,7 +60,7 @@ export default async function Clients({
         <ClientsStatsCards />
       </Suspense>
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
-        <SearchBar placeholder={t("searchBar.placeholder")} clearLabel={t("searchBar.clear")} />
+        <SearchBar placeholder={t("searchBar.placeholder")} />
         <Filters
           t={t}
           pathname="/admin/clients"

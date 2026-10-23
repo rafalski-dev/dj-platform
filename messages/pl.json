@@ -750,6 +750,9 @@
     "GeneralCardHeader": {
       "add": "Dodaj"
     },
+    "SearchBar": {
+      "clear": "Wyczyść wyszukiwanie"
+    },
     "Home": {
       "title": "Przegląd sezonu",
       "label": "Cześć, {name}",
@@ -791,8 +794,7 @@
       "addingBtn": "Dodaj klienta",
       "count": "{count, plural, one {# klient} few {# klienci} many {# klientów} other {# klienta}}",
       "searchBar": {
-        "placeholder": "Szukaj po imieniu, emailu lub telefonie...",
-        "clear": "Wyczyść wyszukiwanie"
+        "placeholder": "Szukaj po imieniu, emailu lub telefonie..."
       },
       "filters": {
         "all": "Wszyscy",

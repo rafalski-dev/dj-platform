@@ -5,14 +5,10 @@ import { Button } from "@/components/ui/shadcn/button";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDebounceCallback } from "@/hooks/useDebounceCallback";
+import { useTranslations } from "next-intl";
 
-export function SearchBar({
-  placeholder,
-  clearLabel,
-}: {
-  placeholder: string;
-  clearLabel: string;
-}) {
+export function SearchBar({ placeholder }: { placeholder: string }) {
+  const t = useTranslations("Admin.SearchBar");
   const searchParams = useSearchParams();
   const urlQuery = searchParams.get("query") ?? "";
   const [searchValue, setSearchValue] = useState(urlQuery);
@@ -64,7 +60,7 @@ export function SearchBar({
       />
 
       {searchValue && (
-        <Button variant="ghost" size="icon-sm" onClick={clearInput} aria-label={clearLabel}>
+        <Button variant="ghost" size="icon-sm" onClick={clearInput} aria-label={t("clear")}>
           <XIcon />
         </Button>
       )}
