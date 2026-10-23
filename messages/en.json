@@ -1069,6 +1069,11 @@
           }
         }
       }
+    },
+    "Events": {
+      "title": "Events",
+      "label": "{events} events",
+      "addingBtn": "New event"
     }
   }
 }
