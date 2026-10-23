@@ -1,6 +1,6 @@
-import { EditClientForm } from "@/components/dashboards/admin/clients/clientEdit/editClientForm";
-import { Breadcrumbs } from "@/components/dashboards/shared/breadcrumbs";
-import { PageHeader } from "@/components/dashboards/shared/pageHeader";
+import { EditClientForm } from "@/components/admin/sections/clients/clientEdit/editClientForm";
+import { Breadcrumbs } from "@/components/admin/shared/breadcrumbs";
+import { PageHeader } from "@/components/admin/shared/pageHeader";
 import { getClientToEdit } from "@/data/clients";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";

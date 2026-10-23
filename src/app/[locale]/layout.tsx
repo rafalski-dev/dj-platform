@@ -4,11 +4,11 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getMessages, getTranslations } from "next-intl/server";
-import { ThemeProvider } from "@/components/themeProvider";
+import { ThemeProvider } from "@/components/shared/themeProvider";
 import { siteConfig } from "@/config/site";
 import { Metadata } from "next";
-import { Background } from "@/components/decorations/background";
-import { Toaster } from "@/components/ui/toast";
+import { Background } from "@/components/ui/decorations/background";
+import { Toaster } from "@/components/ui/shadcn/toast";
 
 type Props = {
   children: React.ReactNode;

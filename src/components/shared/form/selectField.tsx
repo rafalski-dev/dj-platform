@@ -1,5 +1,5 @@
-import { Required } from "@/components/other/required";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Required } from "@/components/shared/form/required";
+import { Field, FieldError, FieldLabel } from "@/components/ui/shadcn/field";
 import {
   Select,
   SelectContent,
@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/ui/shadcn/select";
 import { cn } from "@/lib/utils";
 import { type Control, FieldValues, Path, useController } from "react-hook-form";
 

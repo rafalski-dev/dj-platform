@@ -1,6 +1,6 @@
-import { PageHeader } from "@/components/dashboards/shared/pageHeader";
-import { BreadcrumbsSkeleton } from "@/components/dashboards/skeletons/breadcrumbsSkeleton";
-import { ClientFormSkeleton } from "@/components/dashboards/skeletons/clientFormSkeleton";
+import { PageHeader } from "@/components/admin/shared/pageHeader";
+import { BreadcrumbsSkeleton } from "@/components/admin/skeletons/breadcrumbsSkeleton";
+import { ClientFormSkeleton } from "@/components/admin/skeletons/clientFormSkeleton";
 import { getTranslations } from "next-intl/server";
 
 export default async function Loading() {

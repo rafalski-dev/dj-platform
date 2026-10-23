@@ -1,7 +1,7 @@
-import { BreadcrumbsSkeleton } from "@/components/dashboards/skeletons/breadcrumbsSkeleton";
-import { ClientDetailsSkeleton } from "@/components/dashboards/skeletons/clientDetailsSkeleton";
-import { ClientHeaderSkeleton } from "@/components/dashboards/skeletons/clientHeaderSkeleton";
-import { ClientListsSkeleton } from "@/components/dashboards/skeletons/clientListsSkeleton";
+import { BreadcrumbsSkeleton } from "@/components/admin/skeletons/breadcrumbsSkeleton";
+import { ClientDetailsSkeleton } from "@/components/admin/skeletons/clientDetailsSkeleton";
+import { ClientHeaderSkeleton } from "@/components/admin/skeletons/clientHeaderSkeleton";
+import { ClientListsSkeleton } from "@/components/admin/skeletons/clientListsSkeleton";
 
 export default function Loading() {
   return (

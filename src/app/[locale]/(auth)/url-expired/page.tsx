@@ -1,7 +1,7 @@
 "use client";
 
-import { buttonVariants } from "@/components/ui/button";
-import { Card, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
+import { buttonVariants } from "@/components/ui/shadcn/button";
+import { Card, CardDescription, CardFooter, CardHeader } from "@/components/ui/shadcn/card";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";

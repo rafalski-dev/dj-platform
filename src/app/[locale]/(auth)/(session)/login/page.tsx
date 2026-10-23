@@ -1,13 +1,19 @@
 "use client";
 
-import { GoogleIcon } from "@/components/icons/googleIcon";
+import { GoogleIcon } from "@/components/ui/icons/googleIcon";
 import { ControlledCheckbox } from "@/components/shared/form/checkboxField";
 import { ControlledInput, ControlledPasswordInput } from "@/components/shared/form/inputFields";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Spinner } from "@/components/ui/spinner";
-import { toast } from "@/components/ui/toast";
+import { Button } from "@/components/ui/shadcn/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/shadcn/card";
+import { Separator } from "@/components/ui/shadcn/separator";
+import { Spinner } from "@/components/ui/shadcn/spinner";
+import { toast } from "@/components/ui/shadcn/toast";
 import { getPathname, Link, useRouter } from "@/i18n/navigation";
 import { authClient } from "@/lib/auth-client";
 import { getErrorTranslation } from "@/lib/utils";

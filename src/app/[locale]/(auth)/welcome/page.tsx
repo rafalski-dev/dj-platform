@@ -1,7 +1,7 @@
 "use client";
 
-import { buttonVariants } from "@/components/ui/button";
-import { Card, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
+import { buttonVariants } from "@/components/ui/shadcn/button";
+import { Card, CardDescription, CardFooter, CardHeader } from "@/components/ui/shadcn/card";
 import { Link, redirect, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";

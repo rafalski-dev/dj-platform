@@ -1,8 +1,8 @@
 "use client";
 
-import { Required } from "@/components/other/required";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
-import { Textarea } from "@/components/ui/textarea";
+import { Required } from "@/components/shared/form/required";
+import { Field, FieldError, FieldLabel } from "@/components/ui/shadcn/field";
+import { Textarea } from "@/components/ui/shadcn/textarea";
 import { Control, Path, useController, type FieldValues } from "react-hook-form";
 
 type ControlledTextareaType<T extends FieldValues> = {

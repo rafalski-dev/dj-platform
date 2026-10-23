@@ -1,12 +1,12 @@
-import { About } from "@/components/sections/about/about";
-import { Contact } from "@/components/sections/contact/contact";
-import { FAQ } from "@/components/sections/faq/faq";
-import { Gallery } from "@/components/sections/gallery";
-import { Hero } from "@/components/sections/hero";
-import { Newsletter } from "@/components/sections/newsletter/newsletter";
-import { Offer } from "@/components/sections/offer/offer";
-import { Process } from "@/components/sections/process/process";
-import { Reviews } from "@/components/sections/reviews/reviews";
+import { About } from "@/components/landing/sections/about/about";
+import { Contact } from "@/components/landing/sections/contact/contact";
+import { FAQ } from "@/components/landing/sections/faq/faq";
+import { Gallery } from "@/components/landing/sections/gallery";
+import { Hero } from "@/components/landing/sections/hero";
+import { Newsletter } from "@/components/landing/sections/newsletter/newsletter";
+import { Offer } from "@/components/landing/sections/offer/offer";
+import { Process } from "@/components/landing/sections/process/process";
+import { Reviews } from "@/components/landing/sections/reviews/reviews";
 
 export default function Home() {
   return (

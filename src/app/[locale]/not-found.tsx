@@ -1,7 +1,7 @@
-import { GlowOrb } from "@/components/decorations/glowOrbs";
+import { GlowOrb } from "@/components/ui/decorations/glowOrbs";
 import { Logo } from "@/components/shared/logo";
 import { Wrapper } from "@/components/shared/wrapper";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/shadcn/button";
 import { Link } from "@/i18n/navigation";
 import { HomeIcon } from "lucide-react";
 import { getTranslations } from "next-intl/server";

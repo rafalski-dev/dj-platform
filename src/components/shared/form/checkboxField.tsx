@@ -1,5 +1,5 @@
-import { Checkbox } from "@/components/ui/checkbox";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Checkbox } from "@/components/ui/shadcn/checkbox";
+import { Field, FieldError, FieldLabel } from "@/components/ui/shadcn/field";
 import { ControlledCheckboxProps } from "@/types/form";
 import { Controller, type FieldValues } from "react-hook-form";
 

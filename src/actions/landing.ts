@@ -1,6 +1,6 @@
 "use server";
 
-import { EmailTemplate } from "@/components/templates/emailTemplate";
+import { EmailTemplate } from "@/emails/emailTemplate";
 import { resend } from "@/lib/resend";
 import { ContactFormResult } from "@/types/contact";
 import { State } from "@/types/newsletter";

@@ -1,10 +1,10 @@
-import { ClientsStatsCards } from "@/components/dashboards/admin/clients/clientList/clientsStatsCards";
-import { Filters } from "@/components/dashboards/shared/filters";
-import { RowsPerPage } from "@/components/dashboards/shared/rowsPerPage";
-import { SearchBar } from "@/components/dashboards/shared/searchBar";
-import { PageHeader } from "@/components/dashboards/shared/pageHeader";
-import { CardsSkeleton } from "@/components/dashboards/skeletons/cardsSkeleton";
-import { ClientsListSkeleton } from "@/components/dashboards/skeletons/clientsListSkeleton";
+import { ClientsStatsCards } from "@/components/admin/sections/clients/clientList/clientsStatsCards";
+import { Filters } from "@/components/admin/shared/filters";
+import { RowsPerPage } from "@/components/admin/shared/rowsPerPage";
+import { SearchBar } from "@/components/admin/shared/searchBar";
+import { PageHeader } from "@/components/admin/shared/pageHeader";
+import { CardsSkeleton } from "@/components/admin/skeletons/cardsSkeleton";
+import { ClientsListSkeleton } from "@/components/admin/skeletons/clientsListSkeleton";
 import { cardsData } from "@/constants/admin";
 import { filtersClientsData } from "@/constants/filtersOptions";
 import { getCountClients } from "@/data/clients";
@@ -17,8 +17,8 @@ import {
 } from "@/lib/searchParams";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
-import { Pagination } from "@/components/dashboards/shared/pagination";
-import { ClientsList } from "@/components/dashboards/admin/clients/clientList/clientsList";
+import { Pagination } from "@/components/admin/shared/pagination";
+import { ClientsList } from "@/components/admin/sections/clients/clientList/clientsList";
 
 export default async function Clients({
   searchParams,

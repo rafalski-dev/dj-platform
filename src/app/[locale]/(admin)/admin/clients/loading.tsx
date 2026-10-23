@@ -1,10 +1,10 @@
-import { SearchBar } from "@/components/dashboards/shared/searchBar";
-import { CardsSkeleton } from "@/components/dashboards/skeletons/cardsSkeleton";
-import { ClientsListSkeleton } from "@/components/dashboards/skeletons/clientsListSkeleton";
-import { FiltersSkeleton } from "@/components/dashboards/skeletons/filtersSkeleton";
-import { PageHeaderSkeleton } from "@/components/dashboards/skeletons/pageHeaderSkeleton";
-import { PaginationSkeleton } from "@/components/dashboards/skeletons/paginationSkeleton";
-import { RowsPerPageSkeleton } from "@/components/dashboards/skeletons/rowsPerPageSkeleton";
+import { SearchBar } from "@/components/admin/shared/searchBar";
+import { CardsSkeleton } from "@/components/admin/skeletons/cardsSkeleton";
+import { ClientsListSkeleton } from "@/components/admin/skeletons/clientsListSkeleton";
+import { FiltersSkeleton } from "@/components/admin/skeletons/filtersSkeleton";
+import { PageHeaderSkeleton } from "@/components/admin/skeletons/pageHeaderSkeleton";
+import { PaginationSkeleton } from "@/components/admin/skeletons/paginationSkeleton";
+import { RowsPerPageSkeleton } from "@/components/admin/skeletons/rowsPerPageSkeleton";
 import { cardsData } from "@/constants/admin";
 import { filtersClientsData } from "@/constants/filtersOptions";
 import { ROWS_PER_PAGE } from "@/lib/searchParams";

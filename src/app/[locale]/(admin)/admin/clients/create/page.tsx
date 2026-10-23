@@ -1,6 +1,6 @@
-import { CreateClientForm } from "@/components/dashboards/admin/clients/clientCreate/createClientForm";
-import { Breadcrumbs } from "@/components/dashboards/shared/breadcrumbs";
-import { PageHeader } from "@/components/dashboards/shared/pageHeader";
+import { CreateClientForm } from "@/components/admin/sections/clients/clientCreate/createClientForm";
+import { Breadcrumbs } from "@/components/admin/shared/breadcrumbs";
+import { PageHeader } from "@/components/admin/shared/pageHeader";
 import { getTranslations } from "next-intl/server";
 
 export default async function CreateClient() {

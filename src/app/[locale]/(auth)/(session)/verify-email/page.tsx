@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
-import { toast } from "@/components/ui/toast";
+import { Button } from "@/components/ui/shadcn/button";
+import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/shadcn/card";
+import { toast } from "@/components/ui/shadcn/toast";
 import { getPathname, Link, redirect, useRouter } from "@/i18n/navigation";
 import { authClient } from "@/lib/auth-client";
 import { getErrorTranslation } from "@/lib/utils";

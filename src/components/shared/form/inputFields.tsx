@@ -1,10 +1,10 @@
 "use client";
 
-import { InputLink } from "@/components/other/inputLink";
-import { Required } from "@/components/other/required";
-import { Button } from "@/components/ui/button";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+import { InputLink } from "@/components/shared/form/inputLink";
+import { Required } from "@/components/shared/form/required";
+import { Button } from "@/components/ui/shadcn/button";
+import { Field, FieldError, FieldLabel } from "@/components/ui/shadcn/field";
+import { Input } from "@/components/ui/shadcn/input";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";

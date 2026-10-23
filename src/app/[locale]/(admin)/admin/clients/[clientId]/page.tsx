@@ -1,12 +1,12 @@
-import { ClientDetails } from "@/components/dashboards/admin/clients/clientDetails/clientDetails";
-import { ClientHeader } from "@/components/dashboards/admin/clients/clientDetails/clientHeader";
+import { ClientDetails } from "@/components/admin/sections/clients/clientDetails/clientDetails";
+import { ClientHeader } from "@/components/admin/sections/clients/clientDetails/clientHeader";
 import {
   ContractInfoCard,
   EventsInfoCard,
   PlaylistsInfoCard,
-} from "@/components/dashboards/admin/clients/clientDetails/clientInfoLists";
-import { Breadcrumbs } from "@/components/dashboards/shared/breadcrumbs";
-import { ClientListsSkeleton } from "@/components/dashboards/skeletons/clientListsSkeleton";
+} from "@/components/admin/sections/clients/clientDetails/clientInfoLists";
+import { Breadcrumbs } from "@/components/admin/shared/breadcrumbs";
+import { ClientListsSkeleton } from "@/components/admin/skeletons/clientListsSkeleton";
 import {
   getClientContracts,
   getClientDetails,

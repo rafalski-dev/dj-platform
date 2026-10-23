@@ -1,6 +1,6 @@
 "use client";
 
-import { EmptyState } from "@/components/dashboards/shared/emptyState";
+import { EmptyState } from "@/components/admin/shared/emptyState";
 import { TriangleAlertIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 

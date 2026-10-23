@@ -1,4 +1,4 @@
-import { HeaderAuth } from "@/components/shared/header/headers";
+import { HeaderAuth } from "@/components/landing/layout/header/headers";
 import { Wrapper } from "@/components/shared/wrapper";
 import Image from "next/image";
 import authImg from "../../../assets/images/gallery/crowd-dancing-with-dj.jpg";

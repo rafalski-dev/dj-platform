@@ -1,10 +1,16 @@
 "use client";
 
 import { ControlledPasswordInput } from "@/components/shared/form/inputFields";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
-import { Spinner } from "@/components/ui/spinner";
-import { toast } from "@/components/ui/toast";
+import { Button } from "@/components/ui/shadcn/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/shadcn/card";
+import { Spinner } from "@/components/ui/shadcn/spinner";
+import { toast } from "@/components/ui/shadcn/toast";
 import { Link, redirect, useRouter } from "@/i18n/navigation";
 import { authClient } from "@/lib/auth-client";
 import { getErrorTranslation } from "@/lib/utils";
