@@ -1,14 +1,19 @@
 export type PersistedParams = {
   page: ReturnType<typeof getFormattedPage>;
-  limit: ReturnType<typeof getFormattedLimit>;
-  query: ReturnType<typeof getFormattedQuery>;
-  filter: ReturnType<typeof getFormattedFilter>;
+  limit: number;
+  query?: ReturnType<typeof getFormattedQuery>;
+  filter?: ReturnType<typeof getFormattedFilter>;
 };
 
 export const ROWS_PER_PAGE = [6, 12, 18, 24] as const;
+export const ROWS_PER_PAGE_EVENTS = [4, 8, 12, 16] as const;
 
 export function getFormattedLimit(rawLimit: string | string[] | undefined) {
   return ROWS_PER_PAGE.find((rows) => String(rows) === rawLimit) ?? ROWS_PER_PAGE[0];
+}
+
+export function getFormattedEventsLimit(rawLimit: string | string[] | undefined) {
+  return ROWS_PER_PAGE_EVENTS.find((rows) => String(rows) === rawLimit) ?? ROWS_PER_PAGE_EVENTS[0];
 }
 
 export function getFormattedPage(rawPage: string | string[] | undefined) {

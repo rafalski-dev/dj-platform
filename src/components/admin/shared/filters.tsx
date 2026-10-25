@@ -7,7 +7,7 @@ import type { getTranslations } from "next-intl/server";
 type FiltersProps = {
   t: Awaited<ReturnType<typeof getTranslations>>;
   pathname: Pathname;
-  filters: { keyLabel: string; filterOption: FilterType }[];
+  filters: { keyLabel: string; value: FilterType }[];
   persistedParams: PersistedParams;
 };
 
@@ -19,14 +19,14 @@ export function Filters({
 }: FiltersProps) {
   return (
     <div className="flex flex-row flex-wrap justify-between gap-3 md:flex-nowrap">
-      {filters.map(({ keyLabel, filterOption }, index: number) => {
-        const buttonVariant = filterOption === filter ? "default" : "outline";
+      {filters.map(({ keyLabel, value }, index: number) => {
+        const buttonVariant = value === filter ? "default" : "outline";
         return (
           <Link
             key={index}
             href={{
               pathname: pathname,
-              query: { page: 1, filter: filterOption, query, limit },
+              query: { page: 1, filter: value, query, limit },
             }}
             className={buttonVariants({
               variant: buttonVariant,

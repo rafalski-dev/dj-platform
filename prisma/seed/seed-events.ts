@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { EventStatus, EventType, Prisma } from "../../generated";
+import { Addon, EventStatus, EventType, Package, Prisma } from "../../generated";
 import { toEventDates } from "@/lib/eventDates";
 
 type SeedEvent = {
@@ -16,6 +16,8 @@ type SeedEvent = {
   partner2Name?: string;
   eventType: EventType;
   eventStatus?: EventStatus;
+  eventPackage: Package;
+  addons: Addon[];
 };
 
 const eventsData: SeedEvent[] = [
@@ -31,6 +33,8 @@ const eventsData: SeedEvent[] = [
     partner1Name: "Monika Rusin",
     partner2Name: "Jakub Domański",
     eventType: EventType.Wedding,
+    eventPackage: Package.Premium,
+    addons: [Addon.PhotoBooth, Addon.LowFog],
   },
   {
     clientName: "Magdalena Adamczyk",
@@ -46,6 +50,8 @@ const eventsData: SeedEvent[] = [
     notes: "Pierwszy taniec: walc angielski. Oczepiny o północy.",
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Completed,
+    eventPackage: Package.Signature,
+    addons: [Addon.LowFog, Addon.StageSparks, Addon.LoveSign],
   },
   {
     clientName: "Katarzyna Zając",
@@ -60,6 +66,8 @@ const eventsData: SeedEvent[] = [
     partner2Name: "Michał Kowalczyk",
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Completed,
+    eventPackage: Package.Premium,
+    addons: [Addon.PhotoBooth],
   },
   {
     clientName: "Łukasz Górecki",
@@ -72,6 +80,8 @@ const eventsData: SeedEvent[] = [
     partner2Name: "Marek Górecki",
     eventType: EventType.Anniversary,
     eventStatus: EventStatus.Completed,
+    eventPackage: Package.Classic,
+    addons: [Addon.Saxophonist],
   },
   {
     clientName: "Joanna Kaczmarek",
@@ -85,6 +95,8 @@ const eventsData: SeedEvent[] = [
     notes: "Bez disco polo. Dużo muzyki z lat 2000.",
     eventType: EventType.Birthday_18,
     eventStatus: EventStatus.Completed,
+    eventPackage: Package.Classic,
+    addons: [Addon.PhotoBooth, Addon.Confetti],
   },
   {
     clientName: "Miejski Ośrodek Kultury",
@@ -97,6 +109,8 @@ const eventsData: SeedEvent[] = [
     notes: "Odwołane przez organizatora z powodu pogody.",
     eventType: EventType.Festival,
     eventStatus: EventStatus.Cancelled,
+    eventPackage: Package.Classic,
+    addons: [],
   },
   {
     clientName: "Panorama Group",
@@ -109,6 +123,8 @@ const eventsData: SeedEvent[] = [
     guestCount: 80,
     eventType: EventType.Corporate_Event,
     eventStatus: EventStatus.Completed,
+    eventPackage: Package.Premium,
+    addons: [Addon.CustomNeon, Addon.Saxophonist],
   },
   {
     clientName: "Młyn Events",
@@ -121,6 +137,8 @@ const eventsData: SeedEvent[] = [
     notes: "Potrzebne 2 mikrofony bezprzewodowe i nagłośnienie sali.",
     eventType: EventType.Conference,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Classic,
+    addons: [],
   },
   {
     clientName: "Alex Nowak",
@@ -133,6 +151,8 @@ const eventsData: SeedEvent[] = [
     guestCount: 60,
     eventType: EventType.Other,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Classic,
+    addons: [Addon.Confetti],
   },
   {
     clientName: "Panorama Group",
@@ -146,6 +166,8 @@ const eventsData: SeedEvent[] = [
     notes: "Pierwsza godzina tylko kolędy i muzyka w tle.",
     eventType: EventType.Corporate_Event,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Premium,
+    addons: [Addon.LiveVocalist],
   },
   {
     clientName: "Natalia Baran",
@@ -159,6 +181,8 @@ const eventsData: SeedEvent[] = [
     notes: "Polonez o 19:30 - własne nagranie od szkoły.",
     eventType: EventType.Prom,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Premium,
+    addons: [Addon.StageSparks, Addon.Confetti],
   },
   {
     clientName: "Aleksandra Kubiak",
@@ -169,6 +193,8 @@ const eventsData: SeedEvent[] = [
     title: "18. urodziny Aleksandry",
     guestCount: 30,
     eventType: EventType.Birthday_18,
+    eventPackage: Package.Classic,
+    addons: [Addon.PhotoBooth],
   },
   {
     clientName: "Zuzanna Michalska",
@@ -183,6 +209,8 @@ const eventsData: SeedEvent[] = [
     partner2Name: "Kacper Zieliński",
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Signature,
+    addons: [Addon.LowFog, Addon.StageSparks, Addon.PhotoBooth, Addon.LiveVocalist],
   },
   {
     clientName: "Agnieszka Wróbel",
@@ -193,6 +221,8 @@ const eventsData: SeedEvent[] = [
     title: "Wesele Agnieszki",
     partner1Name: "Agnieszka Wróbel",
     eventType: EventType.Wedding,
+    eventPackage: Package.Premium,
+    addons: [],
   },
   {
     clientName: "Karolina Wieczorek",
@@ -205,6 +235,8 @@ const eventsData: SeedEvent[] = [
     partner2Name: "Marcin Pietrzak",
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Premium,
+    addons: [Addon.LowFog, Addon.LoveSign],
   },
   {
     clientName: "Tomasz Nowicki",
@@ -219,6 +251,8 @@ const eventsData: SeedEvent[] = [
     partner2Name: "Tomasz Nowicki",
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Completed,
+    eventPackage: Package.Premium,
+    addons: [Addon.PhotoBooth, Addon.LowFog],
   },
   {
     clientName: "Weronika Dudek",
@@ -231,6 +265,8 @@ const eventsData: SeedEvent[] = [
     guestCount: 50,
     eventType: EventType.Birthday_18,
     eventStatus: EventStatus.Completed,
+    eventPackage: Package.Classic,
+    addons: [Addon.Confetti],
   },
   {
     clientName: "Michał Pawlak",
@@ -245,6 +281,8 @@ const eventsData: SeedEvent[] = [
     partner2Name: "Michał Pawlak",
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Completed,
+    eventPackage: Package.Signature,
+    addons: [Addon.StageSparks, Addon.LowFog, Addon.Saxophonist, Addon.CustomNeon],
   },
   {
     clientName: "Sebastian Czarnecki",
@@ -257,6 +295,8 @@ const eventsData: SeedEvent[] = [
     notes: "Set 120-128 BPM, house i nu-disco.",
     eventType: EventType.Festival,
     eventStatus: EventStatus.Completed,
+    eventPackage: Package.Classic,
+    addons: [Addon.ExtraDj],
   },
   {
     clientName: "Julia Kołodziej",
@@ -272,6 +312,8 @@ const eventsData: SeedEvent[] = [
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Cancelled,
     notes: "Para przełożyła ślub na kolejny rok.",
+    eventPackage: Package.Premium,
+    addons: [Addon.PhotoBooth],
   },
   {
     clientName: "Anna Lewandowska",
@@ -284,6 +326,8 @@ const eventsData: SeedEvent[] = [
     guestCount: 70,
     eventType: EventType.Other,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Premium,
+    addons: [Addon.PhotoBooth, Addon.CustomNeon],
   },
   {
     clientName: "TechConf Polska",
@@ -296,6 +340,8 @@ const eventsData: SeedEvent[] = [
     notes: "Muzyka w przerwach + intro prelegentów.",
     eventType: EventType.Conference,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Classic,
+    addons: [],
   },
   {
     clientName: "Mazur Logistics",
@@ -308,6 +354,8 @@ const eventsData: SeedEvent[] = [
     guestCount: 85,
     eventType: EventType.Corporate_Event,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Premium,
+    addons: [Addon.PhotoBooth, Addon.ExtraDj],
   },
   {
     clientName: "Martyna Krawczyk",
@@ -320,6 +368,8 @@ const eventsData: SeedEvent[] = [
     guestCount: 180,
     eventType: EventType.Prom,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Premium,
+    addons: [Addon.StageSparks, Addon.Confetti, Addon.ExtraDj],
   },
   {
     clientName: "Magdalena Adamczyk",
@@ -333,6 +383,8 @@ const eventsData: SeedEvent[] = [
     partner1Name: "Magdalena Adamczyk",
     partner2Name: "Piotr Lewandowski",
     eventType: EventType.Anniversary,
+    eventPackage: Package.Classic,
+    addons: [Addon.Saxophonist],
   },
   {
     clientName: "Mateusz Król",
@@ -344,6 +396,8 @@ const eventsData: SeedEvent[] = [
     partner1Name: "Oliwia Szymańska",
     partner2Name: "Mateusz Król",
     eventType: EventType.Wedding,
+    eventPackage: Package.Signature,
+    addons: [],
   },
   {
     clientName: "Emilia Kaczmarek",
@@ -358,6 +412,8 @@ const eventsData: SeedEvent[] = [
     partner2Name: "Adam Wójcik",
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Premium,
+    addons: [Addon.LowFog, Addon.PhotoBooth],
   },
   {
     clientName: "Patrycja Sobczak",
@@ -369,6 +425,8 @@ const eventsData: SeedEvent[] = [
     title: "18. urodziny Patrycji",
     guestCount: 40,
     eventType: EventType.Birthday_18,
+    eventPackage: Package.Classic,
+    addons: [Addon.Confetti],
   },
   {
     clientName: "Adrian Jasiński",
@@ -383,6 +441,8 @@ const eventsData: SeedEvent[] = [
     partner2Name: "Adrian Jasiński",
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Signature,
+    addons: [Addon.LowFog, Addon.StageSparks, Addon.LoveSign, Addon.PhotoBooth],
   },
   {
     clientName: "Alicja Nowak",
@@ -394,6 +454,8 @@ const eventsData: SeedEvent[] = [
     partner1Name: "Alicja Nowak",
     partner2Name: "Jerzy Nowak",
     eventType: EventType.Anniversary,
+    eventPackage: Package.Classic,
+    addons: [],
   },
   {
     clientName: "Weronika Sadowska",
@@ -409,6 +471,8 @@ const eventsData: SeedEvent[] = [
     notes: "Para przełożyła ślub na czerwiec 2027.",
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Cancelled,
+    eventPackage: Package.Premium,
+    addons: [Addon.LowFog],
   },
   {
     clientName: "Weronika Sadowska",
@@ -423,6 +487,8 @@ const eventsData: SeedEvent[] = [
     partner2Name: "Kacper Nowicki",
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Active,
+    eventPackage: Package.Premium,
+    addons: [Addon.LowFog],
   },
 ];
 

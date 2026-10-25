@@ -43,6 +43,24 @@ enum Gender {
   Other
 }
 
+enum Package {
+  Classic
+  Premium
+  Signature
+}
+
+enum Addon {
+  PhotoBooth
+  StageSparks
+  LiveVocalist
+  Saxophonist
+  LoveSign
+  LowFog
+  Confetti
+  ExtraDj
+  CustomNeon
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String
@@ -163,6 +181,9 @@ model Event {
   guestCount           Int?
   notes                String?
   secondPartnerName    String?
+
+  eventPackage         Package
+  addons               Addon[]
 
   clientId             String
   client               Client       @relation(fields: [clientId], references: [id], onDelete: Cascade)

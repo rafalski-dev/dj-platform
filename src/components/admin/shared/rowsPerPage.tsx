@@ -1,13 +1,15 @@
 import { Link } from "@/i18n/navigation";
-import { PersistedParams, ROWS_PER_PAGE } from "@/lib/searchParams";
+import { PersistedParams } from "@/lib/searchParams";
 import { cn } from "@/lib/utils";
 import { Pathname } from "@/types/navigation";
 import { useTranslations } from "next-intl";
 
 export function RowsPerPage({
+  limitsOption,
   pathname,
   persistedParams: { limit, query, filter },
 }: {
+  limitsOption: readonly number[];
   pathname: Pathname;
   persistedParams: PersistedParams;
 }) {
@@ -17,7 +19,7 @@ export function RowsPerPage({
     <div className="my-auto flex items-center gap-3">
       <p className="text-muted-foreground hidden text-[13px] md:block">{t("perPage")}</p>
       <div className="bg-secondary border-border flex flex-row gap-px rounded-sm border p-1">
-        {ROWS_PER_PAGE.map((rows) => {
+        {limitsOption.map((rows) => {
           return (
             <Link
               className={cn(

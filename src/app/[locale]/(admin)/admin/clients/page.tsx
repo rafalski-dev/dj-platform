@@ -6,7 +6,7 @@ import { SectionHeader } from "@/components/admin/shared/section/sectionHeader";
 import { CardsSkeleton } from "@/components/admin/skeletons/cardsSkeleton";
 import { ClientsListSkeleton } from "@/components/admin/skeletons/clientsListSkeleton";
 import { clientStatsKeys } from "@/constants/admin/cardStats";
-import { filtersClientsData } from "@/constants/filtersOptions";
+import { filtersClientsData } from "@/constants/admin/filtersOptions";
 import { getCountClients } from "@/data/clients";
 import {
   getFormattedFilter,
@@ -14,6 +14,7 @@ import {
   getFormattedPage,
   getFormattedQuery,
   PersistedParams,
+  ROWS_PER_PAGE,
 } from "@/lib/searchParams";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
@@ -38,8 +39,8 @@ export default async function Clients({
   const formattedQuery = getFormattedQuery(query);
   const formattedFilter = getFormattedFilter(filter);
 
-  const totalClients = await getCountClients(formattedQuery, formattedFilter);
-  const totalPages = totalClients === 0 ? 1 : Math.ceil(totalClients / formattedLimit);
+  const countClients = await getCountClients(formattedQuery, formattedFilter);
+  const totalPages = countClients === 0 ? 1 : Math.ceil(countClients / formattedLimit);
   const currentPage = formattedPage > totalPages ? totalPages : formattedPage;
 
   const persistedParams: PersistedParams = {
@@ -52,7 +53,7 @@ export default async function Clients({
   return (
     <>
       <SectionHeader
-        label={t("count", { count: totalClients })}
+        label={t("count", { count: countClients })}
         title={t("title")}
         action={{ btnLabel: t("addingBtn"), pathname: "/admin/clients/create" }}
       />
@@ -76,9 +77,13 @@ export default async function Clients({
           <ClientsList persistedParams={persistedParams} />
         </Suspense>
 
-        {totalClients > 0 && (
+        {countClients > 0 && (
           <div className="flex flex-row justify-between px-4 md:px-0">
-            <RowsPerPage persistedParams={persistedParams} pathname="/admin/clients" />
+            <RowsPerPage
+              limitsOption={ROWS_PER_PAGE}
+              persistedParams={persistedParams}
+              pathname="/admin/clients"
+            />
             <Pagination
               persistedParams={persistedParams}
               totalPages={totalPages}

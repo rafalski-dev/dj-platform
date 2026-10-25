@@ -736,6 +736,7 @@
       "perPage": "Per page",
       "pageOf": "{page} of {total}"
     },
+
     "Breadcrumbs": {
       "label": "Breadcrumbs",
       "home": "Home",
@@ -752,6 +753,14 @@
     },
     "SearchBar": {
       "clear": "Clear search"
+    },
+    "EmptyState": {
+      "noResults": {
+        "title": "No results found",
+        "descriptionQuery": "Nothing matches “{query}”.",
+        "descriptionFilter": "Nothing matches the selected filter.",
+        "action": "Clear filters"
+      }
     },
     "Home": {
       "title": "Season overview",
@@ -1089,7 +1098,35 @@
     "Events": {
       "title": "Events",
       "label": "{events} events",
-      "addingBtn": "New event"
+      "addingBtn": "New event",
+      "empty": {
+        "noEvents": {
+          "title": "No events yet",
+          "description": "You haven't added any events yet. Get started by adding your first event."
+        }
+      },
+      "card": {
+        "hours": "Hours",
+        "place": "Venue",
+        "guests": "Guests",
+        "package": "Package",
+        "addons": "Add-ons",
+        "noAddons": "No add-ons",
+        "notSet": "Not set",
+        "from": "from {time}",
+        "until": "until {time}"
+      },
+      "addons": {
+        "PhotoBooth": "Photo booth",
+        "StageSparks": "Stage sparks",
+        "LiveVocalist": "Live vocalist",
+        "Saxophonist": "Saxophonist",
+        "LoveSign": "Love Sign",
+        "LowFog": "Low Fog",
+        "Confetti": "Confetti",
+        "ExtraDj": "Extra DJ",
+        "CustomNeon": "Custom Neon"
+      }
     }
   }
 }

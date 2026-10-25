@@ -6,7 +6,7 @@ import { SectionHeaderSkeleton } from "@/components/admin/skeletons/sectionHeade
 import { PaginationSkeleton } from "@/components/admin/skeletons/paginationSkeleton";
 import { RowsPerPageSkeleton } from "@/components/admin/skeletons/rowsPerPageSkeleton";
 import { clientStatsKeys } from "@/constants/admin/cardStats";
-import { filtersClientsData } from "@/constants/filtersOptions";
+import { filtersClientsData } from "@/constants/admin/filtersOptions";
 import { ROWS_PER_PAGE } from "@/lib/searchParams";
 import { getTranslations } from "next-intl/server";
 

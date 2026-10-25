@@ -753,6 +753,14 @@
     "SearchBar": {
       "clear": "Wyczyść wyszukiwanie"
     },
+    "EmptyState": {
+      "noResults": {
+        "title": "Brak wyników",
+        "descriptionQuery": "Nic nie pasuje do „{query}”.",
+        "descriptionFilter": "Nic nie pasuje do wybranego filtra.",
+        "action": "Wyczyść filtry"
+      }
+    },
     "Home": {
       "title": "Przegląd sezonu",
       "label": "Cześć, {name}",
@@ -788,6 +796,39 @@
     "PersonalDetails": {
       "title": "Moje dane",
       "description": "Edytuj swoje dane i zmień hasło. Dane zostaną dodane do generowanych umów."
+    },
+    "Events": {
+      "title": "Wydarzenia",
+      "label": "{events, plural, one {# wydarzenie} few {# wydarzenia} many {# wydarzeń} other {# wydarzenia}}",
+      "addingBtn": "Nowe wydarzenie",
+      "empty": {
+        "noEvents": {
+          "title": "Brak wydarzeń",
+          "description": "Nie masz jeszcze żadnych wydarzeń. Zacznij od dodania pierwszego."
+        }
+      },
+      "card": {
+        "hours": "Godziny",
+        "place": "Miejsce",
+        "guests": "Goście",
+        "package": "Pakiet",
+        "addons": "Dodatki",
+        "noAddons": "Brak dodatków",
+        "notSet": "Nie podano",
+        "from": "od {time}",
+        "until": "do {time}"
+      },
+      "addons": {
+        "PhotoBooth": "Fotobudka",
+        "StageSparks": "Fontanny iskier",
+        "LiveVocalist": "Wokalista na żywo",
+        "Saxophonist": "Saksofonista",
+        "LoveSign": "Napis LOVE",
+        "LowFog": "Ciężki dym",
+        "Confetti": "Konfetti",
+        "ExtraDj": "Dodatkowy DJ",
+        "CustomNeon": "Neon na zamówienie"
+      }
     },
     "Clients": {
       "title": "Klienci",
