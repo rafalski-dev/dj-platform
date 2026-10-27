@@ -5,6 +5,7 @@ import { Required } from "@/components/shared/form/required";
 import { Button } from "@/components/ui/shadcn/button";
 import { Field, FieldError, FieldLabel } from "@/components/ui/shadcn/field";
 import { Input } from "@/components/ui/shadcn/input";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/shadcn/input-group";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -15,9 +16,12 @@ type ControlledInputType<T extends FieldValues> = {
   control: Control<T>;
   label?: string;
   placeholder?: string;
-  type?: "text" | "email" | "password" | "tel";
+  type?: "text" | "email" | "password" | "tel" | "number" | "time";
   autoComplete?: React.HTMLInputAutoCompleteAttribute;
   required?: boolean;
+  defaultValue?: string;
+  icon?: React.ReactNode;
+  align?: "inline-end" | "inline-start";
 };
 
 export function ControlledInput<T extends FieldValues>({
@@ -27,6 +31,8 @@ export function ControlledInput<T extends FieldValues>({
   required,
   type = "text",
   autoComplete = "off",
+  icon,
+  align,
   ...inputProps
 }: ControlledInputType<T>) {
   const {
@@ -42,14 +48,21 @@ export function ControlledInput<T extends FieldValues>({
           {required && <Required />}
         </FieldLabel>
       )}
-      <Input
-        {...inputProps}
-        {...field}
-        type={type}
-        aria-invalid={invalid}
-        id={name}
-        autoComplete={autoComplete}
-      />
+      <InputGroup>
+        <InputGroupInput
+          {...inputProps}
+          {...field}
+          type={type}
+          aria-invalid={invalid}
+          id={name}
+          autoComplete={autoComplete}
+        />
+        {icon && (
+          <InputGroupAddon align={align} className="mr-1">
+            {icon}
+          </InputGroupAddon>
+        )}
+      </InputGroup>
       {invalid && <FieldError>{error?.message}</FieldError>}
     </Field>
   );
