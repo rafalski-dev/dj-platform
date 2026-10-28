@@ -44,7 +44,10 @@ export function ControlledSelect<T extends FieldValues>({
       <Select
         name={field.name}
         value={field.value ?? ""}
-        onValueChange={field.onChange}
+        onValueChange={(item) => {
+          field.onBlur();
+          field.onChange(item);
+        }}
         inputRef={field.ref}
         items={items}
       >

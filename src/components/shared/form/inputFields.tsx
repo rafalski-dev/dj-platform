@@ -22,6 +22,7 @@ type ControlledInputType<T extends FieldValues> = {
   defaultValue?: string;
   icon?: React.ReactNode;
   align?: "inline-end" | "inline-start";
+  className?: string;
 };
 
 export function ControlledInput<T extends FieldValues>({

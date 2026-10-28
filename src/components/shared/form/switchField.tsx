@@ -23,7 +23,7 @@ export function ControlledSwitch<T extends FieldValues>({
 
   return (
     <Field orientation="horizontal" className="items-start gap-4" data-invalid={invalid}>
-      <FieldContent>
+      <FieldContent className="gap-2">
         <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
         <FieldDescription className="text-xs">{description}</FieldDescription>
         {invalid && <FieldError>{error?.message}</FieldError>}

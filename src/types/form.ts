@@ -6,6 +6,13 @@ export type ControlledCheckboxProps<T extends FieldValues> = {
   label: string;
 };
 
+export type ControlledSwitchProps<T extends FieldValues> = {
+  name: FieldPath<T>;
+  control: Control<T>;
+  label: string;
+  description?: string;
+};
+
 export type ControlledSelectProps<T extends FieldValues> = {
   name: FieldPath<T>;
   control: Control<T>;
