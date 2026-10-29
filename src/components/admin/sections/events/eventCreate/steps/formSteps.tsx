@@ -1,10 +1,18 @@
 import { GeneralCardHeader } from "@/components/admin/shared/generalCardHeader";
 import { Card, CardContent } from "@/components/ui/shadcn/card";
+import { useCreateEventContext } from "@/hooks/useCreateEventContext";
+
 import { cn } from "@/lib/utils";
 import { CheckIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useFormContext } from "react-hook-form";
+import { CreateEventSchema } from "@/validation/events";
 
-const steps = [
+type StepStatus = "completed" | "active" | "standard";
+
+type Step = { id: number; key: string; value: keyof CreateEventSchema | "summary" };
+
+const steps: Step[] = [
   { id: 1, key: "eventType", value: "eventType" },
   { id: 2, key: "basics", value: "basics" },
   { id: 3, key: "dateAndPlace", value: "dateAndPlace" },
@@ -12,16 +20,24 @@ const steps = [
   { id: 5, key: "summary", value: "summary" },
 ];
 
-type StepStatus = "completed" | "active" | "standard";
-
-type FormStepsProps = {
-  currentStep: number;
-  nextStep: (arg: number) => void;
-};
-
-export function FormSteps({ currentStep, nextStep }: FormStepsProps) {
+export function FormSteps() {
   const t = useTranslations("Admin.Events.Form");
+  const { currentStep, setCurrentStep } = useCreateEventContext();
+  const { trigger } = useFormContext<CreateEventSchema>();
+
   const currentKey = steps.find(({ id }) => id === currentStep)?.key ?? steps[0].key;
+
+  async function goToStep(id: number) {
+    if (id <= currentStep) return setCurrentStep(id);
+
+    for (const step of steps.filter((step) => step.id < id)) {
+      if (step.value === "summary") continue;
+      const isValid = await trigger(step.value);
+      if (!isValid) return setCurrentStep(step.id);
+    }
+
+    setCurrentStep(id);
+  }
 
   function buttonStatus(id: number): StepStatus {
     if (id < currentStep) return "completed";
@@ -37,6 +53,7 @@ export function FormSteps({ currentStep, nextStep }: FormStepsProps) {
           currentStep: currentStep,
           allSteps: steps.length,
         })}
+        orientation="horizontal"
       />
       <CardContent>
         <ol className="flex justify-between">
@@ -44,7 +61,7 @@ export function FormSteps({ currentStep, nextStep }: FormStepsProps) {
             return (
               <li key={value} className="group flex flex-1 items-center last:flex-none">
                 <StepButton
-                  onClick={() => nextStep(id)}
+                  onClick={() => goToStep(id)}
                   status={buttonStatus(id)}
                   label={`${id}. ${t(`steps.${key}`)}`}
                 >

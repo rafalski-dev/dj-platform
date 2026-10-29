@@ -748,7 +748,8 @@
       "edit": "Edytuj"
     },
     "GeneralCardHeader": {
-      "add": "Dodaj"
+      "add": "Dodaj",
+      "edit": "Edytuj"
     },
     "SearchBar": {
       "clear": "Wyczyść wyszukiwanie"
@@ -828,6 +829,243 @@
         "Confetti": "Konfetti",
         "ExtraDj": "Dodatkowy DJ",
         "CustomNeon": "Neon na zamówienie"
+      },
+      "Create": {
+        "page": {
+          "title": "Dodaj wydarzenie",
+          "description": "Uzupełnij informacje o wydarzeniu w formularzu krok po kroku poniżej."
+        }
+      },
+      "Form": {
+        "stepCounter": "Krok {currentStep} z {allSteps}",
+        "steps": {
+          "eventType": "Typ wydarzenia",
+          "basics": "Podstawowe informacje",
+          "dateAndPlace": "Data i miejsce",
+          "package": "Pakiet i dodatki",
+          "summary": "Podsumowanie"
+        },
+        "eventType": {
+          "required": "Wybierz rodzaj wydarzenia",
+          "custom": {
+            "label": "Własny rodzaj wydarzenia",
+            "placeholder": "np. Chrzciny",
+            "required": "Podaj rodzaj wydarzenia"
+          }
+        },
+        "eventTypes": {
+          "Wedding": {
+            "title": "Wesele",
+            "description": "Ceremonia, pierwszy taniec i zabawa do białego rana."
+          },
+          "Prom": {
+            "title": "Studniówka",
+            "description": "Polonez, szkolne tradycje i największe hity dla maturzystów."
+          },
+          "Anniversary": {
+            "title": "Rocznica",
+            "description": "Elegancki wieczór z okazji wspólnych lat."
+          },
+          "Birthday_18": {
+            "title": "18-stka",
+            "description": "Wyjątkowa impreza z muzyką, którą kocha solenizant."
+          },
+          "Conference": {
+            "title": "Konferencja",
+            "description": "Nagłośnienie sali, muzyka w przerwach i zapowiedzi prelegentów."
+          },
+          "Corporate_Event": {
+            "title": "Impreza firmowa",
+            "description": "Imprezy integracyjne, jubileusze i wigilie firmowe."
+          },
+          "Festival": {
+            "title": "Festiwal",
+            "description": "Scena plenerowa, dni miasta i taneczne sety pod chmurką."
+          },
+          "Other": {
+            "title": "Inne",
+            "description": "Każda inna okazja – dopasujemy wszystko razem."
+          }
+        },
+        "basics": {
+          "client": {
+            "label": "Klient",
+            "placeholder": "Wybierz klienta",
+            "required": "Wybierz klienta"
+          },
+          "guests": {
+            "label": "Liczba gości",
+            "placeholder": "np. 120",
+            "required": "Podaj liczbę gości"
+          },
+          "eventTitle": {
+            "label": "Tytuł wydarzenia",
+            "placeholder": "np. Wesele Marii i Jakuba",
+            "required": "Podaj tytuł wydarzenia"
+          },
+          "wedding": {
+            "groups": {
+              "couple": "Para młoda",
+              "witnesses": "Świadkowie",
+              "brideParents": "Rodzice panny młodej",
+              "groomParents": "Rodzice pana młodego"
+            },
+            "bride": "Panna młoda",
+            "groom": "Pan młody",
+            "brideWitness": "Świadkowa",
+            "groomWitness": "Świadek",
+            "mother": "Mama",
+            "father": "Tata",
+            "fullNamePlaceholder": "Imię i nazwisko",
+            "required": {
+              "bride": "Podaj imię i nazwisko panny młodej",
+              "groom": "Podaj imię i nazwisko pana młodego",
+              "brideWitness": "Podaj imię i nazwisko świadkowej",
+              "groomWitness": "Podaj imię i nazwisko świadka"
+            }
+          }
+        },
+        "dateAndPlace": {
+          "groups": {
+            "event": "Data i miejsce wydarzenia",
+            "ceremony": "Data i miejsce ceremonii"
+          },
+          "eventDate": {
+            "label": "Data",
+            "placeholder": "Wybierz datę wydarzenia",
+            "required": "Wybierz datę wydarzenia"
+          },
+          "ceremonyDate": {
+            "placeholder": "Wybierz datę ceremonii",
+            "required": "Wybierz datę ceremonii",
+            "afterEvent": "Ceremonia nie może być później niż wydarzenie"
+          },
+          "ceremonyStartsAt": {
+            "required": "Podaj godzinę ceremonii"
+          },
+          "startsAt": {
+            "label": "Godzina rozpoczęcia",
+            "required": "Podaj godzinę rozpoczęcia"
+          },
+          "endsAt": {
+            "label": "Godzina zakończenia",
+            "required": "Podaj godzinę zakończenia"
+          },
+          "eventPlace": {
+            "label": "Miejsce",
+            "placeholder": "np. Dwór Zawiszów",
+            "required": "Podaj miejsce"
+          },
+          "address": {
+            "label": "Adres",
+            "placeholder": "np. ul. Długa 5, Kraków",
+            "required": "Podaj adres"
+          },
+          "weddingKind": {
+            "label": "Rodzaj ślubu",
+            "placeholder": "Wybierz rodzaj ślubu",
+            "required": "Wybierz rodzaj ślubu",
+            "options": {
+              "Church": "Kościelny",
+              "Civil": "Cywilny (USC)",
+              "Outdoor": "Plenerowy",
+              "None": "Bez ceremonii"
+            }
+          },
+          "ceremonyPlace": {
+            "label": "Miejsce ceremonii",
+            "placeholder": "np. Bazylika Mariacka",
+            "required": "Podaj miejsce ceremonii"
+          },
+          "ceremonyAddress": {
+            "required": "Podaj adres ceremonii"
+          }
+        },
+        "package": {
+          "groups": {
+            "package": "Pakiet",
+            "addons": "Dodatki",
+            "additional": "Dodatkowe informacje"
+          },
+          "required": {
+            "package": "Wybierz pakiet",
+            "addons": "Wybierz co najmniej jeden dodatek do pakietu Signature"
+          },
+          "packages": {
+            "Classic": {
+              "title": "Classic",
+              "description": "Sama usługa DJ-a — nagłośnienie i oświetlenie zapewnia sala."
+            },
+            "Premium": {
+              "title": "Premium",
+              "description": "Kompleksowa oprawa od początku do końca — DJ z pełnym wyposażeniem, profesjonalnym nagłośnieniem i oświetleniem parkietu."
+            },
+            "Signature": {
+              "title": "Signature",
+              "description": "Wszystko z Premium z możliwością wyboru dodatków, np. muzyki na żywo, ciężkiego dymu, napisu LOVE czy zimnych ogni."
+            }
+          },
+          "addonInfo": "Więcej o: {name}",
+          "addons": {
+            "PhotoBooth": {
+              "title": "Fotobudka",
+              "description": "Samoobsługowa fotobudka z gadżetami i natychmiastowym wydrukiem — goście zabierają pamiątkę do domu."
+            },
+            "StageSparks": {
+              "title": "Zimne ognie",
+              "description": "Fontanny iskier bezpieczne w sali — idealne na pierwszy taniec albo wejście pary."
+            },
+            "LiveVocalist": {
+              "title": "Wokal na żywo",
+              "description": "Wokalistka lub wokalista śpiewający na żywo do setu DJ-a."
+            },
+            "Saxophonist": {
+              "title": "Saksofonista",
+              "description": "Saksofon na żywo do muzyki DJ-a — świetny na powitanie albo szczyt imprezy."
+            },
+            "LoveSign": {
+              "title": "Napis LOVE",
+              "description": "Duże podświetlane litery LOVE — dekoracja i ulubione miejsce do zdjęć."
+            },
+            "LowFog": {
+              "title": "Ciężki dym",
+              "description": "Gęsty dym przy samej podłodze — efekt „tańca w chmurach” podczas pierwszego tańca."
+            },
+            "Confetti": {
+              "title": "Konfetti",
+              "description": "Wystrzał konfetti w kulminacyjnym momencie wieczoru."
+            },
+            "ExtraDj": {
+              "title": "Drugi DJ",
+              "description": "Dodatkowy DJ — inny styl muzyczny albo dłuższa impreza bez przerw."
+            },
+            "CustomNeon": {
+              "title": "Neon na zamówienie",
+              "description": "Neon wykonany na zamówienie, np. z imionami pary albo hashtagiem."
+            }
+          },
+          "message": {
+            "label": "Wiadomość",
+            "placeholder": "Dodaj dodatkowe informacje o wydarzeniu",
+            "max": "Wiadomość może mieć maksymalnie 2000 znaków"
+          }
+        },
+        "navigation": {
+          "prev": "Wstecz",
+          "next": "Dalej",
+          "cancel": "Anuluj",
+          "submit": "Dodaj wydarzenie"
+        },
+        "summary": {
+          "brideMother": "Mama panny młodej",
+          "brideFather": "Tata panny młodej",
+          "groomMother": "Mama pana młodego",
+          "groomFather": "Tata pana młodego",
+          "eventDate": "Data wydarzenia",
+          "ceremonyDate": "Data ceremonii",
+          "ceremonyStartTime": "Godzina ceremonii",
+          "ceremonyAddress": "Adres ceremonii"
+        }
       }
     },
     "Clients": {

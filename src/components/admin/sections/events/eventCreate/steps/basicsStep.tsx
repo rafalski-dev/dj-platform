@@ -2,16 +2,23 @@ import { GeneralCardHeader } from "@/components/admin/shared/generalCardHeader";
 import { ControlledSearchSelect } from "@/components/shared/form/comboxField";
 import { ControlledInput } from "@/components/shared/form/inputFields";
 import { Button } from "@/components/ui/shadcn/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/shadcn/card";
+import { Card, CardContent } from "@/components/ui/shadcn/card";
 
 import { useCreateEventContext } from "@/hooks/useCreateEventContext";
 import { useTranslations } from "next-intl";
 import { useFormContext, useWatch } from "react-hook-form";
+import { FormFieldset } from "../formFieldset";
+import { Client } from "../../../../../../../generated";
+import { CreateEventSchema } from "@/validation/events";
 
-export function BasicDetailsStep({ clientsList }) {
+type BasicsStepProps = {
+  clientsList: Pick<Client, "id" | "name">[];
+};
+
+export function BasicsStep({ clientsList }: BasicsStepProps) {
   const t = useTranslations("Admin.Events.Form");
   const { setCurrentStep } = useCreateEventContext();
-  const { control } = useFormContext();
+  const { control, trigger } = useFormContext<CreateEventSchema>();
   const type = useWatch({ name: "eventType.type" });
 
   const mappedClients = clientsList.map(({ id, name }) => {
@@ -19,18 +26,19 @@ export function BasicDetailsStep({ clientsList }) {
   });
 
   return (
-    <Card>
-      <GeneralCardHeader title={t("steps.basics")} />
-      <CardContent className="flex flex-col gap-6">
-        <div className="flex flex-col gap-3 md:flex-row">
-          <ControlledSearchSelect
-            name="basics.client"
-            control={control}
-            label={t("basics.client.label")}
-            placeholder={t("basics.client.placeholder")}
-            items={mappedClients}
-          />
-          <div className="md:w-44 md:shrink-0">
+    <div className="flex flex-col gap-5">
+      <Card>
+        <GeneralCardHeader title={t("steps.basics")} />
+        <CardContent className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 md:flex-row">
+            <ControlledSearchSelect
+              name="basics.client"
+              control={control}
+              label={t("basics.client.label")}
+              placeholder={t("basics.client.placeholder")}
+              items={mappedClients}
+            />
+
             <ControlledInput
               name="basics.guestCount"
               control={control}
@@ -39,28 +47,39 @@ export function BasicDetailsStep({ clientsList }) {
               placeholder={t("basics.guests.placeholder")}
             />
           </div>
-        </div>
-
-        {type === "Wedding" && <WeddingFields />}
-      </CardContent>
-      <CardFooter className="mx-(--card-spacing) flex justify-between border-t px-0">
+          {type === "Wedding" && <WeddingFields />}
+          <ControlledInput
+            name="basics.eventTitle"
+            control={control}
+            label={t("basics.eventTitle.label")}
+            placeholder={t("basics.eventTitle.placeholder")}
+          />
+        </CardContent>
+      </Card>
+      <div className="flex justify-between">
         <Button variant="outline" size="sm" onClick={() => setCurrentStep((prev) => prev - 1)}>
           {t("navigation.prev")}
         </Button>
-        <Button size="sm" onClick={() => setCurrentStep((prev) => prev + 1)}>
+        <Button
+          size="sm"
+          onClick={async () => {
+            const isCorrect = await trigger("basics");
+            if (isCorrect) setCurrentStep((prev) => prev + 1);
+          }}
+        >
           {t("navigation.next")}
         </Button>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 }
 
 export function WeddingFields() {
   const t = useTranslations("Admin.Events.Form.basics.wedding");
-  const { control } = useFormContext();
+  const { control } = useFormContext<CreateEventSchema>();
   return (
-    <div className="flex flex-col gap-6 border-t pt-6">
-      <FieldGroup title={t("groups.couple")}>
+    <div className="mt-3 mb-3 flex flex-col gap-6 border-t border-b pt-6 pb-6">
+      <FormFieldset title={t("groups.couple")}>
         <ControlledInput
           name="basics.wedding.bride"
           control={control}
@@ -73,8 +92,8 @@ export function WeddingFields() {
           label={t("groom")}
           placeholder={t("fullNamePlaceholder")}
         />
-      </FieldGroup>
-      <FieldGroup title={t("groups.witnesses")}>
+      </FormFieldset>
+      <FormFieldset title={t("groups.witnesses")}>
         <ControlledInput
           name="basics.wedding.brideWitness"
           control={control}
@@ -87,8 +106,8 @@ export function WeddingFields() {
           label={t("groomWitness")}
           placeholder={t("fullNamePlaceholder")}
         />
-      </FieldGroup>
-      <FieldGroup title={t("groups.brideParents")}>
+      </FormFieldset>
+      <FormFieldset title={t("groups.brideParents")}>
         <ControlledInput
           name="basics.wedding.brideMother"
           control={control}
@@ -101,8 +120,8 @@ export function WeddingFields() {
           label={t("father")}
           placeholder={t("fullNamePlaceholder")}
         />
-      </FieldGroup>
-      <FieldGroup title={t("groups.groomParents")}>
+      </FormFieldset>
+      <FormFieldset title={t("groups.groomParents")}>
         <ControlledInput
           name="basics.wedding.groomMother"
           control={control}
@@ -115,18 +134,7 @@ export function WeddingFields() {
           label={t("father")}
           placeholder={t("fullNamePlaceholder")}
         />
-      </FieldGroup>
+      </FormFieldset>
     </div>
-  );
-}
-
-function FieldGroup({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <fieldset className="flex flex-col gap-3">
-      <legend className="text-accent-foreground mb-3 text-xs font-semibold tracking-widest uppercase">
-        {title}
-      </legend>
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">{children}</div>
-    </fieldset>
   );
 }

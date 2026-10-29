@@ -1,9 +1,9 @@
-import { buttonVariants } from "@/components/ui/shadcn/button";
+import { Button, buttonVariants } from "@/components/ui/shadcn/button";
 import { CardHeader } from "@/components/ui/shadcn/card";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Pathname } from "@/types/navigation";
-import { PlusIcon } from "lucide-react";
+import { EditIcon, PlusIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 type GeneralCardHeaderProps = {
@@ -11,14 +11,29 @@ type GeneralCardHeaderProps = {
   count?: number;
   pathname?: Pathname;
   label?: string;
+  onClick?: () => void;
+  orientation?: "vertical" | "horizontal";
 };
 
-export function GeneralCardHeader({ title, count, label, pathname }: GeneralCardHeaderProps) {
+export function GeneralCardHeader({
+  title,
+  count,
+  label,
+  pathname,
+  onClick,
+  orientation = "vertical",
+}: GeneralCardHeaderProps) {
   const t = useTranslations("Admin.GeneralCardHeader");
 
   return (
     <CardHeader className="flex items-center justify-between">
-      <div className="flex flex-col gap-1.5">
+      <div
+        className={cn(
+          "flex",
+          orientation === "vertical" && "flex-col gap-1",
+          orientation === "horizontal" && "w-full flex-row items-center justify-between gap-3",
+        )}
+      >
         {label && (
           <p className="text-accent-foreground text-xs font-semibold tracking-widest uppercase">
             {label}
@@ -44,6 +59,12 @@ export function GeneralCardHeader({ title, count, label, pathname }: GeneralCard
           <PlusIcon />
           {t("add")}
         </Link>
+      )}
+      {onClick && (
+        <Button variant="outline" size="xs" className="text-accent-foreground" onClick={onClick}>
+          <EditIcon className="size-3.5" />
+          {t("edit")}
+        </Button>
       )}
     </CardHeader>
   );
