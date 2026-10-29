@@ -27,7 +27,7 @@ export async function getPaginatedEvents(limit: number, page: number, query?: st
     include: { client: { select: { name: true } } },
     omit: {
       addons: true,
-      notes: true,
+      message: true,
       secondPartnerName: true,
       updatedAt: true,
       createdAt: true,

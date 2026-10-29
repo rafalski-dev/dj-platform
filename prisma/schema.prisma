@@ -61,6 +61,13 @@ enum Addon {
   CustomNeon
 }
 
+enum WeddingKind {
+  Church
+  Civil
+  Outdoor
+  None
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String
@@ -178,12 +185,15 @@ model Event {
   eventPlace           String
   city                 String
 
+  weddingKind          WeddingKind?
+
   guestCount           Int?
-  notes                String?
+  message              String?
   secondPartnerName    String?
 
   eventPackage         Package
   addons               Addon[]
+  
 
   clientId             String
   client               Client       @relation(fields: [clientId], references: [id], onDelete: Cascade)
