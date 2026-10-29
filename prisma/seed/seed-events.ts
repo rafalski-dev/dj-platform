@@ -1,6 +1,17 @@
 import { db } from "@/lib/db";
-import { Addon, EventStatus, EventType, Package, Prisma } from "../../generated";
+import { Addon, EventStatus, EventType, Package, Prisma, WeddingKind } from "../../generated";
 import { toEventDates } from "@/lib/eventDates";
+
+type SeedWedding = {
+  bride: string;
+  groom: string;
+  brideWitness: string;
+  groomWitness: string;
+  weddingKind: WeddingKind;
+  ceremonyTime?: string;
+  ceremonyPlace?: string;
+  ceremonyAddress?: string;
+};
 
 type SeedEvent = {
   clientName: string;
@@ -8,12 +19,11 @@ type SeedEvent = {
   startTime?: string;
   endTime?: string;
   eventPlace: string;
-  city: string;
+  eventAddress: string;
   title: string;
   guestCount?: number;
-  notes?: string;
-  partner1Name?: string;
-  partner2Name?: string;
+  message?: string;
+  wedding?: SeedWedding;
   eventType: EventType;
   eventStatus?: EventStatus;
   eventPackage: Package;
@@ -27,11 +37,19 @@ const eventsData: SeedEvent[] = [
     startTime: "15:00",
     endTime: "03:00",
     eventPlace: "Zajazd pod gruszą",
-    city: "Wieliczka",
+    eventAddress: "Wieliczka",
     title: "Wesele Moniki & Adama",
     guestCount: 150,
-    partner1Name: "Monika Rusin",
-    partner2Name: "Jakub Domański",
+    wedding: {
+      bride: "Monika Rusin",
+      groom: "Jakub Domański",
+      brideWitness: "Anna Rusin",
+      groomWitness: "Tomasz Domański",
+      weddingKind: WeddingKind.Church,
+      ceremonyTime: "14:00",
+      ceremonyPlace: "Parafia św. Klemensa",
+      ceremonyAddress: "ul. Kościelna 1, Wieliczka",
+    },
     eventType: EventType.Wedding,
     eventPackage: Package.Premium,
     addons: [Addon.PhotoBooth, Addon.LowFog],
@@ -42,12 +60,20 @@ const eventsData: SeedEvent[] = [
     startTime: "16:00",
     endTime: "04:00",
     eventPlace: "Dwór Pod Lipami",
-    city: "Niepołomice",
+    eventAddress: "Niepołomice",
     title: "Wesele Magdaleny & Piotra",
     guestCount: 130,
-    partner1Name: "Magdalena Adamczyk",
-    partner2Name: "Piotr Lewandowski",
-    notes: "Pierwszy taniec: walc angielski. Oczepiny o północy.",
+    message: "Pierwszy taniec: walc angielski. Oczepiny o północy.",
+    wedding: {
+      bride: "Magdalena Adamczyk",
+      groom: "Piotr Lewandowski",
+      brideWitness: "Karolina Adamczyk",
+      groomWitness: "Paweł Lewandowski",
+      weddingKind: WeddingKind.Civil,
+      ceremonyTime: "15:00",
+      ceremonyPlace: "Urząd Stanu Cywilnego",
+      ceremonyAddress: "Plac Zwycięstwa 13, Niepołomice",
+    },
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Completed,
     eventPackage: Package.Signature,
@@ -59,11 +85,17 @@ const eventsData: SeedEvent[] = [
     startTime: "17:00",
     endTime: "03:00",
     eventPlace: "Stara Stodoła",
-    city: "Zabierzów",
+    eventAddress: "Zabierzów",
     title: "Wesele Katarzyny & Michała",
     guestCount: 90,
-    partner1Name: "Katarzyna Zając",
-    partner2Name: "Michał Kowalczyk",
+    wedding: {
+      bride: "Katarzyna Zając",
+      groom: "Michał Kowalczyk",
+      brideWitness: "Aleksandra Zając",
+      groomWitness: "Bartosz Kowalczyk",
+      weddingKind: WeddingKind.Outdoor,
+      ceremonyTime: "16:00",
+    },
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Completed,
     eventPackage: Package.Premium,
@@ -74,10 +106,8 @@ const eventsData: SeedEvent[] = [
     date: "2026-07-18",
     endTime: "00:00",
     eventPlace: "Restauracja Nad Stawem",
-    city: "Skawina",
+    eventAddress: "Skawina",
     title: "25. rocznica ślubu Góreckich",
-    partner1Name: "Ewa Górecka",
-    partner2Name: "Marek Górecki",
     eventType: EventType.Anniversary,
     eventStatus: EventStatus.Completed,
     eventPackage: Package.Classic,
@@ -89,10 +119,10 @@ const eventsData: SeedEvent[] = [
     startTime: "18:00",
     endTime: "02:00",
     eventPlace: "Klub Piwnica",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "18. urodziny Oli",
     guestCount: 45,
-    notes: "Bez disco polo. Dużo muzyki z lat 2000.",
+    message: "Bez disco polo. Dużo muzyki z lat 2000.",
     eventType: EventType.Birthday_18,
     eventStatus: EventStatus.Completed,
     eventPackage: Package.Classic,
@@ -104,9 +134,9 @@ const eventsData: SeedEvent[] = [
     startTime: "20:00",
     endTime: "23:30",
     eventPlace: "Rynek, scena plenerowa",
-    city: "Myślenice",
+    eventAddress: "Myślenice",
     title: "Dni Miasta - scena taneczna",
-    notes: "Odwołane przez organizatora z powodu pogody.",
+    message: "Odwołane przez organizatora z powodu pogody.",
     eventType: EventType.Festival,
     eventStatus: EventStatus.Cancelled,
     eventPackage: Package.Classic,
@@ -118,7 +148,7 @@ const eventsData: SeedEvent[] = [
     startTime: "19:00",
     endTime: "01:00",
     eventPlace: "Hotel Panorama, sala bankietowa",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "Jubileusz 10-lecia firmy",
     guestCount: 80,
     eventType: EventType.Corporate_Event,
@@ -132,9 +162,9 @@ const eventsData: SeedEvent[] = [
     startTime: "09:00",
     endTime: "17:00",
     eventPlace: "Centrum Konferencyjne Młyn",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "Konferencja branżowa - oprawa muzyczna",
-    notes: "Potrzebne 2 mikrofony bezprzewodowe i nagłośnienie sali.",
+    message: "Potrzebne 2 mikrofony bezprzewodowe i nagłośnienie sali.",
     eventType: EventType.Conference,
     eventStatus: EventStatus.Active,
     eventPackage: Package.Classic,
@@ -146,7 +176,7 @@ const eventsData: SeedEvent[] = [
     startTime: "20:00",
     endTime: "03:00",
     eventPlace: "Klub Piwnica",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "Impreza andrzejkowa",
     guestCount: 60,
     eventType: EventType.Other,
@@ -160,10 +190,10 @@ const eventsData: SeedEvent[] = [
     startTime: "18:00",
     endTime: "00:00",
     eventPlace: "Hotel Panorama, sala bankietowa",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "Wigilia firmowa",
     guestCount: 120,
-    notes: "Pierwsza godzina tylko kolędy i muzyka w tle.",
+    message: "Pierwsza godzina tylko kolędy i muzyka w tle.",
     eventType: EventType.Corporate_Event,
     eventStatus: EventStatus.Active,
     eventPackage: Package.Premium,
@@ -175,10 +205,10 @@ const eventsData: SeedEvent[] = [
     startTime: "19:00",
     endTime: "04:00",
     eventPlace: "Dwór Pod Lipami",
-    city: "Niepołomice",
+    eventAddress: "Niepołomice",
     title: "Studniówka klas maturalnych",
     guestCount: 220,
-    notes: "Polonez o 19:30 - własne nagranie od szkoły.",
+    message: "Polonez o 19:30 - własne nagranie od szkoły.",
     eventType: EventType.Prom,
     eventStatus: EventStatus.Active,
     eventPackage: Package.Premium,
@@ -189,7 +219,7 @@ const eventsData: SeedEvent[] = [
     date: "2027-03-06",
     endTime: "01:00",
     eventPlace: "Restauracja Nad Stawem",
-    city: "Skawina",
+    eventAddress: "Skawina",
     title: "18. urodziny Aleksandry",
     guestCount: 30,
     eventType: EventType.Birthday_18,
@@ -202,11 +232,19 @@ const eventsData: SeedEvent[] = [
     startTime: "16:30",
     endTime: "04:00",
     eventPlace: "Stara Stodoła",
-    city: "Zabierzów",
+    eventAddress: "Zabierzów",
     title: "Wesele Zuzanny & Kacpra",
     guestCount: 140,
-    partner1Name: "Zuzanna Michalska",
-    partner2Name: "Kacper Zieliński",
+    wedding: {
+      bride: "Zuzanna Michalska",
+      groom: "Kacper Zieliński",
+      brideWitness: "Natalia Michalska",
+      groomWitness: "Filip Zieliński",
+      weddingKind: WeddingKind.Church,
+      ceremonyTime: "15:30",
+      ceremonyPlace: "Parafia Narodzenia NMP",
+      ceremonyAddress: "ul. Kościelna 2, Zabierzów",
+    },
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Active,
     eventPackage: Package.Signature,
@@ -217,9 +255,15 @@ const eventsData: SeedEvent[] = [
     date: "2027-08-21",
     endTime: "04:00",
     eventPlace: "Do ustalenia",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "Wesele Agnieszki",
-    partner1Name: "Agnieszka Wróbel",
+    wedding: {
+      bride: "Agnieszka Wróbel",
+      groom: "Dawid Kurek",
+      brideWitness: "Marta Wróbel",
+      groomWitness: "Rafał Kurek",
+      weddingKind: WeddingKind.None,
+    },
     eventType: EventType.Wedding,
     eventPackage: Package.Premium,
     addons: [],
@@ -229,10 +273,17 @@ const eventsData: SeedEvent[] = [
     date: "2027-09-11",
     endTime: "03:00",
     eventPlace: "Pałacyk Leśny",
-    city: "Wieliczka",
+    eventAddress: "Wieliczka",
     title: "Wesele Karoliny & Marcina",
-    partner1Name: "Karolina Wieczorek",
-    partner2Name: "Marcin Pietrzak",
+    wedding: {
+      bride: "Karolina Wieczorek",
+      groom: "Marcin Pietrzak",
+      brideWitness: "Julia Wieczorek",
+      groomWitness: "Adam Pietrzak",
+      weddingKind: WeddingKind.Church,
+      ceremonyPlace: "Parafia św. Klemensa",
+      ceremonyAddress: "ul. Kościelna 1, Wieliczka",
+    },
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Active,
     eventPackage: Package.Premium,
@@ -244,11 +295,19 @@ const eventsData: SeedEvent[] = [
     startTime: "16:00",
     endTime: "03:00",
     eventPlace: "Dwór Zieleniec",
-    city: "Zielonki",
+    eventAddress: "Zielonki",
     title: "Wesele Tomasza & Ewy",
     guestCount: 110,
-    partner1Name: "Ewa Malinowska",
-    partner2Name: "Tomasz Nowicki",
+    wedding: {
+      bride: "Ewa Malinowska",
+      groom: "Tomasz Nowicki",
+      brideWitness: "Marta Malinowska",
+      groomWitness: "Krzysztof Nowicki",
+      weddingKind: WeddingKind.Civil,
+      ceremonyTime: "15:00",
+      ceremonyPlace: "Urząd Stanu Cywilnego",
+      ceremonyAddress: "ul. Krakowskie Przedmieście 116, Zielonki",
+    },
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Completed,
     eventPackage: Package.Premium,
@@ -260,7 +319,7 @@ const eventsData: SeedEvent[] = [
     startTime: "18:00",
     endTime: "01:00",
     eventPlace: "Klub Forty",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "18. urodziny Weroniki",
     guestCount: 50,
     eventType: EventType.Birthday_18,
@@ -274,11 +333,17 @@ const eventsData: SeedEvent[] = [
     startTime: "17:00",
     endTime: "04:00",
     eventPlace: "Pałac Goetz",
-    city: "Brzesko",
+    eventAddress: "Brzesko",
     title: "Wesele Michała & Kingi",
     guestCount: 160,
-    partner1Name: "Kinga Sowa",
-    partner2Name: "Michał Pawlak",
+    wedding: {
+      bride: "Kinga Sowa",
+      groom: "Michał Pawlak",
+      brideWitness: "Dominika Sowa",
+      groomWitness: "Łukasz Pawlak",
+      weddingKind: WeddingKind.Outdoor,
+      ceremonyTime: "16:00",
+    },
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Completed,
     eventPackage: Package.Signature,
@@ -290,9 +355,9 @@ const eventsData: SeedEvent[] = [
     startTime: "19:00",
     endTime: "23:00",
     eventPlace: "Bulwary Wiślane, scena letnia",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "Letni festiwal nad Wisłą",
-    notes: "Set 120-128 BPM, house i nu-disco.",
+    message: "Set 120-128 BPM, house i nu-disco.",
     eventType: EventType.Festival,
     eventStatus: EventStatus.Completed,
     eventPackage: Package.Classic,
@@ -304,14 +369,22 @@ const eventsData: SeedEvent[] = [
     startTime: "16:00",
     endTime: "03:00",
     eventPlace: "Zajazd pod gruszą",
-    city: "Wieliczka",
+    eventAddress: "Wieliczka",
     title: "Wesele Julii & Szymona",
     guestCount: 95,
-    partner1Name: "Julia Kołodziej",
-    partner2Name: "Szymon Sowa",
+    wedding: {
+      bride: "Julia Kołodziej",
+      groom: "Szymon Sowa",
+      brideWitness: "Paulina Kołodziej",
+      groomWitness: "Wojciech Sowa",
+      weddingKind: WeddingKind.Church,
+      ceremonyTime: "15:00",
+      ceremonyPlace: "Parafia św. Klemensa",
+      ceremonyAddress: "ul. Kościelna 1, Wieliczka",
+    },
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Cancelled,
-    notes: "Para przełożyła ślub na kolejny rok.",
+    message: "Para przełożyła ślub na kolejny rok.",
     eventPackage: Package.Premium,
     addons: [Addon.PhotoBooth],
   },
@@ -321,7 +394,7 @@ const eventsData: SeedEvent[] = [
     startTime: "19:00",
     endTime: "02:00",
     eventPlace: "Hotel Panorama, sala bankietowa",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "40. urodziny Anny",
     guestCount: 70,
     eventType: EventType.Other,
@@ -335,9 +408,9 @@ const eventsData: SeedEvent[] = [
     startTime: "09:00",
     endTime: "16:00",
     eventPlace: "ICE Kraków, sala B",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "TechConf Polska - oprawa muzyczna",
-    notes: "Muzyka w przerwach + intro prelegentów.",
+    message: "Muzyka w przerwach + intro prelegentów.",
     eventType: EventType.Conference,
     eventStatus: EventStatus.Active,
     eventPackage: Package.Classic,
@@ -349,7 +422,7 @@ const eventsData: SeedEvent[] = [
     startTime: "20:00",
     endTime: "02:00",
     eventPlace: "Restauracja Wierzynek",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "Impreza firmowa Mazur Logistics",
     guestCount: 85,
     eventType: EventType.Corporate_Event,
@@ -363,7 +436,7 @@ const eventsData: SeedEvent[] = [
     startTime: "19:00",
     endTime: "04:00",
     eventPlace: "Pałacyk Leśny",
-    city: "Wieliczka",
+    eventAddress: "Wieliczka",
     title: "Studniówka II LO",
     guestCount: 180,
     eventType: EventType.Prom,
@@ -377,11 +450,9 @@ const eventsData: SeedEvent[] = [
     startTime: "18:00",
     endTime: "01:00",
     eventPlace: "Dwór Pod Lipami",
-    city: "Niepołomice",
+    eventAddress: "Niepołomice",
     title: "1. rocznica ślubu Magdaleny & Piotra",
     guestCount: 40,
-    partner1Name: "Magdalena Adamczyk",
-    partner2Name: "Piotr Lewandowski",
     eventType: EventType.Anniversary,
     eventPackage: Package.Classic,
     addons: [Addon.Saxophonist],
@@ -391,10 +462,15 @@ const eventsData: SeedEvent[] = [
     date: "2027-05-29",
     endTime: "04:00",
     eventPlace: "Do ustalenia",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "Wesele Mateusza & Oliwii",
-    partner1Name: "Oliwia Szymańska",
-    partner2Name: "Mateusz Król",
+    wedding: {
+      bride: "Oliwia Szymańska",
+      groom: "Mateusz Król",
+      brideWitness: "Klaudia Szymańska",
+      groomWitness: "Jan Król",
+      weddingKind: WeddingKind.None,
+    },
     eventType: EventType.Wedding,
     eventPackage: Package.Signature,
     addons: [],
@@ -405,11 +481,17 @@ const eventsData: SeedEvent[] = [
     startTime: "16:00",
     endTime: "03:00",
     eventPlace: "Stara Stodoła",
-    city: "Zabierzów",
+    eventAddress: "Zabierzów",
     title: "Wesele Emilii & Adama",
     guestCount: 120,
-    partner1Name: "Emilia Kaczmarek",
-    partner2Name: "Adam Wójcik",
+    wedding: {
+      bride: "Emilia Kaczmarek",
+      groom: "Adam Wójcik",
+      brideWitness: "Sara Kaczmarek",
+      groomWitness: "Igor Wójcik",
+      weddingKind: WeddingKind.Outdoor,
+      ceremonyTime: "15:00",
+    },
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Active,
     eventPackage: Package.Premium,
@@ -421,7 +503,7 @@ const eventsData: SeedEvent[] = [
     startTime: "18:00",
     endTime: "02:00",
     eventPlace: "Klub Piwnica",
-    city: "Kraków",
+    eventAddress: "Kraków",
     title: "18. urodziny Patrycji",
     guestCount: 40,
     eventType: EventType.Birthday_18,
@@ -434,11 +516,19 @@ const eventsData: SeedEvent[] = [
     startTime: "17:00",
     endTime: "04:00",
     eventPlace: "Dwór Zieleniec",
-    city: "Zielonki",
+    eventAddress: "Zielonki",
     title: "Wesele Adriana & Moniki",
     guestCount: 150,
-    partner1Name: "Monika Lis",
-    partner2Name: "Adrian Jasiński",
+    wedding: {
+      bride: "Monika Lis",
+      groom: "Adrian Jasiński",
+      brideWitness: "Ewelina Lis",
+      groomWitness: "Maciej Jasiński",
+      weddingKind: WeddingKind.Church,
+      ceremonyTime: "16:00",
+      ceremonyPlace: "Parafia św. Antoniego",
+      ceremonyAddress: "ul. Kościelna 4, Zielonki",
+    },
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Active,
     eventPackage: Package.Signature,
@@ -449,10 +539,8 @@ const eventsData: SeedEvent[] = [
     date: "2027-09-25",
     endTime: "00:00",
     eventPlace: "Restauracja Nad Stawem",
-    city: "Skawina",
+    eventAddress: "Skawina",
     title: "30. rocznica ślubu Nowaków",
-    partner1Name: "Alicja Nowak",
-    partner2Name: "Jerzy Nowak",
     eventType: EventType.Anniversary,
     eventPackage: Package.Classic,
     addons: [],
@@ -463,12 +551,20 @@ const eventsData: SeedEvent[] = [
     startTime: "16:00",
     endTime: "04:00",
     eventPlace: "Dwór Pod Lipami",
-    city: "Niepołomice",
+    eventAddress: "Niepołomice",
     title: "Wesele Weroniki & Kacpra",
     guestCount: 110,
-    partner1Name: "Weronika Sadowska",
-    partner2Name: "Kacper Nowicki",
-    notes: "Para przełożyła ślub na czerwiec 2027.",
+    message: "Para przełożyła ślub na czerwiec 2027.",
+    wedding: {
+      bride: "Weronika Sadowska",
+      groom: "Kacper Nowicki",
+      brideWitness: "Iga Sadowska",
+      groomWitness: "Hubert Nowicki",
+      weddingKind: WeddingKind.Civil,
+      ceremonyTime: "15:00",
+      ceremonyPlace: "Urząd Stanu Cywilnego",
+      ceremonyAddress: "Plac Zwycięstwa 13, Niepołomice",
+    },
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Cancelled,
     eventPackage: Package.Premium,
@@ -480,17 +576,31 @@ const eventsData: SeedEvent[] = [
     startTime: "16:00",
     endTime: "04:00",
     eventPlace: "Dwór Pod Lipami",
-    city: "Niepołomice",
+    eventAddress: "Niepołomice",
     title: "Wesele Weroniki & Kacpra",
     guestCount: 110,
-    partner1Name: "Weronika Sadowska",
-    partner2Name: "Kacper Nowicki",
+    wedding: {
+      bride: "Weronika Sadowska",
+      groom: "Kacper Nowicki",
+      brideWitness: "Iga Sadowska",
+      groomWitness: "Hubert Nowicki",
+      weddingKind: WeddingKind.Church,
+      ceremonyTime: "15:00",
+      ceremonyPlace: "Parafia św. Wawrzyńca",
+      ceremonyAddress: "ul. Kościelna 3, Niepołomice",
+    },
     eventType: EventType.Wedding,
     eventStatus: EventStatus.Active,
     eventPackage: Package.Premium,
     addons: [Addon.LowFog],
   },
 ];
+
+function toWeddingCreate(date: string, { ceremonyTime, ...wedding }: SeedWedding) {
+  return {
+    create: { ...wedding, ceremonyStartsAt: toEventDates(date, ceremonyTime).startsAt },
+  };
+}
 
 async function seedingEventsData() {
   if (!process.env.DATABASE_URL?.includes("localhost")) {
@@ -499,25 +609,19 @@ async function seedingEventsData() {
 
   const clients = await db.client.findMany({ select: { id: true, name: true } });
 
-  const eventsDataWithClientId: Prisma.EventCreateManyInput[] = eventsData.map(
-    ({ clientName, date, startTime, endTime, partner1Name, partner2Name, ...event }) => {
+  const eventsDataWithClientId: Prisma.EventUncheckedCreateInput[] = eventsData.map(
+    ({ clientName, date, startTime, endTime, wedding, ...event }) => {
       const client = clients.find((el) => el.name === clientName);
 
       if (!client) {
         throw new Error(`Client "${clientName}" not found`);
       }
 
-      // the client is one of the partners, the other one is stored as secondPartnerName
-      const partners = [partner1Name, partner2Name].filter((name) => name !== undefined);
-      const secondPartnerName = partners.includes(clientName)
-        ? (partners.find((name) => name !== clientName) ?? null)
-        : null;
-
       return {
         ...event,
         ...toEventDates(date, startTime, endTime),
-        secondPartnerName,
         clientId: client.id,
+        wedding: wedding && toWeddingCreate(date, wedding),
       };
     },
   );
@@ -526,9 +630,12 @@ async function seedingEventsData() {
   await db.playlist.deleteMany();
   await db.event.deleteMany();
 
-  const events = await db.event.createMany({ data: eventsDataWithClientId });
+  // create (not createMany), because wedding details are created as a nested relation
+  const events = await db.$transaction(
+    eventsDataWithClientId.map((data) => db.event.create({ data })),
+  );
 
-  console.log(events);
+  console.log(`Created ${events.length} events`);
 }
 
 seedingEventsData()

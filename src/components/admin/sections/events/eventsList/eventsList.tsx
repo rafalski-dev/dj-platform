@@ -69,7 +69,7 @@ export async function EventsList({ persistedParams }: { persistedParams: Persist
           startsAt,
           endsAt,
           eventPlace,
-          city,
+          eventAddress,
           guestCount,
           eventPackage,
         }) => {
@@ -114,7 +114,7 @@ export async function EventsList({ persistedParams }: { persistedParams: Persist
                         emptyLabel={t("Events.card.notSet")}
                         className="col-span-3"
                       >
-                        {`${eventPlace}, ${city}`}
+                        {`${eventPlace}, ${eventAddress}`}
                       </Detail>
                     </dl>
                   </CardContent>

@@ -183,13 +183,10 @@ model Event {
   endsAt               DateTime?
 
   eventPlace           String
-  city                 String
-
-  weddingKind          WeddingKind?
+  eventAddress         String
 
   guestCount           Int?
   message              String?
-  secondPartnerName    String?
 
   eventPackage         Package
   addons               Addon[]
@@ -200,6 +197,7 @@ model Event {
 
   contract             Contract?
   playlist             Playlist?
+  wedding              WeddingDetails?
 
   createdAt            DateTime     @default(now())
   updatedAt            DateTime     @updatedAt
@@ -207,6 +205,32 @@ model Event {
   @@index([clientId])
   @@index([eventDate])
   @@map("event")
+}
+
+model WeddingDetails {
+  id                   String       @id @default(cuid())
+
+  eventId              String       @unique
+  event                Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  bride                String
+  groom                String
+  brideWitness         String
+  groomWitness         String
+  brideMother          String?
+  brideFather          String?
+  groomMother          String?
+  groomFather          String?
+
+  weddingKind          WeddingKind
+  ceremonyStartsAt     DateTime?
+  ceremonyPlace        String?
+  ceremonyAddress      String?
+
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  @@map("wedding_details")
 }
 
 model Contract {

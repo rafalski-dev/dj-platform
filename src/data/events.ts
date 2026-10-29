@@ -9,7 +9,7 @@ function checkEventsWhere(query?: string): Prisma.EventWhereInput {
       OR: [
         { title: { contains: query, mode: "insensitive" } },
         { eventPlace: { contains: query, mode: "insensitive" } },
-        { city: { contains: query, mode: "insensitive" } },
+        { eventAddress: { contains: query, mode: "insensitive" } },
         { client: { name: { contains: query, mode: "insensitive" } } },
       ],
     };
@@ -28,7 +28,6 @@ export async function getPaginatedEvents(limit: number, page: number, query?: st
     omit: {
       addons: true,
       message: true,
-      secondPartnerName: true,
       updatedAt: true,
       createdAt: true,
     },
