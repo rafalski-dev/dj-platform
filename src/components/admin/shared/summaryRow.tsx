@@ -8,7 +8,7 @@ import { CreateClientType } from "@/validation/clients";
 export function SummaryItem({ label, value }: { label: string; value?: string }) {
   const t = useTranslations("Admin.Clients.Form.preview");
   return (
-    <div className="flex flex-row items-center justify-between gap-3">
+    <div className="flex flex-row items-start justify-between gap-3">
       <dt className="text-popover-foreground shrink-0 text-[13.5px]">{label}</dt>
       <dd className="min-w-0 text-right wrap-break-word">
         {value || (

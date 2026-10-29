@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/shadcn/avatar";
 import { FormSection } from "./formSection";
 import { Separator } from "@/components/ui/shadcn/separator";
 import { useFormContext, useWatch } from "react-hook-form";
-import { SummaryItem, SummaryRow } from "./summaryRow";
+import { SummaryItem, SummaryRow } from "../../../shared/summaryRow";
 import { createInitials } from "@/lib/utils";
 import { BuildingIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
