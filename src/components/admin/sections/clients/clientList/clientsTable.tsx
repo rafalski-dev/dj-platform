@@ -75,10 +75,10 @@ export async function ClientsTable({ clients, selectEmptyState }: ClientsTablePr
                     {event ? (
                       <>
                         <div className="text-foreground/80 truncate">
-                          {t(`list.eventTypes.${event.eventType}`)}
+                          {t(`list.eventTypes.${event.type}`)}
                         </div>
                         <div className="truncate">
-                          {format.dateTime(event.eventDate, {
+                          {format.dateTime(event.date, {
                             month: "short",
                             day: "numeric",
                             year: "numeric",
@@ -91,11 +91,7 @@ export async function ClientsTable({ clients, selectEmptyState }: ClientsTablePr
                     )}
                   </TableCell>
                   <TableCell className="hidden xl:table-cell">
-                    {event ? (
-                      <StatusBadge status={event.eventStatus} />
-                    ) : (
-                      <StatusBadge status="New" />
-                    )}
+                    {event ? <StatusBadge status={event.status} /> : <StatusBadge status="New" />}
                   </TableCell>
                   <TableCell className="text-right">
                     <Link

@@ -1,9 +1,10 @@
 "use server";
 
+import { clientDataFormatter } from "@/lib/actionHelpers";
 import { adminCheck } from "@/lib/auth-helpers";
 import { db } from "@/lib/db";
 import { getDbErrorKind } from "@/lib/prismaErrors";
-import { clientDataFormatter, formatZodErrors } from "@/lib/utils";
+import { formatZodErrors } from "@/lib/utils";
 import { createClientSchema, CreateClientType } from "@/validation/clients";
 import { getTranslations } from "next-intl/server";
 

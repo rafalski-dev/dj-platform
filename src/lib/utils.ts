@@ -1,9 +1,9 @@
 import { Pathname } from "@/types/navigation";
 import type { EventStatus } from "../../generated";
-import { CreateClientType } from "@/validation/clients";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import type { ZodError } from "zod";
+import { TZDate } from "@date-fns/tz";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -90,58 +90,6 @@ export function getErrorTranslation(error: { code?: string; status?: number } | 
   }
 }
 
-export function clientDataFormatter(data: CreateClientType) {
-  const {
-    clientType,
-    personalDetails: { firstName, lastName },
-    contactDetails: { email, phone },
-    addressDetails: { streetAndNumber, postcode, city, region, country },
-  } = data;
-
-  function emptyToNull(value: string) {
-    if (value === "") return null;
-    return value;
-  }
-
-  if (data.clientType === "Individual") {
-    return {
-      clientType,
-      name: `${firstName} ${lastName}`,
-      firstName,
-      lastName,
-      idCardNumber: emptyToNull(data.personalDetails.idCardNumber),
-      gender: data.personalDetails.gender,
-      email,
-      phone: emptyToNull(phone),
-      streetAndNumber: emptyToNull(streetAndNumber),
-      postcode: emptyToNull(postcode),
-      city: emptyToNull(city),
-      region: emptyToNull(region),
-      country: emptyToNull(country),
-      businessName: null,
-      taxId: null,
-    };
-  }
-
-  return {
-    clientType,
-    businessName: data.businessDetails.businessName,
-    name: data.businessDetails.businessName,
-    taxId: data.businessDetails.taxId,
-    firstName,
-    lastName,
-    email,
-    phone: emptyToNull(phone),
-    streetAndNumber: emptyToNull(streetAndNumber),
-    postcode: emptyToNull(postcode),
-    city: emptyToNull(city),
-    region: emptyToNull(region),
-    country: emptyToNull(country),
-    gender: null,
-    idCardNumber: null,
-  };
-}
-
 export function formatZodErrors(error: ZodError) {
   return Object.fromEntries(
     error.issues.map((issue) => [issue.path.join("."), issue.message] as const).reverse(),
@@ -155,11 +103,11 @@ export function getStartOfToday() {
   return today;
 }
 
-type EventStatusType = { eventDate: Date; eventStatus: EventStatus };
+type EventStatusType = { date: Date; status: EventStatus };
 
 export function getRelevantEvent<T extends EventStatusType>(events: T[]) {
-  const avoidCancelled = events.filter((el) => el.eventStatus !== "Cancelled");
-  const upcomingEvent = avoidCancelled.find((el) => el.eventDate >= getStartOfToday());
+  const avoidCancelled = events.filter((el) => el.status !== "Cancelled");
+  const upcomingEvent = avoidCancelled.find((el) => el.date >= getStartOfToday());
 
   return upcomingEvent ?? avoidCancelled.at(-1) ?? events.at(-1);
 }
@@ -168,4 +116,31 @@ export function isNavItemActive(pathname: string, navPath: Pathname) {
   return navPath === "/admin"
     ? pathname === navPath
     : pathname === navPath || pathname.startsWith(navPath);
+}
+
+export function dateFormatter(date: Date, startTime?: string, endTime?: string) {
+  const warsawDate = new TZDate(date, "Europe/Warsaw");
+  const eventDate = new Date(
+    Date.UTC(warsawDate.getFullYear(), warsawDate.getMonth(), warsawDate.getDate()),
+  );
+  const eventStartTime = new TZDate(date, "Europe/Warsaw");
+  const eventEndTime = new TZDate(date, "Europe/Warsaw");
+
+  if (startTime) {
+    const [hours, minutes] = startTime.split(":").map((value) => Number(value));
+    eventStartTime.setHours(hours, minutes, 0);
+  }
+
+  if (endTime) {
+    const [hours, minutes] = endTime.split(":").map((value) => Number(value));
+    eventEndTime.setHours(hours, minutes, 0);
+  }
+
+  if (eventStartTime > eventEndTime) eventEndTime.setDate(eventEndTime.getDate() + 1);
+
+  return {
+    eventDate,
+    eventStartTime: new Date(eventStartTime.getTime()),
+    eventEndTime: new Date(eventEndTime.getTime()),
+  };
 }

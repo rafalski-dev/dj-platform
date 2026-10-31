@@ -29,8 +29,8 @@ function getClientsWhere(query?: string) {
 
 function getUpcomingEventWhere() {
   return {
-    eventDate: { gte: getStartOfToday() },
-    eventStatus: { not: "Cancelled" as const },
+    date: { gte: getStartOfToday() },
+    status: { not: "Cancelled" as const },
   };
 }
 
@@ -39,8 +39,8 @@ function getFilterWhere(filter?: FilterType): Prisma.ClientWhereInput {
     return {
       events: {
         some: {
-          eventDate: { gte: getStartOfToday() },
-          eventStatus: { notIn: ["Cancelled", "Pending"] },
+          date: { gte: getStartOfToday() },
+          status: { notIn: ["Cancelled", "Pending"] },
         },
       },
     };
@@ -76,8 +76,8 @@ export async function getPaginatedClients(
       email: true,
       phone: true,
       events: {
-        select: { eventDate: true, eventType: true, eventStatus: true },
-        orderBy: { eventDate: "asc" },
+        select: { date: true, type: true, status: true },
+        orderBy: { date: "asc" },
       },
     },
   });
@@ -105,8 +105,8 @@ export async function getClientsStats() {
       where: {
         events: {
           some: {
-            eventDate: { gte: getStartOfToday() },
-            eventStatus: { notIn: ["Cancelled", "Pending"] },
+            date: { gte: getStartOfToday() },
+            status: { notIn: ["Cancelled", "Pending"] },
           },
         },
       },
@@ -128,7 +128,7 @@ export async function getClientDetails(clientId: string) {
   return await db.client.findUnique({
     where: { id: clientId },
     include: {
-      events: { select: { eventStatus: true, eventDate: true }, orderBy: { eventDate: "asc" } },
+      events: { select: { status: true, date: true }, orderBy: { date: "asc" } },
     },
   });
 }
@@ -138,8 +138,8 @@ export async function getClientEvents(clientId: string) {
 
   return await db.event.findMany({
     where: { clientId: clientId },
-    select: { id: true, eventType: true, eventDate: true, updatedAt: true },
-    orderBy: { eventDate: "desc" },
+    select: { id: true, type: true, date: true, updatedAt: true },
+    orderBy: { date: "desc" },
   });
 }
 

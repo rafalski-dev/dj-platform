@@ -12,15 +12,15 @@ export async function getHomeStats() {
 
   const [contracts, pending, activeWithoutContract, activeWithoutPlaylist] = await Promise.all([
     db.contract.count(),
-    db.event.count({ where: { eventStatus: "Pending", eventDate: { gte: today } } }),
+    db.event.count({ where: { status: "Pending", date: { gte: today } } }),
     db.event.count({
-      where: { eventStatus: "Active", contract: null, eventDate: { gte: today } },
+      where: { status: "Active", contract: null, date: { gte: today } },
     }),
     db.event.count({
       where: {
-        eventStatus: "Active",
+        status: "Active",
         playlist: null,
-        eventDate: { gte: today, lt: in30Days },
+        date: { gte: today, lt: in30Days },
       },
     }),
   ]);

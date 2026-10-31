@@ -41,9 +41,9 @@ export async function ClientsCards({ clients, selectEmptyState }: ClientsCardsPr
                       <div className="text-subtle-foreground truncate text-[12.5px]">
                         {event ? (
                           <>
-                            {t(`list.eventTypes.${event.eventType}`)}
+                            {t(`list.eventTypes.${event.type}`)}
                             <span aria-hidden="true"> · </span>
-                            {format.dateTime(event.eventDate, {
+                            {format.dateTime(event.date, {
                               month: "short",
                               day: "numeric",
                               year: "numeric",
@@ -57,11 +57,7 @@ export async function ClientsCards({ clients, selectEmptyState }: ClientsCardsPr
                     </div>
                   </div>
                   <div className="shrink-0">
-                    {event ? (
-                      <StatusBadge status={event.eventStatus} />
-                    ) : (
-                      <StatusBadge status="New" />
-                    )}
+                    {event ? <StatusBadge status={event.status} /> : <StatusBadge status="New" />}
                   </div>
                 </div>
                 <div className="border-border flex flex-col gap-1.5 border-t pt-3 text-[13px]">

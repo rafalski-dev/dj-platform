@@ -44,9 +44,9 @@ export async function EventsInfoCard({ fetchedData }: EventsInfoCardProps) {
                   }}
                   header={
                     <>
-                      {tEventTypes(element.eventType)}
+                      {tEventTypes(element.type)}
                       <DotIcon className="size-5" />{" "}
-                      {format.dateTime(element.eventDate, {
+                      {format.dateTime(element.date, {
                         weekday: "short",
                         day: "2-digit",
                         month: "short",

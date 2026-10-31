@@ -41,7 +41,7 @@ export async function ClientHeader({ fetchedData }: ClientHeaderProps) {
               >
                 {t(`clientType.options.${clientType}.title`)}
               </Badge>
-              <StatusBadge status={getRelevantEvent(events)?.eventStatus ?? "New"} />
+              <StatusBadge status={getRelevantEvent(events)?.status ?? "New"} />
             </div>
           </div>
         </CardHeader>

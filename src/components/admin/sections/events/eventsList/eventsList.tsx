@@ -62,16 +62,17 @@ export async function EventsList({ persistedParams }: { persistedParams: Persist
       {fetchedData.map(
         ({
           id,
-          title,
-          eventType,
-          eventDate,
-          eventStatus,
+          name,
+          type,
+          altType,
+          date,
+          status,
           startsAt,
           endsAt,
-          eventPlace,
-          eventAddress,
+          place,
+          address,
           guestCount,
-          eventPackage,
+          package: eventPackage,
         }) => {
           return (
             <li key={id}>
@@ -84,10 +85,11 @@ export async function EventsList({ persistedParams }: { persistedParams: Persist
                   className="group-hover:ring-gold-light/30 h-full gap-5 transition-shadow duration-200"
                 >
                   <EventHeaderCard
-                    title={title}
-                    eventType={eventType}
-                    eventStatus={eventStatus}
-                    eventDate={eventDate}
+                    name={name}
+                    type={type}
+                    altType={altType}
+                    status={status}
+                    date={date}
                   />
 
                   <CardContent className="flex flex-1 flex-col gap-5">
@@ -114,7 +116,7 @@ export async function EventsList({ persistedParams }: { persistedParams: Persist
                         emptyLabel={t("Events.card.notSet")}
                         className="col-span-3"
                       >
-                        {`${eventPlace}, ${eventAddress}`}
+                        {`${place}, ${address}`}
                       </Detail>
                     </dl>
                   </CardContent>
@@ -152,37 +154,39 @@ function Detail({ label, emptyLabel, className, children }: DetailProps) {
 }
 
 type EventItem = Awaited<ReturnType<typeof getPaginatedEvents>>[number];
-type EventHeaderCardProps = Pick<EventItem, "title" | "eventType" | "eventStatus" | "eventDate">;
+type EventHeaderCardProps = Pick<EventItem, "name" | "type" | "status" | "date" | "altType">;
 
-async function EventHeaderCard({ title, eventType, eventStatus, eventDate }: EventHeaderCardProps) {
+async function EventHeaderCard({ name, type, altType, status, date }: EventHeaderCardProps) {
   const t = await getTranslations("Admin.Clients.list.eventTypes");
   const format = await getFormatter();
+
+  const eventType = type === "Other" && altType ? altType : t(type);
 
   return (
     <CardHeader>
       <div className="flex items-start gap-4 border-b pb-5">
         <div className="flex min-w-0 flex-1 flex-col gap-2">
           <p className="text-accent-foreground text-xs font-semibold tracking-widest uppercase">
-            {t(eventType)}
+            {eventType}
           </p>
           <h2 className="text-foreground mb-2 line-clamp-2 text-2xl leading-snug font-medium">
-            {title}
+            {name}
           </h2>
-          <StatusBadge status={eventStatus} className="shrink-0" />
+          <StatusBadge status={status} className="shrink-0" />
         </div>
         <time
-          dateTime={eventDate.toISOString().slice(0, 10)}
+          dateTime={date.toISOString().slice(0, 10)}
           className="border-border-strong bg-foreground/5 flex h-24 w-20 shrink-0 flex-col items-center justify-center gap-px rounded-xl border"
         >
           <span className="text-muted-foreground font-sans text-xs leading-none">
-            {format.dateTime(eventDate, { weekday: "long" })}
+            {format.dateTime(date, { weekday: "long" })}
           </span>
           <span className="text-accent-foreground mt-1 font-serif text-[32px]/9 tracking-wider uppercase lining-nums">
-            {format.dateTime(eventDate, { day: "2-digit" })}
+            {format.dateTime(date, { day: "2-digit" })}
           </span>
 
           <span className="text-muted-foreground text-[11px] leading-none tracking-wider">
-            {format.dateTime(eventDate, { year: "numeric", month: "short" })}
+            {format.dateTime(date, { year: "numeric", month: "short" })}
           </span>
         </time>
       </div>

@@ -174,21 +174,22 @@ model Client {
 
 model Event {
   id                   String       @id @default(cuid())
-  title                String
-  eventType            EventType
-  eventStatus          EventStatus  @default(Pending)
+  name                 String
+  type                 EventType
+  altType              String?
+  status               EventStatus  @default(Pending)
 
-  eventDate            DateTime     @db.Date
-  startsAt             DateTime?
-  endsAt               DateTime?
+  date                 DateTime     @db.Date
+  startsAt             DateTime
+  endsAt               DateTime
 
-  eventPlace           String
-  eventAddress         String
+  place                String
+  address              String
 
   guestCount           Int?
   message              String?
 
-  eventPackage         Package
+  package              Package
   addons               Addon[]
   
 
@@ -203,7 +204,7 @@ model Event {
   updatedAt            DateTime     @updatedAt
 
   @@index([clientId])
-  @@index([eventDate])
+  @@index([date])
   @@map("event")
 }
 

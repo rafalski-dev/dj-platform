@@ -15,7 +15,7 @@ export async function seedPlaylists() {
 
   const updatedCount = await db.$executeRaw`
   UPDATE "playlist" AS p
-  SET "name" = REPLACE(e."eventType"::text, '_', ' ') || ' ' || TO_CHAR(e."eventDate", 'DD.MM.YYYY')
+  SET "name" = REPLACE(e."type"::text, '_', ' ') || ' ' || TO_CHAR(e."date", 'DD.MM.YYYY')
   FROM "event" AS e
   WHERE e."id" = p."eventId"
 `;
