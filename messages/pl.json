@@ -1054,7 +1054,21 @@
           "prev": "Wstecz",
           "next": "Dalej",
           "cancel": "Anuluj",
-          "submit": "Dodaj wydarzenie"
+          "submit": "Dodaj wydarzenie",
+          "submitting": "Zapisywanie"
+        },
+        "conflict": {
+          "title": "Ten termin jest już zajęty",
+          "description": "Masz już wydarzenie w tym dniu. Czy na pewno chcesz dodać kolejne?"
+        },
+        "toast": {
+          "successTitle": "Dodano wydarzenie",
+          "errorTitle": "Nie dodano wydarzenia"
+        },
+        "serverMessage": {
+          "invalid": "Niektóre pola wymagają poprawy. Sprawdź zaznaczone pola i spróbuj ponownie.",
+          "success": "Wydarzenie zostało dodane.",
+          "unknown": "Coś poszło nie tak. Spróbuj ponownie."
         },
         "summary": {
           "brideMother": "Mama panny młodej",

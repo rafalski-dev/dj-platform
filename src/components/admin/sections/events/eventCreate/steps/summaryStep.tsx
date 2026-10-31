@@ -4,9 +4,10 @@ import { GeneralCardHeader } from "@/components/admin/shared/generalCardHeader";
 import { Button } from "@/components/ui/shadcn/button";
 import { Card, CardContent } from "@/components/ui/shadcn/card";
 import { Separator } from "@/components/ui/shadcn/separator";
+import { Spinner } from "@/components/ui/shadcn/spinner";
 import { useFormatter, useTranslations } from "next-intl";
 import { useCreateEventContext } from "@/hooks/useCreateEventContext";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useFormState } from "react-hook-form";
 import { SummaryItem } from "@/components/admin/shared/summaryRow";
 import { CreateEventSchema } from "@/validation/events";
 
@@ -14,6 +15,7 @@ export function SummaryStep() {
   const t = useTranslations("Admin.Events.Form");
   const { setCurrentStep } = useCreateEventContext();
   const { getValues } = useFormContext<CreateEventSchema>();
+  const { isSubmitting } = useFormState<CreateEventSchema>();
   const summaryValues = getValues();
   const format = useFormatter();
 
@@ -34,7 +36,6 @@ export function SummaryStep() {
           )}
         </CardContent>
       </Card>
-
       <Card>
         <GeneralCardHeader title={t("steps.basics")} onClick={() => setCurrentStep(2)} />
         <CardContent className="flex flex-col gap-3">
@@ -176,11 +177,23 @@ export function SummaryStep() {
       </Card>
 
       <div className="flex justify-between">
-        <Button variant="outline" size="sm" onClick={() => setCurrentStep((prev) => prev - 1)}>
+        <Button
+          variant="outline"
+          size="sm"
+          disabled={isSubmitting}
+          onClick={() => setCurrentStep((prev) => prev - 1)}
+        >
           {t("navigation.prev")}
         </Button>
-        <Button size="sm" type="submit">
-          {t("navigation.submit")}
+        <Button size="sm" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <>
+              <Spinner />
+              {t("navigation.submitting")}
+            </>
+          ) : (
+            t("navigation.submit")
+          )}
         </Button>
       </div>
     </div>

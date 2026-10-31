@@ -1352,7 +1352,21 @@
           "prev": "Back",
           "next": "Next",
           "cancel": "Cancel",
-          "submit": "Add event"
+          "submit": "Add event",
+          "submitting": "Saving"
+        },
+        "conflict": {
+          "title": "This date is already taken",
+          "description": "You already have an event on this day. Are you sure you want to add another one?"
+        },
+        "toast": {
+          "successTitle": "Event added",
+          "errorTitle": "Event not added"
+        },
+        "serverMessage": {
+          "invalid": "Some fields need your attention. Check the highlighted fields and try again.",
+          "success": "The event has been added.",
+          "unknown": "Something went wrong. Please try again."
         },
         "summary": {
           "brideMother": "Bride's mother",
