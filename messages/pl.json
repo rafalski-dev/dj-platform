@@ -806,6 +806,16 @@
         "noEvents": {
           "title": "Brak wydarzeń",
           "description": "Nie masz jeszcze żadnych wydarzeń. Zacznij od dodania pierwszego."
+        },
+        "notFound": {
+          "title": "Nie znaleziono strony",
+          "description": "Ta strona lub wydarzenie nie istnieje albo zostało usunięte. Sprawdź adres i spróbuj ponownie.",
+          "action": "Wróć do listy wydarzeń"
+        },
+        "error": {
+          "title": "Nie udało się wczytać danych",
+          "description": "Spróbuj ponownie za chwilę. Jeśli problem się powtarza, odśwież stronę.",
+          "action": "Spróbuj ponownie"
         }
       },
       "card": {
@@ -829,6 +839,70 @@
         "Confetti": "Konfetti",
         "ExtraDj": "Dodatkowy DJ",
         "CustomNeon": "Neon na zamówienie"
+      },
+      "Details": {
+        "header": {
+          "created": "Utworzono",
+          "lastEdited": "Ostatnia edycja",
+          "past": "Minione",
+          "edit": "Edytuj wydarzenie",
+          "delete": "Usuń wydarzenie"
+        },
+        "dateAndPlace": {
+          "title": "Data i miejsce",
+          "openMap": "Otwórz mapę",
+          "date": "Data",
+          "address": "Adres",
+          "timeline": "Oś czasu"
+        },
+        "wedding": {
+          "title": "Szczegóły ślubu",
+          "ceremony": "Ceremonia",
+          "ceremonyStartsAt": "Początek ceremonii",
+          "parents": "Rodzice"
+        },
+        "package": {
+          "title": "Pakiet i dodatki"
+        },
+        "client": {
+          "title": "Klient",
+          "open": "Otwórz stronę klienta"
+        },
+        "contract": {
+          "title": "Umowa",
+          "created": "Utworzono",
+          "empty": {
+            "title": "Brak umowy",
+            "description": "To wydarzenie nie ma jeszcze umowy."
+          }
+        },
+        "playlist": {
+          "title": "Playlista",
+          "songs": "{count, plural, one {# utwór} few {# utwory} many {# utworów} other {# utworu}}",
+          "empty": {
+            "title": "Brak playlisty",
+            "description": "To wydarzenie nie ma jeszcze playlisty."
+          }
+        },
+        "delete": {
+          "dialog": {
+            "title": "Usunąć to wydarzenie?",
+            "description": "Tej operacji nie można cofnąć. Wydarzenie zostanie trwale usunięte razem z umową, playlistą i szczegółami ślubu.",
+            "cancel": "Anuluj",
+            "confirm": "Usuń wydarzenie",
+            "pending": "Usuwanie..."
+          },
+          "toast": {
+            "successTitle": "Wydarzenie usunięte",
+            "errorTitle": "Nie usunięto wydarzenia"
+          },
+          "serverMessage": {
+            "success": "Usunięto wydarzenie {name}.",
+            "notFound": "To wydarzenie już nie istnieje.",
+            "inUse": "Nie można usunąć tego wydarzenia, bo zależą od niego inne dane.",
+            "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+          }
+        }
       },
       "Create": {
         "page": {

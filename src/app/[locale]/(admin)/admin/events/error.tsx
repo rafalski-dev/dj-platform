@@ -1,0 +1,29 @@
+"use client";
+
+import { EmptyState } from "@/components/admin/shared/emptyState";
+import { CircleXIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useEffect } from "react";
+
+export default function Error({
+  error,
+  unstable_retry,
+}: {
+  error: Error & { digest?: string };
+  unstable_retry: () => void;
+}) {
+  const t = useTranslations("Admin.Events.empty.error");
+
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
+  return (
+    <EmptyState
+      icon={<CircleXIcon />}
+      title={t("title")}
+      description={t("description")}
+      retry={{ label: t("action"), onClick: () => unstable_retry() }}
+    />
+  );
+}

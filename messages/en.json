@@ -1104,6 +1104,16 @@
         "noEvents": {
           "title": "No events yet",
           "description": "You haven't added any events yet. Get started by adding your first event."
+        },
+        "notFound": {
+          "title": "Page not found",
+          "description": "This page or event doesn't exist or has been deleted. Check the address and try again.",
+          "action": "Back to events"
+        },
+        "error": {
+          "title": "Couldn't load the data",
+          "description": "Please try again in a moment. If the problem persists, refresh the page.",
+          "action": "Try again"
         }
       },
       "card": {
@@ -1127,6 +1137,70 @@
         "Confetti": "Confetti",
         "ExtraDj": "Extra DJ",
         "CustomNeon": "Custom Neon"
+      },
+      "Details": {
+        "header": {
+          "created": "Created",
+          "lastEdited": "Last edited",
+          "past": "Past",
+          "edit": "Edit event",
+          "delete": "Delete event"
+        },
+        "dateAndPlace": {
+          "title": "Date & venue",
+          "openMap": "Open map",
+          "date": "Date",
+          "address": "Address",
+          "timeline": "Timeline"
+        },
+        "wedding": {
+          "title": "Wedding details",
+          "ceremony": "Ceremony",
+          "ceremonyStartsAt": "Ceremony start",
+          "parents": "Parents"
+        },
+        "package": {
+          "title": "Package & add-ons"
+        },
+        "client": {
+          "title": "Client",
+          "open": "Open client page"
+        },
+        "contract": {
+          "title": "Contract",
+          "created": "Created",
+          "empty": {
+            "title": "No contract",
+            "description": "This event has no contract yet."
+          }
+        },
+        "playlist": {
+          "title": "Playlist",
+          "songs": "{count, plural, one {# song} other {# songs}}",
+          "empty": {
+            "title": "No playlist",
+            "description": "This event has no playlist yet."
+          }
+        },
+        "delete": {
+          "dialog": {
+            "title": "Delete this event?",
+            "description": "This action cannot be undone. The event will be permanently deleted together with its contract, playlist and wedding details.",
+            "cancel": "Cancel",
+            "confirm": "Delete event",
+            "pending": "Deleting..."
+          },
+          "toast": {
+            "successTitle": "Event deleted",
+            "errorTitle": "Event not deleted"
+          },
+          "serverMessage": {
+            "success": "{name} has been deleted.",
+            "notFound": "This event no longer exists.",
+            "inUse": "This event can't be deleted because other records still depend on it.",
+            "unknown": "Something went wrong. Please try again."
+          }
+        }
       },
       "Create": {
         "page": {

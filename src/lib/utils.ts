@@ -118,6 +118,14 @@ export function isNavItemActive(pathname: string, navPath: Pathname) {
     : pathname === navPath || pathname.startsWith(navPath);
 }
 
+export function formatDuration(startsAt: Date, endsAt: Date) {
+  const totalMinutes = Math.round((endsAt.getTime() - startsAt.getTime()) / 60000);
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  return minutes ? `${hours} h ${minutes} min` : `${hours} h`;
+}
+
 export function dateFormatter(date: Date, startTime?: string, endTime?: string) {
   const warsawDate = new TZDate(date, "Europe/Warsaw");
   const eventDate = new Date(

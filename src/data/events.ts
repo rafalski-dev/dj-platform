@@ -43,3 +43,19 @@ export async function getCountEvents(query?: string) {
   await adminCheck();
   return db.event.count({ where: checkEventsWhere(query) });
 }
+
+export async function getEventDetails(eventId: string) {
+  await adminCheck();
+
+  return await db.event.findUnique({
+    where: { id: eventId },
+    include: {
+      client: { select: { id: true, name: true, clientType: true, email: true, phone: true } },
+      wedding: true,
+      contract: { select: { id: true, number: true, contractNumber: true, createdAt: true } },
+      playlist: { select: { id: true, name: true, _count: { select: { songs: true } } } },
+    },
+  });
+}
+
+export type EventDetails = NonNullable<Awaited<ReturnType<typeof getEventDetails>>>;
