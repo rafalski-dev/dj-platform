@@ -793,7 +793,41 @@
     "Playlists": {
       "title": "Playlists",
       "count": "{count, plural, one {# playlist} other {# playlists}}",
-      "addingBtn": "Create playlist"
+      "addingBtn": "Create playlist",
+      "searchBar": {
+        "placeholder": "Search by name, event or client..."
+      },
+      "list": {
+        "untitled": "Untitled playlist",
+        "songs": "{count, plural, one {# song} other {# songs}}",
+        "details": "View playlist: {name}"
+      },
+      "table": {
+        "headers": {
+          "playlist": "Playlist",
+          "event": "Event",
+          "client": "Client",
+          "status": "Status",
+          "more": "More"
+        }
+      },
+      "empty": {
+        "noPlaylists": {
+          "title": "No playlists yet",
+          "description": "A playlist is created together with each event. Add an event to get the first one.",
+          "action": "New event"
+        },
+        "noResults": {
+          "title": "No playlists found",
+          "descriptionQuery": "No playlists match “{query}”.",
+          "action": "Clear search"
+        },
+        "error": {
+          "title": "Couldn't load data",
+          "description": "Please try again in a moment. If the problem persists, refresh the page.",
+          "action": "Try again"
+        }
+      }
     },
     "PersonalDetails": {
       "title": "My details",

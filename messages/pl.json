@@ -792,7 +792,41 @@
     "Playlists": {
       "title": "Playlisty",
       "count": "{count, plural, one {# playlista} few {# playlisty} many {# playlist} other {# playlisty}}",
-      "addingBtn": "Utwórz playlistę"
+      "addingBtn": "Utwórz playlistę",
+      "searchBar": {
+        "placeholder": "Szukaj po nazwie, wydarzeniu lub kliencie..."
+      },
+      "list": {
+        "untitled": "Playlista bez nazwy",
+        "songs": "{count, plural, one {# utwór} few {# utwory} many {# utworów} other {# utworu}}",
+        "details": "Zobacz playlistę: {name}"
+      },
+      "table": {
+        "headers": {
+          "playlist": "Playlista",
+          "event": "Wydarzenie",
+          "client": "Klient",
+          "status": "Status",
+          "more": "Więcej"
+        }
+      },
+      "empty": {
+        "noPlaylists": {
+          "title": "Brak playlist",
+          "description": "Playlista powstaje razem z każdym wydarzeniem. Dodaj wydarzenie, żeby utworzyć pierwszą.",
+          "action": "Nowe wydarzenie"
+        },
+        "noResults": {
+          "title": "Nie znaleziono playlist",
+          "descriptionQuery": "Żadna playlista nie pasuje do „{query}”.",
+          "action": "Wyczyść wyszukiwanie"
+        },
+        "error": {
+          "title": "Nie udało się wczytać danych",
+          "description": "Spróbuj ponownie za chwilę. Jeśli problem się powtarza, odśwież stronę.",
+          "action": "Spróbuj ponownie"
+        }
+      }
     },
     "PersonalDetails": {
       "title": "Moje dane",
