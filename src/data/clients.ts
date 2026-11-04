@@ -157,7 +157,7 @@ export async function getClientPlaylists(clientId: string) {
 
   return db.playlist.findMany({
     where: { event: { clientId: clientId } },
-    select: { id: true, name: true, updatedAt: true },
+    select: { id: true, updatedAt: true, event: { select: { name: true } } },
     orderBy: { createdAt: "desc" },
   });
 }

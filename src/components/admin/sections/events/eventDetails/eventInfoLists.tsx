@@ -77,7 +77,7 @@ export async function EventPlaylistCard({
                 pathname: "/admin/playlists/[playlistId]",
                 params: { playlistId: fetchedData.id },
               }}
-              header={<>{fetchedData.name ?? t("title")}</>}
+              header={<>{t("title")}</>}
               footer={
                 <>
                   <ListMusicIcon className="flex size-3" />{" "}

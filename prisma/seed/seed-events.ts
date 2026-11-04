@@ -641,6 +641,7 @@ async function seedingEventsData() {
         endsAt: eventEndTime,
         clientId: client.id,
         wedding: wedding && toWeddingCreate(date, wedding),
+        playlist: { create: {} },
       };
     },
   );
@@ -649,7 +650,7 @@ async function seedingEventsData() {
   await db.playlist.deleteMany();
   await db.event.deleteMany();
 
-  // create (not createMany), because wedding details are created as a nested relation
+  // create (not createMany), because wedding details and playlist are created as nested relations
   const events = await db.$transaction(
     eventsDataWithClientId.map((data) => db.event.create({ data })),
   );

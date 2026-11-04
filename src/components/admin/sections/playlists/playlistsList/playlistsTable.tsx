@@ -32,8 +32,7 @@ export async function PlaylistsTable({ playlists, selectEmptyState }: PlaylistsT
             </TableRow>
           ) : (
             // results exists
-            playlists.map(({ id, name, _count, event }) => {
-              const playlistName = name ?? t("list.untitled");
+            playlists.map(({ id, _count, event }) => {
               return (
                 <TableRow key={id} className="group">
                   <TableCell className="text-foreground">
@@ -42,7 +41,7 @@ export async function PlaylistsTable({ playlists, selectEmptyState }: PlaylistsT
                         <ListMusicIcon size={iconSizes} />
                       </div>
                       <div className="flex min-w-0 flex-col gap-0.5">
-                        <span className="truncate text-sm">{playlistName}</span>
+                        <span className="truncate text-sm">{event.name}</span>
                         <span className="text-popover-foreground truncate text-xs">
                           {t("list.songs", { count: _count.songs })}
                         </span>
@@ -80,7 +79,7 @@ export async function PlaylistsTable({ playlists, selectEmptyState }: PlaylistsT
                         params: { playlistId: id },
                       }}
                       className={buttonVariants({ variant: "secondary", size: "icon" })}
-                      aria-label={t("list.details", { name: playlistName })}
+                      aria-label={t("list.details", { name: event.name })}
                     >
                       <ArrowRight className="text-muted-foreground group-hover:text-accent-foreground size-5 transition-colors" />
                     </Link>

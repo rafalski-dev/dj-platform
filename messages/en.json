@@ -795,10 +795,9 @@
       "count": "{count, plural, one {# playlist} other {# playlists}}",
       "addingBtn": "Create playlist",
       "searchBar": {
-        "placeholder": "Search by name, event or client..."
+        "placeholder": "Search by event or client..."
       },
       "list": {
-        "untitled": "Untitled playlist",
         "songs": "{count, plural, one {# song} other {# songs}}",
         "details": "View playlist: {name}"
       },

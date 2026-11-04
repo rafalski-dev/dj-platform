@@ -53,7 +53,7 @@ export async function getEventDetails(eventId: string) {
       client: { select: { id: true, name: true, clientType: true, email: true, phone: true } },
       wedding: true,
       contract: { select: { id: true, number: true, contractNumber: true, createdAt: true } },
-      playlist: { select: { id: true, name: true, _count: { select: { songs: true } } } },
+      playlist: { select: { id: true, _count: { select: { songs: true } } } },
     },
   });
 }

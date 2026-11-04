@@ -159,7 +159,7 @@ export async function PlaylistsInfoCard({ fetchedData }: PlaylistsInfoCardProps)
                     pathname: "/admin/playlists/[playlistId]",
                     params: { playlistId: element.id },
                   }}
-                  header={<>{element.name}</>}
+                  header={<>{element.event.name}</>}
                   footer={
                     <>
                       <ClockIcon className="flex size-3" /> {t("lastUpdated")}{" "}

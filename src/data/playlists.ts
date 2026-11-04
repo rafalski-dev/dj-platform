@@ -9,7 +9,6 @@ function getPlaylistsWhere(query?: string): Prisma.PlaylistWhereInput {
 
   return {
     OR: [
-      { name: { contains: query, mode: "insensitive" } },
       { event: { name: { contains: query, mode: "insensitive" } } },
       { event: { client: { name: { contains: query, mode: "insensitive" } } } },
     ],
@@ -27,10 +26,10 @@ export async function getPaginatedPlaylists(rowsLimit: number, page: number, que
     orderBy: [{ event: { date: "desc" } }, { id: "asc" }],
     select: {
       id: true,
-      name: true,
       _count: { select: { songs: true } },
       event: {
         select: {
+          name: true,
           type: true,
           altType: true,
           date: true,

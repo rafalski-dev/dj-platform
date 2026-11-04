@@ -20,7 +20,7 @@ export async function PlaylistsCards({ playlists, selectEmptyState }: PlaylistsC
       {playlists.length === 0 ? (
         <li className="bg-card rounded-2xl border">{selectEmptyState}</li>
       ) : (
-        playlists.map(({ id, name, _count, event }) => {
+        playlists.map(({ id, _count, event }) => {
           return (
             <li key={id}>
               <Link
@@ -34,7 +34,7 @@ export async function PlaylistsCards({ playlists, selectEmptyState }: PlaylistsC
                     </div>
                     <div className="flex min-w-0 flex-col gap-0.5">
                       <span className="text-foreground truncate text-[15px] font-semibold">
-                        {name ?? t("list.untitled")}
+                        {event.name}
                       </span>
                       <div className="text-subtle-foreground truncate text-[12.5px]">
                         {event.type === "Other" && event.altType

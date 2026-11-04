@@ -794,10 +794,9 @@
       "count": "{count, plural, one {# playlista} few {# playlisty} many {# playlist} other {# playlisty}}",
       "addingBtn": "Utwórz playlistę",
       "searchBar": {
-        "placeholder": "Szukaj po nazwie, wydarzeniu lub kliencie..."
+        "placeholder": "Szukaj po wydarzeniu lub kliencie..."
       },
       "list": {
-        "untitled": "Playlista bez nazwy",
         "songs": "{count, plural, one {# utwór} few {# utwory} many {# utworów} other {# utworu}}",
         "details": "Zobacz playlistę: {name}"
       },
