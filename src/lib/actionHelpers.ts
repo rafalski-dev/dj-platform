@@ -64,6 +64,8 @@ export function eventDataFormatter(formData: CreateEventSchema) {
       ? dateFormatter(ceremonyDate, ceremonyStartTime).eventStartTime
       : null;
 
+  const playlistName = `${formData.basics.eventTitle} - ${eventDate}`;
+
   if (formData.eventType.type === "Wedding")
     return {
       name: formData.basics.eventTitle,
@@ -97,6 +99,12 @@ export function eventDataFormatter(formData: CreateEventSchema) {
           ceremonyAddress: hasCeremony ? ceremonyAddress || null : null,
         },
       },
+
+      playlist: {
+        create: {
+          name: playlistName,
+        },
+      },
     };
 
   return {
@@ -114,5 +122,10 @@ export function eventDataFormatter(formData: CreateEventSchema) {
     package: formData.package.eventPackage,
     addons: formData.package.addons,
     clientId: formData.basics.client.value,
+    playlist: {
+      create: {
+        name: playlistName,
+      },
+    },
   };
 }

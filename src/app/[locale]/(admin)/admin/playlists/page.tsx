@@ -6,11 +6,5 @@ export default async function Playlists() {
 
   const totalPlaylists = 7;
 
-  return (
-    <SectionHeader
-      title={t("title")}
-      label={t("count", { count: totalPlaylists })}
-      action={{ btnLabel: t("addingBtn"), pathname: "/admin/playlists/create" }}
-    />
-  );
+  return <SectionHeader title={t("title")} label={t("count", { count: totalPlaylists })} />;
 }
