@@ -8,7 +8,7 @@ export function ClientListsSkeleton() {
     <>
       <InfoCardSkeleton title={t("events.title")} pathname="/admin/events/create" count={2} />
       <InfoCardSkeleton title={t("contracts.title")} pathname="/admin/contracts/create" count={1} />
-      <InfoCardSkeleton title={t("playlists.title")} pathname="/admin/playlists/create" count={1} />
+      <InfoCardSkeleton title={t("playlists.title")} count={1} />
     </>
   );
 }

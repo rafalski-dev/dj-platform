@@ -137,11 +137,7 @@ export async function PlaylistsInfoCard({ fetchedData }: PlaylistsInfoCardProps)
 
   return (
     <Card size="md">
-      <GeneralCardHeader
-        title={t("title")}
-        count={fetchedData.length}
-        pathname={"/admin/playlists/create"}
-      />
+      <GeneralCardHeader title={t("title")} count={fetchedData.length} />
       <CardContent>
         {fetchedData.length === 0 ? (
           <EmptyState

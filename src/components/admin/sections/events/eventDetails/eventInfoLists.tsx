@@ -65,10 +65,7 @@ export async function EventPlaylistCard({
 
   return (
     <Card size="md">
-      <GeneralCardHeader
-        title={t("title")}
-        pathname={fetchedData ? undefined : "/admin/playlists/create"}
-      />
+      <GeneralCardHeader title={t("title")} />
       <CardContent>
         {fetchedData ? (
           <ul className={listStyles}>

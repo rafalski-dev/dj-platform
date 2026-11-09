@@ -6,7 +6,7 @@ import type { EventDetails } from "@/data/events";
 import { getStartOfToday } from "@/lib/utils";
 import { CalendarIcon, ClockIcon, EditIcon, HistoryIcon, Trash2Icon } from "lucide-react";
 import { getFormatter, getTranslations } from "next-intl/server";
-import { EventDateTile } from "../eventDateTile";
+import { EventDateTile } from "../../../shared/eventDateTile";
 import { DeleteDialog } from "./deleteDialog";
 
 export async function EventHeader({ fetchedData }: { fetchedData: EventDetails }) {

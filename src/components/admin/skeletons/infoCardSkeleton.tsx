@@ -5,7 +5,7 @@ import { Pathname } from "@/types/navigation";
 
 type InfoCardSkeletonProps = {
   title: string;
-  pathname: Pathname;
+  pathname?: Pathname;
   count: number;
 };
 

@@ -7,7 +7,7 @@ import { getFormatter, getTranslations } from "next-intl/server";
 import { EmptyState } from "@/components/admin/shared/emptyState";
 import { getPaginatedEvents } from "@/data/events";
 import { PersistedParams } from "@/lib/searchParams";
-import { EventDateTile } from "../eventDateTile";
+import { EventDateTile } from "../../../shared/eventDateTile";
 
 export async function EventsList({ persistedParams }: { persistedParams: PersistedParams }) {
   const t = await getTranslations("Admin");

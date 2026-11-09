@@ -1,12 +1,21 @@
+import { cn } from "@/lib/utils";
 import { getFormatter } from "next-intl/server";
 
-export async function EventDateTile({ date }: { date: Date }) {
+type EventDateTile = {
+  date: Date;
+  className?: string;
+};
+
+export async function EventDateTile({ date, className }: EventDateTile) {
   const format = await getFormatter();
 
   return (
     <time
       dateTime={date.toISOString().slice(0, 10)}
-      className="border-border-strong bg-foreground/5 flex h-24 w-20 shrink-0 flex-col items-center justify-center gap-px rounded-xl border"
+      className={cn(
+        "border-border-strong bg-foreground/5 flex h-24 w-20 shrink-0 flex-col items-center justify-center gap-px rounded-xl border",
+        className,
+      )}
     >
       <span className="text-muted-foreground font-sans text-xs leading-none">
         {format.dateTime(date, { weekday: "long" })}
