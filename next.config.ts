@@ -6,7 +6,10 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
   allowedDevOrigins: ["192.168.4.255"],
   images: {
-    remotePatterns: [new URL("https://cdn-images.dzcdn.net/images/cover/**")],
+    remotePatterns: [
+      new URL("https://cdn-images.dzcdn.net/images/**"),
+      new URL("https://i.ytimg.com/vi/**"),
+    ],
   },
 };
 

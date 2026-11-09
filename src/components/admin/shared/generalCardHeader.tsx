@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 
 type GeneralCardHeaderProps = {
   title: string;
+  icon?: React.ReactNode;
   count?: number;
   pathname?: Pathname;
   label?: string;
@@ -17,6 +18,7 @@ type GeneralCardHeaderProps = {
 
 export function GeneralCardHeader({
   title,
+  icon,
   count,
   label,
   pathname,
@@ -40,7 +42,14 @@ export function GeneralCardHeader({
           </p>
         )}
         <div className="flex flex-row flex-wrap items-center gap-3">
-          <h2 className="text-[24px]">{title}</h2>
+          <h2 className="flex items-center gap-2.5 text-[24px]">
+            {icon && (
+              <span className="text-accent-foreground [&>svg]:size-5" aria-hidden="true">
+                {icon}
+              </span>
+            )}
+            {title}
+          </h2>
           {typeof count === "number" && (
             <div className="bg-gold-dark/20 text-gold-light flex size-6 items-center justify-center rounded-full">
               {count}

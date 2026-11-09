@@ -58,11 +58,7 @@ export function ControlledInput<T extends FieldValues>({
           id={name}
           autoComplete={autoComplete}
         />
-        {icon && (
-          <InputGroupAddon align={align} className="mr-1">
-            {icon}
-          </InputGroupAddon>
-        )}
+        {icon && <InputGroupAddon align={align}>{icon}</InputGroupAddon>}
       </InputGroup>
       {invalid && <FieldError>{error?.message}</FieldError>}
     </Field>
