@@ -1,11 +1,16 @@
 "use client";
 
 import { SearchIcon, XIcon } from "lucide-react";
-import { Button } from "@/components/ui/shadcn/button";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDebounceCallback } from "@/hooks/useDebounceCallback";
 import { useTranslations } from "next-intl";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/components/ui/shadcn/input-group";
 
 export function SearchBar({ placeholder }: { placeholder: string }) {
   const t = useTranslations("Admin.SearchBar");
@@ -42,13 +47,13 @@ export function SearchBar({ placeholder }: { placeholder: string }) {
   }
 
   return (
-    <div className="bg-background focus-within:border-ring/80 focus-within:ring-ring/40 flex h-10 w-full flex-row items-center gap-3 rounded-md border px-3 py-2 duration-200 focus-within:ring-3">
-      <SearchIcon className="text-popover-foreground size-4 shrink-0" strokeWidth={1.8} />
-      <input
-        type="search"
+    <InputGroup>
+      <InputGroupInput
         placeholder={placeholder}
+        type="search"
         aria-label={placeholder}
-        className="placeholder:text-popover-foreground h-11 w-full text-base font-light ring-0 outline-0 placeholder:font-light focus:ring-0 active:ring-0 [&::-webkit-search-cancel-button]:hidden"
+        className="[&::-webkit-search-cancel-button]:hidden"
+        value={searchValue}
         onChange={(e) => {
           setSearchValue(e.target.value);
           debouncedHandleChange(e.target.value);
@@ -56,14 +61,18 @@ export function SearchBar({ placeholder }: { placeholder: string }) {
         onKeyDown={(e) => {
           if (e.key === "Escape") clearInput();
         }}
-        value={searchValue}
+        autoComplete="off"
       />
-
+      <InputGroupAddon align="inline-start">
+        <SearchIcon />
+      </InputGroupAddon>
       {searchValue && (
-        <Button variant="ghost" size="icon-sm" onClick={clearInput} aria-label={t("clear")}>
-          <XIcon />
-        </Button>
+        <InputGroupAddon align="inline-end">
+          <InputGroupButton size="icon-sm" onClick={clearInput} aria-label={t("clear")}>
+            <XIcon />
+          </InputGroupButton>
+        </InputGroupAddon>
       )}
-    </div>
+    </InputGroup>
   );
 }
