@@ -6,11 +6,12 @@ import { cn } from "@/lib/utils";
 
 type TabsProps = {
   items: { label: string; value: string; icon?: React.ReactNode }[];
+  defaultItem: string;
   onTabChange: (arg: string) => void;
 };
 
-export function Tabs({ items, onTabChange }: TabsProps) {
-  const [isActive, setIsActive] = useState("link");
+export function Tabs({ items, defaultItem, onTabChange }: TabsProps) {
+  const [isActive, setIsActive] = useState(defaultItem);
 
   return (
     <div>
@@ -20,11 +21,11 @@ export function Tabs({ items, onTabChange }: TabsProps) {
           return (
             <Button
               key={item.value}
-              variant={activeOption ? "default" : "ghost"}
+              variant="ghost"
               size="xs"
               className={cn(
-                "text-foreground h-6.5 gap-2 rounded px-2",
-                activeOption && "text-background",
+                "text-muted-foreground hover:text-foreground h-6.5 gap-2 rounded px-2 hover:bg-transparent",
+                activeOption && "bg-foreground/10 text-foreground hover:bg-foreground/10 shadow-xs",
               )}
               onClick={() => {
                 setIsActive(item.value);

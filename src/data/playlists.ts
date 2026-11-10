@@ -48,3 +48,27 @@ export async function getCountPlaylists(query?: string) {
 
   return await db.playlist.count({ where: getPlaylistsWhere(query) });
 }
+
+export async function getPlaylistDetails(playlistId: string) {
+  await adminCheck();
+
+  return await db.playlist.findUnique({
+    where: { id: playlistId },
+    include: {
+      _count: { select: { songs: true } },
+      event: {
+        select: {
+          id: true,
+          name: true,
+          type: true,
+          altType: true,
+          date: true,
+          status: true,
+          client: { select: { id: true, name: true } },
+        },
+      },
+    },
+  });
+}
+
+export type PlaylistDetails = NonNullable<Awaited<ReturnType<typeof getPlaylistDetails>>>;
