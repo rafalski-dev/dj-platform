@@ -821,10 +821,28 @@
           "descriptionQuery": "No playlists match “{query}”.",
           "action": "Clear search"
         },
+        "notFound": {
+          "title": "Page not found",
+          "description": "This page or playlist doesn't exist or has been deleted. Check the address and try again.",
+          "action": "Back to playlists"
+        },
         "error": {
           "title": "Couldn't load data",
           "description": "Please try again in a moment. If the problem persists, refresh the page.",
           "action": "Try again"
+        }
+      },
+      "Details": {
+        "header": {
+          "client": "Client",
+          "created": "Created",
+          "lastEdited": "Last edited",
+          "openEvent": "Go to event",
+          "openClient": "Client page"
+        },
+        "songs": {
+          "mustPlay": "Must play",
+          "doNotPlay": "Do not play"
         }
       }
     },

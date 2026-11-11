@@ -820,10 +820,28 @@
           "descriptionQuery": "Żadna playlista nie pasuje do „{query}”.",
           "action": "Wyczyść wyszukiwanie"
         },
+        "notFound": {
+          "title": "Nie znaleziono strony",
+          "description": "Ta strona lub playlista nie istnieje albo została usunięta. Sprawdź adres i spróbuj ponownie.",
+          "action": "Wróć do listy playlist"
+        },
         "error": {
           "title": "Nie udało się wczytać danych",
           "description": "Spróbuj ponownie za chwilę. Jeśli problem się powtarza, odśwież stronę.",
           "action": "Spróbuj ponownie"
+        }
+      },
+      "Details": {
+        "header": {
+          "client": "Klient",
+          "created": "Utworzono",
+          "lastEdited": "Ostatnia edycja",
+          "openEvent": "Przejdź do wydarzenia",
+          "openClient": "Strona klienta"
+        },
+        "songs": {
+          "mustPlay": "Koniecznie zagraj",
+          "doNotPlay": "Nie graj"
         }
       }
     },
