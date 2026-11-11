@@ -68,6 +68,24 @@ enum WeddingKind {
   None
 }
 
+enum SongType {
+    MustPlay
+    DoNotPlay
+    HighlightedMoment
+}
+
+enum SongMoment {
+    Welcoming
+    FirstDance
+    CakePresentation
+    ParentsDedication
+}
+
+enum PlaylistStatus {
+    Open
+    Locked
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String
@@ -250,8 +268,9 @@ model Contract {
 
 model Playlist {
   id                   String           @id @default(cuid())
-  name                 String?
   songs                Song[]
+  status               PlaylistStatus   @default(Open)
+  note                 String?
 
   eventId              String           @unique
   event                Event            @relation(fields: [eventId], references: [id], onDelete: Cascade)
@@ -264,7 +283,13 @@ model Playlist {
 
 model Song {
   id                   String       @id @default(cuid())
-  name                 String
+  artist               String?
+  title                String
+  type                 SongType
+  moment               SongMoment?
+  deezerId             String?
+  thumbnailURL         String?
+  youtubeURL           String?
 
   playlistId           String       
   playlist             Playlist     @relation(fields: [playlistId], references: [id], onDelete: Cascade)
