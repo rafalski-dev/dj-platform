@@ -3,7 +3,7 @@ import { CardHeader } from "@/components/ui/shadcn/card";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { Pathname } from "@/types/navigation";
-import { EditIcon, PlusIcon } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 type GeneralCardHeaderProps = {
@@ -12,7 +12,7 @@ type GeneralCardHeaderProps = {
   count?: number;
   pathname?: Pathname;
   label?: string;
-  onClick?: () => void;
+  action?: { onActionBtnClick: () => void; btnLabel: string; btnIcon?: React.ReactNode };
   orientation?: "vertical" | "horizontal";
 };
 
@@ -22,7 +22,7 @@ export function GeneralCardHeader({
   count,
   label,
   pathname,
-  onClick,
+  action,
   orientation = "vertical",
 }: GeneralCardHeaderProps) {
   const t = useTranslations("Admin.GeneralCardHeader");
@@ -69,10 +69,15 @@ export function GeneralCardHeader({
           {t("add")}
         </Link>
       )}
-      {onClick && (
-        <Button variant="outline" size="xs" className="text-accent-foreground" onClick={onClick}>
-          <EditIcon className="size-3.5" />
-          {t("edit")}
+      {action?.btnLabel && (
+        <Button
+          variant="outline"
+          size="xs"
+          className="text-accent-foreground"
+          onClick={() => action.onActionBtnClick()}
+        >
+          {action?.btnIcon}
+          {action?.btnLabel}
         </Button>
       )}
     </CardHeader>

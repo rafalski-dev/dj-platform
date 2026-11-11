@@ -2,6 +2,7 @@
 
 import { GeneralCardHeader } from "@/components/admin/shared/generalCardHeader";
 import { Button } from "@/components/ui/shadcn/button";
+import { EditIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/shadcn/card";
 import { Separator } from "@/components/ui/shadcn/separator";
 import { Spinner } from "@/components/ui/shadcn/spinner";
@@ -13,6 +14,7 @@ import { CreateEventSchema } from "@/validation/events";
 
 export function SummaryStep() {
   const t = useTranslations("Admin.Events.Form");
+  const tHeader = useTranslations("Admin.GeneralCardHeader");
   const { setCurrentStep } = useCreateEventContext();
   const { getValues } = useFormContext<CreateEventSchema>();
   const { isSubmitting } = useFormState<CreateEventSchema>();
@@ -22,7 +24,14 @@ export function SummaryStep() {
   return (
     <div className="flex flex-col gap-5">
       <Card>
-        <GeneralCardHeader title={t("steps.eventType")} onClick={() => setCurrentStep(1)} />
+        <GeneralCardHeader
+          title={t("steps.eventType")}
+          action={{
+            onActionBtnClick: () => setCurrentStep(1),
+            btnLabel: tHeader("edit"),
+            btnIcon: <EditIcon className="size-3.5" />,
+          }}
+        />
         <CardContent className="flex flex-col gap-3">
           <SummaryItem
             label={t("steps.eventType")}
@@ -37,7 +46,14 @@ export function SummaryStep() {
         </CardContent>
       </Card>
       <Card>
-        <GeneralCardHeader title={t("steps.basics")} onClick={() => setCurrentStep(2)} />
+        <GeneralCardHeader
+          title={t("steps.basics")}
+          action={{
+            onActionBtnClick: () => setCurrentStep(2),
+            btnLabel: tHeader("edit"),
+            btnIcon: <EditIcon className="size-3.5" />,
+          }}
+        />
         <CardContent className="flex flex-col gap-3">
           <SummaryItem label={t("basics.client.label")} value={summaryValues.basics.client.label} />
           <SummaryItem label={t("basics.guests.label")} value={summaryValues.basics.guestCount} />
@@ -88,7 +104,14 @@ export function SummaryStep() {
       </Card>
 
       <Card>
-        <GeneralCardHeader title={t("steps.dateAndPlace")} onClick={() => setCurrentStep(3)} />
+        <GeneralCardHeader
+          title={t("steps.dateAndPlace")}
+          action={{
+            onActionBtnClick: () => setCurrentStep(3),
+            btnLabel: tHeader("edit"),
+            btnIcon: <EditIcon className="size-3.5" />,
+          }}
+        />
         <CardContent className="flex flex-col gap-3">
           <SummaryItem
             label={t("summary.eventDate")}
@@ -157,7 +180,14 @@ export function SummaryStep() {
       </Card>
 
       <Card>
-        <GeneralCardHeader title={t("steps.package")} onClick={() => setCurrentStep(4)} />
+        <GeneralCardHeader
+          title={t("steps.package")}
+          action={{
+            onActionBtnClick: () => setCurrentStep(4),
+            btnLabel: tHeader("edit"),
+            btnIcon: <EditIcon className="size-3.5" />,
+          }}
+        />
         <CardContent className="flex flex-col gap-3">
           <SummaryItem
             label={t("package.groups.package")}
