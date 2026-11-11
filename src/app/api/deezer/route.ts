@@ -54,11 +54,11 @@ export async function GET(request: NextRequest) {
     }
 
     const formattedData = data.data.map((item: DeezerTrack) => ({
-      id: item.id,
+      id: item.id.toString(),
       artist: item.artist.name,
       title: item.title,
       preview: item.preview,
-      coverURL: item.album.cover_medium,
+      thumbnailURL: item.album.cover_medium,
     }));
 
     return Response.json(formattedData, { status: 200 });
