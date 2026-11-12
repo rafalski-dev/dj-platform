@@ -8,24 +8,24 @@ import { useState } from "react";
 import { songDataType } from "./songsCard";
 
 const tabsData = [
-  { label: "Search", value: "search", icon: <KeyboardIcon /> },
   { label: "YouTube URL", value: "link", icon: <LinkIcon /> },
+  { label: "Search", value: "search", icon: <KeyboardIcon /> },
 ];
 
 export function SongPicker({ addSong }: { addSong: (songData: songDataType) => void }) {
-  const [searchMethod, setSearchMethod] = useState(tabsData[1].value);
+  const [searchMethod, setSearchMethod] = useState(tabsData[0].value);
 
   return (
     <>
       <Tabs
         items={tabsData}
-        defaultItem={tabsData[1].value}
+        defaultItem={tabsData[0].value}
         onTabChange={(value) => setSearchMethod(value)}
       />
-      {searchMethod === tabsData[0].value ? (
-        <SearchMethod addSong={addSong} />
-      ) : (
+      {searchMethod === "link" ? (
         <UrlMethod addSong={addSong} />
+      ) : (
+        <SearchMethod addSong={addSong} />
       )}
     </>
   );
