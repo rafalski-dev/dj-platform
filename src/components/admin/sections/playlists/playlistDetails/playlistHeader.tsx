@@ -11,7 +11,7 @@ export async function PlaylistHeader({ fetchedData }: { fetchedData: PlaylistDet
   const format = await getFormatter();
   const t = await getTranslations("Admin.Playlists");
   const tEventTypes = await getTranslations("Admin.Clients.list.eventTypes");
-  const { createdAt, updatedAt, _count, event } = fetchedData;
+  const { createdAt, updatedAt, songs, event } = fetchedData;
 
   const eventType =
     event.type === "Other" && event.altType ? event.altType : tEventTypes(event.type);
@@ -33,7 +33,7 @@ export async function PlaylistHeader({ fetchedData }: { fetchedData: PlaylistDet
             <div className="flex flex-row flex-wrap items-center gap-2">
               <StatusBadge status={event.status} />
               <Badge variant="outline" className="text-muted-foreground border-border-strong">
-                {t("list.songs", { count: _count.songs })}
+                {t("list.songs", { count: songs.length })}
               </Badge>
             </div>
           </div>

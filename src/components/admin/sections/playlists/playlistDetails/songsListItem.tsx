@@ -55,7 +55,7 @@ export function SongsListItem({
               isHighlighted ? "text-[13.5px]" : "text-[13px]",
             )}
           >
-            {title ?? "-"}
+            {title}
           </span>
         </div>
       </div>

@@ -50,7 +50,7 @@ export function SearchMethod({ addSong }: { addSong: (songData: songDataType) =>
         setSuggestionsList(data);
       } catch (error) {
         console.error(error);
-        setError("Something went wrong. Please try again");
+        setError("Something went wrong. Please try again.");
       } finally {
         setIsLoading(false);
       }
@@ -84,13 +84,16 @@ export function SearchMethod({ addSong }: { addSong: (songData: songDataType) =>
       toast.add({
         type: "error",
         title: "Song wasn't added",
-        description: `Wrong song name convention. Please keep "artist - title" convention`,
+        description: `Please use the "Artist - Title" format.`,
       });
       return;
     }
     const songDetails = {
       artist: searchValue.split(" - ")[0].trim(),
       title: searchValue.split(" - ")[1].trim(),
+      deezerId: null,
+      thumbnailURL: null,
+      youtubeURL: null,
     };
     addSong(songDetails);
     clear();
@@ -103,6 +106,7 @@ export function SearchMethod({ addSong }: { addSong: (songData: songDataType) =>
       title: suggestionDetails.title,
       deezerId: suggestionDetails.id,
       thumbnailURL: suggestionDetails.thumbnailURL,
+      youtubeURL: null,
     };
     addSong(songData);
     clear();
@@ -114,7 +118,7 @@ export function SearchMethod({ addSong }: { addSong: (songData: songDataType) =>
       <Field>
         <InputGroup>
           <InputGroupInput
-            placeholder={'Search in convention "Artist - Title"'}
+            placeholder={'Search as "Artist - Title"'}
             value={searchValue}
             onChange={(e) => {
               setIsLoading(e.target.value !== debouncedValue);
@@ -171,7 +175,6 @@ export function SearchMethod({ addSong }: { addSong: (songData: songDataType) =>
           suggestionsList={suggestionsList}
           addManualSong={addManualSong}
           addDeezerSuggestion={addDeezerSuggestion}
-          clear={clear}
           error={error}
         />
       )}
@@ -192,6 +195,7 @@ type SuggestionsPopoverProps = {
   isLoading: boolean;
   suggestionsList: DeezerSuggestion[];
   addManualSong: () => void;
+  addDeezerSuggestion: (suggestionDetails: DeezerSuggestion) => void;
   error: string;
 };
 
@@ -201,7 +205,7 @@ function SuggestionsPopover({
   suggestionsList,
   addManualSong,
   error,
-  ...rest
+  addDeezerSuggestion,
 }: SuggestionsPopoverProps) {
   return (
     <div className="bg-background absolute top-13 z-10 w-full overflow-hidden rounded-md border">
@@ -212,24 +216,28 @@ function SuggestionsPopover({
         </div>
         {searchValue.length < 3 ? (
           <p className="text-muted-foreground px-5 pt-3 pb-6">
-            Add <span className="">{3 - searchValue.length}</span> more character to start see song
-            suggestions
+            Add <span className="">{3 - searchValue.length}</span> more{" "}
+            {3 - searchValue.length === 1 ? "character" : "characters"} to see song suggestions
           </p>
         ) : isLoading ? (
           <PlaylistsDropdownSkeleton />
         ) : error ? (
-          <EmptyState title="Fetching" description={error} />
+          <EmptyState title="Couldn't load suggestions" description={error} />
         ) : suggestionsList.length === 0 ? (
           <EmptyState
             icon={<SearchAlertIcon />}
             title="No suggestions"
-            description={`There is no suggestions for "${searchValue}" search`}
+            description={`There are no suggestions for "${searchValue}"`}
             className="py-5"
           />
         ) : (
           <ul className="scroll-bar-edited flex max-h-70 w-full flex-col items-start overflow-y-scroll pb-2 pl-2">
             {suggestionsList.map((suggestion) => (
-              <DeezerSuggestionItem key={suggestion.id} suggestionDetails={suggestion} {...rest} />
+              <DeezerSuggestionItem
+                key={suggestion.id}
+                suggestionDetails={suggestion}
+                addDeezerSuggestion={addDeezerSuggestion}
+              />
             ))}
           </ul>
         )}

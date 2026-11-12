@@ -3,76 +3,86 @@
 import { GeneralCardHeader } from "@/components/admin/shared/generalCardHeader";
 import { Card, CardContent, CardFooter } from "@/components/ui/shadcn/card";
 import { BanIcon, Music2Icon } from "lucide-react";
-import { useState } from "react";
 import { toast } from "@/components/ui/shadcn/toast";
 import { SongsList } from "./songsList";
 import { SongPicker } from "./songPicker";
+import { createSongAction, deleteSongAction } from "@/actions/playlist";
+import { SongMoment, SongType } from "../../../../../../generated";
+import { startTransition, useOptimistic } from "react";
+import { listSongReducer } from "@/lib/reducers";
 
 export type songDataType = {
   artist: string | null;
   title: string;
-  deezerId?: string | null;
-  thumbnailURL?: string | null;
-  youtubeURL?: string | null;
+  deezerId: string | null;
+  thumbnailURL: string | null;
+  youtubeURL: string | null;
 };
 
 export type songListItemType = {
   id: string;
   artist: string | null;
   title: string;
-  type: string;
-  moment: string | null;
+  type: SongType;
+  moment: SongMoment | null;
   deezerId: string | null;
   thumbnailURL: string | null;
   youtubeURL: string | null;
 };
 
 type PlaylistType = {
-  variant: "mustPlay" | "doNotPlay";
+  variant: SongType;
   title: string;
   fetchedSongs: songListItemType[];
+  playlistId: string;
 };
 
-export function SongsCard({ variant, title, fetchedSongs }: PlaylistType) {
-  const [songsList, setSongsList] = useState<songListItemType[]>(fetchedSongs);
+export function SongsCard({ variant, title, fetchedSongs, playlistId }: PlaylistType) {
+  const [optimisticList, dispatch] = useOptimistic(fetchedSongs, listSongReducer);
 
   function deleteSong(id: string) {
-    setSongsList((prev) => prev.filter((el) => el.id !== id));
-    toast.add({ type: "success", title: "Song removed" });
+    startTransition(async () => {
+      dispatch({ type: "delete", data: { id } });
+      const response = await deleteSongAction(id, playlistId);
+      if (!response.success) {
+        toast.add({ type: "error", title: "Song wasn't removed", description: response.message });
+        return;
+      }
+      toast.add({ type: "success", title: "Song removed" });
+    });
   }
 
   function addSong(songData: songDataType) {
-    const { artist, title, deezerId, thumbnailURL, youtubeURL } = songData;
+    const fullData = {
+      ...songData,
+      type: variant,
+      moment: null,
+      playlistId: playlistId,
+    };
 
-    setSongsList((prev) => [
-      {
-        id: crypto.randomUUID(),
-        artist,
-        title,
-        type: variant,
-        moment: null,
-        deezerId: deezerId ?? null,
-        thumbnailURL: thumbnailURL ?? null,
-        youtubeURL: youtubeURL ?? null,
-      },
-      ...prev,
-    ]);
-
-    toast.add({ type: "success", title: "Song added" });
+    startTransition(async () => {
+      dispatch({ type: "add", data: { id: crypto.randomUUID(), ...fullData } });
+      const response = await createSongAction(fullData);
+      if (!response.success) {
+        toast.add({ type: "error", title: "Song wasn't added", description: response.message });
+        return;
+      }
+      toast.add({ type: "success", title: "Song added" });
+    });
   }
 
   return (
     <Card className="min-h-85 overflow-visible md:flex-1" size="md">
       <GeneralCardHeader
         title={title}
-        icon={variant === "mustPlay" ? <Music2Icon /> : <BanIcon />}
-        count={songsList.length}
+        icon={variant === SongType.MustPlay ? <Music2Icon /> : <BanIcon />}
+        count={optimisticList.length}
       />
       <CardContent>
         <SongPicker addSong={addSong} />
       </CardContent>
       <CardFooter className="mx-(--card-spacing) border-t px-0">
-        <SongsList songsList={songsList} onDeleteClick={deleteSong} />
+        <SongsList songsList={optimisticList} onDeleteClick={deleteSong} />
       </CardFooter>
     </Card>
   );

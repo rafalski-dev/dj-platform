@@ -12,7 +12,7 @@ export function SongsList({ songsList, onDeleteClick }: SongsListProps) {
     return (
       <EmptyState
         title="No songs yet"
-        description="Add your first song to see list"
+        description="Add your first song to see the list"
         className="pt-8 pb-2"
       />
     );

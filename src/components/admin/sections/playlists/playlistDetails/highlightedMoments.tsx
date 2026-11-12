@@ -3,50 +3,70 @@
 import { GeneralCardHeader } from "@/components/admin/shared/generalCardHeader";
 import { Card, CardContent } from "@/components/ui/shadcn/card";
 import { CakeIcon, HandHeartIcon, HeartIcon, PartyPopperIcon, TrashIcon } from "lucide-react";
-import { SongMoment } from "../../../../../../generated";
+import { SongMoment, SongType } from "../../../../../../generated";
 import { SongPicker } from "./songPicker";
 import { SongsListItem } from "./songsListItem";
-import { useState } from "react";
-import { songDataType } from "./songsCard";
 import { toast } from "@/components/ui/shadcn/toast";
+import { createSongAction, deleteSongAction } from "@/actions/playlist";
+import { songDataType, songListItemType } from "./songsCard";
+import { startTransition, useOptimistic } from "react";
+import { listSongReducer } from "@/lib/reducers";
 
 const highlightedMoments = [
-  { title: "Welcoming couple", moment: SongMoment.Welcoming, icon: <PartyPopperIcon /> },
+  { title: "Welcoming the couple", moment: SongMoment.Welcoming, icon: <PartyPopperIcon /> },
   { title: "First dance", moment: SongMoment.FirstDance, icon: <HeartIcon /> },
   { title: "Cake presentation", moment: SongMoment.CakePresentation, icon: <CakeIcon /> },
   { title: "Dedication to parents", moment: SongMoment.ParentsDedication, icon: <HandHeartIcon /> },
 ];
 
-export function HighlightedMoments({ songs }) {
-  const [songsList, setSongsList] = useState(songs);
+type HighlightedMomentsProps = {
+  songsList: songListItemType[];
+  playlistId: string;
+};
 
-  function deleteSong(id) {
-    setSongsList((prev) => prev.filter((el) => el.id !== id));
+export function HighlightedMoments({ songsList, playlistId }: HighlightedMomentsProps) {
+  const [optimisticList, dispatch] = useOptimistic(songsList, listSongReducer);
+
+  function deleteSong(id: string) {
+    startTransition(async () => {
+      dispatch({ type: "delete", data: { id } });
+      const response = await deleteSongAction(id, playlistId);
+      if (!response.success) {
+        toast.add({ type: "error", title: "Song wasn't removed", description: response.message });
+        return;
+      }
+
+      toast.add({ type: "success", title: "Song removed" });
+    });
   }
 
   return (
     <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
       {highlightedMoments.map(({ title, icon, moment }) => {
-        const song = songsList.find((el) => el.moment === moment);
+        const song = optimisticList.find((el) => el.moment === moment);
 
-        function addSong(songData) {
-          const { artist, title, deezerId, thumbnailURL, youtubeURL } = songData;
+        function addSong(songData: songDataType) {
+          const fullData = {
+            ...songData,
+            type: SongType.HighlightedMoment,
+            moment: moment,
+            playlistId: playlistId,
+          };
 
-          setSongsList((prev) => [
-            {
-              id: crypto.randomUUID(),
-              artist,
-              title,
-              type: null,
-              moment: moment,
-              deezerId: deezerId ?? null,
-              thumbnailURL: thumbnailURL ?? null,
-              youtubeURL: youtubeURL ?? null,
-            },
-            ...prev,
-          ]);
+          startTransition(async () => {
+            dispatch({ type: "add", data: { id: crypto.randomUUID(), ...fullData } });
 
-          toast.add({ type: "success", title: "Song added" });
+            const response = await createSongAction(fullData);
+            if (!response.success) {
+              toast.add({
+                type: "error",
+                title: "Song wasn't added",
+                description: response.message,
+              });
+              return;
+            }
+            toast.add({ type: "success", title: "Song added" });
+          });
         }
 
         return (

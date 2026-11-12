@@ -55,7 +55,7 @@ export async function getPlaylistDetails(playlistId: string) {
   return await db.playlist.findUnique({
     where: { id: playlistId },
     include: {
-      _count: { select: { songs: true } },
+      songs: { orderBy: { createdAt: "desc" } },
       event: {
         select: {
           id: true,

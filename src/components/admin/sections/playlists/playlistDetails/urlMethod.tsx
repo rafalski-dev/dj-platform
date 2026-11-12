@@ -26,7 +26,7 @@ export function UrlMethod({ addSong }: { addSong: (songData: songDataType) => vo
   useEffect(() => {
     async function getYoutubeLinkData(url: string) {
       if (url === "") return setError("");
-      if (!url.includes("youtu")) return setError("You must provide correct youtube url");
+      if (!url.includes("youtu")) return setError("Please enter a valid YouTube URL.");
 
       setIsLoading(true);
       try {
@@ -39,7 +39,7 @@ export function UrlMethod({ addSong }: { addSong: (songData: songDataType) => vo
         const data = await response.json();
         setURLSongDetails(data);
       } catch {
-        setError("Something went wrong. Try again");
+        setError("Something went wrong. Please try again.");
       } finally {
         setIsLoading(false);
       }
@@ -156,6 +156,7 @@ export function ConfirmAdding({ URLsongDetails, clear, addSong }: ConfirmAddingP
               title: URLsongDetails.title,
               youtubeURL: URLsongDetails.youtubeURL,
               thumbnailURL: URLsongDetails.thumbnailURL,
+              deezerId: null,
             };
             addSong(songData);
             clear();
