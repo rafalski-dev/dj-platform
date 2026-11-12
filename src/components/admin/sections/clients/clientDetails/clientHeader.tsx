@@ -26,7 +26,7 @@ export async function ClientHeader({ fetchedData }: ClientHeaderProps) {
   ];
 
   return (
-    <Card size="md" className="md:flex-row md:justify-between">
+    <Card size="md">
       <div className="flex flex-col gap-5">
         <CardHeader className="flex flex-row items-center gap-4">
           <Avatar size="xl">
@@ -70,10 +70,14 @@ export async function ClientHeader({ fetchedData }: ClientHeaderProps) {
           </dl>
         </CardContent>
       </div>
-      <CardFooter className="flex-row flex-wrap gap-4 md:min-w-1/3 md:flex-col">
+      <CardFooter className="mx-(--card-spacing) gap-3 border-t px-0 pt-5 sm:justify-between">
         <Link
           href={{ pathname: "/admin/clients/[clientId]/edit", params: { clientId: id } }}
-          className={buttonVariants({ variant: "default", className: "flex-1 md:w-full" })}
+          className={buttonVariants({
+            variant: "default",
+            size: "sm",
+            className: "flex-1 sm:flex-none",
+          })}
         >
           <EditIcon />
           {tHeader("edit")}

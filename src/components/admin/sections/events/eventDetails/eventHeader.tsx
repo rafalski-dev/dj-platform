@@ -24,10 +24,9 @@ export async function EventHeader({ fetchedData }: { fetchedData: EventDetails }
   console.log(date);
   console.log(getStartOfToday());
   return (
-    <Card size="md" className="md:flex-row md:justify-between">
+    <Card size="md">
       <div className="flex w-full min-w-0 flex-col gap-5">
-        <CardHeader className="flex flex-row items-center gap-4">
-          <EventDateTile date={date} />
+        <CardHeader className="flex flex-row items-center justify-between gap-4">
           <div className="flex min-w-0 flex-col gap-2">
             <p className="text-accent-foreground text-xs font-semibold tracking-widest uppercase">
               {eventType}
@@ -39,6 +38,7 @@ export async function EventHeader({ fetchedData }: { fetchedData: EventDetails }
               <StatusBadge status={status} />
             </div>
           </div>
+          <EventDateTile date={date} />
         </CardHeader>
         <CardContent>
           <dl className="flex flex-row flex-wrap justify-start gap-x-4 gap-y-2">
@@ -65,8 +65,8 @@ export async function EventHeader({ fetchedData }: { fetchedData: EventDetails }
           </dl>
         </CardContent>
       </div>
-      <CardFooter className="flex-row flex-wrap gap-4 md:min-w-1/3 md:flex-col">
-        <Button disabled className="flex-1 md:w-full md:flex-none">
+      <CardFooter className="mx-(--card-spacing) gap-3 border-t px-0 pt-5 sm:justify-between">
+        <Button disabled size="sm" className="flex-1 sm:flex-none">
           <EditIcon />
           {t("edit")}
         </Button>
