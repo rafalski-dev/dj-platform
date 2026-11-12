@@ -24,7 +24,7 @@ export function SearchMethod({ addSong }: { addSong: (songData: songDataType) =>
   const popoverElement = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const [suggestionsList, setSuggestionsList] = useState([]);
+  const [suggestionsList, setSuggestionsList] = useState<DeezerSuggestion[]>([]);
   const [searchValue, setSearchValue] = useState("");
   const debouncedValue = useDebounce(searchValue, 500);
   const [isLoading, setIsLoading] = useState(true);
@@ -80,14 +80,6 @@ export function SearchMethod({ addSong }: { addSong: (songData: songDataType) =>
   }, [clear, isOpen]);
 
   function addManualSong() {
-    if (searchValue.trim() === "") {
-      toast.add({
-        type: "error",
-        title: "Song wasn't added",
-        description: "Type a song name first",
-      });
-      return;
-    }
     if (!searchValue.includes(" - ")) {
       toast.add({
         type: "error",
@@ -112,7 +104,6 @@ export function SearchMethod({ addSong }: { addSong: (songData: songDataType) =>
       deezerId: suggestionDetails.id,
       thumbnailURL: suggestionDetails.thumbnailURL,
     };
-
     addSong(songData);
     clear();
     setSearchValue("");
@@ -180,6 +171,7 @@ export function SearchMethod({ addSong }: { addSong: (songData: songDataType) =>
           suggestionsList={suggestionsList}
           addManualSong={addManualSong}
           addDeezerSuggestion={addDeezerSuggestion}
+          clear={clear}
           error={error}
         />
       )}
@@ -200,7 +192,6 @@ type SuggestionsPopoverProps = {
   isLoading: boolean;
   suggestionsList: DeezerSuggestion[];
   addManualSong: () => void;
-  addDeezerSuggestion: (suggestionDetails: DeezerSuggestion) => void;
   error: string;
 };
 
