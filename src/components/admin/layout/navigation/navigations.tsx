@@ -30,7 +30,7 @@ export function NavigationContent() {
   const pathname = usePathname();
 
   return (
-    <div>
+    <div className="print:hidden">
       <p className="text-popover-foreground/80 mt-6 font-sans text-xs tracking-[2px] uppercase">
         {t("nav.title")}
       </p>
@@ -74,7 +74,7 @@ export function NavigationAdminDesktop() {
   const pathname = usePathname();
 
   return (
-    <div>
+    <div className="print:hidden">
       <p className="text-popover-foreground/80 font-sans text-xs tracking-[2px] uppercase">
         {t("nav.title")}
       </p>

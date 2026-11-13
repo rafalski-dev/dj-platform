@@ -87,6 +87,10 @@ export const routing = defineRouting({
       pl: "/administrator/listy-utworow/[playlistId]",
       en: "/admin/playlists/[playlistId]",
     },
+    "/admin/playlists/[playlistId]/print": {
+      pl: "/administrator/listy-utworow/[playlistId]/wydruk",
+      en: "/admin/playlists/[playlistId]/print",
+    },
     "/admin/personal-details": {
       pl: "/administrator/moje-dane",
       en: "/admin/personal-details",
