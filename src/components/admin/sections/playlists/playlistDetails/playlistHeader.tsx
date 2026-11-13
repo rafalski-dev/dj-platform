@@ -1,20 +1,56 @@
 import { EventDateTile } from "@/components/admin/shared/eventDateTile";
 import { StatusBadge } from "@/components/admin/shared/statusBadge";
 import { Badge } from "@/components/ui/shadcn/badge";
-import { Button } from "@/components/ui/shadcn/button";
+import { Button, buttonVariants } from "@/components/ui/shadcn/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/shadcn/card";
 import type { PlaylistDetails } from "@/data/playlists";
-import { CalendarIcon, ClockIcon, UserIcon } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/shadcn/dropdown-menu";
+import {
+  CalendarIcon,
+  ChevronDownIcon,
+  ClockIcon,
+  DownloadIcon,
+  FileSpreadsheetIcon,
+  PrinterIcon,
+  UserIcon,
+  ListVideoIcon,
+} from "lucide-react";
 import { getFormatter, getTranslations } from "next-intl/server";
+import { SongType } from "../../../../../../generated";
+import { Link } from "@/i18n/navigation";
+import { DownloadCSVItem } from "./downloadCSVItem";
+import { TogglePlaylist } from "./togglePlaylist";
 
-export async function PlaylistHeader({ fetchedData }: { fetchedData: PlaylistDetails }) {
+export async function PlaylistHeader({
+  fetchedData,
+  isAdmin,
+}: {
+  fetchedData: PlaylistDetails;
+  isAdmin: boolean;
+}) {
   const format = await getFormatter();
   const t = await getTranslations("Admin.Playlists");
   const tEventTypes = await getTranslations("Admin.Clients.list.eventTypes");
-  const { createdAt, updatedAt, songs, event } = fetchedData;
+  const { id, createdAt, updatedAt, songs, event, status } = fetchedData;
+  const isLocked = status === "Locked";
 
   const eventType =
     event.type === "Other" && event.altType ? event.altType : tEventTypes(event.type);
+
+  const availableYoutubeSongs = songs
+    .filter((el) => el.youtubeURL !== null && el.type !== SongType.DoNotPlay)
+    .map((el) => {
+      if (!el.youtubeURL) return;
+      if (el.youtubeURL.includes("youtu.be")) {
+        return new URL(el.youtubeURL).pathname.slice(1);
+      }
+      return new URL(el.youtubeURL).searchParams.get("v");
+    });
 
   const playlistInfo = [
     { icon: <CalendarIcon size={15} />, label: t("Details.header.created"), content: createdAt },
@@ -22,8 +58,8 @@ export async function PlaylistHeader({ fetchedData }: { fetchedData: PlaylistDet
   ];
 
   return (
-    <Card size="md" className="md:flex-row md:justify-between">
-      <div className="flex min-w-0 flex-col gap-5 md:justify-between">
+    <Card size="md">
+      <div className="flex min-w-0 flex-col gap-5">
         <CardHeader className="flex flex-row items-center justify-between gap-4">
           <div className="flex min-w-0 flex-col gap-2">
             <HeaderLabel label={eventType} date={event.date} />
@@ -31,7 +67,6 @@ export async function PlaylistHeader({ fetchedData }: { fetchedData: PlaylistDet
               {event.name}
             </h1>
             <div className="flex flex-row flex-wrap items-center gap-2">
-              <StatusBadge status={event.status} />
               <Badge variant="outline" className="text-muted-foreground border-border-strong">
                 {t("list.songs", { count: songs.length })}
               </Badge>
@@ -71,18 +106,50 @@ export async function PlaylistHeader({ fetchedData }: { fetchedData: PlaylistDet
           </dl>
         </CardContent>
       </div>
-      <CardFooter className="flex-col flex-wrap items-stretch gap-4 sm:flex-row md:min-w-1/3 md:flex-col">
-        <div className="flex flex-2 flex-row gap-4 md:flex-none md:flex-col">
-          <Button variant="outline" size="sm" className="flex-1 md:flex-none">
-            Print
-          </Button>
-          <Button variant="outline" size="sm" className="flex-1 md:flex-none">
-            CSV
-          </Button>
+      <CardFooter className="mx-(--card-spacing) flex-col items-stretch gap-3 border-t px-0 pt-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <a
+            className={buttonVariants({
+              variant: "outline",
+              size: "sm",
+              className: "",
+            })}
+            href={`https://www.youtube.com/watch_videos?video_ids=${availableYoutubeSongs.join(",")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <ListVideoIcon />
+            Generate playlist
+          </a>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger render={<Button variant="outline" size="sm" className="" />}>
+              <DownloadIcon />
+              Export
+              <ChevronDownIcon />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="min-w-40">
+              <DownloadCSVItem playlistId={id}>
+                <FileSpreadsheetIcon />
+                Download CSV
+              </DownloadCSVItem>
+              <DropdownMenuItem
+                render={
+                  <Link
+                    href={{
+                      pathname: "/admin/playlists/[playlistId]/print",
+                      params: { playlistId: id },
+                    }}
+                  >
+                    <PrinterIcon />
+                    Print
+                  </Link>
+                }
+              />
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
-        <Button size="sm" className="sm:flex-1 md:flex-none">
-          Confirm
-        </Button>
+        {isAdmin && <TogglePlaylist isLocked={isLocked} playlistId={id} />}
       </CardFooter>
     </Card>
   );
