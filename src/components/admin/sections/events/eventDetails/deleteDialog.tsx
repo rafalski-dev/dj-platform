@@ -52,7 +52,11 @@ export function DeleteDialog({ eventId, label }: DialogButtonProps) {
     <AlertDialog>
       <AlertDialogTrigger
         render={
-          <Button variant="outline" className="flex-1 md:w-full md:flex-none">
+          <Button
+            variant="outline"
+            size="sm"
+            className="text-destructive border-destructive/40 hover:border-destructive/60 hover:bg-destructive/10 flex-1 sm:flex-none"
+          >
             {label}
           </Button>
         }
