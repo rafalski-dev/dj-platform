@@ -11,7 +11,7 @@ import {
   FilesIcon,
   HomeIcon,
   ListMusicIcon,
-  UserPenIcon,
+  SettingsIcon,
   UsersIcon,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -22,7 +22,7 @@ const icons = {
   events: <CalendarDaysIcon size={19} strokeWidth={1.4} />,
   contracts: <FilesIcon size={19} strokeWidth={1.4} />,
   playlists: <ListMusicIcon size={19} strokeWidth={1.4} />,
-  "personal-details": <UserPenIcon size={19} strokeWidth={1.4} />,
+  settings: <SettingsIcon size={19} strokeWidth={1.4} />,
 };
 
 export function NavigationContent() {

@@ -91,9 +91,13 @@ export const routing = defineRouting({
       pl: "/administrator/listy-utworow/[playlistId]/wydruk",
       en: "/admin/playlists/[playlistId]/print",
     },
-    "/admin/personal-details": {
-      pl: "/administrator/moje-dane",
-      en: "/admin/personal-details",
+    "/admin/settings/account-details": {
+      pl: "/administrator/ustawienia/konto",
+      en: "/admin/settings/account-details",
+    },
+    "/admin/settings/business-details": {
+      pl: "/administrator/ustawienia/dane-firmy",
+      en: "/admin/settings/business-details",
     },
     "/dashboard": {
       pl: "/panel-klienta",

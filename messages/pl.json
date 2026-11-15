@@ -674,6 +674,28 @@
       "expiry": "Link jest ważny przez godzinę i można go użyć tylko raz.",
       "fallback": "Jeśli przycisk nie działa, skopiuj poniższy adres i wklej go w przeglądarce:",
       "ignore": "Jeśli to nie Ty prosiłeś o zmianę hasła, zignoruj tę wiadomość — Twoje hasło pozostaje bez zmian."
+    },
+    "ConfirmEmailChange": {
+      "subject": "Potwierdź zmianę adresu email",
+      "preview": "Otrzymaliśmy prośbę o zmianę adresu email na Twoim koncie.",
+      "heading": "Potwierdź zmianę adresu email",
+      "greeting": "Cześć {name},",
+      "intro": "Otrzymaliśmy prośbę o zmianę adresu email na Twoim koncie na {newEmail}. Kliknij przycisk poniżej, aby ją zatwierdzić. Potem wyślemy link potwierdzający na nowy adres.",
+      "button": "Zatwierdź zmianę",
+      "expiry": "Link jest ważny przez godzinę i można go użyć tylko raz.",
+      "fallback": "Jeśli przycisk nie działa, skopiuj poniższy adres i wklej go w przeglądarce:",
+      "ignore": "Jeśli to nie Ty, zignoruj tę wiadomość i zmień hasło. Twój adres email pozostaje bez zmian."
+    },
+    "VerifyNewEmail": {
+      "subject": "Potwierdź nowy adres email",
+      "preview": "Jeden klik i nowy adres email będzie aktywny.",
+      "heading": "Potwierdź nowy adres email",
+      "greeting": "Cześć {name},",
+      "intro": "Kliknij przycisk poniżej, aby potwierdzić ten adres. Od tej chwili będziesz logować się za jego pomocą.",
+      "button": "Potwierdź nowy adres email",
+      "expiry": "Link jest ważny przez godzinę i można go użyć tylko raz.",
+      "fallback": "Jeśli przycisk nie działa, skopiuj poniższy adres i wklej go w przeglądarce:",
+      "ignore": "Jeśli to nie Ty, zignoruj tę wiadomość. Nic się nie zmieni."
     }
   },
   "NotFoundPage": {
@@ -717,7 +739,7 @@
           "events": "Wydarzenia",
           "contracts": "Umowy",
           "playlists": "Playlisty",
-          "personal-details": "Moje dane"
+          "settings": "Ustawienia"
         }
       }
     },
@@ -743,7 +765,9 @@
       "events": "Wydarzenia",
       "contracts": "Umowy",
       "playlists": "Playlisty",
-      "personal-details": "Moje dane",
+      "settings": "Ustawienia",
+      "account-details": "Konto",
+      "business-details": "Dane firmy",
       "create": "Dodaj",
       "edit": "Edytuj"
     },
@@ -845,9 +869,46 @@
         }
       }
     },
-    "PersonalDetails": {
-      "title": "Moje dane",
-      "description": "Edytuj swoje dane i zmień hasło. Dane zostaną dodane do generowanych umów."
+    "Settings": {
+      "title": "Ustawienia",
+      "description": "Zarządzaj swoim kontem i danymi firmy, które trafiają na umowy.",
+      "tabs": {
+        "accountDetails": "Konto",
+        "businessDetails": "Dane firmy"
+      },
+      "fields": {
+        "fullName": {
+          "required": "Podaj imię i nazwisko",
+          "tooLong": "Imię i nazwisko może mieć maksymalnie 100 znaków"
+        },
+        "email": {
+          "required": "Podaj adres e-mail",
+          "validation": "Podaj poprawny adres e-mail",
+          "sameAsCurrent": "To już jest Twój adres e-mail"
+        },
+        "businessName": {
+          "required": "Podaj nazwę firmy"
+        },
+        "firstName": {
+          "required": "Podaj imię"
+        },
+        "lastName": {
+          "required": "Podaj nazwisko"
+        },
+        "phone": {
+          "validation": "Podaj poprawny numer telefonu"
+        },
+        "streetAndNumber": {
+          "required": "Podaj ulicę i numer"
+        },
+        "postcode": {
+          "required": "Podaj kod pocztowy",
+          "validation": "Użyj formatu 00-000"
+        },
+        "city": {
+          "required": "Podaj miejscowość"
+        }
+      }
     },
     "Events": {
       "title": "Wydarzenia",

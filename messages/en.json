@@ -674,6 +674,28 @@
       "expiry": "This link is valid for one hour and can be used only once.",
       "fallback": "If the button doesn't work, copy the address below and paste it into your browser:",
       "ignore": "If you didn't ask for a password reset, ignore this message — your password stays unchanged."
+    },
+    "ConfirmEmailChange": {
+      "subject": "Confirm your email address change",
+      "preview": "Someone asked to change the email address on your account.",
+      "heading": "Confirm your email address change",
+      "greeting": "Hi {name},",
+      "intro": "We received a request to change the email address on your account to {newEmail}. Click the button below to approve it. After that, we'll send a confirmation link to the new address.",
+      "button": "Approve the change",
+      "expiry": "This link is valid for one hour and can be used only once.",
+      "fallback": "If the button doesn't work, copy the address below and paste it into your browser:",
+      "ignore": "If you didn't ask for this, ignore this message and change your password. Your email address stays unchanged."
+    },
+    "VerifyNewEmail": {
+      "subject": "Confirm your new email address",
+      "preview": "One click and your new email address is active.",
+      "heading": "Confirm your new email address",
+      "greeting": "Hi {name},",
+      "intro": "Click the button below to confirm this address. From then on, you'll log in with it.",
+      "button": "Confirm new email address",
+      "expiry": "This link is valid for one hour and can be used only once.",
+      "fallback": "If the button doesn't work, copy the address below and paste it into your browser:",
+      "ignore": "If you didn't ask for this, ignore this message. Nothing will change."
     }
   },
   "NotFoundPage": {
@@ -717,7 +739,7 @@
           "events": "Events",
           "contracts": "Contracts",
           "playlists": "Playlists",
-          "personal-details": "My details"
+          "settings": "Settings"
         }
       }
     },
@@ -736,7 +758,6 @@
       "perPage": "Per page",
       "pageOf": "{page} of {total}"
     },
-
     "Breadcrumbs": {
       "label": "Breadcrumbs",
       "home": "Home",
@@ -744,7 +765,9 @@
       "events": "Events",
       "contracts": "Contracts",
       "playlists": "Playlists",
-      "personal-details": "My details",
+      "settings": "Settings",
+      "account-details": "Account",
+      "business-details": "Business details",
       "create": "New",
       "edit": "Edit"
     },
@@ -846,9 +869,46 @@
         }
       }
     },
-    "PersonalDetails": {
-      "title": "My details",
-      "description": "Edit your details and change your password. Your details will be added to generated contracts."
+    "Settings": {
+      "title": "Settings",
+      "description": "Manage your account and the business details used in your contracts.",
+      "tabs": {
+        "accountDetails": "Account",
+        "businessDetails": "Business details"
+      },
+      "fields": {
+        "fullName": {
+          "required": "Enter your full name",
+          "tooLong": "Full name can't be longer than 100 characters"
+        },
+        "email": {
+          "required": "Enter your email address",
+          "validation": "Enter a valid email address",
+          "sameAsCurrent": "This is already your email address"
+        },
+        "businessName": {
+          "required": "Enter your business name"
+        },
+        "firstName": {
+          "required": "Enter your first name"
+        },
+        "lastName": {
+          "required": "Enter your last name"
+        },
+        "phone": {
+          "validation": "Enter a valid phone number"
+        },
+        "streetAndNumber": {
+          "required": "Enter your street and number"
+        },
+        "postcode": {
+          "required": "Enter your postcode",
+          "validation": "Use the 00-000 format"
+        },
+        "city": {
+          "required": "Enter your city"
+        }
+      }
     },
     "Clients": {
       "title": "Clients",
@@ -875,14 +935,12 @@
         "placeholder": "Search by name, email or phone..."
       },
       "count": "{count, plural, one {# client} other {# clients}}",
-
       "filters": {
         "all": "All",
         "active": "Active",
         "past": "Past",
         "no-event": "No event"
       },
-
       "table": {
         "headers": {
           "client": "Client",

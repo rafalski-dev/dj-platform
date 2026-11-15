@@ -14,6 +14,6 @@ export type ClientItem = {
 };
 
 export type AdminItem = {
-  navKey: "home" | "clients" | "events" | "contracts" | "playlists" | "personal-details";
+  navKey: "home" | "clients" | "events" | "contracts" | "playlists" | "settings";
   path: Pathname;
 };

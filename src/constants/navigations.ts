@@ -19,5 +19,5 @@ export const adminItems: AdminItem[] = [
   { navKey: "events", path: "/admin/events" },
   { navKey: "contracts", path: "/admin/contracts" },
   { navKey: "playlists", path: "/admin/playlists" },
-  { navKey: "personal-details", path: "/admin/personal-details" },
+  { navKey: "settings", path: "/admin/settings/account-details" },
 ];

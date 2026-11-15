@@ -42,6 +42,40 @@ export const auth = betterAuth({
   }),
 
   user: {
+    changeEmail: {
+      enabled: true,
+      sendChangeEmailConfirmation: async ({ user, newEmail, url }, request) => {
+        const locale = getLocaleFromRequest(request);
+        const t = await getTranslations({ locale, namespace: "Emails.ConfirmEmailChange" });
+
+        const email = VerifyEmailTemplate({
+          locale,
+          verifyUrl: url,
+          messages: {
+            preview: t("preview"),
+            heading: t("heading"),
+            greeting: t("greeting", { name: user.name }),
+            intro: t("intro", { newEmail }),
+            button: t("button"),
+            expiry: t("expiry"),
+            fallback: t("fallback"),
+            ignore: t("ignore"),
+          },
+        });
+
+        const { error } = await resend.emails.send({
+          from: `${siteConfig.name} <contact@rafalski.dev>`,
+          to: user.email,
+          subject: t("subject"),
+          react: email,
+          text: await render(email, { plainText: true }),
+        });
+
+        if (error) {
+          console.error("sendChangeEmailConfirmation:", error);
+        }
+      },
+    },
     additionalFields: {
       role: {
         type: ["User", "Admin"],
@@ -157,7 +191,9 @@ export const auth = betterAuth({
     autoSignInAfterVerification: true,
     sendVerificationEmail: async ({ user, url }, request) => {
       const locale = getLocaleFromRequest(request);
-      const t = await getTranslations({ locale, namespace: "Emails.VerifyEmail" });
+      // A verified user getting this email is changing their email address, not signing up.
+      const namespace = user.emailVerified ? "Emails.VerifyNewEmail" : "Emails.VerifyEmail";
+      const t = await getTranslations({ locale, namespace });
 
       const email = VerifyEmailTemplate({
         locale,
