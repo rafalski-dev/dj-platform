@@ -15,7 +15,7 @@ import { CreateEventSchema } from "@/validation/events";
 export function SummaryStep() {
   const t = useTranslations("Admin.Events.Form");
   const tHeader = useTranslations("Admin.GeneralCardHeader");
-  const { setCurrentStep } = useCreateEventContext();
+  const { setCurrentStep, submitLabel } = useCreateEventContext();
   const { getValues } = useFormContext<CreateEventSchema>();
   const { isSubmitting } = useFormState<CreateEventSchema>();
   const summaryValues = getValues();
@@ -222,7 +222,7 @@ export function SummaryStep() {
               {t("navigation.submitting")}
             </>
           ) : (
-            t("navigation.submit")
+            (submitLabel ?? t("navigation.submit"))
           )}
         </Button>
       </div>

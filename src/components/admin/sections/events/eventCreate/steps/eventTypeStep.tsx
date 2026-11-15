@@ -13,7 +13,7 @@ import { CreateEventSchema } from "@/validation/events";
 
 export function EventTypeStep() {
   const t = useTranslations("Admin.Events.Form");
-  const { setCurrentStep } = useCreateEventContext();
+  const { setCurrentStep, cancelHref } = useCreateEventContext();
   const { control, trigger } = useFormContext<CreateEventSchema>();
   const type = useWatch({ name: "eventType.type" });
 
@@ -36,7 +36,7 @@ export function EventTypeStep() {
 
       <div className="flex justify-between">
         <Link
-          href={{ pathname: "/admin/events" }}
+          href={cancelHref ?? { pathname: "/admin/events" }}
           className={buttonVariants({ variant: "outline", size: "sm" })}
         >
           {t("navigation.cancel")}
