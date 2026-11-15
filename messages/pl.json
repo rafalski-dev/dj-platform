@@ -811,7 +811,41 @@
     "Contracts": {
       "title": "Umowy",
       "count": "{count, plural, one {# umowa} few {# umowy} many {# umów} other {# umowy}}",
-      "addingBtn": "Wygeneruj umowę"
+      "addingBtn": "Wygeneruj umowę",
+      "searchBar": {
+        "placeholder": "Szukaj po numerze, wydarzeniu lub kliencie..."
+      },
+      "list": {
+        "details": "Zobacz umowę: {number}"
+      },
+      "table": {
+        "headers": {
+          "contract": "Umowa",
+          "event": "Wydarzenie",
+          "client": "Klient",
+          "status": "Status",
+          "more": "Więcej"
+        }
+      },
+      "status": {
+        "Draft": "Szkic",
+        "Sent": "Wysłana",
+        "Signed": "Podpisana",
+        "Accepted": "Zatwierdzona",
+        "Cancelled": "Anulowana"
+      },
+      "empty": {
+        "noContracts": {
+          "title": "Brak umów",
+          "description": "Umowy generujesz ze strony wydarzenia. Otwórz wydarzenie, aby utworzyć pierwszą.",
+          "action": "Przejdź do wydarzeń"
+        },
+        "noResults": {
+          "title": "Nie znaleziono umów",
+          "descriptionQuery": "Żadna umowa nie pasuje do „{query}”.",
+          "action": "Wyczyść wyszukiwanie"
+        }
+      }
     },
     "Playlists": {
       "title": "Playlisty",

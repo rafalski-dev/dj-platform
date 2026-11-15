@@ -811,7 +811,41 @@
     "Contracts": {
       "title": "Contracts",
       "count": "{count, plural, one {# contract} other {# contracts}}",
-      "addingBtn": "Generate contract"
+      "addingBtn": "Generate contract",
+      "searchBar": {
+        "placeholder": "Search by number, event or client..."
+      },
+      "list": {
+        "details": "View contract: {number}"
+      },
+      "table": {
+        "headers": {
+          "contract": "Contract",
+          "event": "Event",
+          "client": "Client",
+          "status": "Status",
+          "more": "More"
+        }
+      },
+      "status": {
+        "Draft": "Draft",
+        "Sent": "Sent",
+        "Signed": "Signed by client",
+        "Accepted": "Accepted",
+        "Cancelled": "Cancelled"
+      },
+      "empty": {
+        "noContracts": {
+          "title": "No contracts yet",
+          "description": "Contracts are generated from the event page. Open an event to create the first one.",
+          "action": "Go to events"
+        },
+        "noResults": {
+          "title": "No contracts found",
+          "descriptionQuery": "No contracts match “{query}”.",
+          "action": "Clear search"
+        }
+      }
     },
     "Playlists": {
       "title": "Playlists",
