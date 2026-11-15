@@ -1,6 +1,7 @@
 import { StatusBadge } from "@/components/admin/shared/statusBadge";
 import { Badge } from "@/components/ui/shadcn/badge";
-import { Button } from "@/components/ui/shadcn/button";
+import { buttonVariants } from "@/components/ui/shadcn/button";
+import { Link } from "@/i18n/navigation";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/shadcn/card";
 import type { EventDetails } from "@/data/events";
 import { getStartOfToday } from "@/lib/utils";
@@ -66,10 +67,13 @@ export async function EventHeader({ fetchedData }: { fetchedData: EventDetails }
         </CardContent>
       </div>
       <CardFooter className="mx-(--card-spacing) gap-3 border-t px-0 pt-5 sm:justify-between">
-        <Button disabled size="sm" className="flex-1 sm:flex-none">
+        <Link
+          href={{ pathname: "/admin/events/[eventId]/edit", params: { eventId: id } }}
+          className={buttonVariants({ size: "sm", className: "flex-1 sm:flex-none" })}
+        >
           <EditIcon />
           {t("edit")}
-        </Button>
+        </Link>
         <DeleteDialog
           eventId={id}
           label={

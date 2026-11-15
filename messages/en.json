@@ -1561,6 +1561,18 @@
           "ceremonyStartTime": "Ceremony start time",
           "ceremonyAddress": "Ceremony address"
         }
+      },
+      "Edit": {
+        "page": {
+          "title": "Edit event",
+          "description": "Update the event details in the multi-step form below."
+        },
+        "submit": "Save changes",
+        "success": "{name} has been updated.",
+        "toast": {
+          "successTitle": "Changes saved",
+          "errorTitle": "Changes not saved"
+        }
       }
     }
   }

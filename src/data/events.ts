@@ -59,3 +59,14 @@ export async function getEventDetails(eventId: string) {
 }
 
 export type EventDetails = NonNullable<Awaited<ReturnType<typeof getEventDetails>>>;
+
+export async function getEventToEdit(eventId: string) {
+  await adminCheck();
+
+  return db.event.findUnique({
+    where: { id: eventId },
+    include: { wedding: true, client: { select: { id: true, name: true } } },
+  });
+}
+
+export type EventToEdit = NonNullable<Awaited<ReturnType<typeof getEventToEdit>>>;

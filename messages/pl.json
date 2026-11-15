@@ -1266,6 +1266,18 @@
           "ceremonyStartTime": "Godzina ceremonii",
           "ceremonyAddress": "Adres ceremonii"
         }
+      },
+      "Edit": {
+        "page": {
+          "title": "Edytuj wydarzenie",
+          "description": "Zaktualizuj szczegóły wydarzenia w formularzu poniżej."
+        },
+        "submit": "Zapisz zmiany",
+        "success": "Wydarzenie {name} zostało zaktualizowane.",
+        "toast": {
+          "successTitle": "Zmiany zapisane",
+          "errorTitle": "Nie zapisano zmian"
+        }
       }
     },
     "Clients": {

@@ -67,6 +67,10 @@ export const routing = defineRouting({
       pl: "/administrator/wydarzenia/[eventId]",
       en: "/admin/events/[eventId]",
     },
+    "/admin/events/[eventId]/edit": {
+      pl: "/administrator/wydarzenia/[eventId]/edytuj",
+      en: "/admin/events/[eventId]/edit",
+    },
     "/admin/contracts": {
       pl: "/administrator/umowy",
       en: "/admin/contracts",
