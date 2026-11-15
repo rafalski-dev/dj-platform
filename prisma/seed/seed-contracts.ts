@@ -6,8 +6,10 @@ export async function seedContracts() {
   }
   const events = await db.event.findMany({ select: { id: true } });
 
+  const statuses = ["Draft", "Sent", "Signed", "Accepted", "Cancelled"] as const;
+
   const mappedId = events.map((_, index) => {
-    return { eventId: events[index].id };
+    return { eventId: events[index].id, status: statuses[index % statuses.length] };
   });
 
   await db.$executeRaw`TRUNCATE TABLE "contract" RESTART IDENTITY`;

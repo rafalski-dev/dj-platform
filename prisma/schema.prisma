@@ -81,6 +81,14 @@ enum SongMoment {
     ParentsDedication
 }
 
+enum ContractStatus {
+    Draft
+    Sent
+    Signed
+    Accepted
+    Cancelled
+}
+
 enum PlaylistStatus {
     Open
     Locked
@@ -280,6 +288,7 @@ model Contract {
   id                   String       @id @default(cuid())
   number               Int          @unique @default(autoincrement())       
   contractNumber       String?      @unique
+  status               ContractStatus @default(Draft)
 
   eventId              String       @unique
   event                Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
