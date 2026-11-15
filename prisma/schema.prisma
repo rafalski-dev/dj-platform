@@ -87,19 +87,20 @@ enum PlaylistStatus {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String
-  email         String
-  emailVerified Boolean   @default(false)
-  image         String?
-  role          Role      @default(User)
+  id                String    @id @default(cuid())
+  name              String
+  email             String
+  emailVerified     Boolean   @default(false)
+  image             String?
+  role              Role      @default(User)
   
-  client        Client?
-  sessions      Session[]
-  accounts      Account[]
+  businessDetails   BusinessDetails?
+  client            Client?
+  sessions          Session[]
+  accounts          Account[]
 
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 
   @@unique([email])
   @@map("user")
@@ -153,10 +154,33 @@ model Verification {
   @@map("verification")
 }
 
+model BusinessDetails {
+  id                   String      @id @default(cuid())
+  businessName         String
+  firstName            String
+  lastName             String
+
+  phone                String?
+  email                String
+
+  streetAndNumber      String?
+  postcode             String?
+  city                 String?
+  region               String?
+  country              String?
+
+  userId               String       @unique
+  user                 User         @relation(fields: [userId], references: [id])
+
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  @@map("business_details")
+}
+
 model Client {
   id                   String       @id @default(cuid())
   clientType           ClientType
-  name                 String       // display name: "Jan Kowalski" or business name
+  name                 String       
 
   // private client
   firstName            String
