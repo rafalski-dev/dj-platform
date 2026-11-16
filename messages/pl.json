@@ -812,6 +812,39 @@
       "title": "Umowy",
       "count": "{count, plural, one {# umowa} few {# umowy} many {# umów} other {# umowy}}",
       "addingBtn": "Wygeneruj umowę",
+      "Create": {
+        "title": "Utwórz umowę",
+        "cardTitle": "Umowa",
+        "empty": {
+          "title": "Brak wydarzeń bez umowy",
+          "description": "Każde wydarzenie ma już umowę. Utwórz nowe wydarzenie, aby wygenerować kolejną.",
+          "action": "Utwórz wydarzenie"
+        }
+      },
+      "Form": {
+        "client": {
+          "label": "Klient",
+          "placeholder": "Wybierz klienta",
+          "required": "Wybierz klienta"
+        },
+        "event": {
+          "label": "Wydarzenie",
+          "noClient": "Najpierw wybierz klienta",
+          "required": "Wybierz wydarzenie"
+        },
+        "submit": "Utwórz",
+        "submitting": "Tworzenie",
+        "toast": {
+          "successTitle": "Umowa utworzona",
+          "errorTitle": "Nie utworzono umowy"
+        },
+        "serverMessage": {
+          "success": "Umowa została zapisana jako szkic.",
+          "invalid": "Sprawdź formularz i spróbuj ponownie.",
+          "taken": "To wydarzenie ma już umowę.",
+          "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+        }
+      },
       "searchBar": {
         "placeholder": "Szukaj po numerze, wydarzeniu lub kliencie..."
       },

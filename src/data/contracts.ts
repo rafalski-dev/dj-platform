@@ -49,3 +49,25 @@ export async function getCountContracts(query?: string) {
 
   return await db.contract.count({ where: getContractsWhere(query) });
 }
+
+export async function getClientsWithEventsWithoutContract() {
+  await adminCheck();
+
+  return await db.client.findMany({
+    where: { events: { some: { contract: { is: null } } } },
+    orderBy: { name: "asc" },
+    select: {
+      id: true,
+      name: true,
+      events: {
+        where: { contract: { is: null } },
+        orderBy: { date: "asc" },
+        select: { id: true, name: true, date: true },
+      },
+    },
+  });
+}
+
+export type ClientWithEvents = Awaited<
+  ReturnType<typeof getClientsWithEventsWithoutContract>
+>[number];

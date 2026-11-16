@@ -812,6 +812,39 @@
       "title": "Contracts",
       "count": "{count, plural, one {# contract} other {# contracts}}",
       "addingBtn": "Generate contract",
+      "Create": {
+        "title": "Create contract",
+        "cardTitle": "Contract",
+        "empty": {
+          "title": "No events without a contract",
+          "description": "Every event already has a contract. Create a new event to generate the next one.",
+          "action": "Create event"
+        }
+      },
+      "Form": {
+        "client": {
+          "label": "Client",
+          "placeholder": "Select a client",
+          "required": "Select a client"
+        },
+        "event": {
+          "label": "Event",
+          "noClient": "Select a client first",
+          "required": "Select an event"
+        },
+        "submit": "Create",
+        "submitting": "Creating",
+        "toast": {
+          "successTitle": "Contract created",
+          "errorTitle": "Contract not created"
+        },
+        "serverMessage": {
+          "success": "The contract has been saved as a draft.",
+          "invalid": "Check the form and try again.",
+          "taken": "This event already has a contract.",
+          "unknown": "Something went wrong. Please try again."
+        }
+      },
       "searchBar": {
         "placeholder": "Search by number, event or client..."
       },
