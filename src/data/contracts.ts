@@ -54,13 +54,13 @@ export async function getClientsWithEventsWithoutContract() {
   await adminCheck();
 
   return await db.client.findMany({
-    where: { events: { some: { contract: { is: null } } } },
+    where: { events: { some: { contract: { is: null }, status: { not: "Cancelled" } } } },
     orderBy: { name: "asc" },
     select: {
       id: true,
       name: true,
       events: {
-        where: { contract: { is: null } },
+        where: { contract: { is: null }, status: { not: "Cancelled" } },
         orderBy: { date: "asc" },
         select: { id: true, name: true, date: true },
       },

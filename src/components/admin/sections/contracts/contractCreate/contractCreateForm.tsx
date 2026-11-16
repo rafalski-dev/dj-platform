@@ -24,6 +24,7 @@ export function ContractCreateForm({ clients }: { clients: ClientWithEvents[] })
     control,
     handleSubmit,
     resetField,
+    setValue,
     setError,
     formState: { isSubmitting },
   } = useForm<CreateContractSchema>({ resolver: zodResolver(schema) });
@@ -33,6 +34,17 @@ export function ContractCreateForm({ clients }: { clients: ClientWithEvents[] })
   const mappedClients = clients.map(({ id, name }) => ({ label: name, value: id }));
 
   const clientEvents = clients.find((client) => client.id === selectedClient?.value)?.events;
+
+  function handleClientSelect(client: { label: string; value: string }) {
+    const events = clients.find(({ id }) => id === client.value)?.events;
+
+    if (events?.length === 1) {
+      setValue("event", events[0].id, { shouldValidate: true });
+      return;
+    }
+
+    resetField("event");
+  }
 
   async function onSubmit(formData: CreateContractSchema) {
     const response = await createContractAction(formData);
@@ -63,7 +75,7 @@ export function ContractCreateForm({ clients }: { clients: ClientWithEvents[] })
               label={t("client.label")}
               placeholder={t("client.placeholder")}
               items={mappedClients}
-              onSelect={() => resetField("event")}
+              onSelect={handleClientSelect}
               required
             />
             <EventRadioField control={control} events={clientEvents} />

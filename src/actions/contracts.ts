@@ -22,7 +22,11 @@ export async function createContractAction(formData: CreateContractSchema) {
     };
 
   const event = await db.event.findFirst({
-    where: { id: result.data.event, clientId: result.data.client.value },
+    where: {
+      id: result.data.event,
+      clientId: result.data.client.value,
+      status: { not: "Cancelled" },
+    },
     select: { id: true },
   });
 
