@@ -907,9 +907,6 @@
           "validation": "Podaj poprawny adres e-mail",
           "sameAsCurrent": "To już jest Twój adres e-mail"
         },
-        "businessName": {
-          "required": "Podaj nazwę firmy"
-        },
         "firstName": {
           "required": "Podaj imię"
         },

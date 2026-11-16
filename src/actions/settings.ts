@@ -70,6 +70,7 @@ export async function businessDetailsAction(formData: BusinessDetailsType) {
 
   const data = {
     ...result.data,
+    businessName: result.data.businessName || null,
     phone: result.data.phone || null,
     region: result.data.region || null,
     country: result.data.country || null,

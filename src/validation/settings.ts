@@ -54,10 +54,7 @@ export type ChangePasswordType = z.infer<ReturnType<typeof changePasswordSchema>
 
 export function businessDetailsSchema(t: SettingsTranslator) {
   return z.object({
-    businessName: z
-      .string()
-      .trim()
-      .min(1, { error: t("fields.businessName.required") }),
+    businessName: z.string().trim(),
     firstName: z
       .string()
       .trim()

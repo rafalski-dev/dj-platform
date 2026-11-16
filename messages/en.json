@@ -907,9 +907,6 @@
           "validation": "Enter a valid email address",
           "sameAsCurrent": "This is already your email address"
         },
-        "businessName": {
-          "required": "Enter your business name"
-        },
         "firstName": {
           "required": "Enter your first name"
         },
