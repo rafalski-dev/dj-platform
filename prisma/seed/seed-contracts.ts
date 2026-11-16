@@ -4,7 +4,11 @@ export async function seedContracts() {
   if (!process.env.DATABASE_URL?.includes("localhost")) {
     throw new Error("Process can't be run on production");
   }
-  const events = await db.event.findMany({ select: { id: true } });
+  const allEvents = await db.event.findMany({ select: { id: true, clientId: true } });
+
+  // The first 3 clients with events get no contracts, so the "create contract" form has data
+  const clientsWithoutContract = [...new Set(allEvents.map((event) => event.clientId))].slice(0, 3);
+  const events = allEvents.filter((event) => !clientsWithoutContract.includes(event.clientId));
 
   const statuses = ["Draft", "Sent", "Signed", "Accepted", "Cancelled"] as const;
 
