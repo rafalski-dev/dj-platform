@@ -164,7 +164,7 @@ model Verification {
 
 model BusinessDetails {
   id                   String      @id @default(cuid())
-  businessName         String
+  businessName         String?
   firstName            String
   lastName             String
 

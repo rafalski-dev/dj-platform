@@ -1,3 +1,4 @@
+import { passwordRegex } from "@/constants/auth";
 import type { useTranslations } from "next-intl";
 import z from "zod";
 
@@ -31,12 +32,29 @@ export function changeEmailSchema(t: SettingsTranslator, currentEmail: string) {
 
 export type ChangeEmailType = z.infer<ReturnType<typeof changeEmailSchema>>;
 
+export function changePasswordSchema(t: SettingsTranslator) {
+  return z
+    .object({
+      currentPassword: z.string().min(1, { error: t("fields.currentPassword.required") }),
+
+      newPassword: z.string().regex(passwordRegex, { error: t("fields.newPassword.validation") }),
+      confirmPassword: z.string(),
+    })
+    .refine((val) => val.newPassword === val.confirmPassword, {
+      error: t("fields.confirmPassword.mismatch"),
+      path: ["confirmPassword"],
+    })
+    .refine((val) => val.newPassword !== val.currentPassword, {
+      error: t("fields.newPassword.sameAsCurrent"),
+      path: ["newPassword"],
+    });
+}
+
+export type ChangePasswordType = z.infer<ReturnType<typeof changePasswordSchema>>;
+
 export function businessDetailsSchema(t: SettingsTranslator) {
   return z.object({
-    businessName: z
-      .string()
-      .trim()
-      .min(1, { error: t("fields.businessName.required") }),
+    businessName: z.string().trim(),
     firstName: z
       .string()
       .trim()

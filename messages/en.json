@@ -910,7 +910,28 @@
         "accountDetails": "Account",
         "businessDetails": "Business details"
       },
+      "password": {
+        "title": "Password",
+        "submit": "Change password",
+        "submitting": "Changing",
+        "success": "Password has been changed",
+        "error": "Something went wrong. Please try again."
+      },
       "fields": {
+        "currentPassword": {
+          "label": "Current password",
+          "required": "Enter your current password",
+          "invalid": "Current password is wrong"
+        },
+        "newPassword": {
+          "label": "New password",
+          "validation": "Password must be 8–24 characters and include at least one uppercase letter, one number and one special character",
+          "sameAsCurrent": "New password must be different from the current one"
+        },
+        "confirmPassword": {
+          "label": "Confirm new password",
+          "mismatch": "Passwords do not match"
+        },
         "fullName": {
           "required": "Enter your full name",
           "tooLong": "Full name can't be longer than 100 characters"
@@ -919,9 +940,6 @@
           "required": "Enter your email address",
           "validation": "Enter a valid email address",
           "sameAsCurrent": "This is already your email address"
-        },
-        "businessName": {
-          "required": "Enter your business name"
         },
         "firstName": {
           "required": "Enter your first name"

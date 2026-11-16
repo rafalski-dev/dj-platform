@@ -19,7 +19,6 @@ export function BusinessBasicDetails() {
           name="businessName"
           label="Business name"
           placeholder="DJ Maven Events"
-          required
         />
         <div className="flex flex-col gap-3 md:flex-row">
           <ControlledInput
