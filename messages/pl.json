@@ -812,6 +812,13 @@
       "title": "Umowy",
       "count": "{count, plural, one {# umowa} few {# umowy} many {# umów} other {# umowy}}",
       "addingBtn": "Wygeneruj umowę",
+      "Details": {
+        "header": {
+          "label": "Umowa",
+          "created": "Utworzono",
+          "lastEdited": "Ostatnia edycja"
+        }
+      },
       "Create": {
         "title": "Utwórz umowę",
         "cardTitle": "Umowa",

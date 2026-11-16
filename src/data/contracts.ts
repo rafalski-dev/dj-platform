@@ -71,3 +71,21 @@ export async function getClientsWithEventsWithoutContract() {
 export type ClientWithEvents = Awaited<
   ReturnType<typeof getClientsWithEventsWithoutContract>
 >[number];
+
+export async function getContractDetails(contractId: string) {
+  await adminCheck();
+
+  return await db.contract.findUnique({
+    where: { id: contractId },
+    select: {
+      id: true,
+      contractNumber: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true,
+      event: { select: { name: true } },
+    },
+  });
+}
+
+export type ContractDetails = NonNullable<Awaited<ReturnType<typeof getContractDetails>>>;

@@ -812,6 +812,13 @@
       "title": "Contracts",
       "count": "{count, plural, one {# contract} other {# contracts}}",
       "addingBtn": "Generate contract",
+      "Details": {
+        "header": {
+          "label": "Contract",
+          "created": "Created",
+          "lastEdited": "Last edited"
+        }
+      },
       "Create": {
         "title": "Create contract",
         "cardTitle": "Contract",
