@@ -876,7 +876,28 @@
         "accountDetails": "Konto",
         "businessDetails": "Dane firmy"
       },
+      "password": {
+        "title": "Hasło",
+        "submit": "Zmień hasło",
+        "submitting": "Zmieniam",
+        "success": "Hasło zostało zmienione",
+        "error": "Coś poszło nie tak. Spróbuj ponownie."
+      },
       "fields": {
+        "currentPassword": {
+          "label": "Obecne hasło",
+          "required": "Podaj obecne hasło",
+          "invalid": "Obecne hasło jest nieprawidłowe"
+        },
+        "newPassword": {
+          "label": "Nowe hasło",
+          "validation": "Hasło musi mieć od 8 do 24 znaków oraz zawierać wielką literę, cyfrę i znak specjalny",
+          "sameAsCurrent": "Nowe hasło musi się różnić od obecnego"
+        },
+        "confirmPassword": {
+          "label": "Potwierdź nowe hasło",
+          "mismatch": "Hasła nie są takie same"
+        },
         "fullName": {
           "required": "Podaj imię i nazwisko",
           "tooLong": "Imię i nazwisko może mieć maksymalnie 100 znaków"
