@@ -816,7 +816,30 @@
         "header": {
           "label": "Contract",
           "created": "Created",
-          "lastEdited": "Last edited"
+          "lastEdited": "Last edited",
+          "delete": "Delete contract",
+          "edit": "Edit",
+          "editClient": "Edit client",
+          "editEvent": "Edit event"
+        },
+        "delete": {
+          "dialog": {
+            "title": "Delete this contract?",
+            "description": "This action cannot be undone. The contract will be permanently deleted. The event stays intact.",
+            "cancel": "Cancel",
+            "confirm": "Delete contract",
+            "pending": "Deleting..."
+          },
+          "toast": {
+            "successTitle": "Contract deleted",
+            "errorTitle": "Contract not deleted"
+          },
+          "serverMessage": {
+            "success": "Contract {number} has been deleted.",
+            "notFound": "This contract no longer exists.",
+            "inUse": "This contract can't be deleted because other records still depend on it.",
+            "unknown": "Something went wrong. Please try again."
+          }
         }
       },
       "Create": {

@@ -57,3 +57,21 @@ export async function createContractAction(formData: CreateContractSchema) {
 
   return { success: true, status: "success", message: t("serverMessage.success") };
 }
+
+export async function deleteContractAction(contractId: string) {
+  await adminCheck();
+  const t = await getTranslations("Admin.Contracts.Details.delete.serverMessage");
+
+  let contractNumber: string;
+
+  try {
+    const contract = await db.contract.delete({ where: { id: contractId } });
+    contractNumber = contract.contractNumber ?? "";
+  } catch (error) {
+    console.error(error);
+    const kind = getDbErrorKind(error);
+    return { status: "error", success: false, message: t(kind === "duplicate" ? "unknown" : kind) };
+  }
+
+  return { status: "success", success: true, message: t("success", { number: contractNumber }) };
+}

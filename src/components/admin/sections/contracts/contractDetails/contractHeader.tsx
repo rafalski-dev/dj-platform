@@ -1,13 +1,16 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/shadcn/card";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/shadcn/card";
 import type { ContractDetails } from "@/data/contracts";
-import { CalendarIcon, ClockIcon } from "lucide-react";
+import { CalendarIcon, ClockIcon, Trash2Icon } from "lucide-react";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { ContractStatusBadge } from "../contractsList/contractStatusBadge";
+import { DeleteDialog } from "./deleteDialog";
+import { EditPopover } from "./editPopover";
+import { CreatePreview } from "./createPreview";
 
 export async function ContractHeader({ fetchedData }: { fetchedData: ContractDetails }) {
   const format = await getFormatter();
   const t = await getTranslations("Admin.Contracts.Details.header");
-  const { contractNumber, status, createdAt, updatedAt, event } = fetchedData;
+  const { id, contractNumber, status, createdAt, updatedAt, event } = fetchedData;
 
   const contractInfo = [
     { icon: <CalendarIcon size={15} />, label: t("created"), content: createdAt },
@@ -54,6 +57,21 @@ export async function ContractHeader({ fetchedData }: { fetchedData: ContractDet
           </dl>
         </CardContent>
       </div>
+      <CardFooter className="mx-(--card-spacing) flex-col items-stretch gap-3 border-t px-0 pt-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <CreatePreview contractId={id} />
+          <EditPopover clientId={event.clientId} eventId={event.id} />
+        </div>
+        <DeleteDialog
+          contractId={id}
+          label={
+            <>
+              <Trash2Icon />
+              {t("delete")}
+            </>
+          }
+        />
+      </CardFooter>
     </Card>
   );
 }

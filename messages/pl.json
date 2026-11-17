@@ -816,7 +816,30 @@
         "header": {
           "label": "Umowa",
           "created": "Utworzono",
-          "lastEdited": "Ostatnia edycja"
+          "lastEdited": "Ostatnia edycja",
+          "delete": "Usuń umowę",
+          "edit": "Edytuj",
+          "editClient": "Edytuj klienta",
+          "editEvent": "Edytuj wydarzenie"
+        },
+        "delete": {
+          "dialog": {
+            "title": "Usunąć tę umowę?",
+            "description": "Tej operacji nie można cofnąć. Umowa zostanie trwale usunięta. Wydarzenie pozostanie bez zmian.",
+            "cancel": "Anuluj",
+            "confirm": "Usuń umowę",
+            "pending": "Usuwanie..."
+          },
+          "toast": {
+            "successTitle": "Umowa usunięta",
+            "errorTitle": "Nie usunięto umowy"
+          },
+          "serverMessage": {
+            "success": "Usunięto umowę {number}.",
+            "notFound": "Ta umowa już nie istnieje.",
+            "inUse": "Nie można usunąć tej umowy, bo zależą od niej inne dane.",
+            "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+          }
         }
       },
       "Create": {
