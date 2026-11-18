@@ -3,7 +3,7 @@ import { type FieldValues, type Control, type FieldPath } from "react-hook-form"
 export type ControlledCheckboxProps<T extends FieldValues> = {
   name: FieldPath<T>;
   control: Control<T>;
-  label: string;
+  label: React.ReactNode;
 };
 
 export type ControlledSwitchProps<T extends FieldValues> = {

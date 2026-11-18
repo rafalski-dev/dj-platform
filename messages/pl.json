@@ -33,12 +33,14 @@
       "titleHighlighted": "zapamiętają na lata.",
       "sectionDescriptionNarrow": "Dbam o to, by Wasz wieczór miał idealny rytm — od wzruszających, intymnych momentów po parkietowe szaleństwo.",
       "sectionDescriptionWide": "Dbam o to, by Wasz wieczór miał idealny rytm — od wzruszających, intymnych momentów po parkietowe szaleństwo. Profesjonalne brzmienie, styl i zero przypadków — od początku do końca.",
-      "PrimaryCTA": "Zarezerwuj termin",
       "SecondaryCTA": "Zobacz ofertę",
       "rating": "Ocena",
       "and": "i",
       "events": "zagranych imprez",
-      "imageAlt": "Tłum tańczący z DJ-em na parkiecie"
+      "imageAlt": "Tłum tańczący z DJ-em na parkiecie",
+      "dateCheck": {
+        "busy": "Termin {date} jest już zajęty. Wybierz inną datę albo zadzwoń:"
+      }
     },
     "About": {
       "id": "o-mnie",
@@ -249,7 +251,8 @@
       "errors": {
         "emptyEmail": "Podaj adres e-mail",
         "invalidEmail": "Podaj poprawny adres e-mail"
-      }
+      },
+      "tooManyRequests": "Za dużo prób. Spróbuj ponownie za {minutes, plural, one {# minutę} few {# minuty} many {# minut} other {# minuty}}."
     },
     "Contact": {
       "id": "kontakt",
@@ -258,19 +261,21 @@
       "sectionDescription": "Chcesz zapytać o wesele, urodziny, studniówkę, rocznicę, konferencję lub cokolwiek innego? Zostaw wiadomość, a zwykle odpowiadam w ciągu 24 godzin.",
       "contactDetails": {
         "email": "E-mail",
-        "phone": "Telefon",
-        "coverage": "Zasięg"
+        "phone": "Telefon"
       },
-      "coverage": "Cała Polska",
       "contactForm": {
         "acknowledgement": "Dziękuję za wiadomość!",
         "btnAgain": "Wyślij nowe zapytanie",
         "formInputs": {
-          "fullName": {
-            "label": "Imię i nazwisko",
-            "placeholder": "Jan Kowalski",
-            "required": "Podaj imię i nazwisko",
-            "validation": "Imię i nazwisko musi zawierać co najmniej 2 słowa"
+          "firstName": {
+            "label": "Imię",
+            "placeholder": "Jan",
+            "required": "Podaj imię"
+          },
+          "lastName": {
+            "label": "Nazwisko",
+            "placeholder": "Kowalski",
+            "required": "Podaj nazwisko"
           },
           "email": {
             "label": "E-mail",
@@ -286,8 +291,9 @@
           },
           "eventDate": {
             "label": "Data wydarzenia",
-            "placeholder": "DD.MM.RRRR",
-            "validation": "Podaj poprawny format daty DD.MM.RRRR"
+            "placeholder": "Wybierz datę",
+            "required": "Wybierz datę wydarzenia",
+            "past": "Data nie może być z przeszłości"
           },
           "eventType": {
             "label": "Rodzaj wydarzenia",
@@ -307,29 +313,43 @@
           "place": {
             "label": "Nazwa miejsca / adres",
             "placeholder": "Pałac Mała Wieś",
+            "required": "Podaj nazwę miejsca lub adres",
             "validation": "Nazwa miejsca musi zawierać co najmniej 3 znaki"
           },
           "message": {
             "label": "Wiadomość",
             "placeholder": "Napisz kilka słów o swoim wydarzeniu — liczba gości, godziny, oczekiwania muzyczne",
-            "validationMin": "Wiadomość musi zawierać co najmniej 20 znaków",
             "validationMax": "Wiadomość może zawierać maksymalnie 2000 znaków",
-            "hint": "min. 20 znaków"
+            "hint": "opcjonalnie"
           },
           "terms": {
-            "label": "Wyrażam zgodę na przetwarzanie moich danych w celu odpowiedzi na to zapytanie. ",
-            "required": "Musisz zaakceptować regulamin"
+            "label": "Wyrażam zgodę na przetwarzanie moich danych w celu odpowiedzi na to zapytanie zgodnie z <link>polityką prywatności</link>.",
+            "required": "Musisz wyrazić zgodę na przetwarzanie danych"
           }
         },
         "serverMessage": {
           "validationError": "Sprawdź zaznaczone pola i spróbuj ponownie.",
           "sendingError": "Coś poszło nie tak podczas wysyłania formularza. Spróbuj ponownie.",
           "success": "Gratulacje! Formularz wysłany. Wkrótce się odezwę.",
-          "serverError": "Coś poszło nie tak. Spróbuj ponownie."
+          "serverError": "Coś poszło nie tak. Spróbuj ponownie.",
+          "tooManyRequests": "Za dużo prób. Spróbuj ponownie za {minutes, plural, one {# minutę} few {# minuty} many {# minut} other {# minuty}} albo zadzwoń: {phone}"
         },
         "submitButton": "Wyślij zapytanie",
         "processButton": "Wysyłanie",
-        "formDescription": "Pola oznaczone * są wymagane. Zwykle odpowiadam w ciągu 24 godzin."
+        "formDescription": "Pola oznaczone * są wymagane. Zwykle odpowiadam w ciągu 24 godzin.",
+        "dateStep": {
+          "checkButton": "Sprawdź termin",
+          "checkingButton": "Sprawdzanie",
+          "description": "Najpierw sprawdź, czy termin jest wolny. Potem poproszę o kilka szczegółów.",
+          "free": "Termin {date} jest wolny",
+          "changeButton": "Zmień"
+        },
+        "busy": {
+          "title": "Ten termin jest już zajęty",
+          "description": "Zadzwoń do mnie, a porozmawiamy o możliwościach. Możesz też wybrać inną datę.",
+          "callButton": "Zadzwoń",
+          "otherDateButton": "Wybierz inną datę"
+        }
       }
     },
     "Footer": {

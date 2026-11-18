@@ -33,12 +33,14 @@
       "titleHighlighted": "remember for years.",
       "sectionDescriptionNarrow": "Music, lighting, and hosting of the highest class. Every entrance, dance, and tear of joy happens at exactly the right moment.",
       "sectionDescriptionWide": "Music, lighting, and hosting of the highest class. With years of experience reading the room, I make sure every entrance, dance, and tear of joy happens at exactly the right moment.",
-      "PrimaryCTA": "Check availability",
       "SecondaryCTA": "See offer",
       "rating": "Rated",
       "and": "and",
       "events": "events performed",
-      "imageAlt": "A crowd dancing with the DJ on the dance floor"
+      "imageAlt": "A crowd dancing with the DJ on the dance floor",
+      "dateCheck": {
+        "busy": "{date} is already booked. Pick another date or call me:"
+      }
     },
     "About": {
       "id": "about",
@@ -249,7 +251,8 @@
       "errors": {
         "emptyEmail": "Provide address e-mail",
         "invalidEmail": "Provide correct address e-mail"
-      }
+      },
+      "tooManyRequests": "Too many attempts. Try again in {minutes, plural, one {# minute} other {# minutes}}."
     },
     "Contact": {
       "id": "contact",
@@ -258,19 +261,21 @@
       "sectionDescription": "Want to ask about wedding, birthday, prom, anniversary, conference or anything else? Leave a message and I usually reply within 24 hours.",
       "contactDetails": {
         "email": "E-mail",
-        "phone": "Phone",
-        "coverage": "Coverage"
+        "phone": "Phone"
       },
-      "coverage": "All of Poland",
       "contactForm": {
         "acknowledgement": "Thank you for your message!",
         "btnAgain": "Send new enquiry",
         "formInputs": {
-          "fullName": {
-            "label": "Full name",
-            "placeholder": "Jan Kowalski",
-            "required": "Provide full name",
-            "validation": "Full name must contain at least 2 words"
+          "firstName": {
+            "label": "First name",
+            "placeholder": "John",
+            "required": "Enter your first name"
+          },
+          "lastName": {
+            "label": "Last name",
+            "placeholder": "Smith",
+            "required": "Enter your last name"
           },
           "email": {
             "label": "E-mail",
@@ -286,8 +291,9 @@
           },
           "eventDate": {
             "label": "Event date",
-            "placeholder": "DD.MM.YYYY",
-            "validation": "Provide correct date format DD.MM.YYYY"
+            "placeholder": "Pick a date",
+            "required": "Pick the event date",
+            "past": "The date can't be in the past"
           },
           "eventType": {
             "label": "Event type",
@@ -307,29 +313,43 @@
           "place": {
             "label": "Place name / address",
             "placeholder": "Pałac Mała Wieś",
+            "required": "Enter the venue name or address",
             "validation": "Place name must contains at least 3 characters"
           },
           "message": {
             "label": "Message",
             "placeholder": "Tell me a few words about your event - guest count, hours, music expectations",
-            "validationMin": "Message must contain at least 20 characters",
             "validationMax": "Message must contain at most 2000 characters",
-            "hint": "min 20 characters"
+            "hint": "optional"
           },
           "terms": {
-            "label": "I agree to my data being processed in order to answer this enquiry. ",
-            "required": "You must agree to the terms & condition"
+            "label": "I agree to my data being processed in order to answer this enquiry, as described in the <link>privacy policy</link>.",
+            "required": "You must agree to the data processing"
           }
         },
         "serverMessage": {
           "validationError": "Please check the highlighted fields and please try again.",
           "sendingError": "Something went wrong while sending your form. Please try again.",
           "success": "Congratulations! Form submitted. I will contact you shortly.",
-          "serverError": "Something went wrong. Please try again."
+          "serverError": "Something went wrong. Please try again.",
+          "tooManyRequests": "Too many attempts. Try again in {minutes, plural, one {# minute} other {# minutes}} or call me: {phone}"
         },
         "submitButton": "Send enquiry",
         "processButton": "Processing",
-        "formDescription": "Fields marked with * are required. I usually reply within 24 hours."
+        "formDescription": "Fields marked with * are required. I usually reply within 24 hours.",
+        "dateStep": {
+          "checkButton": "Check availability",
+          "checkingButton": "Checking",
+          "description": "First check if the date is free. Then I'll ask for a few details.",
+          "free": "{date} is available",
+          "changeButton": "Change"
+        },
+        "busy": {
+          "title": "This date is already booked",
+          "description": "Give me a call and we'll talk about options. You can also pick another date.",
+          "callButton": "Call me",
+          "otherDateButton": "Pick another date"
+        }
       }
     },
     "Footer": {

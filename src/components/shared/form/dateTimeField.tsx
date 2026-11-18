@@ -22,6 +22,7 @@ type ControlledDatePickerProps<T extends FieldValues> = {
   required?: boolean;
   startMonth?: Date;
   endMonth?: Date;
+  disabled?: React.ComponentProps<typeof Calendar>["disabled"];
 };
 
 export function ControlledDatePicker<T extends FieldValues>({
@@ -32,6 +33,7 @@ export function ControlledDatePicker<T extends FieldValues>({
   required,
   startMonth = new Date(),
   endMonth = new Date(getCurrentYear() + 3, 11),
+  disabled,
 }: ControlledDatePickerProps<T>) {
   const [open, setOpen] = useState<boolean>(false);
   const dateLocale = useLocale() === "pl" ? pl : enUS;
@@ -86,6 +88,7 @@ export function ControlledDatePicker<T extends FieldValues>({
             defaultMonth={field.value}
             startMonth={startMonth}
             endMonth={endMonth}
+            disabled={disabled}
             fixedWeeks
             classNames={{
               outside: "[&_button]:text-muted-foreground/30",

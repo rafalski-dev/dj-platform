@@ -6,23 +6,30 @@ import { Wrapper } from "@/components/shared/wrapper";
 import { contactDetailsData } from "@/constants/contact";
 import { getTranslations } from "next-intl/server";
 import { ContactList } from "./contactList";
-import { ContactForm } from "./contactForm";
+import { ContactFormContainer } from "./contactFormContainer";
 
 export async function Contact() {
   const t = await getTranslations("LandingPage.Contact");
   return (
     <Section anchorLink={t("id")}>
       <Wrapper>
-        <div className="flex flex-col gap-10 lg:flex-row">
-          <div className="flex flex-col items-start gap-8 lg:w-1/2">
-            <div className="flex flex-col items-start">
-              <SectionLabel>{t("sectionLabel")}</SectionLabel>
-              <SectionTitle>{t("sectionTitle")}</SectionTitle>
-              <SectionDescription>{t("sectionDescription")}</SectionDescription>
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-start">
+          <div className="flex flex-col items-start lg:w-1/2">
+            <SectionLabel>{t("sectionLabel")}</SectionLabel>
+            <SectionTitle>{t("sectionTitle")}</SectionTitle>
+            <SectionDescription>{t("sectionDescription")}</SectionDescription>
+            {/* desktop: contacts under the text */}
+            <div className="mt-8 hidden w-full lg:block">
+              <ContactList listData={contactDetailsData} />
             </div>
-            <ContactList listData={contactDetailsData} />
           </div>
-          <ContactForm className="lg:w-1/2" />
+          <div className="flex flex-col gap-3 lg:w-1/2">
+            <ContactFormContainer />
+            {/* mobile: contacts under the form */}
+            <div className="lg:hidden">
+              <ContactList listData={contactDetailsData} />
+            </div>
+          </div>
         </div>
       </Wrapper>
     </Section>

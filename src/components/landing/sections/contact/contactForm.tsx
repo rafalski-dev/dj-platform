@@ -1,6 +1,7 @@
 "use client";
 
 import { ControlledCheckbox } from "@/components/shared/form/checkboxField";
+import { ControlledDatePicker } from "@/components/shared/form/dateTimeField";
 import { ControlledInput } from "@/components/shared/form/inputFields";
 import { ControlledSelect } from "@/components/shared/form/selectField";
 import { ControlledTextarea } from "@/components/shared/form/textareaField";
@@ -8,24 +9,39 @@ import { Button } from "@/components/ui/shadcn/button";
 import { FieldDescription, FieldGroup } from "@/components/ui/shadcn/field";
 import { Spinner } from "@/components/ui/shadcn/spinner";
 import { eventTypeKeys } from "@/constants/contact";
-import { cn } from "@/lib/utils";
+import { Link } from "@/i18n/navigation";
+import { cn, getStartOfToday } from "@/lib/utils";
+import { ContactFormStep } from "@/types/contact";
 import { ContactSchema, createContactSchema } from "@/validation/landing";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTranslations } from "next-intl";
+import { CalendarCheck } from "lucide-react";
+import { useFormatter, useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FormError } from "../../../shared/form/formError";
-import { sendContactFormAction } from "@/actions/landing";
+import { checkDateAction, sendContactFormAction } from "@/actions/landing";
 import { ContactFormSuccess } from "./contactFormSuccess";
+import { ContactFormBusy } from "./contactFormBusy";
 
-export function ContactForm({ className }: { className?: string }) {
+type ContactFormProps = {
+  className?: string;
+  // date already checked in the hero – the form starts at details (free) or busy
+  initialDate?: Date;
+  initialStep?: ContactFormStep;
+};
+
+export function ContactForm({ className, initialDate, initialStep = "date" }: ContactFormProps) {
   const t = useTranslations("LandingPage.Contact.contactForm");
+  const format = useFormatter();
   const schema = useMemo(() => createContactSchema(t), [t]);
   const [success, setSuccess] = useState("");
+  const [step, setStep] = useState<ContactFormStep>(initialStep);
+  const [isChecking, setIsChecking] = useState(false);
   const successForm = useRef<HTMLDivElement>(null);
 
   function onSendAgainClick() {
     setSuccess("");
+    setStep("date");
   }
 
   useEffect(() => {
@@ -40,20 +56,40 @@ export function ContactForm({ className }: { className?: string }) {
     reset,
     setError,
     clearErrors,
+    trigger,
+    getValues,
+    register,
     formState: { isSubmitting, errors },
   } = useForm<ContactSchema>({
     resolver: zodResolver(schema),
     defaultValues: {
-      fullName: "",
+      eventDate: initialDate,
+      firstName: "",
+      lastName: "",
       email: "",
       phone: "",
-      eventDate: "",
-      eventType: "",
+      eventType: undefined,
       place: "",
       message: "",
       terms: false,
+      website: "",
     },
   });
+
+  async function onCheckDate() {
+    clearErrors("root.serverError");
+    const isValid = await trigger("eventDate");
+    if (!isValid) return;
+
+    setIsChecking(true);
+    const res = await checkDateAction(getValues("eventDate"));
+    setIsChecking(false);
+
+    if (res.success) return setStep("details");
+    if (res.status === "busy") return setStep("busy");
+
+    setError("root.serverError", { message: res.message });
+  }
 
   async function onSubmit(formData: ContactSchema) {
     clearErrors("root.serverError");
@@ -65,9 +101,11 @@ export function ContactForm({ className }: { className?: string }) {
       return;
     }
 
+    if (res.status === "busy") return setStep("busy");
+
     setError("root.serverError", { message: res.message });
 
-    if (res.errors) {
+    if (res.status === "invalid" && res.errors) {
       Object.entries(res.errors).forEach(([field, message]) => {
         setError(field as keyof ContactSchema, { message: message?.[0] });
       });
@@ -76,7 +114,7 @@ export function ContactForm({ className }: { className?: string }) {
 
   const errorMessage = errors.root?.serverError
     ? errors.root?.serverError.message
-    : Object.keys(errors).length > 0
+    : Object.keys(errors).length > 0 && step === "details"
       ? t("serverMessage.validationError")
       : null;
 
@@ -91,88 +129,170 @@ export function ContactForm({ className }: { className?: string }) {
       />
     );
 
+  if (step === "busy")
+    return (
+      <ContactFormBusy
+        title={t("busy.title")}
+        description={t("busy.description")}
+        callBtnMessage={t("busy.callButton")}
+        otherDateBtnMessage={t("busy.otherDateButton")}
+        handleOtherDate={() => setStep("date")}
+      />
+    );
+
   return (
     <div className={cn("border-border bg-card rounded-2xl border p-5 md:p-6 lg:p-7", className)}>
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <FieldGroup>
-          <div className="flex flex-col gap-2.5 md:flex-row">
-            <ControlledInput
-              name="fullName"
-              control={control}
-              label={t("formInputs.fullName.label")}
-              placeholder={t("formInputs.fullName.placeholder")}
-              autoComplete="name"
-              required
-            />
-            <ControlledInput
-              name="email"
-              control={control}
-              label={t("formInputs.email.label")}
-              placeholder={t("formInputs.email.placeholder")}
-              autoComplete="email"
-              type="email"
-              required
-            />
-          </div>
-          <div className="flex flex-col gap-2.5 md:flex-row">
-            <ControlledInput
-              name="phone"
-              control={control}
-              label={t("formInputs.phone.label")}
-              placeholder={t("formInputs.phone.placeholder")}
-              autoComplete="tel"
-              type="tel"
-              required
-            />
-            <ControlledInput
-              name="eventDate"
-              control={control}
-              label={t("formInputs.eventDate.label")}
-              placeholder={t("formInputs.eventDate.placeholder")}
-            />
-          </div>
-          <ControlledSelect
-            name="eventType"
-            control={control}
-            label={t("formInputs.eventType.label")}
-            placeholder={t("formInputs.eventType.placeholder")}
-            items={eventTypeKeys.map(({ labelKey, value }) => ({
-              label: t(`formInputs.eventType.options.${labelKey}`),
-              value: value,
-            }))}
-            required
-          />
-          <ControlledInput
-            name="place"
-            control={control}
-            label={t("formInputs.place.label")}
-            placeholder={t("formInputs.place.placeholder")}
-          />
-          <ControlledTextarea
-            name="message"
-            control={control}
-            label={t("formInputs.message.label")}
-            placeholder={t("formInputs.message.placeholder")}
-            hint={t("formInputs.message.hint")}
-            className="min-h-30"
-            required
-          />
+          {step === "date" ? (
+            <>
+              <ControlledDatePicker
+                name="eventDate"
+                control={control}
+                label={t("formInputs.eventDate.label")}
+                placeholder={t("formInputs.eventDate.placeholder")}
+                disabled={{ before: getStartOfToday() }}
+                required
+              />
+              {errorMessage && <FormError error={errorMessage} />}
+              <Button disabled={isChecking} className="my-3 w-full" onClick={onCheckDate}>
+                {isChecking ? (
+                  <>
+                    <Spinner />
+                    {t("dateStep.checkingButton")}
+                  </>
+                ) : (
+                  <>{t("dateStep.checkButton")}</>
+                )}
+              </Button>
+              <FieldDescription className="text-popover-foreground/80 text-xs">
+                {t("dateStep.description")}
+              </FieldDescription>
+            </>
+          ) : (
+            <>
+              <div className="border-success-border bg-success-bg flex items-center justify-between gap-3 rounded-lg border px-4 py-3">
+                <p className="text-success-text flex items-center gap-2 text-sm">
+                  <CalendarCheck size={18} className="shrink-0" />
+                  {t("dateStep.free", {
+                    date: format.dateTime(getValues("eventDate"), { dateStyle: "long" }),
+                  })}
+                </p>
+                <Button variant="link" size="sm" onClick={() => setStep("date")}>
+                  {t("dateStep.changeButton")}
+                </Button>
+              </div>
+              <div className="flex flex-col gap-2.5 md:flex-row">
+                <ControlledInput
+                  name="firstName"
+                  control={control}
+                  label={t("formInputs.firstName.label")}
+                  placeholder={t("formInputs.firstName.placeholder")}
+                  autoComplete="given-name"
+                  required
+                />
+                <ControlledInput
+                  name="lastName"
+                  control={control}
+                  label={t("formInputs.lastName.label")}
+                  placeholder={t("formInputs.lastName.placeholder")}
+                  autoComplete="family-name"
+                  required
+                />
+              </div>
+              <div className="flex flex-col gap-2.5 md:flex-row">
+                <ControlledInput
+                  name="email"
+                  control={control}
+                  label={t("formInputs.email.label")}
+                  placeholder={t("formInputs.email.placeholder")}
+                  autoComplete="email"
+                  type="email"
+                  required
+                />
+                <ControlledInput
+                  name="phone"
+                  control={control}
+                  label={t("formInputs.phone.label")}
+                  placeholder={t("formInputs.phone.placeholder")}
+                  autoComplete="tel"
+                  type="tel"
+                  required
+                />
+              </div>
+              <ControlledSelect
+                name="eventType"
+                control={control}
+                label={t("formInputs.eventType.label")}
+                placeholder={t("formInputs.eventType.placeholder")}
+                items={eventTypeKeys.map(({ labelKey, value }) => ({
+                  label: t(`formInputs.eventType.options.${labelKey}`),
+                  value: value,
+                }))}
+                required
+              />
+              <ControlledInput
+                name="place"
+                control={control}
+                label={t("formInputs.place.label")}
+                placeholder={t("formInputs.place.placeholder")}
+                // venue address, not the client's – Chrome ignores "off" on address-like
+                // fields, an unknown token stops it from autofilling the home address
+                autoComplete="event-venue"
+                required
+              />
+              <ControlledTextarea
+                name="message"
+                control={control}
+                label={t("formInputs.message.label")}
+                placeholder={t("formInputs.message.placeholder")}
+                hint={t("formInputs.message.hint")}
+                className="min-h-30"
+              />
 
-          <ControlledCheckbox name="terms" control={control} label={t("formInputs.terms.label")} />
-          {errorMessage && <FormError error={errorMessage} />}
-          <Button disabled={isSubmitting} className="my-3 w-full" type="submit">
-            {isSubmitting ? (
-              <>
-                <Spinner />
-                {t("processButton")}
-              </>
-            ) : (
-              <>{t("submitButton")}</>
-            )}
-          </Button>
-          <FieldDescription className="text-popover-foreground/80 text-xs">
-            {t("formDescription")}
-          </FieldDescription>
+              {/* honeypot – off-screen for people, bots fill it in */}
+              <div aria-hidden className="absolute -left-[9999px]">
+                <input {...register("website")} tabIndex={-1} autoComplete="off" />
+              </div>
+
+              <ControlledCheckbox
+                name="terms"
+                control={control}
+                label={
+                  // span keeps the text and the link in one line flow (FieldLabel is flex)
+                  <span>
+                    {t.rich("formInputs.terms.label", {
+                      // new tab, so the filled-in form isn't lost
+                      link: (chunks) => (
+                        <Link
+                          href="/privacy-policy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-accent underline"
+                        >
+                          {chunks}
+                        </Link>
+                      ),
+                    })}
+                  </span>
+                }
+              />
+              {errorMessage && <FormError error={errorMessage} />}
+              <Button disabled={isSubmitting} className="my-3 w-full" type="submit">
+                {isSubmitting ? (
+                  <>
+                    <Spinner />
+                    {t("processButton")}
+                  </>
+                ) : (
+                  <>{t("submitButton")}</>
+                )}
+              </Button>
+              <FieldDescription className="text-popover-foreground/80 text-xs">
+                {t("formDescription")}
+              </FieldDescription>
+            </>
+          )}
         </FieldGroup>
       </form>
     </div>
