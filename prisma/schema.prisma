@@ -184,7 +184,7 @@ model BusinessDetails {
   country              String?
 
   userId               String       @unique
-  user                 User         @relation(fields: [userId], references: [id])
+  user                 User         @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   createdAt            DateTime      @default(now())
   updatedAt            DateTime      @updatedAt
@@ -236,16 +236,17 @@ model Event {
   status               EventStatus  @default(Pending)
 
   date                 DateTime     @db.Date
-  startsAt             DateTime
-  endsAt               DateTime
+  // hours, address and package can be missing – an accepted inquiry is filled in later
+  startsAt             DateTime?
+  endsAt               DateTime?
 
   place                String
-  address              String
+  address              String?
 
   guestCount           Int?
   message              String?
 
-  package              Package
+  package              Package?
   addons               Addon[]
   
 
@@ -255,6 +256,7 @@ model Event {
   contract             Contract?
   playlist             Playlist?
   wedding              WeddingDetails?
+  inquiry              Inquiry?
 
   createdAt            DateTime     @default(now())
   updatedAt            DateTime     @updatedAt
@@ -369,6 +371,12 @@ model Inquiry {
   message              String?
 
   termsAcceptedAt      DateTime
+  // language of the form – emails to the client use it
+  locale               String         @default("pl")
+
+  // set on accept – the event created from this inquiry
+  eventId              String?        @unique
+  event                Event?         @relation(fields: [eventId], references: [id], onDelete: SetNull)
 
   createdAt            DateTime       @default(now())
   updatedAt            DateTime       @updatedAt
