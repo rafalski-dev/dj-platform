@@ -56,7 +56,7 @@ export function EmailTemplate({
               <Text style={value}>{place || "—"}</Text>
 
               <Text style={label}>Message</Text>
-              <Text style={message_}>{message}</Text>
+              <Text style={message_}>{message || "—"}</Text>
             </Column>
           </Row>
         </Container>

@@ -1,5 +1,6 @@
 import { adminCheck } from "@/lib/auth-helpers";
 import { db } from "@/lib/db";
+import { dateFormatter } from "@/lib/utils";
 import "server-only";
 import { Prisma } from "../../generated";
 
@@ -70,3 +71,16 @@ export async function getEventToEdit(eventId: string) {
 }
 
 export type EventToEdit = NonNullable<Awaited<ReturnType<typeof getEventToEdit>>>;
+
+// Public (landing inquiry form): no admin check on purpose – it only answers free / busy,
+// never returns event details.
+export async function isDateAvailable(date: Date) {
+  const { eventDate } = dateFormatter(date);
+
+  const existingEvent = await db.event.findFirst({
+    where: { date: eventDate, status: { not: "Cancelled" } },
+    select: { id: true },
+  });
+
+  return !existingEvent;
+}

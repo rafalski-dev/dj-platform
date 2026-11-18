@@ -1,5 +1,7 @@
 import z from "zod";
 import type { useTranslations } from "next-intl";
+import { EventType } from "../../generated";
+import { dateFormatter } from "@/lib/utils";
 
 export function createNewsletterSchema(emptyEmail: string, invalidEmail: string) {
   return z.object({
@@ -11,11 +13,14 @@ type Translator = ReturnType<typeof useTranslations>;
 
 export function createContactSchema(t: Translator) {
   return z.object({
-    fullName: z
+    firstName: z
       .string()
       .trim()
-      .min(1, { error: t("formInputs.fullName.required") })
-      .refine((val) => val.split(" ").length >= 2, { error: t("formInputs.fullName.validation") }),
+      .min(1, { error: t("formInputs.firstName.required") }),
+    lastName: z
+      .string()
+      .trim()
+      .min(1, { error: t("formInputs.lastName.required") }),
     email: z
       .string()
       .trim()
@@ -28,30 +33,33 @@ export function createContactSchema(t: Translator) {
       .refine((val) => /^[+\d][\d\s-]{8,}$/.test(val), {
         error: t("formInputs.phone.validation"),
       }),
-    eventDate: z.union([
-      z
-        .string()
-        .trim()
-        .regex(/^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.\d{4}$/, {
-          error: t("formInputs.eventDate.validation"),
-        }),
-      z.literal(""),
-    ]),
-    eventType: z.string().min(1, { error: t("formInputs.eventType.required") }),
-    place: z.union([
-      z
-        .string()
-        .trim()
-        .min(3, { error: t("formInputs.place.validation") }),
-      z.literal(""),
-    ]),
+    eventDate: createEventDateSchema(t),
+    eventType: z.enum(EventType, { error: t("formInputs.eventType.required") }),
+    place: z
+      .string()
+      .trim()
+      .min(1, { error: t("formInputs.place.required") })
+      .min(3, { error: t("formInputs.place.validation") }),
     message: z
       .string()
       .trim()
-      .min(20, { error: t("formInputs.message.validationMin") })
       .max(2000, { error: t("formInputs.message.validationMax") }),
     terms: z.boolean().refine((val) => val === true, { error: t("formInputs.terms.required") }),
+    // honeypot – hidden from people, bots fill it in
+    website: z.string(),
   });
+}
+
+// Shared by step 1 (date check) and the full form
+export function createEventDateSchema(t: Translator) {
+  return (
+    z
+      .date({ error: t("formInputs.eventDate.required") })
+      // compare Warsaw days, so "today" passes on a UTC server too
+      .refine((val) => dateFormatter(val).eventDate >= dateFormatter(new Date()).eventDate, {
+        error: t("formInputs.eventDate.past"),
+      })
+  );
 }
 
 export type ContactSchema = z.infer<ReturnType<typeof createContactSchema>>;
