@@ -14,10 +14,12 @@ export async function GET(
     const result = await buildContractPdf(contractId, session.user.id);
 
     if (result.error) {
-      const error =
-        result.error === "notFound"
-          ? "Contract not found."
-          : "Business details not found. Fill them in Settings first.";
+      const errors = {
+        notFound: "Contract not found.",
+        noBusinessDetails: "Business details not found. Fill them in Settings first.",
+        missingEventHours: "The event has no hours yet. Fill them in on the event first.",
+      };
+      const error = errors[result.error];
       return Response.json({ error }, { status: 404 });
     }
 

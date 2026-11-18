@@ -12,7 +12,9 @@ export async function EventDateAndPlace({ fetchedData }: { fetchedData: EventDet
   const { date, startsAt, endsAt, place, address, guestCount } = fetchedData;
 
   const time = { hour: "2-digit", minute: "2-digit", hourCycle: "h23" } as const;
-  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${place}, ${address}`)}`;
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([place, address].filter(Boolean).join(", "))}`;
+  // hours can be missing on an event created from an inquiry
+  const hasHours = startsAt && endsAt;
 
   const details = [
     {
@@ -26,8 +28,10 @@ export async function EventDateAndPlace({ fetchedData }: { fetchedData: EventDet
     },
     {
       label: t("card.hours"),
-      value: `${format.dateTime(startsAt, time)} – ${format.dateTime(endsAt, time)}`,
-      hint: formatDuration(startsAt, endsAt),
+      value: hasHours
+        ? `${format.dateTime(startsAt, time)} – ${format.dateTime(endsAt, time)}`
+        : null,
+      hint: hasHours ? formatDuration(startsAt, endsAt) : null,
     },
     { label: t("card.place"), value: place },
     { label: t("Details.dateAndPlace.address"), value: address },
@@ -72,7 +76,7 @@ export async function EventDateAndPlace({ fetchedData }: { fetchedData: EventDet
             );
           })}
         </dl>
-        <EventTimeline startsAt={startsAt} endsAt={endsAt} />
+        {hasHours && <EventTimeline startsAt={startsAt} endsAt={endsAt} />}
       </CardContent>
     </Card>
   );

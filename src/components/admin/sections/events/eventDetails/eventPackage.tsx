@@ -23,12 +23,21 @@ export async function EventPackage({ fetchedData }: { fetchedData: EventDetails 
             <p className="text-popover-foreground text-[11.5px] tracking-wider uppercase">
               {t("card.package")}
             </p>
-            <p className="font-serif text-2xl leading-none">
-              {t(`Form.package.packages.${eventPackage}.title`)}
-            </p>
-            <p className="text-muted-foreground mt-1 text-[13.5px]">
-              {t(`Form.package.packages.${eventPackage}.description`)}
-            </p>
+            {/* no package yet on an event created from an inquiry */}
+            {eventPackage ? (
+              <>
+                <p className="font-serif text-2xl leading-none">
+                  {t(`Form.package.packages.${eventPackage}.title`)}
+                </p>
+                <p className="text-muted-foreground mt-1 text-[13.5px]">
+                  {t(`Form.package.packages.${eventPackage}.description`)}
+                </p>
+              </>
+            ) : (
+              <p className="text-muted-foreground font-serif text-2xl leading-none">
+                {t("card.notSet")}
+              </p>
+            )}
           </div>
         </div>
         <div>

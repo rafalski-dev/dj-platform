@@ -85,10 +85,11 @@ export function EditEventForm({ fetchedData, clientsList }: EditEventFormProps) 
       },
       dateAndPlace: {
         eventDate: toPickerDate(fetchedData.date),
-        eventStartTime: toWarsawTime(fetchedData.startsAt),
-        eventEndTime: toWarsawTime(fetchedData.endsAt),
+        // empty when the event came from an inquiry – the admin fills it in here
+        eventStartTime: fetchedData.startsAt ? toWarsawTime(fetchedData.startsAt) : "",
+        eventEndTime: fetchedData.endsAt ? toWarsawTime(fetchedData.endsAt) : "",
         eventPlace: fetchedData.place,
-        eventAddress: fetchedData.address,
+        eventAddress: fetchedData.address ?? "",
         weddingKind: wedding?.weddingKind,
         ceremonyDate: wedding?.ceremonyStartsAt ? toWarsawDay(wedding.ceremonyStartsAt) : undefined,
         ceremonyStartTime: wedding?.ceremonyStartsAt ? toWarsawTime(wedding.ceremonyStartsAt) : "",
@@ -96,7 +97,7 @@ export function EditEventForm({ fetchedData, clientsList }: EditEventFormProps) 
         ceremonyAddress: wedding?.ceremonyAddress ?? "",
       },
       package: {
-        eventPackage: fetchedData.package,
+        eventPackage: fetchedData.package ?? undefined,
         addons: fetchedData.addons,
         message: fetchedData.message ?? "",
       },

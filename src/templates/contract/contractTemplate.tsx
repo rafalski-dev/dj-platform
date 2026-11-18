@@ -42,7 +42,8 @@ type ContractTemplateProps = {
   signedAt: Date;
   client: Client;
   performer: BusinessDetails;
-  event: Pick<Event, "type" | "altType" | "place" | "address" | "startsAt" | "endsAt">;
+  // hours are checked before rendering (lib/contractPdf), so here they're always set
+  event: Pick<Event, "type" | "altType" | "place" | "address"> & { startsAt: Date; endsAt: Date };
 };
 
 const TIME_ZONE = "Europe/Warsaw";

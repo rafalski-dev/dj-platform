@@ -117,7 +117,8 @@ export async function EventsList({ persistedParams }: { persistedParams: Persist
                         emptyLabel={t("Events.card.notSet")}
                         className="col-span-3"
                       >
-                        {`${place}, ${address}`}
+                        {/* address can be missing on an event from an inquiry */}
+                        {[place, address].filter(Boolean).join(", ")}
                       </Detail>
                     </dl>
                   </CardContent>

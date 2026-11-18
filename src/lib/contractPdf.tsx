@@ -25,6 +25,10 @@ export async function buildContractPdf(contractId: string, userId: string) {
 
   if (!contract) return { error: "notFound" as const };
 
+  // An event from an inquiry may still miss its hours – the contract needs them
+  const { startsAt, endsAt } = contract.event;
+  if (!startsAt || !endsAt) return { error: "missingEventHours" as const };
+
   const performer = await db.businessDetails.findUnique({ where: { userId } });
 
   if (!performer) return { error: "noBusinessDetails" as const };
@@ -32,7 +36,7 @@ export async function buildContractPdf(contractId: string, userId: string) {
   const pdf = await renderToBuffer(
     <ContractTemplate
       signedAt={contract.createdAt}
-      event={contract.event}
+      event={{ ...contract.event, startsAt, endsAt }}
       client={contract.event.client}
       performer={performer}
     />,
