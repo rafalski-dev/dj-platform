@@ -7,19 +7,22 @@ import { Newsletter } from "@/components/landing/sections/newsletter/newsletter"
 import { Offer } from "@/components/landing/sections/offer/offer";
 import { Process } from "@/components/landing/sections/process/process";
 import { Reviews } from "@/components/landing/sections/reviews/reviews";
+import { InquiryProvider } from "@/components/landing/shared/inquiryProvider";
 
 export default function Home() {
   return (
     <main>
-      <Hero />
-      <About />
-      <Offer />
-      <Process />
-      <Gallery />
-      <Reviews />
-      <FAQ />
-      <Newsletter />
-      <Contact />
+      <InquiryProvider>
+        <Hero />
+        <About />
+        <Offer />
+        <Process />
+        <Gallery />
+        <Reviews />
+        <FAQ />
+        <Newsletter />
+        <Contact />
+      </InquiryProvider>
     </main>
   );
 }

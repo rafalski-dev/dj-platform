@@ -1,15 +1,13 @@
 import { Wrapper } from "../../shared/wrapper";
 import { SectionLabel } from "../shared/sections/sectionLabel";
 import { SectionDescription } from "../shared/sections/sectionDescription";
-import { buttonVariants } from "../../ui/shadcn/button";
-import { MoveRight } from "lucide-react";
 import { StarIcon } from "../../ui/icons/starIcon";
 import { getTranslations } from "next-intl/server";
 import { CustomImage } from "../shared/customImage";
 import { BgGlowOrb } from "../../ui/decorations/glowOrbs";
 import { Section } from "../shared/sections/section";
 import heroImg from "@/assets/images/hero.jpg";
-import { Link } from "@/i18n/navigation";
+import { HeroDateCheck } from "./heroDateCheck";
 
 export async function Hero() {
   const t = await getTranslations("LandingPage");
@@ -51,22 +49,10 @@ export async function Hero() {
               </div>
             </div>
             <div
-              className="flex flex-wrap gap-3 lg:mt-2 lg:gap-5"
+              className="lg:mt-2"
               style={{ animation: "rise 1s cubic-bezier(.22,.61,.36,1) 0.24s both" }}
             >
-              <Link
-                href={{ pathname: "/", hash: t("Navigation.navPaths.contact") }}
-                className={buttonVariants({ variant: "default", size: "lg" })}
-              >
-                {t("Hero.PrimaryCTA")}
-                <MoveRight />
-              </Link>
-              <Link
-                href={{ pathname: "/", hash: t("Navigation.navPaths.offer") }}
-                className={buttonVariants({ variant: "outline", size: "lg" })}
-              >
-                {t("Hero.SecondaryCTA")}
-              </Link>
+              <HeroDateCheck contactAnchor={t("Contact.id")} />
             </div>
             <div
               className="mt-6 flex items-center md:gap-2"
