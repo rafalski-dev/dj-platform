@@ -1,7 +1,5 @@
 import { adminCheck } from "@/lib/auth-helpers";
-import { db } from "@/lib/db";
-import { ContractTemplate } from "@/templates/contract/contractTemplate";
-import { renderToBuffer } from "@react-pdf/renderer";
+import { buildContractPdf } from "@/lib/contractPdf";
 import { NextRequest } from "next/server";
 
 export async function GET(
@@ -12,55 +10,18 @@ export async function GET(
 
   const { contractId } = await params;
 
-  if (!contractId) {
-    return Response.json({ message: "" }, { status: 400 });
-  }
-
   try {
-    const contract = await db.contract.findUnique({
-      where: { id: contractId },
-      select: {
-        createdAt: true,
-        event: {
-          select: {
-            type: true,
-            altType: true,
-            place: true,
-            address: true,
-            startsAt: true,
-            endsAt: true,
-            client: true,
-          },
-        },
-      },
-    });
+    const result = await buildContractPdf(contractId, session.user.id);
 
-    if (!contract) {
-      return Response.json(
-        { error: "Contract data didn't find. Please try again" },
-        { status: 404 },
-      );
+    if (result.error) {
+      const error =
+        result.error === "notFound"
+          ? "Contract not found."
+          : "Business details not found. Fill them in Settings first.";
+      return Response.json({ error }, { status: 404 });
     }
 
-    const performer = await db.businessDetails.findUnique({ where: { userId: session.user.id } });
-
-    if (!performer) {
-      return Response.json(
-        { error: "Business details not found. Fill them in Settings first." },
-        { status: 404 },
-      );
-    }
-
-    const buffer = await renderToBuffer(
-      <ContractTemplate
-        signedAt={contract.createdAt}
-        event={contract.event}
-        client={contract.event.client}
-        performer={performer}
-      />,
-    );
-
-    return new Response(new Uint8Array(buffer), {
+    return new Response(new Uint8Array(result.pdf), {
       headers: {
         "Content-Type": "application/pdf",
         "Content-Disposition": 'inline; filename="contract.pdf"',

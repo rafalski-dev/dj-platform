@@ -840,6 +840,49 @@
             "inUse": "Nie można usunąć tej umowy, bo zależą od niej inne dane.",
             "unknown": "Coś poszło nie tak. Spróbuj ponownie."
           }
+        },
+        "send": {
+          "button": "Wyślij do klienta",
+          "dialog": {
+            "title": "Wysłać umowę do klienta?",
+            "description": "Umowa zostanie zapisana jako PDF i zamrożona. Po wysłaniu zmiany danych klienta lub wydarzenia już jej nie zmienią.",
+            "cancel": "Anuluj",
+            "confirm": "Wyślij umowę",
+            "pending": "Wysyłanie..."
+          },
+          "toast": {
+            "successTitle": "Umowa wysłana",
+            "errorTitle": "Nie wysłano umowy"
+          },
+          "serverMessage": {
+            "success": "Wysłano umowę {number}.",
+            "notFound": "Ta umowa już nie istnieje.",
+            "alreadySent": "Ta umowa została już wysłana.",
+            "noBusinessDetails": "Przed wysłaniem umowy uzupełnij dane firmy w Ustawieniach.",
+            "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+          }
+        },
+        "stepper": {
+          "title": "Postęp",
+          "cancelled": "Ta umowa została anulowana.",
+          "steps": {
+            "created": {
+              "title": "Szkic utworzony",
+              "current": "Sprawdź podgląd."
+            },
+            "sent": {
+              "title": "Wysłana do klienta",
+              "current": "Sprawdź podgląd, a potem wyślij umowę do klienta."
+            },
+            "signed": {
+              "title": "Podpisana przez klienta",
+              "current": "Czekamy, aż klient podpisze umowę."
+            },
+            "accepted": {
+              "title": "Zatwierdzona",
+              "current": "Klient podpisał umowę. Zatwierdź ją, aby zakończyć."
+            }
+          }
         }
       },
       "Create": {

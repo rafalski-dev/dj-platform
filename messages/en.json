@@ -840,6 +840,49 @@
             "inUse": "This contract can't be deleted because other records still depend on it.",
             "unknown": "Something went wrong. Please try again."
           }
+        },
+        "send": {
+          "button": "Send to client",
+          "dialog": {
+            "title": "Send this contract to the client?",
+            "description": "The contract will be saved as a PDF and frozen. After sending, changes to the client or event data won't change it.",
+            "cancel": "Cancel",
+            "confirm": "Send contract",
+            "pending": "Sending..."
+          },
+          "toast": {
+            "successTitle": "Contract sent",
+            "errorTitle": "Contract not sent"
+          },
+          "serverMessage": {
+            "success": "Contract {number} has been sent.",
+            "notFound": "This contract no longer exists.",
+            "alreadySent": "This contract has already been sent.",
+            "noBusinessDetails": "Fill in your business details in Settings before sending a contract.",
+            "unknown": "Something went wrong. Please try again."
+          }
+        },
+        "stepper": {
+          "title": "Progress",
+          "cancelled": "This contract has been cancelled.",
+          "steps": {
+            "created": {
+              "title": "Draft created",
+              "current": "Check the preview."
+            },
+            "sent": {
+              "title": "Sent to client",
+              "current": "Check the preview, then send the contract to the client."
+            },
+            "signed": {
+              "title": "Signed by client",
+              "current": "Waiting for the client to sign the contract."
+            },
+            "accepted": {
+              "title": "Confirmed",
+              "current": "The client has signed. Confirm the signed contract to finish."
+            }
+          }
         }
       },
       "Create": {

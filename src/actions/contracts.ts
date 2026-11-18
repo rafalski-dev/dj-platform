@@ -1,8 +1,11 @@
 "use server";
 
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { adminCheck } from "@/lib/auth-helpers";
+import { buildContractPdf } from "@/lib/contractPdf";
 import { db } from "@/lib/db";
 import { getDbErrorKind } from "@/lib/prismaErrors";
+import { r2 } from "@/lib/r2";
 import { formatZodErrors } from "@/lib/utils";
 import { createContractSchema, CreateContractSchema } from "@/validation/contracts";
 import { getTranslations } from "next-intl/server";
@@ -74,4 +77,51 @@ export async function deleteContractAction(contractId: string) {
   }
 
   return { status: "success", success: true, message: t("success", { number: contractNumber }) };
+}
+
+export async function sendContractAction(contractId: string) {
+  const session = await adminCheck();
+  const t = await getTranslations("Admin.Contracts.Details.send.serverMessage");
+
+  const contract = await db.contract.findUnique({
+    where: { id: contractId },
+    select: { status: true, contractNumber: true },
+  });
+
+  if (!contract) return { success: false, status: "notFound", message: t("notFound") };
+
+  // Only a Draft can be sent – a sent contract is frozen
+  if (contract.status !== "Draft")
+    return { success: false, status: "invalid", message: t("alreadySent") };
+
+  try {
+    const result = await buildContractPdf(contractId, session.user.id);
+    if (result.error) return { success: false, status: "invalid", message: t(result.error) };
+
+    // 1. Upload the PDF to the private R2 bucket
+    const fileKey = `contracts/${contractId}.pdf`;
+    await r2.send(
+      new PutObjectCommand({
+        Bucket: process.env.R2_BUCKET,
+        Key: fileKey,
+        Body: result.pdf,
+        ContentType: "application/pdf",
+      }),
+    );
+
+    // 2. Only after a successful upload mark the contract as sent
+    await db.contract.update({
+      where: { id: contractId },
+      data: { status: "Sent", sentAt: new Date(), fileKey },
+    });
+  } catch (error) {
+    console.error(error);
+    return { success: false, status: "error", message: t("unknown") };
+  }
+
+  return {
+    success: true,
+    status: "success",
+    message: t("success", { number: contract.contractNumber ?? "" }),
+  };
 }
