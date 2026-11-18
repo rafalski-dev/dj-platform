@@ -10,6 +10,7 @@ import {
   DotIcon,
   FilesIcon,
   HomeIcon,
+  InboxIcon,
   ListMusicIcon,
   SettingsIcon,
   UsersIcon,
@@ -18,6 +19,7 @@ import { useTranslations } from "next-intl";
 
 const icons = {
   home: <HomeIcon size={19} strokeWidth={1.4} />,
+  inquiries: <InboxIcon size={19} strokeWidth={1.4} />,
   clients: <UsersIcon size={19} strokeWidth={1.4} />,
   events: <CalendarDaysIcon size={19} strokeWidth={1.4} />,
   contracts: <FilesIcon size={19} strokeWidth={1.4} />,

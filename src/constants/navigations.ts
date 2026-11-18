@@ -15,6 +15,7 @@ export const clientItems: ClientItem[] = [
 
 export const adminItems: AdminItem[] = [
   { navKey: "home", path: "/admin" },
+  { navKey: "inquiries", path: "/admin/inquiries" },
   { navKey: "clients", path: "/admin/clients" },
   { navKey: "events", path: "/admin/events" },
   { navKey: "contracts", path: "/admin/contracts" },

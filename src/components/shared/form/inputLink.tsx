@@ -6,7 +6,7 @@ export function InputLink({ pathname }: { pathname: Pathname }) {
   const t = useTranslations("Auth.Login");
 
   return (
-    <Link href={{ pathname: pathname }} className="text-accent-foreground text-xs tracking-wide">
+    <Link href={pathname} className="text-accent-foreground text-xs tracking-wide">
       {t("forgot-password")}
     </Link>
   );

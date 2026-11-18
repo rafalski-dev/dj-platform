@@ -57,7 +57,7 @@ export function PageTabs({ items }: PageTabsProps) {
         return (
           <Link
             key={el.key}
-            href={{ pathname: el.pathname }}
+            href={el.pathname}
             className={cn(
               "text-popover-foreground -mb-px flex flex-row items-center gap-2 border-b-2 border-transparent px-4 py-3",
               isActive && "text-foreground border-accent-foreground border-b-2",

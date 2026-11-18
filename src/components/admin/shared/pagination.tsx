@@ -3,7 +3,7 @@ import { Button, buttonVariants } from "@/components/ui/shadcn/button";
 import { Link } from "@/i18n/navigation";
 import { cn, getPaginationItems } from "@/lib/utils";
 import { PersistedParams } from "@/lib/searchParams";
-import { Pathname } from "@/types/navigation";
+import { Href, Pathname } from "@/types/navigation";
 import { useTranslations } from "next-intl";
 
 export function Pagination({
@@ -12,7 +12,8 @@ export function Pagination({
   persistedParams: { page, limit, query, filter },
 }: {
   totalPages: number;
-  persistedParams: PersistedParams;
+  // any filter (clients, inquiries) – it is only passed through to the URL
+  persistedParams: PersistedParams<string | undefined>;
   pathname: Pathname;
 }) {
   const t = useTranslations("Admin.Pagination");
@@ -36,10 +37,12 @@ export function Pagination({
           typeof item === "number" ? (
             <Link
               key={item}
-              href={{
-                pathname: pathname,
-                query: { page: item, limit: limit, query: query, filter: filter },
-              }}
+              href={
+                {
+                  pathname: pathname,
+                  query: { page: item, limit: limit, query: query, filter: filter },
+                } as Href
+              }
               className={cn(
                 buttonVariants({ variant: item === page ? "default" : "outline", size: "sm" }),
                 "size-8 px-0",
@@ -81,7 +84,7 @@ function ArrowLeft({
   query,
   filter,
   pathname,
-}: { isDisabled: boolean; pathname: Pathname } & PersistedParams) {
+}: { isDisabled: boolean; pathname: Pathname } & PersistedParams<string | undefined>) {
   const t = useTranslations("Admin.Pagination");
 
   if (isDisabled)
@@ -100,10 +103,12 @@ function ArrowLeft({
   return (
     <Link
       aria-label={t("previous")}
-      href={{
-        pathname: pathname,
-        query: { page: page - 1, limit: limit, query: query, filter: filter },
-      }}
+      href={
+        {
+          pathname: pathname,
+          query: { page: page - 1, limit: limit, query: query, filter: filter },
+        } as Href
+      }
       className={cn(buttonVariants({ variant: "outline", size: "sm" }), "h-10 w-10 px-0 md:h-8")}
     >
       <ChevronLeft className="text-accent-foreground" />
@@ -118,7 +123,7 @@ function ArrowRight({
   query,
   filter,
   pathname,
-}: { isDisabled: boolean; pathname: Pathname } & PersistedParams) {
+}: { isDisabled: boolean; pathname: Pathname } & PersistedParams<string | undefined>) {
   const t = useTranslations("Admin.Pagination");
 
   if (isDisabled)
@@ -137,10 +142,12 @@ function ArrowRight({
   return (
     <Link
       aria-label={t("next")}
-      href={{
-        pathname: pathname,
-        query: { page: page + 1, limit: limit, query: query, filter: filter },
-      }}
+      href={
+        {
+          pathname: pathname,
+          query: { page: page + 1, limit: limit, query: query, filter: filter },
+        } as Href
+      }
       className={cn(buttonVariants({ variant: "outline", size: "sm" }), "h-10 w-10 px-0 md:h-8")}
     >
       <ChevronRight className="text-accent-foreground" />

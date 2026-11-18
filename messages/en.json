@@ -716,6 +716,18 @@
       "expiry": "This link is valid for one hour and can be used only once.",
       "fallback": "If the button doesn't work, copy the address below and paste it into your browser:",
       "ignore": "If you didn't ask for this, ignore this message. Nothing will change."
+    },
+    "InquiryAccepted": {
+      "subject": "{date} is confirmed",
+      "preview": "Your date {date} is confirmed – fill in the details for the contract.",
+      "heading": "Your date is confirmed",
+      "greeting": "Hi {name},",
+      "intro": "thank you for your inquiry! I'm confirming {date}. To prepare the contract, I need a few more details.",
+      "register": "Create an account in the client panel using {email} – after confirming the address you'll see your event and can fill in the details. You can also sign in with Google using the same address.",
+      "login": "Sign in to the client panel – your event is already waiting there.",
+      "registerButton": "Create account",
+      "loginButton": "Sign in",
+      "footnote": "If you have any questions, just reply to this email or give me a call."
     }
   },
   "NotFoundPage": {
@@ -782,6 +794,7 @@
         "logoutBtn": "Log out",
         "navItems": {
           "home": "Home",
+          "inquiries": "Inquiries",
           "clients": "Clients",
           "events": "Events",
           "contracts": "Contracts",
@@ -816,7 +829,8 @@
       "account-details": "Account",
       "business-details": "Business details",
       "create": "New",
-      "edit": "Edit"
+      "edit": "Edit",
+      "inquiries": "Inquiries"
     },
     "GeneralCardHeader": {
       "add": "Add",
@@ -906,7 +920,8 @@
             "notFound": "This contract no longer exists.",
             "alreadySent": "This contract has already been sent.",
             "noBusinessDetails": "Fill in your business details in Settings before sending a contract.",
-            "unknown": "Something went wrong. Please try again."
+            "unknown": "Something went wrong. Please try again.",
+            "missingEventHours": "The event has no hours yet. Fill them in on the event before sending the contract."
           }
         },
         "stepper": {
@@ -1777,6 +1792,114 @@
         "toast": {
           "successTitle": "Changes saved",
           "errorTitle": "Changes not saved"
+        }
+      }
+    },
+    "Inquiries": {
+      "title": "Inquiries",
+      "count": "{count, plural, one {# inquiry} other {# inquiries}}",
+      "searchBar": {
+        "placeholder": "Search by name, email, place..."
+      },
+      "filters": {
+        "new": "New",
+        "accepted": "Accepted",
+        "rejected": "Rejected",
+        "all": "All"
+      },
+      "status": {
+        "New": "New",
+        "Accepted": "Accepted",
+        "Rejected": "Rejected"
+      },
+      "card": {
+        "place": "Place",
+        "received": "Received",
+        "dateTaken": "Date taken"
+      },
+      "empty": {
+        "noInquiries": {
+          "title": "No inquiries",
+          "description": "There are no inquiries here yet. They show up when someone sends the form on the website."
+        },
+        "notFound": {
+          "title": "Page not found",
+          "description": "This inquiry doesn't exist. Check the address and try again.",
+          "action": "Back to inquiries"
+        },
+        "error": {
+          "title": "Couldn't load the data",
+          "description": "Try again in a moment. If the problem continues, refresh the page.",
+          "action": "Try again"
+        }
+      },
+      "Details": {
+        "dateTaken": "There's already an event on this day. This inquiry can't be accepted – reject it or move the existing event.",
+        "header": {
+          "received": "Received"
+        },
+        "info": {
+          "title": "Event",
+          "date": "Date",
+          "type": "Type",
+          "place": "Place",
+          "consent": "Data processing consent",
+          "message": "Message",
+          "noMessage": "No message"
+        },
+        "contact": {
+          "title": "Contact",
+          "email": "Email",
+          "phone": "Phone",
+          "existingClient": "Client {name} already exists – the event will be linked to them.",
+          "newClient": "Accepting creates a new client.",
+          "openClient": "Open client"
+        },
+        "event": {
+          "title": "Created event",
+          "description": "Fill in the hours, address and package on the event.",
+          "open": "Go to event"
+        },
+        "accept": {
+          "button": "Accept",
+          "dialog": {
+            "title": "Accept this inquiry?",
+            "description": "An event is created from the inquiry (and a client, if there isn't one yet), and the client gets a confirmation email with a link to the client panel.",
+            "cancel": "Cancel",
+            "confirm": "Accept",
+            "pending": "Accepting"
+          },
+          "toast": {
+            "successTitle": "Inquiry accepted",
+            "errorTitle": "Inquiry not accepted"
+          },
+          "serverMessage": {
+            "success": "The event was created and the client got a confirmation email.",
+            "notFound": "This inquiry no longer exists.",
+            "alreadyHandled": "This inquiry has already been handled.",
+            "dateTaken": "There's already an event on this day.",
+            "unknown": "Something went wrong. Please try again.",
+            "successNoEmail": "The event was created, but the email to the client failed. Please contact them yourself."
+          }
+        },
+        "reject": {
+          "button": "Reject",
+          "dialog": {
+            "title": "Reject this inquiry?",
+            "description": "The inquiry moves to rejected. The client won't get a message.",
+            "cancel": "Cancel",
+            "confirm": "Reject",
+            "pending": "Rejecting"
+          },
+          "toast": {
+            "successTitle": "Inquiry rejected",
+            "errorTitle": "Inquiry not rejected"
+          },
+          "serverMessage": {
+            "success": "The inquiry has been rejected.",
+            "alreadyHandled": "This inquiry has already been handled.",
+            "unknown": "Something went wrong. Please try again."
+          }
         }
       }
     }

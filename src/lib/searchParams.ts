@@ -1,8 +1,8 @@
-export type PersistedParams = {
+export type PersistedParams<TFilter = ReturnType<typeof getFormattedFilter>> = {
   page: ReturnType<typeof getFormattedPage>;
   limit: number;
   query?: ReturnType<typeof getFormattedQuery>;
-  filter?: ReturnType<typeof getFormattedFilter>;
+  filter?: TFilter;
 };
 
 export const ROWS_PER_PAGE = [6, 12, 18, 24] as const;
@@ -32,6 +32,20 @@ export function getFormattedQuery(rawQuery: string | string[] | undefined) {
   if (!formatted.length) return undefined;
 
   return formatted;
+}
+
+// Inquiries: no filter = "new" (what the DJ checks every day)
+export type InquiryFilterType = ReturnType<typeof getFormattedInquiryFilter>;
+
+export function getFormattedInquiryFilter(rawFilter: string | string[] | undefined) {
+  switch (rawFilter) {
+    case "accepted":
+    case "rejected":
+    case "all":
+      return rawFilter;
+    default:
+      return undefined;
+  }
 }
 
 export type FilterType = ReturnType<typeof getFormattedFilter>;

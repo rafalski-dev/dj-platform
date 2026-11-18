@@ -1,12 +1,13 @@
 import { cn } from "@/lib/utils";
 import { LogoProps } from "@/types/sharedComponents";
 import { Link } from "@/i18n/navigation";
+import { Href } from "@/types/navigation";
 import { AudioLines } from "lucide-react";
 
 export function Logo({ iconSize, className, href, ...rest }: LogoProps) {
   return (
     <Link
-      href={{ pathname: href, hash: "top" }}
+      href={{ pathname: href, hash: "top" } as Href}
       className={cn(`flex items-center gap-2 lg:gap-3`, className)}
       {...rest}
     >

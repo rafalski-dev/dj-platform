@@ -716,6 +716,18 @@
       "expiry": "Link jest ważny przez godzinę i można go użyć tylko raz.",
       "fallback": "Jeśli przycisk nie działa, skopiuj poniższy adres i wklej go w przeglądarce:",
       "ignore": "Jeśli to nie Ty, zignoruj tę wiadomość. Nic się nie zmieni."
+    },
+    "InquiryAccepted": {
+      "subject": "Termin {date} potwierdzony",
+      "preview": "Twój termin {date} jest potwierdzony – uzupełnij dane do umowy.",
+      "heading": "Twój termin jest potwierdzony",
+      "greeting": "Cześć {name},",
+      "intro": "dziękuję za zapytanie! Potwierdzam termin {date}. Żeby przygotować umowę, potrzebuję jeszcze kilku informacji.",
+      "register": "Załóż konto w panelu klienta, używając adresu {email} – po potwierdzeniu adresu zobaczysz swoje wydarzenie i uzupełnisz dane. Możesz też zalogować się przez Google na ten sam adres.",
+      "login": "Zaloguj się do panelu klienta – Twoje wydarzenie już tam na Ciebie czeka.",
+      "registerButton": "Załóż konto",
+      "loginButton": "Zaloguj się",
+      "footnote": "Jeśli masz pytania, po prostu odpowiedz na tę wiadomość albo zadzwoń."
     }
   },
   "NotFoundPage": {
@@ -782,6 +794,7 @@
         "logoutBtn": "Wyloguj się",
         "navItems": {
           "home": "Strona główna",
+          "inquiries": "Zapytania",
           "clients": "Klienci",
           "events": "Wydarzenia",
           "contracts": "Umowy",
@@ -816,7 +829,8 @@
       "account-details": "Konto",
       "business-details": "Dane firmy",
       "create": "Dodaj",
-      "edit": "Edytuj"
+      "edit": "Edytuj",
+      "inquiries": "Zapytania"
     },
     "GeneralCardHeader": {
       "add": "Dodaj",
@@ -906,7 +920,8 @@
             "notFound": "Ta umowa już nie istnieje.",
             "alreadySent": "Ta umowa została już wysłana.",
             "noBusinessDetails": "Przed wysłaniem umowy uzupełnij dane firmy w Ustawieniach.",
-            "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+            "unknown": "Coś poszło nie tak. Spróbuj ponownie.",
+            "missingEventHours": "Wydarzenie nie ma jeszcze godzin. Uzupełnij je w wydarzeniu przed wysłaniem umowy."
           }
         },
         "stepper": {
@@ -1775,6 +1790,114 @@
             "success": "Klient {name} został usunięty.",
             "notFound": "Ten klient już nie istnieje.",
             "inUse": "Nie można usunąć klienta, bo inne dane są z nim nadal powiązane.",
+            "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+          }
+        }
+      }
+    },
+    "Inquiries": {
+      "title": "Zapytania",
+      "count": "{count, plural, one {# zapytanie} few {# zapytania} many {# zapytań} other {# zapytania}}",
+      "searchBar": {
+        "placeholder": "Szukaj po imieniu, nazwisku, e-mailu, miejscu..."
+      },
+      "filters": {
+        "new": "Nowe",
+        "accepted": "Zaakceptowane",
+        "rejected": "Odrzucone",
+        "all": "Wszystkie"
+      },
+      "status": {
+        "New": "Nowe",
+        "Accepted": "Zaakceptowane",
+        "Rejected": "Odrzucone"
+      },
+      "card": {
+        "place": "Miejsce",
+        "received": "Wpłynęło",
+        "dateTaken": "Termin zajęty"
+      },
+      "empty": {
+        "noInquiries": {
+          "title": "Brak zapytań",
+          "description": "Nie ma tu jeszcze żadnych zapytań. Pojawią się, gdy ktoś wyśle formularz ze strony."
+        },
+        "notFound": {
+          "title": "Nie znaleziono strony",
+          "description": "To zapytanie nie istnieje. Sprawdź adres i spróbuj ponownie.",
+          "action": "Wróć do listy zapytań"
+        },
+        "error": {
+          "title": "Nie udało się wczytać danych",
+          "description": "Spróbuj ponownie za chwilę. Jeśli problem się powtarza, odśwież stronę.",
+          "action": "Spróbuj ponownie"
+        }
+      },
+      "Details": {
+        "dateTaken": "Na ten dzień jest już wydarzenie. Tego zapytania nie można zaakceptować – odrzuć je albo zmień termin istniejącego wydarzenia.",
+        "header": {
+          "received": "Wpłynęło"
+        },
+        "info": {
+          "title": "Wydarzenie",
+          "date": "Data",
+          "type": "Rodzaj",
+          "place": "Miejsce",
+          "consent": "Zgoda na przetwarzanie danych",
+          "message": "Wiadomość",
+          "noMessage": "Brak wiadomości"
+        },
+        "contact": {
+          "title": "Kontakt",
+          "email": "E-mail",
+          "phone": "Telefon",
+          "existingClient": "Klient {name} już istnieje – wydarzenie zostanie do niego przypisane.",
+          "newClient": "Po akceptacji powstanie nowy klient.",
+          "openClient": "Otwórz klienta"
+        },
+        "event": {
+          "title": "Utworzone wydarzenie",
+          "description": "Uzupełnij godziny, adres i pakiet w wydarzeniu.",
+          "open": "Przejdź do wydarzenia"
+        },
+        "accept": {
+          "button": "Akceptuj",
+          "dialog": {
+            "title": "Zaakceptować zapytanie?",
+            "description": "Powstanie wydarzenie z danymi z zapytania (i klient, jeśli jeszcze go nie ma), a klient dostanie maila z potwierdzeniem i linkiem do panelu klienta.",
+            "cancel": "Anuluj",
+            "confirm": "Akceptuj",
+            "pending": "Akceptowanie"
+          },
+          "toast": {
+            "successTitle": "Zapytanie zaakceptowane",
+            "errorTitle": "Nie zaakceptowano zapytania"
+          },
+          "serverMessage": {
+            "success": "Utworzono wydarzenie i wysłano klientowi maila z potwierdzeniem.",
+            "notFound": "To zapytanie już nie istnieje.",
+            "alreadyHandled": "To zapytanie zostało już rozpatrzone.",
+            "dateTaken": "Na ten dzień jest już wydarzenie.",
+            "unknown": "Coś poszło nie tak. Spróbuj ponownie.",
+            "successNoEmail": "Utworzono wydarzenie, ale nie udało się wysłać maila do klienta. Skontaktuj się z nim sam."
+          }
+        },
+        "reject": {
+          "button": "Odrzuć",
+          "dialog": {
+            "title": "Odrzucić zapytanie?",
+            "description": "Zapytanie trafi do odrzuconych. Klient nie dostanie wiadomości.",
+            "cancel": "Anuluj",
+            "confirm": "Odrzuć",
+            "pending": "Odrzucanie"
+          },
+          "toast": {
+            "successTitle": "Zapytanie odrzucone",
+            "errorTitle": "Nie odrzucono zapytania"
+          },
+          "serverMessage": {
+            "success": "Zapytanie zostało odrzucone.",
+            "alreadyHandled": "To zapytanie zostało już rozpatrzone.",
             "unknown": "Coś poszło nie tak. Spróbuj ponownie."
           }
         }

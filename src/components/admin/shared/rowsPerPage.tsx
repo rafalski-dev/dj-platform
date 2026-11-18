@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { PersistedParams } from "@/lib/searchParams";
 import { cn } from "@/lib/utils";
-import { Pathname } from "@/types/navigation";
+import { Href, Pathname } from "@/types/navigation";
 import { useTranslations } from "next-intl";
 
 export function RowsPerPage({
@@ -11,7 +11,8 @@ export function RowsPerPage({
 }: {
   limitsOption: readonly number[];
   pathname: Pathname;
-  persistedParams: PersistedParams;
+  // any filter (clients, inquiries) – it is only passed through to the URL
+  persistedParams: PersistedParams<string | undefined>;
 }) {
   const t = useTranslations("Admin.Pagination");
 
@@ -27,10 +28,12 @@ export function RowsPerPage({
                 rows === limit && "bg-accent-foreground/10 text-accent-foreground",
               )}
               key={rows}
-              href={{
-                pathname: pathname,
-                query: { limit: rows, page: 1, query, filter },
-              }}
+              href={
+                {
+                  pathname: pathname,
+                  query: { limit: rows, page: 1, query, filter },
+                } as Href
+              }
               scroll={false}
             >
               {rows}
