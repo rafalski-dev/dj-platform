@@ -7,13 +7,15 @@ import { useTranslations } from "next-intl";
 import { LogOutIcon } from "lucide-react";
 import { toast } from "@/components/ui/shadcn/toast";
 import { Button } from "@/components/ui/shadcn/button";
+import { useState } from "react";
 
 export function LogoutButton() {
   const t = useTranslations("");
-
+  const [isLoading, setIsLoading] = useState(false);
   const { replace } = useRouter();
 
   async function logout() {
+    setIsLoading(true);
     try {
       const { error } = await authClient.signOut();
 
@@ -35,11 +37,12 @@ export function LogoutButton() {
         title: t("Auth.Logout.unexpectedError.title"),
         description: t("Errors.default"),
       });
+      setIsLoading(false);
     }
   }
 
   return (
-    <Button variant="outline" onClick={logout}>
+    <Button variant="outline" onClick={logout} disabled={isLoading}>
       <LogOutIcon />
       {t("Admin.Header.nav.logoutBtn")}
     </Button>
