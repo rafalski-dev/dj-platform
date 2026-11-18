@@ -83,6 +83,7 @@ export async function getContractDetails(contractId: string) {
       status: true,
       createdAt: true,
       updatedAt: true,
+      sentAt: true,
       event: { select: { id: true, name: true, clientId: true } },
     },
   });
