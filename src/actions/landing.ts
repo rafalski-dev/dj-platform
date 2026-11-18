@@ -18,7 +18,7 @@ import {
 } from "@/validation/landing";
 import { TZDate } from "@date-fns/tz";
 import { format } from "date-fns";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import z from "zod";
 
 export async function checkDateAction(date: Date): Promise<CheckDateResult> {
@@ -98,6 +98,7 @@ export async function sendContactFormAction(formData: ContactSchema): Promise<Co
         place: validatedFormData.place,
         message: validatedFormData.message || null,
         termsAcceptedAt: new Date(),
+        locale: await getLocale(),
       },
     });
   } catch (err) {

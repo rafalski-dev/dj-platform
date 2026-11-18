@@ -2,6 +2,7 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { db } from "./db";
 import { resend } from "./resend";
+import { linkClientAccount } from "./linkClientAccount";
 import { siteConfig } from "@/config/site";
 import { ForeignUserTemplate } from "@/templates/emails/foreignUserTemplate";
 import { ResetPasswordTemplate } from "@/templates/emails/resetPasswordTemplate";
@@ -40,6 +41,15 @@ export const auth = betterAuth({
   database: prismaAdapter(db, {
     provider: "postgresql",
   }),
+
+  // Link the account with the client record of the same, verified email:
+  // create → Google sign-up (email already verified), update → email just verified
+  databaseHooks: {
+    user: {
+      create: { after: async (user) => linkClientAccount(user) },
+      update: { after: async (user) => linkClientAccount(user) },
+    },
+  },
 
   user: {
     changeEmail: {
