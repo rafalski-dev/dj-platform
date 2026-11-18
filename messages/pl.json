@@ -745,6 +745,12 @@
       "contracts": "Twoje umowy",
       "playlists": "Twoje playlisty",
       "settings": "Ustawienia"
+    },
+    "Contract": {
+      "empty": {
+        "title": "Twoja umowa nie jest jeszcze gotowa",
+        "description": "Przygotowujemy ją. Gdy będzie gotowa, pobierzesz ją tutaj, a my damy Ci znać mailem."
+      }
     }
   },
   "Admin": {

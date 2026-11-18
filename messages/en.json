@@ -745,6 +745,12 @@
       "contracts": "Your contracts",
       "playlists": "Your playlists",
       "settings": "Settings"
+    },
+    "Contract": {
+      "empty": {
+        "title": "Your contract isn't ready yet",
+        "description": "We're preparing it. As soon as it's ready, you'll be able to download it here, and we'll let you know by email."
+      }
     }
   },
   "Admin": {
