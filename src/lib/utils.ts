@@ -113,7 +113,8 @@ export function getRelevantEvent<T extends EventStatusType>(events: T[]) {
 }
 
 export function isNavItemActive(pathname: string, navPath: Pathname) {
-  return navPath === "/admin"
+  // The panel home pages would otherwise be "active" on every page below them
+  return navPath === "/admin" || navPath === "/dashboard"
     ? pathname === navPath
     : pathname === navPath || pathname.startsWith(navPath);
 }

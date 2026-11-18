@@ -107,6 +107,22 @@ export const routing = defineRouting({
       pl: "/panel-klienta",
       en: "/dashboard",
     },
+    "/dashboard/events": {
+      pl: "/panel-klienta/wydarzenia",
+      en: "/dashboard/events",
+    },
+    "/dashboard/contracts": {
+      pl: "/panel-klienta/umowy",
+      en: "/dashboard/contracts",
+    },
+    "/dashboard/playlists": {
+      pl: "/panel-klienta/listy-utworow",
+      en: "/dashboard/playlists",
+    },
+    "/dashboard/settings": {
+      pl: "/panel-klienta/ustawienia",
+      en: "/dashboard/settings",
+    },
     "/terms-and-conditions": {
       en: "/terms-and-conditions",
       pl: "/regulamin",

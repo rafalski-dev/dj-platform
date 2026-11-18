@@ -724,6 +724,27 @@
       "description": "Twój adres email został pomyślnie zweryfikowany. Przeniesiemy Cię do panelu klienta za ",
       "extraMessage": "Nie chcesz czekać? Skorzystaj z przycisku poniżej.",
       "primaryButton": "Panel klienta"
+    },
+    "Header": {
+      "openMenu": "Otwórz menu",
+      "closeMenu": "Zamknij menu",
+      "nav": {
+        "title": "Panel klienta",
+        "navItems": {
+          "home": "Strona główna",
+          "events": "Wydarzenia",
+          "contracts": "Umowy",
+          "playlists": "Playlisty",
+          "settings": "Ustawienia"
+        }
+      }
+    },
+    "Pages": {
+      "home": "Strona główna",
+      "events": "Twoje wydarzenia",
+      "contracts": "Twoje umowy",
+      "playlists": "Twoje playlisty",
+      "settings": "Ustawienia"
     }
   },
   "Admin": {

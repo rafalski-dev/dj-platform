@@ -17,3 +17,8 @@ export type AdminItem = {
   navKey: "home" | "clients" | "events" | "contracts" | "playlists" | "settings";
   path: Pathname;
 };
+
+export type DashboardItem = {
+  navKey: "home" | "events" | "contracts" | "playlists" | "settings";
+  path: Pathname;
+};

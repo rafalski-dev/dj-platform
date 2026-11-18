@@ -724,6 +724,27 @@
       "description": "Your email has been verified successfully. You will be redirected to your dashboard in ",
       "extraMessage": "Don't want to wait? Use button below.",
       "primaryButton": "Client dashboard"
+    },
+    "Header": {
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "nav": {
+        "title": "Client panel",
+        "navItems": {
+          "home": "Home",
+          "events": "Events",
+          "contracts": "Contracts",
+          "playlists": "Playlists",
+          "settings": "Settings"
+        }
+      }
+    },
+    "Pages": {
+      "home": "Home",
+      "events": "Your events",
+      "contracts": "Your contracts",
+      "playlists": "Your playlists",
+      "settings": "Settings"
     }
   },
   "Admin": {
