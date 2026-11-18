@@ -94,6 +94,12 @@ enum PlaylistStatus {
     Locked
 }
 
+enum InquiryStatus {
+    New
+    Accepted
+    Rejected
+}
+
 model User {
   id                String    @id @default(cuid())
   name              String
@@ -347,4 +353,36 @@ model ClientNote {
   updatedAt     DateTime    @updatedAt()
 
   @@map("client_note")
+}
+model Inquiry {
+  id                   String         @id @default(cuid())
+  status               InquiryStatus  @default(New)
+
+  firstName            String
+  lastName             String
+  email                String
+  phone                String
+
+  date                 DateTime       @db.Date
+  type                 EventType
+  place                String
+  message              String?
+
+  termsAcceptedAt      DateTime
+
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime       @updatedAt
+
+  @@index([date])
+  @@index([status])
+  @@map("inquiry")
+}
+
+// One row per action + IP – a fixed-window counter (see src/lib/rateLimit.ts)
+model RateLimit {
+  key                  String         @id
+  count                Int
+  windowStart          DateTime
+
+  @@map("rate_limit")
 }
