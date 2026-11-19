@@ -761,18 +761,19 @@
       "openMenu": "Otwórz menu",
       "closeMenu": "Zamknij menu",
       "nav": {
-        "title": "Panel klienta",
+        "eventTitle": "Wydarzenie",
+        "accountTitle": "Konto",
+        "afterConfirmation": "Dostępne po potwierdzeniu wydarzenia",
         "navItems": {
-          "home": "Strona główna",
-          "events": "Wydarzenia",
-          "contracts": "Umowy",
-          "playlists": "Playlisty",
+          "home": "Przegląd",
+          "contracts": "Umowa",
+          "playlists": "Playlista",
           "settings": "Ustawienia"
         }
       }
     },
     "Pages": {
-      "home": "Strona główna",
+      "home": "Przegląd",
       "events": "Twoje wydarzenia",
       "contracts": "Twoje umowy",
       "playlists": "Twoje playlisty",
@@ -782,6 +783,36 @@
       "empty": {
         "title": "Twoja umowa nie jest jeszcze gotowa",
         "description": "Przygotowujemy ją. Gdy będzie gotowa, pobierzesz ją tutaj, a my damy Ci znać mailem."
+      }
+    },
+    "EventSelector": {
+      "change": "Zmień wydarzenie",
+      "status": {
+        "inquiry": "Oczekuje na potwierdzenie",
+        "Pending": "Potwierdzone",
+        "Active": "Aktywne",
+        "Completed": "Zakończone",
+        "Cancelled": "Odwołane",
+        "Archived": "Zarchiwizowane"
+      },
+      "empty": {
+        "title": "Brak wydarzeń",
+        "action": "Wyślij zapytanie"
+      }
+    },
+    "Overview": {
+      "welcome": "Witaj,",
+      "empty": {
+        "label": "Pierwszy krok",
+        "title": "Kiedy planujesz imprezę?",
+        "description": "Sprawdź, czy termin jest wolny, i wyślij zapytanie. Gdy DJ je potwierdzi, wydarzenie pojawi się tutaj.",
+        "action": "Wyślij zapytanie",
+        "sentTitle": "Zapytanie wysłane"
+      },
+      "inquiry": {
+        "status": "Oczekuje na potwierdzenie",
+        "description": "DJ sprawdza termin. Gdy go potwierdzi, damy Ci znać mailem.",
+        "daysLeft": "{count, plural, one {dzień} other {dni}} do wydarzenia"
       }
     }
   },

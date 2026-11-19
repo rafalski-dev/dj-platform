@@ -10,6 +10,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/shadcn/avatar";
 import { Button } from "@/components/ui/shadcn/button";
 import { LogoutButton } from "@/components/admin/shared/logoutButton";
 import { NavigationClientContent } from "@/components/client/layout/navigation/navigations";
+import { EventSelector } from "@/components/client/layout/navigation/eventSelector";
+import { getSelectedEventOption } from "@/data/dashboard";
 import { getSession } from "@/lib/auth-helpers";
 import { cn, createInitials } from "@/lib/utils";
 import { XIcon } from "lucide-react";
@@ -17,7 +19,7 @@ import { getTranslations } from "next-intl/server";
 
 export async function NavigationClientMobile({ display }: { display: string }) {
   const t = await getTranslations("Dashboard.Header");
-  const session = await getSession();
+  const [session, selected] = await Promise.all([getSession(), getSelectedEventOption()]);
   const clientName = session?.user.name ?? "";
   const clientEmail = session?.user.email ?? "";
 
@@ -52,7 +54,10 @@ export async function NavigationClientMobile({ display }: { display: string }) {
             <XIcon />
           </SheetClose>
         </SheetHeader>
-        <NavigationClientContent />
+        <NavigationClientContent
+          eventSelector={<EventSelector />}
+          hasEvent={selected?.kind === "event"}
+        />
         <SheetFooter>
           <LogoutButton />
         </SheetFooter>

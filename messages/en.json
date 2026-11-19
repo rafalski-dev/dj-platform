@@ -761,18 +761,19 @@
       "openMenu": "Open menu",
       "closeMenu": "Close menu",
       "nav": {
-        "title": "Client panel",
+        "eventTitle": "Event",
+        "accountTitle": "Account",
+        "afterConfirmation": "Available once the event is confirmed",
         "navItems": {
-          "home": "Home",
-          "events": "Events",
-          "contracts": "Contracts",
-          "playlists": "Playlists",
+          "home": "Overview",
+          "contracts": "Contract",
+          "playlists": "Playlist",
           "settings": "Settings"
         }
       }
     },
     "Pages": {
-      "home": "Home",
+      "home": "Overview",
       "events": "Your events",
       "contracts": "Your contracts",
       "playlists": "Your playlists",
@@ -782,6 +783,36 @@
       "empty": {
         "title": "Your contract isn't ready yet",
         "description": "We're preparing it. As soon as it's ready, you'll be able to download it here, and we'll let you know by email."
+      }
+    },
+    "EventSelector": {
+      "change": "Change event",
+      "status": {
+        "inquiry": "Awaiting confirmation",
+        "Pending": "Confirmed",
+        "Active": "Active",
+        "Completed": "Completed",
+        "Cancelled": "Cancelled",
+        "Archived": "Archived"
+      },
+      "empty": {
+        "title": "No events yet",
+        "action": "Send an inquiry"
+      }
+    },
+    "Overview": {
+      "welcome": "Welcome,",
+      "empty": {
+        "label": "First step",
+        "title": "When is your party?",
+        "description": "Check if the date is free and send an inquiry. Once the DJ confirms it, your event will show up here.",
+        "action": "Send an inquiry",
+        "sentTitle": "Inquiry sent"
+      },
+      "inquiry": {
+        "status": "Awaiting confirmation",
+        "description": "The DJ is checking the date. Once it's confirmed, we'll let you know by email.",
+        "daysLeft": "{count, plural, one {day} other {days}} to the event"
       }
     }
   },

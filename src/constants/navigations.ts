@@ -23,10 +23,14 @@ export const adminItems: AdminItem[] = [
   { navKey: "settings", path: "/admin/settings/account-details" },
 ];
 
-export const dashboardItems: DashboardItem[] = [
+// Client panel: the event group follows the selector, the account group doesn't.
+// requiresEvent – greyed out while there is no confirmed event (only an inquiry or nothing)
+export const dashboardEventItems: DashboardItem[] = [
   { navKey: "home", path: "/dashboard" },
-  { navKey: "events", path: "/dashboard/events" },
-  { navKey: "contracts", path: "/dashboard/contracts" },
-  { navKey: "playlists", path: "/dashboard/playlists" },
+  { navKey: "contracts", path: "/dashboard/contracts", requiresEvent: true },
+  { navKey: "playlists", path: "/dashboard/playlists", requiresEvent: true },
+];
+
+export const dashboardAccountItems: DashboardItem[] = [
   { navKey: "settings", path: "/dashboard/settings" },
 ];
