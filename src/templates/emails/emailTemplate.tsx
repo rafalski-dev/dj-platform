@@ -1,5 +1,6 @@
 import {
   Body,
+  Button,
   Column,
   Container,
   Head,
@@ -21,6 +22,7 @@ export function EmailTemplate({
   eventType,
   place,
   message,
+  inquiryUrl,
 }: EmailTemplateProps) {
   return (
     <Html lang="en">
@@ -31,7 +33,7 @@ export function EmailTemplate({
           <Row>
             <Column style={cardPad}>
               <Heading style={heading}>New booking enquiry</Heading>
-              <Text style={intro}>A new message just arrived from your website contact form.</Text>
+              <Text style={intro}>A new booking enquiry has just arrived.</Text>
 
               <Hr />
 
@@ -57,6 +59,13 @@ export function EmailTemplate({
 
               <Text style={label}>Message</Text>
               <Text style={message_}>{message || "—"}</Text>
+
+              {/* read the details first, then decide */}
+              <Hr style={divider} />
+              <Button href={inquiryUrl} style={buttonStyle}>
+                Review enquiry
+              </Button>
+              <Text style={hint}>Accept or reject it in the admin panel.</Text>
             </Column>
           </Row>
         </Container>
@@ -92,6 +101,29 @@ const intro = {
   fontSize: "14px",
   margin: "0 0 8px",
   color: "#666666",
+};
+
+// same as the client emails (foreignUserTemplate)
+const buttonStyle = {
+  backgroundColor: "#987032",
+  borderRadius: "6px",
+  color: "#ffffff",
+  fontSize: "15px",
+  fontWeight: "bold" as const,
+  padding: "12px 24px",
+  textDecoration: "none",
+  display: "inline-block",
+  margin: "4px 0 4px",
+};
+
+const hint = {
+  fontSize: "13px",
+  margin: "0",
+  color: "#888888",
+};
+
+const divider = {
+  margin: "24px 0 20px",
 };
 
 const label = {

@@ -60,4 +60,6 @@ export type EmailTemplateProps = {
   eventType: string;
   place: string;
   message: string;
+  // the inquiry's page in the admin panel – accept / reject happen there
+  inquiryUrl: string;
 };

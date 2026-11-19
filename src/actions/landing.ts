@@ -5,6 +5,8 @@ import { resend } from "@/lib/resend";
 import { eventTypeKeys } from "@/constants/contact";
 import { isDateAvailable } from "@/data/events";
 import { siteConfig } from "@/config/site";
+import { getPathname } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 import { db } from "@/lib/db";
 import { rateLimit } from "@/lib/rateLimit";
 import { dateFormatter } from "@/lib/utils";
@@ -82,12 +84,14 @@ export async function sendContactFormAction(formData: ContactSchema): Promise<Co
   // Honeypot filled → bot. Pretend success, save nothing.
   if (website) return { success: true, status: "success", message: t("serverMessage.success") };
 
+  let inquiryId: string;
+
   try {
     // The date could have been taken between step 1 and sending the form
     const isFree = await isDateAvailable(validatedFormData.eventDate);
     if (!isFree) return { success: false, status: "busy", message: t("busy.description") };
 
-    await db.inquiry.create({
+    ({ id: inquiryId } = await db.inquiry.create({
       data: {
         firstName: validatedFormData.firstName,
         lastName: validatedFormData.lastName,
@@ -100,7 +104,8 @@ export async function sendContactFormAction(formData: ContactSchema): Promise<Co
         termsAcceptedAt: new Date(),
         locale: await getLocale(),
       },
-    });
+      select: { id: true },
+    }));
   } catch (err) {
     console.error(err);
     return { success: false, status: "error", message: t("serverMessage.serverError") };
@@ -112,17 +117,25 @@ export async function sendContactFormAction(formData: ContactSchema): Promise<Co
       ({ value }) => value === validatedFormData.eventType,
     )?.labelKey;
 
+    // The DJ opens it in the admin panel (in the default language) – accept / reject are there
+    const inquiryPath = getPathname({
+      href: { pathname: "/admin/inquiries/[inquiryId]", params: { inquiryId } },
+      locale: routing.defaultLocale,
+    });
+
+    // Sent from the landing page and from the client panel – so no "website" in it
     const { error } = await resend.emails.send({
-      from: "Website enquiry <contact@rafalski.dev>",
+      from: `${siteConfig.name} <contact@rafalski.dev>`,
       to: ["contact@rafalski.dev"],
       replyTo: validatedFormData.email,
-      subject: "Website enquiry",
+      subject: `New booking enquiry – ${validatedFormData.firstName} ${validatedFormData.lastName}`,
       react: EmailTemplate({
         ...validatedFormData,
         fullName: `${validatedFormData.firstName} ${validatedFormData.lastName}`,
         // Server may run in UTC – format in Warsaw time so the day doesn't shift
         eventDate: format(new TZDate(validatedFormData.eventDate, "Europe/Warsaw"), "dd.MM.yyyy"),
         eventType: labelKey ? t(`formInputs.eventType.options.${labelKey}`) : "—",
+        inquiryUrl: `${process.env.BETTER_AUTH_URL}${inquiryPath}`,
       }),
     });
 
