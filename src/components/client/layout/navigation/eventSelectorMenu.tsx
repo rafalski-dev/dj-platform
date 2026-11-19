@@ -64,7 +64,11 @@ export function EventSelectorMenu({ options, selectedValue }: EventSelectorMenuP
           <DropdownMenuContent className="p-1.5">
             <DropdownMenuRadioGroup value={selectedValue} onValueChange={onValueChange}>
               {options.map((option) => (
-                <DropdownMenuRadioItem key={option.value} value={option.value} className="p-2 pr-8">
+                <DropdownMenuRadioItem
+                  key={option.value}
+                  value={option.value}
+                  className="group/option p-2 pr-8"
+                >
                   <EventOption option={option} />
                 </DropdownMenuRadioItem>
               ))}
@@ -89,7 +93,8 @@ function EventOption({ option }: { option: ClientEventOption }) {
     <div className="flex min-w-0 items-center gap-3">
       <time
         dateTime={option.date.toISOString().slice(0, 10)}
-        className="border-border-strong bg-foreground/5 flex size-11 shrink-0 flex-col items-center justify-center rounded-md border"
+        // on the gold highlighted item the light tile would vanish – darker border and fill there
+        className="border-border-strong bg-foreground/5 group-focus/option:border-background/40 group-focus/option:bg-background/15 flex size-11 shrink-0 flex-col items-center justify-center rounded-md border"
       >
         <span className="text-accent-foreground font-serif text-base/none lining-nums">
           {format.dateTime(option.date, { day: "2-digit" })}
