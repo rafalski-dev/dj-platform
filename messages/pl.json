@@ -811,8 +811,12 @@
       },
       "inquiry": {
         "status": "Oczekuje na potwierdzenie",
-        "description": "DJ sprawdza termin. Gdy go potwierdzi, damy Ci znać mailem.",
-        "daysLeft": "{count, plural, one {dzień} other {dni}} do wydarzenia"
+        "description": "DJ sprawdza termin. Gdy go potwierdzi, damy Ci znać mailem."
+      },
+      "daysLeft": {
+        "label": "{count, plural, one {dzień} other {dni}} do wydarzenia",
+        "today": "Dziś!",
+        "past": "Odbyło się"
       }
     }
   },

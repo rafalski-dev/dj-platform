@@ -1,7 +1,7 @@
 import type { ClientEventOption } from "@/data/dashboard";
-import { differenceInCalendarDays } from "date-fns";
 import { getFormatter, getTranslations } from "next-intl/server";
-import { OverviewCard, OverviewCardTile } from "./overviewCard";
+import { DaysLeftTile } from "./daysLeftTile";
+import { OverviewCard } from "./overviewCard";
 
 type InquiryOption = Extract<ClientEventOption, { kind: "inquiry" }>;
 
@@ -11,23 +11,12 @@ export async function InquiryOverviewCard({ inquiry }: { inquiry: InquiryOption 
   const tTypes = await getTranslations("Admin.Clients.list.eventTypes");
   const format = await getFormatter();
 
-  const daysLeft = differenceInCalendarDays(inquiry.date, new Date());
-
   return (
     <OverviewCard
       badge={t("status")}
       label={tTypes(inquiry.type)}
       title={format.dateTime(inquiry.date, { dateStyle: "long" })}
-      aside={
-        <OverviewCardTile>
-          <span className="text-accent-foreground font-serif text-[44px]/none lining-nums">
-            {daysLeft}
-          </span>
-          <span className="text-muted-foreground text-xs tracking-wider uppercase">
-            {t("daysLeft", { count: daysLeft })}
-          </span>
-        </OverviewCardTile>
-      }
+      aside={<DaysLeftTile date={inquiry.date} />}
     >
       <p className="text-muted-foreground -mt-2 text-[15px] font-light wrap-break-word">
         {inquiry.place}

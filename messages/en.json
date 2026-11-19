@@ -811,8 +811,12 @@
       },
       "inquiry": {
         "status": "Awaiting confirmation",
-        "description": "The DJ is checking the date. Once it's confirmed, we'll let you know by email.",
-        "daysLeft": "{count, plural, one {day} other {days}} to the event"
+        "description": "The DJ is checking the date. Once it's confirmed, we'll let you know by email."
+      },
+      "daysLeft": {
+        "label": "{count, plural, one {day} other {days}} to the event",
+        "today": "Today!",
+        "past": "Done"
       }
     }
   },

@@ -1,11 +1,14 @@
 import { Badge } from "@/components/ui/shadcn/badge";
 import { Card } from "@/components/ui/shadcn/card";
+import { cn } from "@/lib/utils";
 import { DotIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
 type OverviewCardProps = {
   // a status (e.g. awaiting confirmation) – not every state has one
   badge?: string;
+  // colors of the badge – gold by default
+  badgeClassName?: string;
   label?: string;
   title: string;
   children?: ReactNode;
@@ -14,7 +17,14 @@ type OverviewCardProps = {
 };
 
 // One look for every state of the overview (no event, inquiry, event)
-export function OverviewCard({ badge, label, title, children, aside }: OverviewCardProps) {
+export function OverviewCard({
+  badge,
+  badgeClassName,
+  label,
+  title,
+  children,
+  aside,
+}: OverviewCardProps) {
   return (
     <Card size="md" className="ring-border-strong md:[--card-spacing:--spacing(8)]">
       <div className="flex flex-col gap-6 px-(--card-spacing) sm:flex-row sm:items-center sm:justify-between">
@@ -22,7 +32,10 @@ export function OverviewCard({ badge, label, title, children, aside }: OverviewC
           {badge && (
             <Badge
               variant="outline"
-              className="text-accent-foreground border-accent-foreground/30 bg-accent-foreground/5 pr-3"
+              className={cn(
+                "text-accent-foreground border-accent-foreground/30 bg-accent-foreground/5 pr-3",
+                badgeClassName,
+              )}
             >
               <DotIcon strokeWidth={8} />
               {badge}

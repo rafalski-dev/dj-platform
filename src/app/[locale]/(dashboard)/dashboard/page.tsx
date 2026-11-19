@@ -1,3 +1,4 @@
+import { EventOverviewCard } from "@/components/client/sections/overview/eventOverviewCard";
 import { InquiryOverviewCard } from "@/components/client/sections/overview/inquiryOverviewCard";
 import { OverviewEmpty } from "@/components/client/sections/overview/overviewEmpty";
 import { OverviewWelcome } from "@/components/client/sections/overview/overviewWelcome";
@@ -11,7 +12,7 @@ export default async function Dashboard() {
       <OverviewWelcome />
       {!selected && <OverviewEmpty />}
       {selected?.kind === "inquiry" && <InquiryOverviewCard inquiry={selected} />}
-      {/* TODO: event overview – next step */}
+      {selected?.kind === "event" && <EventOverviewCard event={selected} />}
     </>
   );
 }

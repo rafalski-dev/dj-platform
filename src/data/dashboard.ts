@@ -16,7 +16,15 @@ export const getClientEventOptions = cache(async () => {
   const [events, inquiries] = await Promise.all([
     db.event.findMany({
       where: { client: { userId: session.user.id }, status: { not: "Archived" } },
-      select: { id: true, name: true, type: true, altType: true, date: true, status: true },
+      select: {
+        id: true,
+        name: true,
+        type: true,
+        altType: true,
+        date: true,
+        status: true,
+        place: true,
+      },
       orderBy: { date: "asc" },
     }),
     // There is no Client yet before the DJ accepts – found by the account's email,
