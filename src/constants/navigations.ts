@@ -32,5 +32,5 @@ export const dashboardEventItems: DashboardItem[] = [
 ];
 
 export const dashboardAccountItems: DashboardItem[] = [
-  { navKey: "settings", path: "/dashboard/settings" },
+  { navKey: "account", path: "/dashboard/account" },
 ];

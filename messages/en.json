@@ -768,7 +768,7 @@
           "home": "Overview",
           "contracts": "Contract",
           "playlists": "Playlist",
-          "settings": "Settings"
+          "account": "My account"
         }
       }
     },
@@ -776,8 +776,63 @@
       "home": "Overview",
       "events": "Your events",
       "contracts": "Your contracts",
-      "playlists": "Your playlists",
-      "settings": "Settings"
+      "playlists": "Your playlists"
+    },
+    "Account": {
+      "title": "My account",
+      "description": "Your details for the contract and how you sign in.",
+      "tabs": {
+        "details": "My details",
+        "login": "Login and password"
+      },
+      "details": {
+        "personalTitle": "Personal details",
+        "addressTitle": "Home address",
+        "contactTitle": "Contact",
+        "save": "Save details",
+        "saving": "Saving",
+        "saved": "Your details are saved",
+        "notSaved": "Your details weren't saved",
+        "invalid": "Check your details and try again.",
+        "error": "Something went wrong. Please try again.",
+        "empty": {
+          "title": "Available once your event is confirmed",
+          "description": "When the DJ confirms your date, you'll be able to fill in your details for the contract here."
+        },
+        "fields": {
+          "firstName": {
+            "label": "First name",
+            "required": "Enter your first name"
+          },
+          "lastName": {
+            "label": "Last name",
+            "required": "Enter your last name"
+          },
+          "streetAndNumber": {
+            "label": "Street and number",
+            "required": "Enter your street and number"
+          },
+          "postcode": {
+            "label": "Postcode",
+            "required": "Enter your postcode",
+            "validation": "Use the format 00-000"
+          },
+          "city": {
+            "label": "City",
+            "required": "Enter your city"
+          },
+          "region": { "label": "Region" },
+          "country": { "label": "Country" },
+          "email": {
+            "label": "Email",
+            "hint": "This is your account email – we use it to contact you."
+          },
+          "phone": {
+            "label": "Phone",
+            "validation": "Enter a 9-digit phone number"
+          }
+        }
+      }
     },
     "Contract": {
       "empty": {
@@ -817,6 +872,16 @@
         "label": "{count, plural, one {day} other {days}} to the event",
         "today": "Today!",
         "past": "Done"
+      },
+      "missingFields": {
+        "label": "Before your contract",
+        "title": "{count, plural, one {# thing left} other {# things left}}",
+        "description": "Fill in your details so we can prepare your contract.",
+        "fields": {
+          "hours": "Event hours",
+          "venueAddress": "Venue address",
+          "homeAddress": "Your home address"
+        }
       }
     }
   },
@@ -1250,17 +1315,16 @@
           "options": {
             "Individual": {
               "title": "Individual",
-              "description": "All details and the contract are based on the client's ID card, not a company Tax ID."
+              "description": "All details and the contract are based on the client's personal details, not a company Tax ID."
             },
             "Business": {
               "title": "Business",
-              "description": "All details and the contract are based on the company's Tax ID, not a personal ID card."
+              "description": "All details and the contract are based on the company's Tax ID, not personal details."
             }
           },
           "tags": {
             "fullName": "Full name",
             "privateAddress": "Private address",
-            "idCard": "ID card",
             "companyName": "Company name",
             "companyAddress": "Company address",
             "taxId": "Tax ID"
@@ -1285,11 +1349,6 @@
             "label": "Last name",
             "placeholder": "Kowalski",
             "required": "Provide last name"
-          },
-          "idCardNumber": {
-            "label": "ID card number",
-            "placeholder": "ABC 123456",
-            "validation": "Provide a correct ID card number, e.g. ABC 123456"
           },
           "gender": {
             "label": "Gender",
@@ -1403,7 +1462,6 @@
             "fullName": "Full name",
             "businessName": "Name",
             "gender": "Gender",
-            "idCardNumber": "ID card number",
             "taxId": "Tax ID",
             "contactPerson": "Contact person",
             "email": "Email",

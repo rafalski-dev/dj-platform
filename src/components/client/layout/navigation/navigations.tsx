@@ -5,7 +5,7 @@ import { dashboardAccountItems, dashboardEventItems } from "@/constants/navigati
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn, isNavItemActive } from "@/lib/utils";
 import { DashboardItem } from "@/types/navigation";
-import { DotIcon, FilesIcon, HomeIcon, ListMusicIcon, SettingsIcon } from "lucide-react";
+import { CircleUserIcon, DotIcon, FilesIcon, HomeIcon, ListMusicIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -13,7 +13,7 @@ const icons = {
   home: <HomeIcon size={19} strokeWidth={1.4} />,
   contracts: <FilesIcon size={19} strokeWidth={1.4} />,
   playlists: <ListMusicIcon size={19} strokeWidth={1.4} />,
-  settings: <SettingsIcon size={19} strokeWidth={1.4} />,
+  account: <CircleUserIcon size={19} strokeWidth={1.4} />,
 };
 
 type NavigationClientProps = {

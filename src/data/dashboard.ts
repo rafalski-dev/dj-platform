@@ -3,6 +3,7 @@ import "server-only";
 import { SELECTED_EVENT_COOKIE } from "@/constants/dashboard";
 import { getSession } from "@/lib/auth-helpers";
 import { db } from "@/lib/db";
+import { getMissingFields } from "@/lib/missingFields";
 import { getRelevantEvent } from "@/lib/utils";
 import { cookies } from "next/headers";
 import { cache } from "react";
@@ -48,6 +49,44 @@ export type ClientEventOption = Awaited<ReturnType<typeof getClientEventOptions>
 
 export function getOptionValue({ kind, id }: Pick<ClientEventOption, "kind" | "id">) {
   return `${kind}:${id}`;
+}
+
+// What the selected event still needs for the contract – checked again against the user
+export async function getEventMissingFields(eventId: string) {
+  const session = await getSession();
+  if (!session) return [];
+
+  const event = await db.event.findFirst({
+    where: { id: eventId, client: { userId: session.user.id } },
+    select: {
+      startsAt: true,
+      endsAt: true,
+      address: true,
+      client: { select: { streetAndNumber: true, postcode: true, city: true } },
+    },
+  });
+
+  return event ? getMissingFields(event) : [];
+}
+
+// The client's own details for the My details form – null until the DJ links them to a Client
+export async function getMyDetails() {
+  const session = await getSession();
+  if (!session) return null;
+
+  return db.client.findUnique({
+    where: { userId: session.user.id },
+    select: {
+      firstName: true,
+      lastName: true,
+      phone: true,
+      streetAndNumber: true,
+      postcode: true,
+      city: true,
+      region: true,
+      country: true,
+    },
+  });
 }
 
 // The cookie only says what the client chose – it's checked against their own options,

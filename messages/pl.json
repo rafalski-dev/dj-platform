@@ -768,7 +768,7 @@
           "home": "Przegląd",
           "contracts": "Umowa",
           "playlists": "Playlista",
-          "settings": "Ustawienia"
+          "account": "Moje konto"
         }
       }
     },
@@ -776,8 +776,63 @@
       "home": "Przegląd",
       "events": "Twoje wydarzenia",
       "contracts": "Twoje umowy",
-      "playlists": "Twoje playlisty",
-      "settings": "Ustawienia"
+      "playlists": "Twoje playlisty"
+    },
+    "Account": {
+      "title": "Moje konto",
+      "description": "Twoje dane do umowy i sposób logowania.",
+      "tabs": {
+        "details": "Moje dane",
+        "login": "Logowanie i hasło"
+      },
+      "details": {
+        "personalTitle": "Dane osobowe",
+        "addressTitle": "Adres zamieszkania",
+        "contactTitle": "Kontakt",
+        "save": "Zapisz dane",
+        "saving": "Zapisywanie",
+        "saved": "Twoje dane zostały zapisane",
+        "notSaved": "Nie udało się zapisać danych",
+        "invalid": "Sprawdź swoje dane i spróbuj ponownie.",
+        "error": "Coś poszło nie tak. Spróbuj ponownie.",
+        "empty": {
+          "title": "Dostępne po potwierdzeniu wydarzenia",
+          "description": "Gdy DJ potwierdzi termin, uzupełnisz tutaj swoje dane do umowy."
+        },
+        "fields": {
+          "firstName": {
+            "label": "Imię",
+            "required": "Podaj imię"
+          },
+          "lastName": {
+            "label": "Nazwisko",
+            "required": "Podaj nazwisko"
+          },
+          "streetAndNumber": {
+            "label": "Ulica i numer",
+            "required": "Podaj ulicę i numer"
+          },
+          "postcode": {
+            "label": "Kod pocztowy",
+            "required": "Podaj kod pocztowy",
+            "validation": "Użyj formatu 00-000"
+          },
+          "city": {
+            "label": "Miejscowość",
+            "required": "Podaj miejscowość"
+          },
+          "region": { "label": "Województwo" },
+          "country": { "label": "Kraj" },
+          "email": {
+            "label": "Email",
+            "hint": "To adres e-mail Twojego konta – na niego się z Tobą kontaktujemy."
+          },
+          "phone": {
+            "label": "Telefon",
+            "validation": "Podaj 9-cyfrowy numer telefonu"
+          }
+        }
+      }
     },
     "Contract": {
       "empty": {
@@ -817,6 +872,16 @@
         "label": "{count, plural, one {dzień} other {dni}} do wydarzenia",
         "today": "Dziś!",
         "past": "Odbyło się"
+      },
+      "missingFields": {
+        "label": "Przed umową",
+        "title": "{count, plural, one {Została # rzecz} few {Zostały # rzeczy} many {Zostało # rzeczy} other {Zostało # rzeczy}}",
+        "description": "Uzupełnij swoje dane, abyśmy mogli przygotować umowę.",
+        "fields": {
+          "hours": "Godziny wydarzenia",
+          "venueAddress": "Adres miejsca wydarzenia",
+          "homeAddress": "Twój adres zamieszkania"
+        }
       }
     }
   },
@@ -1620,17 +1685,16 @@
           "options": {
             "Individual": {
               "title": "Osoba prywatna",
-              "description": "Wszystkie dane i umowa opierają się na dowodzie osobistym klienta, a nie na NIP-ie firmy."
+              "description": "Wszystkie dane i umowa opierają się na danych osobowych klienta, a nie na NIP-ie firmy."
             },
             "Business": {
               "title": "Firma",
-              "description": "Wszystkie dane i umowa opierają się na NIP-ie firmy, a nie na dowodzie osobistym."
+              "description": "Wszystkie dane i umowa opierają się na NIP-ie firmy, a nie na danych osobowych."
             }
           },
           "tags": {
             "fullName": "Imię i nazwisko",
             "privateAddress": "Adres prywatny",
-            "idCard": "Dowód osobisty",
             "companyName": "Nazwa firmy",
             "companyAddress": "Adres firmy",
             "taxId": "NIP"
@@ -1655,11 +1719,6 @@
             "label": "Nazwisko",
             "placeholder": "Kowalski",
             "required": "Podaj nazwisko"
-          },
-          "idCardNumber": {
-            "label": "Numer dowodu osobistego",
-            "placeholder": "ABC 123456",
-            "validation": "Podaj poprawny numer dowodu, np. ABC 123456"
           },
           "gender": {
             "label": "Płeć",
@@ -1773,7 +1832,6 @@
             "fullName": "Imię i nazwisko",
             "businessName": "Nazwa",
             "gender": "Płeć",
-            "idCardNumber": "Numer dowodu osobistego",
             "taxId": "NIP",
             "contactPerson": "Osoba kontaktowa",
             "email": "Email",

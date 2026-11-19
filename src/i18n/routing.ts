@@ -127,9 +127,17 @@ export const routing = defineRouting({
       pl: "/panel-klienta/listy-utworow",
       en: "/dashboard/playlists",
     },
-    "/dashboard/settings": {
-      pl: "/panel-klienta/ustawienia",
-      en: "/dashboard/settings",
+    "/dashboard/account": {
+      pl: "/panel-klienta/konto",
+      en: "/dashboard/account",
+    },
+    "/dashboard/account/details": {
+      pl: "/panel-klienta/konto/moje-dane",
+      en: "/dashboard/account/details",
+    },
+    "/dashboard/account/login": {
+      pl: "/panel-klienta/konto/logowanie",
+      en: "/dashboard/account/login",
     },
     "/terms-and-conditions": {
       en: "/terms-and-conditions",

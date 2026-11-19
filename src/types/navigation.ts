@@ -21,7 +21,7 @@ export type AdminItem = {
 };
 
 export type DashboardItem = {
-  navKey: "home" | "contracts" | "playlists" | "settings";
+  navKey: "home" | "contracts" | "playlists" | "account";
   path: Pathname;
   requiresEvent?: boolean;
 };
