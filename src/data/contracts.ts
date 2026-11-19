@@ -1,5 +1,6 @@
 import "server-only";
 
+import { getSelectedEventOption } from "@/data/dashboard";
 import { adminCheck, getSession } from "@/lib/auth-helpers";
 import { db } from "@/lib/db";
 import { Prisma } from "../../generated";
@@ -91,15 +92,18 @@ export async function getContractDetails(contractId: string) {
 
 export type ContractDetails = NonNullable<Awaited<ReturnType<typeof getContractDetails>>>;
 
-// Client panel: the logged-in client's contract. Drafts stay hidden – they are the DJ's work in progress.
-// For now the nearest event wins; the event selector in the nav will choose it later.
+// Client panel: the contract of the event chosen in the nav selector. Drafts stay hidden –
+// they are the DJ's work in progress. An inquiry has no contract yet.
 export async function getClientContract() {
-  const session = await getSession();
-  if (!session) return null;
+  const [session, selected] = await Promise.all([getSession(), getSelectedEventOption()]);
+  if (!session || selected?.kind !== "event") return null;
 
   return await db.contract.findFirst({
-    where: { status: { not: "Draft" }, event: { client: { userId: session.user.id } } },
-    orderBy: { event: { startsAt: "asc" } },
+    where: {
+      status: { not: "Draft" },
+      // the user check stays – the selected event must still be this client's
+      event: { id: selected.id, client: { userId: session.user.id } },
+    },
     select: {
       id: true,
       contractNumber: true,
