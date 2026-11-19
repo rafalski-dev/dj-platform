@@ -21,6 +21,7 @@ export function EmailTemplate({
   eventDate,
   eventType,
   place,
+  address,
   message,
   inquiryUrl,
 }: EmailTemplateProps) {
@@ -56,6 +57,9 @@ export function EmailTemplate({
 
               <Text style={label}>Place</Text>
               <Text style={value}>{place || "—"}</Text>
+
+              <Text style={label}>Address</Text>
+              <Text style={value}>{address || "—"}</Text>
 
               <Text style={label}>Message</Text>
               <Text style={message_}>{message || "—"}</Text>

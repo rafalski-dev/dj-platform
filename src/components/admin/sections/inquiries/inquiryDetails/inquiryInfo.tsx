@@ -8,7 +8,7 @@ export async function InquiryInfo({ fetchedData }: { fetchedData: InquiryDetails
   const format = await getFormatter();
   const t = await getTranslations("Admin.Inquiries.Details.info");
   const tEventTypes = await getTranslations("Admin.Clients.list.eventTypes");
-  const { date, type, place, message, termsAcceptedAt } = fetchedData;
+  const { date, type, place, address, message, termsAcceptedAt } = fetchedData;
 
   return (
     <Card size="md">
@@ -25,6 +25,8 @@ export async function InquiryInfo({ fetchedData }: { fetchedData: InquiryDetails
           </EventDetailRow>
           <EventDetailRow label={t("type")}>{tEventTypes(type)}</EventDetailRow>
           <EventDetailRow label={t("place")}>{place}</EventDetailRow>
+          {/* inquiries sent before the address field have none */}
+          <EventDetailRow label={t("address")}>{address || "—"}</EventDetailRow>
           <EventDetailRow label={t("consent")}>
             {format.dateTime(termsAcceptedAt, {
               day: "numeric",

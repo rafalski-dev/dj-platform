@@ -100,6 +100,7 @@ export async function sendContactFormAction(formData: ContactSchema): Promise<Co
         date: dateFormatter(validatedFormData.eventDate).eventDate,
         type: validatedFormData.eventType,
         place: validatedFormData.place,
+        address: validatedFormData.address,
         message: validatedFormData.message || null,
         termsAcceptedAt: new Date(),
         locale: await getLocale(),

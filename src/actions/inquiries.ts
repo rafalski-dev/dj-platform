@@ -66,6 +66,7 @@ export async function acceptInquiryAction(inquiryId: string) {
           type: inquiry.type,
           date: inquiry.date,
           place: inquiry.place,
+          address: inquiry.address,
           message: inquiry.message,
           clientId: client.id,
           playlist: { create: {} },

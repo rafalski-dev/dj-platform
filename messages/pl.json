@@ -311,10 +311,16 @@
             "required": "Wybierz rodzaj wydarzenia"
           },
           "place": {
-            "label": "Nazwa miejsca / adres",
+            "label": "Nazwa miejsca",
             "placeholder": "Pałac Mała Wieś",
-            "required": "Podaj nazwę miejsca lub adres",
+            "required": "Podaj nazwę miejsca",
             "validation": "Nazwa miejsca musi zawierać co najmniej 3 znaki"
+          },
+          "address": {
+            "label": "Adres miejsca",
+            "placeholder": "ul. Długa 12, 31-146 Kraków",
+            "required": "Podaj adres miejsca",
+            "validation": "Adres miejsca musi zawierać co najmniej 5 znaków"
           },
           "message": {
             "label": "Wiadomość",
@@ -874,14 +880,39 @@
         "past": "Odbyło się"
       },
       "missingFields": {
-        "label": "Przed umową",
-        "title": "{count, plural, one {Została # rzecz} few {Zostały # rzeczy} many {Zostało # rzeczy} other {Zostało # rzeczy}}",
-        "description": "Uzupełnij swoje dane, abyśmy mogli przygotować umowę.",
+        "title": "{count, plural, one {Została # rzecz} few {Zostały # rzeczy} many {Zostało # rzeczy} other {Zostało # rzeczy}} do uzupełnienia, zanim przygotujemy umowę.",
         "fields": {
-          "hours": "Godziny wydarzenia",
-          "venueAddress": "Adres miejsca wydarzenia",
-          "homeAddress": "Twój adres zamieszkania"
+          "hours": "godziny wydarzenia",
+          "venueAddress": "adres miejsca"
+        },
+        "event": {
+          "label": "Szczegóły wydarzenia",
+          "title": "Godziny i miejsce",
+          "description": "Brakuje: {fields}",
+          "action": "Uzupełnij szczegóły wydarzenia"
+        },
+        "address": {
+          "label": "Twoje dane",
+          "title": "Adres zamieszkania",
+          "description": "Trafi do Twojej umowy.",
+          "action": "Dodaj adres"
         }
+      }
+    },
+    "EventEdit": {
+      "title": "Szczegóły wydarzenia",
+      "timeTitle": "Godziny",
+      "venueTitle": "Miejsce",
+      "save": "Zapisz szczegóły",
+      "saving": "Zapisywanie",
+      "saved": "Szczegóły wydarzenia zostały zapisane",
+      "notSaved": "Nie udało się zapisać szczegółów",
+      "invalid": "Sprawdź dane i spróbuj ponownie.",
+      "error": "Coś poszło nie tak. Spróbuj ponownie.",
+      "fields": {
+        "startTime": { "label": "Początek", "required": "Podaj godzinę rozpoczęcia" },
+        "endTime": { "label": "Koniec", "required": "Podaj godzinę zakończenia" },
+        "address": { "label": "Adres miejsca", "required": "Podaj adres miejsca" }
       }
     }
   },
@@ -1936,6 +1967,7 @@
           "date": "Data",
           "type": "Rodzaj",
           "place": "Miejsce",
+          "address": "Adres",
           "consent": "Zgoda na przetwarzanie danych",
           "message": "Wiadomość",
           "noMessage": "Brak wiadomości"

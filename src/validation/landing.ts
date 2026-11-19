@@ -40,6 +40,12 @@ export function createContactSchema(t: Translator) {
       .trim()
       .min(1, { error: t("formInputs.place.required") })
       .min(3, { error: t("formInputs.place.validation") }),
+    // separate from the name, so it lands in its own column (Event.address on accept)
+    address: z
+      .string()
+      .trim()
+      .min(1, { error: t("formInputs.address.required") })
+      .min(5, { error: t("formInputs.address.validation") }),
     message: z
       .string()
       .trim()

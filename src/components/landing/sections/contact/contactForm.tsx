@@ -80,6 +80,7 @@ export function ContactForm({
       phone: "",
       eventType: undefined,
       place: "",
+      address: "",
       message: "",
       terms: false,
       website: "",
@@ -255,6 +256,15 @@ export function ContactForm({
                 // venue address, not the client's – Chrome ignores "off" on address-like
                 // fields, an unknown token stops it from autofilling the home address
                 autoComplete="event-venue"
+                required
+              />
+              <ControlledInput
+                name="address"
+                control={control}
+                label={t("formInputs.address.label")}
+                placeholder={t("formInputs.address.placeholder")}
+                // same trick as above – not the client's home address
+                autoComplete="event-venue-address"
                 required
               />
               <ControlledTextarea

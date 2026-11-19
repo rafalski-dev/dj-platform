@@ -311,10 +311,16 @@
             "required": "Select event type "
           },
           "place": {
-            "label": "Place name / address",
+            "label": "Venue name",
             "placeholder": "Pałac Mała Wieś",
-            "required": "Enter the venue name or address",
-            "validation": "Place name must contains at least 3 characters"
+            "required": "Enter the venue name",
+            "validation": "The venue name must contain at least 3 characters"
+          },
+          "address": {
+            "label": "Venue address",
+            "placeholder": "ul. Długa 12, 31-146 Kraków",
+            "required": "Enter the venue address",
+            "validation": "The venue address must contain at least 5 characters"
           },
           "message": {
             "label": "Message",
@@ -874,14 +880,39 @@
         "past": "Done"
       },
       "missingFields": {
-        "label": "Before your contract",
-        "title": "{count, plural, one {# thing left} other {# things left}}",
-        "description": "Fill in your details so we can prepare your contract.",
+        "title": "{count, plural, one {# thing left} other {# things left}} to fill in before we can prepare your contract.",
         "fields": {
-          "hours": "Event hours",
-          "venueAddress": "Venue address",
-          "homeAddress": "Your home address"
+          "hours": "event hours",
+          "venueAddress": "venue address"
+        },
+        "event": {
+          "label": "Event details",
+          "title": "Time and venue",
+          "description": "Missing: {fields}",
+          "action": "Add event details"
+        },
+        "address": {
+          "label": "Your details",
+          "title": "Home address",
+          "description": "It goes on your contract.",
+          "action": "Add address"
         }
+      }
+    },
+    "EventEdit": {
+      "title": "Event details",
+      "timeTitle": "Time",
+      "venueTitle": "Venue",
+      "save": "Save details",
+      "saving": "Saving",
+      "saved": "Event details are saved",
+      "notSaved": "Event details weren't saved",
+      "invalid": "Check the details and try again.",
+      "error": "Something went wrong. Please try again.",
+      "fields": {
+        "startTime": { "label": "Start", "required": "Enter the start time" },
+        "endTime": { "label": "End", "required": "Enter the end time" },
+        "address": { "label": "Venue address", "required": "Enter the venue address" }
       }
     }
   },
@@ -1936,6 +1967,7 @@
           "date": "Date",
           "type": "Type",
           "place": "Place",
+          "address": "Address",
           "consent": "Data processing consent",
           "message": "Message",
           "noMessage": "No message"

@@ -367,6 +367,8 @@ model Inquiry {
   date                 DateTime       @db.Date
   type                 EventType
   place                String
+  // venue address – the DJ checks the distance before accepting (old inquiries have none)
+  address              String?
   message              String?
 
   termsAcceptedAt      DateTime
