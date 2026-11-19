@@ -42,7 +42,6 @@ export function IndividualSummary() {
             name="personalDetails.gender"
             formatValue={(value) => t(`fields.gender.options.${value}`)}
           />
-          <SummaryRow label={t("fields.idCardNumber.label")} name="personalDetails.idCardNumber" />
           <SummaryRow label={t("fields.email.label")} name="contactDetails.email" />
           <SummaryRow label={t("fields.phone.label")} name="contactDetails.phone" />
           <SummaryRow

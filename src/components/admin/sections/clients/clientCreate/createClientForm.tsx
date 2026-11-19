@@ -19,7 +19,7 @@ import { toast } from "@/components/ui/shadcn/toast";
 import { Spinner } from "@/components/ui/shadcn/spinner";
 
 const defaultValues = {
-  personalDetails: { firstName: "", lastName: "", idCardNumber: "" },
+  personalDetails: { firstName: "", lastName: "" },
   businessDetails: { businessName: "", taxId: "" },
   contactDetails: { email: "", phone: "" },
   addressDetails: { streetAndNumber: "", postcode: "", city: "", region: "", country: "" },

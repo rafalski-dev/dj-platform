@@ -30,25 +30,17 @@ export function PersonalDetails() {
           required
         />
       </div>
-      <div className="flex flex-col gap-3 md:flex-row">
-        <ControlledInput
-          name="personalDetails.idCardNumber"
-          control={control}
-          label={t("fields.idCardNumber.label")}
-          placeholder={t("fields.idCardNumber.placeholder")}
-        />
-        <ControlledSelect
-          name="personalDetails.gender"
-          control={control}
-          label={t("fields.gender.label")}
-          placeholder={t("fields.gender.placeholder")}
-          items={GENDERS.map((value) => ({
-            value,
-            label: t(`fields.gender.options.${value}`),
-          }))}
-          required
-        />
-      </div>
+      <ControlledSelect
+        name="personalDetails.gender"
+        control={control}
+        label={t("fields.gender.label")}
+        placeholder={t("fields.gender.placeholder")}
+        items={GENDERS.map((value) => ({
+          value,
+          label: t(`fields.gender.options.${value}`),
+        }))}
+        required
+      />
     </FormSection>
   );
 }

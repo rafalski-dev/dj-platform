@@ -16,7 +16,6 @@ export function clientDataFormatter(formData: CreateClientType) {
       name: `${firstName} ${lastName}`,
       firstName,
       lastName,
-      idCardNumber: formData.personalDetails.idCardNumber || null,
       gender: formData.personalDetails.gender,
       email,
       phone: phone || null,
@@ -45,7 +44,6 @@ export function clientDataFormatter(formData: CreateClientType) {
     region: region || null,
     country: country || null,
     gender: null,
-    idCardNumber: null,
   };
 }
 

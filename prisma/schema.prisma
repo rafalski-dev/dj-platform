@@ -200,7 +200,6 @@ model Client {
   firstName            String
   lastName             String
   gender               Gender?
-  idCardNumber         String?
 
   // business client
   businessName         String?

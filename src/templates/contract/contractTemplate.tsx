@@ -103,11 +103,8 @@ export function ContractTemplate({ signedAt, client, performer, event }: Contrac
           Zawarta w dniu {formatDate(signedAt)}
           {performer.city ? `, miejscowość: ${performer.city}` : ""}, pomiędzy: {clientName}
           {clientAddress ? `, ${living}: ${clientAddress}` : ""}
-          {client.phone ? ` (telefon kontaktowy ${client.phone})` : ""}
-          {client.idCardNumber
-            ? `, legitymującym(-ą) się dowodem osobistym seria i numer ${client.idCardNumber}`
-            : ""}
-          , zwanym dalej Zamawiającym, a {performer.firstName} {performer.lastName}
+          {client.phone ? ` (telefon kontaktowy ${client.phone})` : ""}, zwanym dalej Zamawiającym,
+          a {performer.firstName} {performer.lastName}
           {performer.phone ? ` (tel. ${performer.phone})` : ""}
           {performerAddress ? `, zamieszkałym: ${performerAddress}` : ""}, zwanym dalej Wykonawcą.
         </Text>

@@ -15,7 +15,7 @@ import { CreateClientType } from "@/validation/clients";
 const CLIENT_TYPE = [
   {
     value: "Individual",
-    tags: ["fullName", "privateAddress", "idCard"],
+    tags: ["fullName", "privateAddress"],
     icon: <UserIcon strokeWidth={1.8} size={20} />,
   },
   {

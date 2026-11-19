@@ -29,8 +29,8 @@ export function ClientDetails({ fetchedData }: ClientDetailsProps) {
           value: fetchedData.gender && tGender(fetchedData.gender),
         },
         {
-          key: isIndividual ? "idCardNumber" : "taxId",
-          value: isIndividual ? fetchedData.idCardNumber : fetchedData.taxId,
+          key: isIndividual ? null : "taxId",
+          value: fetchedData.taxId,
         },
       ],
     },

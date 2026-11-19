@@ -36,7 +36,6 @@ export function EditClientForm({ fetchedData, clientId }: EditClientFormProps) {
       firstName: fetchedData.firstName,
       lastName: fetchedData.lastName,
       gender: fetchedData.gender ?? undefined,
-      idCardNumber: fetchedData.idCardNumber ?? "",
     },
     businessDetails: {
       businessName: fetchedData.businessName ?? "",
