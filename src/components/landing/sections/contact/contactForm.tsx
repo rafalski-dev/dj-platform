@@ -28,9 +28,19 @@ type ContactFormProps = {
   // date already checked in the hero – the form starts at details (free) or busy
   initialDate?: Date;
   initialStep?: ContactFormStep;
+  // client panel: filled in from the logged-in account
+  initialContact?: Partial<Pick<ContactSchema, "firstName" | "lastName" | "email">>;
+  // client panel: takes over after sending (instead of the thank-you view)
+  onSuccess?: (message: string) => void;
 };
 
-export function ContactForm({ className, initialDate, initialStep = "date" }: ContactFormProps) {
+export function ContactForm({
+  className,
+  initialDate,
+  initialStep = "date",
+  initialContact,
+  onSuccess,
+}: ContactFormProps) {
   const t = useTranslations("LandingPage.Contact.contactForm");
   const format = useFormatter();
   const schema = useMemo(() => createContactSchema(t), [t]);
@@ -64,9 +74,9 @@ export function ContactForm({ className, initialDate, initialStep = "date" }: Co
     resolver: zodResolver(schema),
     defaultValues: {
       eventDate: initialDate,
-      firstName: "",
-      lastName: "",
-      email: "",
+      firstName: initialContact?.firstName ?? "",
+      lastName: initialContact?.lastName ?? "",
+      email: initialContact?.email ?? "",
       phone: "",
       eventType: undefined,
       place: "",
@@ -96,6 +106,7 @@ export function ContactForm({ className, initialDate, initialStep = "date" }: Co
     const res = await sendContactFormAction(formData);
 
     if (res.success) {
+      if (onSuccess) return onSuccess(res.message);
       setSuccess(res.message);
       reset();
       return;
