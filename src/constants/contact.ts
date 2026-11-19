@@ -2,6 +2,9 @@ import { siteConfig } from "@/config/site";
 import { contactDataItemType } from "@/types/contact";
 import type { EventType } from "../../generated";
 
+// The hero date check scrolls here – to the form itself, not the top of the contact section
+export const CONTACT_FORM_ID = "contact-form";
+
 export const contactDetailsData: contactDataItemType[] = [
   {
     nameKey: "email",

@@ -3,7 +3,7 @@ import { SectionDescription } from "@/components/landing/shared/sections/section
 import { SectionLabel } from "@/components/landing/shared/sections/sectionLabel";
 import { SectionTitle } from "@/components/landing/shared/sections/sectionTitle";
 import { Wrapper } from "@/components/shared/wrapper";
-import { contactDetailsData } from "@/constants/contact";
+import { CONTACT_FORM_ID, contactDetailsData } from "@/constants/contact";
 import { getTranslations } from "next-intl/server";
 import { ContactList } from "./contactList";
 import { ContactFormContainer } from "./contactFormContainer";
@@ -24,7 +24,10 @@ export async function Contact() {
             </div>
           </div>
           <div className="flex flex-col gap-3 lg:w-1/2">
-            <ContactFormContainer />
+            {/* scroll-mt – so the fixed header doesn't cover the form */}
+            <div id={CONTACT_FORM_ID} className="scroll-mt-24">
+              <ContactFormContainer />
+            </div>
             {/* mobile: contacts under the form */}
             <div className="lg:hidden">
               <ContactList listData={contactDetailsData} />

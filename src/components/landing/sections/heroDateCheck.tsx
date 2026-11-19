@@ -6,6 +6,7 @@ import { FormError } from "@/components/shared/form/formError";
 import { Button } from "@/components/ui/shadcn/button";
 import { Spinner } from "@/components/ui/shadcn/spinner";
 import { siteConfig } from "@/config/site";
+import { CONTACT_FORM_ID } from "@/constants/contact";
 import { useInquiryContext } from "@/hooks/useInquiryContext";
 import { getStartOfToday } from "@/lib/utils";
 import { createEventDateSchema } from "@/validation/landing";
@@ -16,7 +17,7 @@ import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
-export function HeroDateCheck({ contactAnchor }: { contactAnchor: string }) {
+export function HeroDateCheck() {
   const t = useTranslations("LandingPage.Hero.dateCheck");
   const tForm = useTranslations("LandingPage.Contact.contactForm");
   const format = useFormatter();
@@ -43,7 +44,7 @@ export function HeroDateCheck({ contactAnchor }: { contactAnchor: string }) {
         status: "free",
         checkId: (prev?.checkId ?? 0) + 1,
       }));
-      document.getElementById(contactAnchor)?.scrollIntoView({ behavior: "smooth" });
+      document.getElementById(CONTACT_FORM_ID)?.scrollIntoView({ behavior: "smooth" });
       return;
     }
 

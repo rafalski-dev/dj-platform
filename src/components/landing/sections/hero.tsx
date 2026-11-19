@@ -52,7 +52,7 @@ export async function Hero() {
               className="lg:mt-2"
               style={{ animation: "rise 1s cubic-bezier(.22,.61,.36,1) 0.24s both" }}
             >
-              <HeroDateCheck contactAnchor={t("Contact.id")} />
+              <HeroDateCheck />
             </div>
             <div
               className="mt-6 flex items-center md:gap-2"
