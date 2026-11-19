@@ -186,10 +186,15 @@ export function ContactForm({
                 <p className="text-success-text flex items-center gap-2 text-sm">
                   <CalendarCheck size={18} className="shrink-0" />
                   {t("dateStep.free", {
-                    date: format.dateTime(getValues("eventDate"), { dateStyle: "long" }),
+                    // short, numbers only (12.09.2026)
+                    date: format.dateTime(getValues("eventDate"), {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    }),
                   })}
                 </p>
-                <Button variant="link" size="sm" onClick={() => setStep("date")}>
+                <Button variant="outline" size="sm" onClick={() => setStep("date")}>
                   {t("dateStep.changeButton")}
                 </Button>
               </div>
