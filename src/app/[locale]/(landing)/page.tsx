@@ -1,3 +1,4 @@
+import { Chatbot } from "@/components/landing/layout/chatbot/chatbotButton";
 import { About } from "@/components/landing/sections/about/about";
 import { Contact } from "@/components/landing/sections/contact/contact";
 import { FAQ } from "@/components/landing/sections/faq/faq";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <main>
       <InquiryProvider>
+        <Chatbot />
         <Hero />
         <About />
         <Offer />

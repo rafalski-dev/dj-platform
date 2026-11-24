@@ -3,6 +3,7 @@ export const rateLimits = {
   checkDate: { limit: 15, windowSeconds: 60 },
   inquiry: { limit: 5, windowSeconds: 60 * 60 },
   newsletter: { limit: 5, windowSeconds: 60 * 60 },
+  chatbot: { limit: 20, windowSeconds: 10 * 60 },
 } as const;
 
 export type RateLimitAction = keyof typeof rateLimits;

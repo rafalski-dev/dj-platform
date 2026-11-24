@@ -220,6 +220,10 @@
           "question": "Do you travel across Poland?",
           "answer": "Yes, I play events all over Poland. Travel within the local area is included, and for venues further away I simply add a transparent travel fee that we agree on upfront — no surprises."
         },
+        "music": {
+          "question": "What kind of music do you play?",
+          "answer": "Mostly the biggest hits — from timeless classics through the 80s, 90s and 2000s to today's chart toppers, plus Polish party favourites. I read the room and mix styles so every generation finds their moment on the dance floor. Once you create an account, you can add your favourite songs to your playlist in the client panel, and I'll play them at your event."
+        },
         "songs": {
           "question": "Can we choose the songs ourselves?",
           "answer": "Absolutely. Before the event we go through your must-play list, any songs to avoid, and the moments that matter most to you. From there I read the room and blend your requests with tracks that keep the dance floor full all night."
@@ -237,6 +241,27 @@
           "answer": "It's simple: send me a message with your date and details, we talk through what you're looking for, and once everything fits I reserve the date with a signed agreement and a deposit. After that, your date is locked in."
         }
       }
+    },
+    "Chatbot": {
+      "openButton": "Ask AI",
+      "hideButton": "Hide",
+      "title": "Ask AI",
+      "close": "Hide chat",
+      "welcome": "Hi! I'm the DJ MAVEN AI assistant. Ask me anything about DJ MAVEN, or check if your date is still free.",
+      "assistantLabel": "DJ MAVEN AI Assistant",
+      "userLabel": "You",
+      "suggestedTitle": "Popular questions",
+      "suggested": {
+        "dates": "Do you have free dates?",
+        "music": "What type of music do you play?",
+        "area": "What area do you cover?"
+      },
+      "placeholder": "Ask me anything",
+      "send": "Send message",
+      "thinking": "Thinking…",
+      "bookDate": "Book {date}",
+      "error": "Sorry, something went wrong. Please try again in a moment.",
+      "tooManyRequests": "You've sent a lot of messages. Try again in {minutes, plural, one {# minute} other {# minutes}} or call me: {phone}"
     },
     "Newsletter": {
       "sectionLabel": "Newsletter",

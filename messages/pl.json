@@ -220,6 +220,10 @@
           "question": "Czy dojeżdżasz na wydarzenia w całej Polsce?",
           "answer": "Tak, gram w całej Polsce. W promieniu 100 km od Trójmiasta dojazd jest już w cenie, a w przypadku dalszych wyjazdów koszty podróży i ewentualnego noclegu ustalamy przejrzyście na samym początku."
         },
+        "music": {
+          "question": "Jaką muzykę grasz?",
+          "answer": "Przede wszystkim największe hity – od ponadczasowej klasyki, przez lata 80., 90. i 2000., po aktualne przeboje z list, a do tego polskie imprezowe klasyki. Obserwuję parkiet i łączę style tak, żeby każde pokolenie miało swój moment. Po założeniu konta możesz dodać swoje ulubione utwory do playlisty w panelu klienta, a ja zagram je na Twojej imprezie."
+        },
         "songs": {
           "question": "Czy można ustalić własną playlistę i utwory zakazane?",
           "answer": "Jak najbardziej. Twoje ulubione kawałki i lista utworów, których absolutnie nie chcesz usłyszeć, to dla mnie baza. Podczas imprezy łączę te wytyczne z bieżącą reakcją ludzi na parkiecie, by zabawa nie zwalniała ani na moment."
@@ -237,6 +241,27 @@
           "answer": "Zaczynamy od sprawdzenia daty i krótkiej rozmowy o planowanym wydarzeniu. Kiedy wszystko jest ustalone, podpisujemy prostą umowę online i wpłacasz zadatek – od tego momentu termin jest w 100% zablokowany dla Ciebie."
         }
       }
+    },
+    "Chatbot": {
+      "openButton": "Zapytaj AI",
+      "hideButton": "Ukryj",
+      "title": "Zapytaj AI",
+      "close": "Ukryj czat",
+      "welcome": "Cześć! Jestem asystentem AI DJ MAVEN. Zapytaj o cokolwiek albo sprawdź, czy Twój termin jest jeszcze wolny.",
+      "assistantLabel": "Asystent AI DJ MAVEN",
+      "userLabel": "Ty",
+      "suggestedTitle": "Popularne pytania",
+      "suggested": {
+        "dates": "Czy masz wolne terminy?",
+        "music": "Jaką muzykę grasz?",
+        "area": "Na jakim obszarze grasz?"
+      },
+      "placeholder": "Zapytaj o cokolwiek",
+      "send": "Wyślij wiadomość",
+      "thinking": "Myślę…",
+      "bookDate": "Zarezerwuj {date}",
+      "error": "Przepraszam, coś poszło nie tak. Spróbuj ponownie za chwilę.",
+      "tooManyRequests": "Wysłano dużo wiadomości. Spróbuj ponownie za {minutes, plural, one {# minutę} few {# minuty} many {# minut} other {# minuty}} albo zadzwoń: {phone}"
     },
     "Newsletter": {
       "sectionLabel": "Newsletter",

@@ -1,1 +1,9 @@
-export const FAQData = ["availability", "travel", "songs", "ceremony", "equipment", "booking"];
+export const FAQData = [
+  "availability",
+  "travel",
+  "music",
+  "songs",
+  "ceremony",
+  "equipment",
+  "booking",
+];
