@@ -39,3 +39,19 @@ export function myDetailsSchema(t: AccountTranslator) {
 }
 
 export type MyDetailsType = z.infer<ReturnType<typeof myDetailsSchema>>;
+
+type EventDetailsTranslator = ReturnType<typeof useTranslations<"Dashboard.EventEdit">>;
+
+// Time and venue the contract needs – the date and the place stay with the DJ
+export function eventDetailsSchema(t: EventDetailsTranslator) {
+  return z.object({
+    startTime: z.string().min(1, { error: t("fields.startTime.required") }),
+    endTime: z.string().min(1, { error: t("fields.endTime.required") }),
+    address: z
+      .string()
+      .trim()
+      .min(1, { error: t("fields.address.required") }),
+  });
+}
+
+export type EventDetailsType = z.infer<ReturnType<typeof eventDetailsSchema>>;

@@ -127,6 +127,12 @@ export function formatDuration(startsAt: Date, endsAt: Date) {
   return minutes ? `${hours} h ${minutes} min` : `${hours} h`;
 }
 
+// Times are saved in Warsaw time, so read them back the same way ("HH:mm" for a time input)
+export function toWarsawTime(date: Date) {
+  const warsaw = new TZDate(date, "Europe/Warsaw");
+  return `${String(warsaw.getHours()).padStart(2, "0")}:${String(warsaw.getMinutes()).padStart(2, "0")}`;
+}
+
 export function dateFormatter(date: Date, startTime?: string, endTime?: string) {
   const warsawDate = new TZDate(date, "Europe/Warsaw");
   const eventDate = new Date(

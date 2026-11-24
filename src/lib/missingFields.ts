@@ -8,10 +8,11 @@ type ContractFieldsSource = {
   client: { streetAndNumber: string | null; postcode: string | null; city: string | null };
 };
 
-// Every field the contract needs, in the order the client sees them in the checklist
-export const CONTRACT_FIELDS = ["hours", "venueAddress", "homeAddress"] as const;
+export type MissingField = "hours" | "venueAddress" | "homeAddress";
 
-export type MissingField = (typeof CONTRACT_FIELDS)[number];
+// The overview shows one task card per group – each group is filled in on its own page
+export const EVENT_FIELDS: MissingField[] = ["hours", "venueAddress"];
+export const ADDRESS_FIELDS: MissingField[] = ["homeAddress"];
 
 export function getMissingFields(event: ContractFieldsSource): MissingField[] {
   const missing: MissingField[] = [];

@@ -127,6 +127,10 @@ export const routing = defineRouting({
       pl: "/panel-klienta/listy-utworow",
       en: "/dashboard/playlists",
     },
+    "/dashboard/event/edit": {
+      pl: "/panel-klienta/wydarzenie/edycja",
+      en: "/dashboard/event/edit",
+    },
     "/dashboard/account": {
       pl: "/panel-klienta/konto",
       en: "/dashboard/account",

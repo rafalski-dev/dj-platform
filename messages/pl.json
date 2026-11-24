@@ -906,6 +906,8 @@
       },
       "missingFields": {
         "title": "{count, plural, one {Została # rzecz} few {Zostały # rzeczy} many {Zostało # rzeczy} other {Zostało # rzeczy}} do uzupełnienia, zanim przygotujemy umowę.",
+        "doneDescription": "Wszystko uzupełnione. Możesz to jeszcze zmienić.",
+        "edit": "Edytuj",
         "fields": {
           "hours": "godziny wydarzenia",
           "venueAddress": "adres miejsca"
@@ -928,6 +930,7 @@
       "title": "Szczegóły wydarzenia",
       "timeTitle": "Godziny",
       "venueTitle": "Miejsce",
+      "showOther": "Pokaż pozostałe szczegóły",
       "save": "Zapisz szczegóły",
       "saving": "Zapisywanie",
       "saved": "Szczegóły wydarzenia zostały zapisane",

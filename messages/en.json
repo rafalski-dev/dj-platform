@@ -906,6 +906,8 @@
       },
       "missingFields": {
         "title": "{count, plural, one {# thing left} other {# things left}} to fill in before we can prepare your contract.",
+        "doneDescription": "All filled in. You can still change it.",
+        "edit": "Edit",
         "fields": {
           "hours": "event hours",
           "venueAddress": "venue address"
@@ -928,6 +930,7 @@
       "title": "Event details",
       "timeTitle": "Time",
       "venueTitle": "Venue",
+      "showOther": "Show other details",
       "save": "Save details",
       "saving": "Saving",
       "saved": "Event details are saved",

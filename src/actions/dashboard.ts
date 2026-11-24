@@ -4,8 +4,13 @@ import { SELECTED_EVENT_COOKIE } from "@/constants/dashboard";
 import { getClientEventOptions, getOptionValue } from "@/data/dashboard";
 import { getSession } from "@/lib/auth-helpers";
 import { db } from "@/lib/db";
-import { formatZodErrors } from "@/lib/utils";
-import { myDetailsSchema, MyDetailsType } from "@/validation/dashboard";
+import { dateFormatter, formatZodErrors } from "@/lib/utils";
+import {
+  eventDetailsSchema,
+  EventDetailsType,
+  myDetailsSchema,
+  MyDetailsType,
+} from "@/validation/dashboard";
 import { getTranslations } from "next-intl/server";
 import { cookies } from "next/headers";
 
@@ -71,5 +76,48 @@ export async function myDetailsAction(formData: MyDetailsType) {
   } catch (error) {
     console.error(error);
     return { success: false, status: "error", message: t("details.error") };
+  }
+}
+
+// The id comes from the form, so the event is checked against the logged-in user first
+export async function eventDetailsAction(eventId: string, formData: EventDetailsType) {
+  const session = await getSession();
+  const t = await getTranslations("Dashboard.EventEdit");
+  if (!session) return { success: false, status: "invalidAuth", message: t("error") };
+
+  const result = eventDetailsSchema(t).safeParse(formData);
+
+  if (!result.success) {
+    return {
+      success: false,
+      status: "invalid",
+      message: t("invalid"),
+      errors: formatZodErrors(result.error),
+    };
+  }
+
+  try {
+    const event = await db.event.findFirst({
+      where: { id: eventId, client: { userId: session.user.id } },
+      select: { date: true },
+    });
+    if (!event) return { success: false, status: "notFound", message: t("error") };
+
+    // same as the admin form – an end before the start means the party goes past midnight
+    const { eventStartTime, eventEndTime } = dateFormatter(
+      event.date,
+      result.data.startTime,
+      result.data.endTime,
+    );
+
+    await db.event.update({
+      where: { id: eventId },
+      data: { startsAt: eventStartTime, endsAt: eventEndTime, address: result.data.address },
+    });
+
+    return { success: true, status: "success", message: t("saved") };
+  } catch (error) {
+    console.error(error);
+    return { success: false, status: "error", message: t("error") };
   }
 }

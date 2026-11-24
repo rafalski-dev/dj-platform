@@ -10,6 +10,7 @@ import { CreateEventSchema, createEventSchema } from "@/validation/events";
 import { editEventAction } from "@/actions/events";
 import type { EventToEdit } from "@/data/events";
 import { useRouter } from "@/i18n/navigation";
+import { toWarsawTime } from "@/lib/utils";
 import { Spinner } from "@/components/ui/shadcn/spinner";
 import { toast } from "@/components/ui/shadcn/toast";
 import {
@@ -38,12 +39,6 @@ type EditEventFormProps = {
 // The event date is stored as a calendar day (UTC midnight) – turn it into a local Date for the picker.
 function toPickerDate(date: Date) {
   return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
-}
-
-// Times are saved in Warsaw time, so read them back the same way.
-function toWarsawTime(date: Date) {
-  const warsaw = new TZDate(date, "Europe/Warsaw");
-  return `${String(warsaw.getHours()).padStart(2, "0")}:${String(warsaw.getMinutes()).padStart(2, "0")}`;
 }
 
 function toWarsawDay(date: Date) {
