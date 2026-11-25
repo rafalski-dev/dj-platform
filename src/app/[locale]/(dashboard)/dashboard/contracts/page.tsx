@@ -21,7 +21,7 @@ export default async function DashboardContracts() {
       <SectionHeader title={t("Pages.contracts")} />
       {contract ? (
         // the DJ has sent it – download + upload the signed one (UI only for now)
-        <ContractCard ready />
+        <ContractCard ready contractId={contract.id} />
       ) : (
         <ContractEmpty details={details} />
       )}
