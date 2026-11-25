@@ -985,6 +985,22 @@
         "today": "Dziś!",
         "past": "Odbyło się"
       },
+      "playlist": {
+        "label": "Playlista",
+        "title": "Playlista",
+        "empty": {
+          "description": "Dodaj utwory, które chcesz usłyszeć – i te, których nie grać.",
+          "action": "Dodaj utwory"
+        },
+        "started": {
+          "description": "{count, plural, one {Dodano # utwór} few {Dodano # utwory} many {Dodano # utworów} other {Dodano # utworu}}. Możesz ją zmieniać, dopóki DJ jej nie zablokuje.",
+          "action": "Edytuj"
+        },
+        "locked": {
+          "description": "{count, plural, one {# utwór} few {# utwory} many {# utworów} other {# utworu}}. DJ zablokował playlistę.",
+          "action": "Zobacz"
+        }
+      },
       "contract": {
         "label": "Umowa",
         "title": "Umowa",

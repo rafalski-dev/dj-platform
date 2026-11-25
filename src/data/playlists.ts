@@ -96,3 +96,15 @@ export async function getClientPlaylist() {
 }
 
 export type PlaylistDetails = NonNullable<Awaited<ReturnType<typeof getPlaylistDetails>>>;
+
+// Client overview: only what the Playlist step card needs. No playlist yet = no songs yet
+// (it's created when the client first opens the Playlist page).
+export async function getClientPlaylistSummary() {
+  const [session, selected] = await Promise.all([getSession(), getSelectedEventOption()]);
+  if (!session || selected?.kind !== "event") return null;
+
+  return await db.playlist.findFirst({
+    where: { event: { id: selected.id, client: { userId: session.user.id } } },
+    select: { status: true, _count: { select: { songs: true } } },
+  });
+}
