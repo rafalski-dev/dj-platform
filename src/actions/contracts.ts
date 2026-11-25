@@ -35,8 +35,11 @@ export async function createContractAction(formData: CreateContractSchema) {
 
   if (!event) return { success: false, status: "invalid", message: t("serverMessage.invalid") };
 
+  // the new contract's id – the form opens its page right after saving
+  let contractId: string;
+
   try {
-    await db.$transaction(async (tx) => {
+    contractId = await db.$transaction(async (tx) => {
       const contract = await tx.contract.create({
         data: { eventId: event.id },
         select: { id: true, number: true, createdAt: true },
@@ -49,6 +52,8 @@ export async function createContractAction(formData: CreateContractSchema) {
         where: { id: contract.id },
         data: { contractNumber: `NC/${year}/${number}` },
       });
+
+      return contract.id;
     });
   } catch (err) {
     if (getDbErrorKind(err) === "duplicate")
@@ -58,7 +63,7 @@ export async function createContractAction(formData: CreateContractSchema) {
     return { success: false, status: "error", message: t("serverMessage.unknown") };
   }
 
-  return { success: true, status: "success", message: t("serverMessage.success") };
+  return { success: true, status: "success", message: t("serverMessage.success"), contractId };
 }
 
 export async function deleteContractAction(contractId: string) {
