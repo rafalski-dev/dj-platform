@@ -101,12 +101,12 @@ export async function getClientContract() {
   return await db.contract.findFirst({
     where: {
       status: { not: "Draft" },
-      // the user check stays – the selected event must still be this client's
       event: { id: selected.id, client: { userId: session.user.id } },
     },
     select: {
       id: true,
       contractNumber: true,
+      fileKey: true,
       status: true,
       sentAt: true,
       event: { select: { name: true, startsAt: true, place: true } },

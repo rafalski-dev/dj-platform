@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/shadcn/button";
+import { Button, buttonVariants } from "@/components/ui/shadcn/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/shadcn/card";
 import { cn } from "@/lib/utils";
 import {
@@ -13,7 +13,13 @@ import { getTranslations } from "next-intl/server";
 // The contract from the DJ (download) and the signed one going back (upload).
 // UI only for now – no download route or upload yet.
 // ready – the DJ has sent the contract; before that both tiles are locked
-export async function ContractCard({ ready }: { ready: boolean }) {
+export async function ContractCard({
+  ready,
+  contractId,
+}: {
+  ready: boolean;
+  contractId?: string | null;
+}) {
   const t = await getTranslations("Dashboard.Contract.card");
 
   return (
@@ -46,11 +52,21 @@ export async function ContractCard({ ready }: { ready: boolean }) {
               {t(ready ? "download.ready" : "download.waiting")}
             </p>
           </div>
-          {/* TODO: link to the download route once it exists */}
-          <Button size="sm" disabled={!ready}>
-            <DownloadIcon />
-            {t("download.button")}
-          </Button>
+          {/* an <a> can't be disabled – a real link only once the contract exists */}
+          {ready && contractId ? (
+            <a
+              className={buttonVariants({ variant: "default", size: "sm" })}
+              href={`/api/contracts/${contractId}/download`}
+            >
+              <DownloadIcon />
+              {t("download.button")}
+            </a>
+          ) : (
+            <Button size="sm" disabled>
+              <DownloadIcon />
+              {t("download.button")}
+            </Button>
+          )}
         </div>
 
         {/* 2. the signed contract going back to the DJ */}
