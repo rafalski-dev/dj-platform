@@ -76,13 +76,16 @@ export async function PlaylistHeader({
         </CardHeader>
         <CardContent>
           <dl className="flex flex-row flex-wrap justify-start gap-x-4 gap-y-2">
-            <div className="text-muted-foreground flex flex-row flex-wrap gap-2 text-[13px]">
-              <dt className="text-popover-foreground flex flex-row items-center gap-2">
-                <UserIcon size={15} />
-                {t("Details.header.client")}
-              </dt>
-              <dd>{event.client.name}</dd>
-            </div>
+            {/* the client knows who they are – the name is only for the DJ */}
+            {isAdmin && (
+              <div className="text-muted-foreground flex flex-row flex-wrap gap-2 text-[13px]">
+                <dt className="text-popover-foreground flex flex-row items-center gap-2">
+                  <UserIcon size={15} />
+                  {t("Details.header.client")}
+                </dt>
+                <dd>{event.client.name}</dd>
+              </div>
+            )}
             {playlistInfo.map(({ icon, label, content }, index) => {
               return (
                 <div
@@ -133,19 +136,22 @@ export async function PlaylistHeader({
                 <FileSpreadsheetIcon />
                 Download CSV
               </DownloadCSVItem>
-              <DropdownMenuItem
-                render={
-                  <Link
-                    href={{
-                      pathname: "/admin/playlists/[playlistId]/print",
-                      params: { playlistId: id },
-                    }}
-                  >
-                    <PrinterIcon />
-                    Print
-                  </Link>
-                }
-              />
+              {/* the print page lives in the admin panel */}
+              {isAdmin && (
+                <DropdownMenuItem
+                  render={
+                    <Link
+                      href={{
+                        pathname: "/admin/playlists/[playlistId]/print",
+                        params: { playlistId: id },
+                      }}
+                    >
+                      <PrinterIcon />
+                      Print
+                    </Link>
+                  }
+                />
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

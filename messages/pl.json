@@ -818,7 +818,11 @@
       "home": "Przegląd",
       "events": "Twoje wydarzenia",
       "contracts": "Umowa",
-      "playlists": "Twoje playlisty"
+      "playlists": "Playlista"
+    },
+    "Playlist": {
+      "open": "Możesz dodawać i usuwać utwory, dopóki DJ nie zablokuje playlisty.",
+      "locked": "DJ zablokował playlistę. Jeśli potrzebujesz zmiany, skontaktuj się z DJ-em."
     },
     "Account": {
       "title": "Moje konto",

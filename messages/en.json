@@ -818,7 +818,11 @@
       "home": "Overview",
       "events": "Your events",
       "contracts": "Contract",
-      "playlists": "Your playlists"
+      "playlists": "Playlist"
+    },
+    "Playlist": {
+      "open": "You can add and remove songs until the DJ locks the playlist.",
+      "locked": "The DJ has locked the playlist. Contact the DJ if you need a change."
     },
     "Account": {
       "title": "My account",
