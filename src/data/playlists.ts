@@ -1,6 +1,7 @@
 import "server-only";
 
-import { adminCheck } from "@/lib/auth-helpers";
+import { getSelectedEventOption } from "@/data/dashboard";
+import { adminCheck, getSession } from "@/lib/auth-helpers";
 import { db } from "@/lib/db";
 import { Prisma } from "../../generated";
 
@@ -49,25 +50,48 @@ export async function getCountPlaylists(query?: string) {
   return await db.playlist.count({ where: getPlaylistsWhere(query) });
 }
 
+// The same data for the admin and the client page – they share the playlist components
+const playlistDetailsInclude = {
+  songs: { orderBy: { createdAt: "desc" } },
+  event: {
+    select: {
+      id: true,
+      name: true,
+      type: true,
+      altType: true,
+      date: true,
+      status: true,
+      client: { select: { id: true, name: true } },
+    },
+  },
+} satisfies Prisma.PlaylistInclude;
+
 export async function getPlaylistDetails(playlistId: string) {
   await adminCheck();
 
   return await db.playlist.findUnique({
     where: { id: playlistId },
-    include: {
-      songs: { orderBy: { createdAt: "desc" } },
-      event: {
-        select: {
-          id: true,
-          name: true,
-          type: true,
-          altType: true,
-          date: true,
-          status: true,
-          client: { select: { id: true, name: true } },
-        },
-      },
-    },
+    include: playlistDetailsInclude,
+  });
+}
+
+// Client panel: the playlist of the event chosen in the nav selector.
+// Events the DJ added by hand have no playlist yet – an empty one is created on the first visit.
+export async function getClientPlaylist() {
+  const [session, selected] = await Promise.all([getSession(), getSelectedEventOption()]);
+  if (!session || selected?.kind !== "event") return null;
+
+  const event = await db.event.findFirst({
+    where: { id: selected.id, client: { userId: session.user.id } },
+    select: { id: true },
+  });
+  if (!event) return null;
+
+  return await db.playlist.upsert({
+    where: { eventId: event.id },
+    create: { eventId: event.id },
+    update: {},
+    include: playlistDetailsInclude,
   });
 }
 

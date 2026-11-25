@@ -57,6 +57,7 @@ export async function createSongAction(songData: CreateSongSchema) {
       data: result.data,
     });
     revalidatePath("/[locale]/admin/playlists/[playlistId]", "page");
+    revalidatePath("/[locale]/dashboard/playlists", "page");
     return { success: true, status: "success", message: "Song has been added" };
   } catch (error) {
     console.error(error);
@@ -107,6 +108,7 @@ export async function deleteSongAction(songId: string, playlistId: string) {
 
     await db.song.delete({ where: { id: songId } });
     revalidatePath("/[locale]/admin/playlists/[playlistId]", "page");
+    revalidatePath("/[locale]/dashboard/playlists", "page");
     return { success: true, status: "success", message: "Song has been removed" };
   } catch (error) {
     console.error(error);
@@ -133,6 +135,7 @@ export async function togglePlaylistAction(playlistId: string) {
         where: { id: playlistId },
       });
       revalidatePath("/[locale]/admin/playlists/[playlistId]", "page");
+      revalidatePath("/[locale]/dashboard/playlists", "page");
 
       return { success: true, status: "success", message: "Playlist switched to locked" };
     }
@@ -142,6 +145,7 @@ export async function togglePlaylistAction(playlistId: string) {
       where: { id: playlistId },
     });
     revalidatePath("/[locale]/admin/playlists/[playlistId]", "page");
+    revalidatePath("/[locale]/dashboard/playlists", "page");
     return { success: true, status: "success", message: "Playlist switched to open" };
   } catch {
     return {
