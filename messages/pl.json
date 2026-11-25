@@ -748,6 +748,16 @@
       "fallback": "Jeśli przycisk nie działa, skopiuj poniższy adres i wklej go w przeglądarce:",
       "ignore": "Jeśli to nie Ty, zignoruj tę wiadomość. Nic się nie zmieni."
     },
+    "ContractSent": {
+      "subject": "Twoja umowa {number} jest gotowa",
+      "preview": "Umowa na {date} jest gotowa – pobierz ją, podpisz i odeślij.",
+      "heading": "Twoja umowa jest gotowa",
+      "greeting": "Cześć {name},",
+      "intro": "umowa na {date} czeka na Ciebie w panelu klienta.",
+      "steps": "Pobierz ją, przeczytaj uważnie, podpisz i odeślij mi w tym samym miejscu – wystarczy PDF albo wyraźne zdjęcie podpisanych stron.",
+      "button": "Otwórz umowę",
+      "footnote": "Jeśli masz pytania do umowy, po prostu odpisz na tego maila albo zadzwoń."
+    },
     "InquiryAccepted": {
       "subject": "Termin {date} potwierdzony",
       "preview": "Twój termin {date} jest potwierdzony – uzupełnij dane do umowy.",
@@ -1169,6 +1179,7 @@
             "success": "Wysłano umowę {number}.",
             "notFound": "Ta umowa już nie istnieje.",
             "alreadySent": "Ta umowa została już wysłana.",
+            "successNoEmail": "Wysłano umowę {number}, ale mail do klienta nie doszedł. Daj mu znać sam.",
             "noBusinessDetails": "Przed wysłaniem umowy uzupełnij dane firmy w Ustawieniach.",
             "unknown": "Coś poszło nie tak. Spróbuj ponownie.",
             "missingEventHours": "Wydarzenie nie ma jeszcze godzin. Uzupełnij je w wydarzeniu przed wysłaniem umowy."

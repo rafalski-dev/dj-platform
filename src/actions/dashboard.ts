@@ -21,6 +21,11 @@ import {
 } from "@/validation/dashboard";
 import { getTranslations } from "next-intl/server";
 import { cookies } from "next/headers";
+import { siteConfig } from "@/config/site";
+import { getPathname } from "@/i18n/navigation";
+import { resend } from "@/lib/resend";
+import { ForeignUserTemplate } from "@/templates/emails/foreignUserTemplate";
+import { render } from "@react-email/render";
 
 // Setting a cookie in an action re-renders the current page → it shows the new event
 export async function selectEventAction(value: string) {
@@ -232,7 +237,45 @@ export async function signedContractConfirmAction(contractId: string, fileKey: s
     return { success: false, status: "error", message: t("unknown") };
   }
 
+  // the client's part is done either way – the DJ can still see it in the panel
+  await sendSignedContractEmail(contract);
+
   return { success: true, status: "success", message: t("success") };
+}
+
+// To the DJ (same inbox as new enquiries): "the client sent the signed contract – check and confirm it".
+// Admin emails are in English, like the enquiry email.
+async function sendSignedContractEmail(contract: UploadableContract) {
+  const replaced = !!contract.signedFileKey;
+  const contractUrl = `${process.env.BETTER_AUTH_URL}${getPathname({
+    href: { pathname: "/admin/contracts/[contractId]", params: { contractId: contract.id } },
+    locale: "en",
+  })}`;
+
+  try {
+    const email = ForeignUserTemplate({
+      locale: "en",
+      preview: `${contract.event.client.name} sent the signed contract ${contract.contractNumber ?? ""}`,
+      heading: replaced ? "Signed contract replaced" : "Signed contract received",
+      paragraphs: [
+        `${contract.event.client.name} has ${replaced ? "replaced" : "sent"} the signed copy of contract ${contract.contractNumber ?? ""} (${contract.event.name}).`,
+        "Check the file and confirm the contract to finish.",
+      ],
+      button: { label: "Review contract", url: contractUrl },
+    });
+
+    const { error } = await resend.emails.send({
+      from: `${siteConfig.name} <contact@rafalski.dev>`,
+      to: ["contact@rafalski.dev"],
+      subject: `Signed contract ${contract.contractNumber ?? ""} – ${contract.event.client.name}`,
+      react: email,
+      text: await render(email, { plainText: true }),
+    });
+
+    if (error) console.error("sendSignedContractEmail:", error);
+  } catch (error) {
+    console.error("sendSignedContractEmail:", error);
+  }
 }
 
 // The client's own contract that still takes a signed copy: sent, or signed but not accepted yet
@@ -243,6 +286,13 @@ async function getUploadableContract(contractId: string, userId: string) {
       status: { in: ["Sent", "Signed"] },
       event: { client: { userId } },
     },
-    select: { id: true, signedFileKey: true },
+    select: {
+      id: true,
+      signedFileKey: true,
+      contractNumber: true,
+      event: { select: { name: true, client: { select: { name: true } } } },
+    },
   });
 }
+
+type UploadableContract = NonNullable<Awaited<ReturnType<typeof getUploadableContract>>>;

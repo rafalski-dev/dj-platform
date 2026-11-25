@@ -748,6 +748,16 @@
       "fallback": "If the button doesn't work, copy the address below and paste it into your browser:",
       "ignore": "If you didn't ask for this, ignore this message. Nothing will change."
     },
+    "ContractSent": {
+      "subject": "Your contract {number} is ready",
+      "preview": "Your contract for {date} is ready – download it, sign it and send it back.",
+      "heading": "Your contract is ready",
+      "greeting": "Hi {name},",
+      "intro": "your contract for {date} is waiting in the client panel.",
+      "steps": "Download it, read it carefully, sign it and send it back to me in the same place – a PDF or a clear photo of the signed pages is fine.",
+      "button": "Open contract",
+      "footnote": "If you have any questions about the contract, just reply to this email or give me a call."
+    },
     "InquiryAccepted": {
       "subject": "{date} is confirmed",
       "preview": "Your date {date} is confirmed – fill in the details for the contract.",
@@ -1169,6 +1179,7 @@
             "success": "Contract {number} has been sent.",
             "notFound": "This contract no longer exists.",
             "alreadySent": "This contract has already been sent.",
+            "successNoEmail": "Contract {number} has been sent, but the email to the client failed. Let them know yourself.",
             "noBusinessDetails": "Fill in your business details in Settings before sending a contract.",
             "unknown": "Something went wrong. Please try again.",
             "missingEventHours": "The event has no hours yet. Fill them in on the event before sending the contract."

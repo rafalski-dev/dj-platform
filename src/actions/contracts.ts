@@ -8,7 +8,13 @@ import { getDbErrorKind } from "@/lib/prismaErrors";
 import { r2 } from "@/lib/r2";
 import { formatZodErrors } from "@/lib/utils";
 import { createContractSchema, CreateContractSchema } from "@/validation/contracts";
-import { getTranslations } from "next-intl/server";
+import { getFormatter, getTranslations } from "next-intl/server";
+import { siteConfig } from "@/config/site";
+import { getPathname } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
+import { resend } from "@/lib/resend";
+import { ForeignUserTemplate } from "@/templates/emails/foreignUserTemplate";
+import { render } from "@react-email/render";
 
 export async function createContractAction(formData: CreateContractSchema) {
   await adminCheck();
@@ -90,7 +96,13 @@ export async function sendContractAction(contractId: string) {
 
   const contract = await db.contract.findUnique({
     where: { id: contractId },
-    select: { status: true, contractNumber: true },
+    select: {
+      status: true,
+      contractNumber: true,
+      event: {
+        select: { date: true, client: { select: { firstName: true, email: true } } },
+      },
+    },
   });
 
   if (!contract) return { success: false, status: "notFound", message: t("notFound") };
@@ -124,11 +136,72 @@ export async function sendContractAction(contractId: string) {
     return { success: false, status: "error", message: t("unknown") };
   }
 
+  // The contract is already sent – a failed email only changes the message for the DJ
+  const isEmailSent = await sendContractReadyEmail(contract);
+  const number = contract.contractNumber ?? "";
+
   return {
     success: true,
     status: "success",
-    message: t("success", { number: contract.contractNumber ?? "" }),
+    message: isEmailSent ? t("success", { number }) : t("successNoEmail", { number }),
   };
+}
+
+// "Your contract is ready" + a button to the contract page in the client panel.
+// Clients have no saved language – the default (Polish) is used.
+async function sendContractReadyEmail(contract: {
+  contractNumber: string | null;
+  event: { date: Date; client: { firstName: string; email: string | null } };
+}) {
+  const { client, date } = contract.event;
+  if (!client.email) return false;
+
+  const locale = routing.defaultLocale;
+  const t = await getTranslations({ locale, namespace: "Emails.ContractSent" });
+  const format = await getFormatter({ locale });
+
+  // Server may run in UTC – format in Warsaw time so the day doesn't shift
+  const eventDate = format.dateTime(date, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "Europe/Warsaw",
+  });
+
+  try {
+    const email = ForeignUserTemplate({
+      locale,
+      preview: t("preview", { date: eventDate }),
+      heading: t("heading"),
+      paragraphs: [
+        t("greeting", { name: client.firstName }),
+        t("intro", { date: eventDate }),
+        t("steps"),
+      ],
+      button: {
+        label: t("button"),
+        url: `${process.env.BETTER_AUTH_URL}${getPathname({ href: "/dashboard/contracts", locale })}`,
+      },
+      footnote: t("footnote"),
+    });
+
+    const { error } = await resend.emails.send({
+      from: `${siteConfig.name} <contact@rafalski.dev>`,
+      to: client.email,
+      subject: t("subject", { number: contract.contractNumber ?? "" }),
+      react: email,
+      text: await render(email, { plainText: true }),
+    });
+
+    if (error) {
+      console.error("sendContractReadyEmail:", error);
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error("sendContractReadyEmail:", error);
+    return false;
+  }
 }
 
 // The last step: the DJ has looked at the signed copy from the client and confirms it.
