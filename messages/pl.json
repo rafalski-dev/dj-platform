@@ -807,7 +807,7 @@
     "Pages": {
       "home": "Przegląd",
       "events": "Twoje wydarzenia",
-      "contracts": "Twoje umowy",
+      "contracts": "Umowa",
       "playlists": "Twoje playlisty"
     },
     "Account": {
@@ -868,8 +868,58 @@
     },
     "Contract": {
       "empty": {
-        "title": "Twoja umowa nie jest jeszcze gotowa",
-        "description": "Przygotowujemy ją. Gdy będzie gotowa, pobierzesz ją tutaj, a my damy Ci znać mailem."
+        "alert": {
+          "title": "Czekamy, aż DJ przygotuje Twoją umowę",
+          "description": "Damy Ci znać mailem, gdy będzie gotowa. W międzyczasie sprawdź swoje dane poniżej."
+        },
+        "back": "Wróć do przeglądu"
+      },
+      "card": {
+        "title": "Umowa",
+        "download": {
+          "title": "Umowa od DJ-a",
+          "emptyTitle": "Brak umowy",
+          "waiting": "Pojawi się tutaj, gdy DJ ją przygotuje.",
+          "ready": "Pobierz umowę, przeczytaj ją uważnie i podpisz.",
+          "button": "Pobierz PDF"
+        },
+        "upload": {
+          "title": "Podpisana umowa",
+          "description": "Odeślij podpisaną umowę do DJ-a.",
+          "locked": "Odeślesz ją, gdy umowa będzie gotowa.",
+          "hint": "PDF, JPG lub PNG · do 10 MB",
+          "button": "Wybierz plik"
+        }
+      },
+      "details": {
+        "edit": "Edytuj",
+        "client": {
+          "title": "Twoje dane",
+          "name": "Imię i nazwisko",
+          "taxId": "NIP",
+          "phone": "Telefon",
+          "address": "Adres"
+        },
+        "event": {
+          "title": "Wydarzenie",
+          "date": "Data",
+          "hours": "Godziny",
+          "place": "Nazwa miejsca",
+          "address": "Adres miejsca"
+        },
+        "ceremony": {
+          "title": "Ceremonia",
+          "date": "Data",
+          "startTime": "Początek",
+          "place": "Miejsce ceremonii",
+          "address": "Adres ceremonii"
+        },
+        "package": {
+          "title": "Pakiet",
+          "package": "Pakiet",
+          "addons": "Dodatki",
+          "noAddons": "Brak dodatków"
+        }
       }
     },
     "EventSelector": {

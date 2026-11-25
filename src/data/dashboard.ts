@@ -95,6 +95,47 @@ export async function getEventDetailsToEdit(eventId: string) {
   });
 }
 
+// What goes into the contract of the selected event – shown read-only while the DJ prepares it,
+// so the client can still fix something. Checked against the user.
+export async function getContractDetails(eventId: string) {
+  const session = await getSession();
+  if (!session) return null;
+
+  return db.event.findFirst({
+    where: { id: eventId, client: { userId: session.user.id } },
+    select: {
+      date: true,
+      startsAt: true,
+      endsAt: true,
+      place: true,
+      address: true,
+      package: true,
+      addons: true,
+      wedding: {
+        select: {
+          weddingKind: true,
+          ceremonyStartsAt: true,
+          ceremonyPlace: true,
+          ceremonyAddress: true,
+        },
+      },
+      client: {
+        select: {
+          clientType: true,
+          name: true,
+          taxId: true,
+          phone: true,
+          streetAndNumber: true,
+          postcode: true,
+          city: true,
+        },
+      },
+    },
+  });
+}
+
+export type ContractDetails = NonNullable<Awaited<ReturnType<typeof getContractDetails>>>;
+
 // The client's own details for the My details form – null until the DJ links them to a Client
 export async function getMyDetails() {
   const session = await getSession();
