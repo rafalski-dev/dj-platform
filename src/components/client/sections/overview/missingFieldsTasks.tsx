@@ -1,5 +1,5 @@
 import { ADDRESS_FIELDS, EVENT_FIELDS, type MissingField } from "@/lib/missingFields";
-import type { ContractStatus } from "../../../../../generated";
+import type { ContractStatus, PlaylistStatus } from "../../../../../generated";
 import { getTranslations } from "next-intl/server";
 import { OverviewTaskCard } from "./overviewTaskCard";
 
@@ -9,12 +9,15 @@ import { OverviewTaskCard } from "./overviewTaskCard";
 export async function MissingFieldsTasks({
   missing,
   contractStatus,
+  playlist,
 }: {
   missing: MissingField[];
   contractStatus: ContractStatus | null;
+  playlist: { status: PlaylistStatus; songs: number } | null;
 }) {
   const t = await getTranslations("Dashboard.Overview.missingFields");
   const tContract = await getTranslations("Dashboard.Overview.contract");
+  const tPlaylist = await getTranslations("Dashboard.Overview.playlist");
 
   const missingEvent = missing.filter((field) => EVENT_FIELDS.includes(field));
   const addressDone = !missing.some((field) => ADDRESS_FIELDS.includes(field));
@@ -50,6 +53,7 @@ export async function MissingFieldsTasks({
         }}
       />
       <ContractTaskCard status={contractStatus} t={tContract} />
+      <PlaylistTaskCard playlist={playlist} t={tPlaylist} />
     </div>
   );
 }
@@ -83,6 +87,29 @@ function ContractTaskCard({
           ? undefined
           : { label: t(`${state}.action`), pathname: "/dashboard/contracts" }
       }
+    />
+  );
+}
+
+// The client's part is choosing songs – done once there's at least one; they can keep editing
+// until the DJ locks the playlist.
+function PlaylistTaskCard({
+  playlist,
+  t,
+}: {
+  playlist: { status: PlaylistStatus; songs: number } | null;
+  t: Awaited<ReturnType<typeof getTranslations<"Dashboard.Overview.playlist">>>;
+}) {
+  const songs = playlist?.songs ?? 0;
+  const state = playlist?.status === "Locked" ? "locked" : songs > 0 ? "started" : "empty";
+
+  return (
+    <OverviewTaskCard
+      done={state !== "empty"}
+      label={t("label")}
+      title={t("title")}
+      description={t(`${state}.description`, { count: songs })}
+      action={{ label: t(`${state}.action`), pathname: "/dashboard/playlists" }}
     />
   );
 }

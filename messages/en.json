@@ -985,6 +985,22 @@
         "today": "Today!",
         "past": "Done"
       },
+      "playlist": {
+        "label": "Playlist",
+        "title": "Playlist",
+        "empty": {
+          "description": "Add the songs you'd love to hear – and the ones to skip.",
+          "action": "Add songs"
+        },
+        "started": {
+          "description": "{count, plural, one {# song} other {# songs}} added. You can change it until the DJ locks it.",
+          "action": "Edit"
+        },
+        "locked": {
+          "description": "{count, plural, one {# song} other {# songs}}. The DJ has locked the playlist.",
+          "action": "View"
+        }
+      },
       "contract": {
         "label": "Contract",
         "title": "Contract",
