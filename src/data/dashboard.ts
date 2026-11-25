@@ -69,14 +69,29 @@ export async function getEventMissingFields(eventId: string) {
   return event ? getMissingFields(event) : [];
 }
 
-// The selected event's time and venue for the client's edit form – checked against the user
+// The selected event's time and place for the client's edit form – checked against the user
 export async function getEventDetailsToEdit(eventId: string) {
   const session = await getSession();
   if (!session) return null;
 
   return db.event.findFirst({
     where: { id: eventId, client: { userId: session.user.id } },
-    select: { id: true, name: true, date: true, startsAt: true, endsAt: true, address: true },
+    select: {
+      id: true,
+      date: true,
+      startsAt: true,
+      endsAt: true,
+      place: true,
+      address: true,
+      wedding: {
+        select: {
+          weddingKind: true,
+          ceremonyStartsAt: true,
+          ceremonyPlace: true,
+          ceremonyAddress: true,
+        },
+      },
+    },
   });
 }
 

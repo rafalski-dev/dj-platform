@@ -797,6 +797,7 @@
         "afterConfirmation": "Dostępne po potwierdzeniu wydarzenia",
         "navItems": {
           "home": "Przegląd",
+          "event": "Godziny i miejsce",
           "contracts": "Umowa",
           "playlists": "Playlista",
           "account": "Moje konto"
@@ -913,10 +914,10 @@
           "venueAddress": "adres miejsca"
         },
         "event": {
-          "label": "Szczegóły wydarzenia",
+          "label": "Godziny i miejsce",
           "title": "Godziny i miejsce",
           "description": "Brakuje: {fields}",
-          "action": "Uzupełnij szczegóły wydarzenia"
+          "action": "Uzupełnij godziny i miejsce"
         },
         "address": {
           "label": "Twoje dane",
@@ -927,20 +928,24 @@
       }
     },
     "EventEdit": {
-      "title": "Szczegóły wydarzenia",
-      "timeTitle": "Godziny",
-      "venueTitle": "Miejsce",
-      "showOther": "Pokaż pozostałe szczegóły",
-      "save": "Zapisz szczegóły",
+      "title": "Godziny i miejsce",
+      "eventTitle": "Wydarzenie",
+      "ceremonyTitle": "Ceremonia",
+      "save": "Zapisz godziny i miejsce",
       "saving": "Zapisywanie",
-      "saved": "Szczegóły wydarzenia zostały zapisane",
-      "notSaved": "Nie udało się zapisać szczegółów",
+      "saved": "Godziny i miejsce zostały zapisane",
+      "notSaved": "Nie udało się zapisać godzin i miejsca",
       "invalid": "Sprawdź dane i spróbuj ponownie.",
       "error": "Coś poszło nie tak. Spróbuj ponownie.",
       "fields": {
+        "date": { "label": "Data" },
         "startTime": { "label": "Początek", "required": "Podaj godzinę rozpoczęcia" },
         "endTime": { "label": "Koniec", "required": "Podaj godzinę zakończenia" },
-        "address": { "label": "Adres miejsca", "required": "Podaj adres miejsca" }
+        "place": { "label": "Nazwa miejsca" },
+        "address": { "label": "Adres miejsca", "required": "Podaj adres miejsca" },
+        "ceremonyStartTime": { "required": "Podaj godzinę rozpoczęcia ceremonii" },
+        "ceremonyPlace": { "label": "Miejsce ceremonii", "required": "Podaj miejsce ceremonii" },
+        "ceremonyAddress": { "label": "Adres ceremonii", "required": "Podaj adres ceremonii" }
       }
     }
   },

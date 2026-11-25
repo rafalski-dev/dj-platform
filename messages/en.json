@@ -797,6 +797,7 @@
         "afterConfirmation": "Available once the event is confirmed",
         "navItems": {
           "home": "Overview",
+          "event": "Time and Place",
           "contracts": "Contract",
           "playlists": "Playlist",
           "account": "My account"
@@ -913,10 +914,10 @@
           "venueAddress": "venue address"
         },
         "event": {
-          "label": "Event details",
-          "title": "Time and venue",
+          "label": "Time and Place",
+          "title": "Time and Place",
           "description": "Missing: {fields}",
-          "action": "Add event details"
+          "action": "Add time and place"
         },
         "address": {
           "label": "Your details",
@@ -927,20 +928,24 @@
       }
     },
     "EventEdit": {
-      "title": "Event details",
-      "timeTitle": "Time",
-      "venueTitle": "Venue",
-      "showOther": "Show other details",
-      "save": "Save details",
+      "title": "Time and Place",
+      "eventTitle": "Event",
+      "ceremonyTitle": "Ceremony",
+      "save": "Save time and place",
       "saving": "Saving",
-      "saved": "Event details are saved",
-      "notSaved": "Event details weren't saved",
+      "saved": "Time and place are saved",
+      "notSaved": "Time and place weren't saved",
       "invalid": "Check the details and try again.",
       "error": "Something went wrong. Please try again.",
       "fields": {
+        "date": { "label": "Date" },
         "startTime": { "label": "Start", "required": "Enter the start time" },
         "endTime": { "label": "End", "required": "Enter the end time" },
-        "address": { "label": "Venue address", "required": "Enter the venue address" }
+        "place": { "label": "Venue name" },
+        "address": { "label": "Venue address", "required": "Enter the venue address" },
+        "ceremonyStartTime": { "required": "Enter the ceremony start time" },
+        "ceremonyPlace": { "label": "Ceremony place", "required": "Enter the ceremony place" },
+        "ceremonyAddress": { "label": "Ceremony address", "required": "Enter the ceremony address" }
       }
     }
   },

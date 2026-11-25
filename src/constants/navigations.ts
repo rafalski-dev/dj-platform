@@ -27,6 +27,7 @@ export const adminItems: AdminItem[] = [
 // requiresEvent – greyed out while there is no confirmed event (only an inquiry or nothing)
 export const dashboardEventItems: DashboardItem[] = [
   { navKey: "home", path: "/dashboard" },
+  { navKey: "event", path: "/dashboard/event/edit", requiresEvent: true },
   { navKey: "contracts", path: "/dashboard/contracts", requiresEvent: true },
   { navKey: "playlists", path: "/dashboard/playlists", requiresEvent: true },
 ];

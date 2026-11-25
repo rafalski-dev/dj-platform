@@ -42,7 +42,9 @@ export type MyDetailsType = z.infer<ReturnType<typeof myDetailsSchema>>;
 
 type EventDetailsTranslator = ReturnType<typeof useTranslations<"Dashboard.EventEdit">>;
 
-// Time and venue the contract needs – the date and the place stay with the DJ
+// Time and place the contract needs – the dates and the venue name stay with the DJ.
+// ceremony – only for a wedding with a ceremony (the action checks that it's there);
+// its place is the client's to change any time
 export function eventDetailsSchema(t: EventDetailsTranslator) {
   return z.object({
     startTime: z.string().min(1, { error: t("fields.startTime.required") }),
@@ -51,6 +53,19 @@ export function eventDetailsSchema(t: EventDetailsTranslator) {
       .string()
       .trim()
       .min(1, { error: t("fields.address.required") }),
+    ceremony: z
+      .object({
+        startTime: z.string().min(1, { error: t("fields.ceremonyStartTime.required") }),
+        place: z
+          .string()
+          .trim()
+          .min(1, { error: t("fields.ceremonyPlace.required") }),
+        address: z
+          .string()
+          .trim()
+          .min(1, { error: t("fields.ceremonyAddress.required") }),
+      })
+      .optional(),
   });
 }
 
