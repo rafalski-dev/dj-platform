@@ -99,9 +99,14 @@ export async function eventDetailsAction(eventId: string, formData: EventDetails
   try {
     const event = await db.event.findFirst({
       where: { id: eventId, client: { userId: session.user.id } },
-      select: { date: true },
+      select: { date: true, wedding: { select: { weddingKind: true, ceremonyStartsAt: true } } },
     });
     if (!event) return { success: false, status: "notFound", message: t("error") };
+
+    // the ceremony card is only there for a wedding with a ceremony – then it must come filled in
+    const wedding = event.wedding?.weddingKind !== "None" ? event.wedding : null;
+    const { ceremony } = result.data;
+    if (wedding && !ceremony) return { success: false, status: "invalid", message: t("invalid") };
 
     // same as the admin form – an end before the start means the party goes past midnight
     const { eventStartTime, eventEndTime } = dateFormatter(
@@ -112,7 +117,25 @@ export async function eventDetailsAction(eventId: string, formData: EventDetails
 
     await db.event.update({
       where: { id: eventId },
-      data: { startsAt: eventStartTime, endsAt: eventEndTime, address: result.data.address },
+      data: {
+        startsAt: eventStartTime,
+        endsAt: eventEndTime,
+        address: result.data.address,
+        // the ceremony day stays as the DJ set it (it can be before the party) – only the time changes
+        ...(wedding &&
+          ceremony && {
+            wedding: {
+              update: {
+                ceremonyStartsAt: dateFormatter(
+                  wedding.ceremonyStartsAt ?? event.date,
+                  ceremony.startTime,
+                ).eventStartTime,
+                ceremonyPlace: ceremony.place,
+                ceremonyAddress: ceremony.address,
+              },
+            },
+          }),
+      },
     });
 
     return { success: true, status: "success", message: t("saved") };
