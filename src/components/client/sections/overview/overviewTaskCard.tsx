@@ -8,7 +8,8 @@ type OverviewTaskCardProps = {
   label: string;
   title: string;
   description: string;
-  action: { label: string; pathname: Pathname };
+  // no action – the step waits for the DJ, there is nothing for the client to do yet
+  action?: { label: string; pathname: Pathname };
   done?: boolean;
 };
 
@@ -34,16 +35,18 @@ export function OverviewTaskCard({
           <p className="text-muted-foreground text-[15px] font-light">{description}</p>
         </div>
         {/* a real button look – it's clear the card takes you to another page */}
-        <Link
-          href={action.pathname}
-          className={buttonVariants({
-            variant: done ? "outline" : "default",
-            className: "shrink-0",
-          })}
-        >
-          {action.label}
-          {!done && <ArrowRightIcon />}
-        </Link>
+        {action && (
+          <Link
+            href={action.pathname}
+            className={buttonVariants({
+              variant: done ? "outline" : "default",
+              className: "shrink-0",
+            })}
+          >
+            {action.label}
+            {!done && <ArrowRightIcon />}
+          </Link>
+        )}
       </div>
     </Card>
   );
