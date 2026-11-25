@@ -1,26 +1,36 @@
 import { Button, buttonVariants } from "@/components/ui/shadcn/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/shadcn/card";
 import { cn } from "@/lib/utils";
+import type { ContractStatus } from "../../../../../generated";
+import { format } from "date-fns";
+import { TZDate } from "@date-fns/tz";
 import {
   DownloadIcon,
+  FileCheckIcon,
   FileClockIcon,
   FileSignatureIcon,
   FileTextIcon,
   UploadIcon,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { ContractUploadButton } from "./contractUploadButton";
 
 // The contract from the DJ (download) and the signed one going back (upload).
-// UI only for now – no download route or upload yet.
 // ready – the DJ has sent the contract; before that both tiles are locked
+// signedAt – the client has sent the signed copy; status Accepted – the DJ confirmed it (no more changes)
 export async function ContractCard({
   ready,
   contractId,
+  status,
+  signedAt,
 }: {
   ready: boolean;
   contractId?: string | null;
+  status?: ContractStatus;
+  signedAt?: Date | null;
 }) {
   const t = await getTranslations("Dashboard.Contract.card");
+  const canUpload = ready && contractId && (status === "Sent" || status === "Signed");
 
   return (
     <Card size="md" className="ring-border-strong gap-4">
@@ -72,25 +82,43 @@ export async function ContractCard({
         {/* 2. the signed contract going back to the DJ */}
         <div
           className={cn(
-            "border-border-strong flex flex-col items-center justify-center gap-3 rounded-xl border border-dashed p-4 text-center",
+            "flex flex-col items-center justify-center gap-3 rounded-xl border p-4 text-center",
+            signedAt ? "bg-foreground/5" : "border-border-strong border-dashed",
             !ready && "opacity-60",
           )}
         >
           <div className="text-accent-foreground bg-accent-foreground/10 flex size-12 items-center justify-center rounded-full">
-            {ready ? <UploadIcon size={20} /> : <FileSignatureIcon size={20} />}
+            {signedAt ? (
+              <FileCheckIcon size={20} />
+            ) : ready ? (
+              <UploadIcon size={20} />
+            ) : (
+              <FileSignatureIcon size={20} />
+            )}
           </div>
           <div className="flex flex-col gap-1">
-            <p className="font-serif text-xl leading-tight">{t("upload.title")}</p>
-            <p className="text-muted-foreground text-sm font-light">
-              {t(ready ? "upload.description" : "upload.locked")}
+            <p className="font-serif text-xl leading-tight">
+              {t(signedAt ? "upload.sentTitle" : "upload.title")}
             </p>
-            <p className="text-muted-foreground/70 text-xs">{t("upload.hint")}</p>
+            <p className="text-muted-foreground text-sm font-light">
+              {signedAt
+                ? t(status === "Accepted" ? "upload.accepted" : "upload.sent", {
+                    date: format(new TZDate(signedAt, "Europe/Warsaw"), "dd.MM.yyyy"),
+                  })
+                : t(ready ? "upload.description" : "upload.locked")}
+            </p>
+            {!signedAt && <p className="text-muted-foreground/70 text-xs">{t("upload.hint")}</p>}
           </div>
-          {/* TODO: file input + upload action */}
-          <Button variant="outline" size="sm" disabled={!ready}>
-            <UploadIcon />
-            {t("upload.button")}
-          </Button>
+          {canUpload ? (
+            <ContractUploadButton contractId={contractId} replace={!!signedAt} />
+          ) : (
+            !signedAt && (
+              <Button variant="outline" size="sm" disabled>
+                <UploadIcon />
+                {t("upload.button")}
+              </Button>
+            )
+          )}
         </div>
       </CardContent>
     </Card>

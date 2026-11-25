@@ -86,6 +86,9 @@ export async function getContractDetails(contractId: string) {
       createdAt: true,
       updatedAt: true,
       sentAt: true,
+      signedAt: true,
+      signedFileKey: true,
+      acceptedAt: true,
       event: { select: { id: true, name: true, clientId: true } },
     },
   });
@@ -110,6 +113,7 @@ export async function getClientContract() {
       fileKey: true,
       status: true,
       sentAt: true,
+      signedAt: true,
       event: { select: { name: true, startsAt: true, place: true } },
     },
   });

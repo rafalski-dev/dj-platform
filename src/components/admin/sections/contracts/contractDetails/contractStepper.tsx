@@ -2,8 +2,10 @@ import { GeneralCardHeader } from "@/components/admin/shared/generalCardHeader";
 import { Card, CardContent } from "@/components/ui/shadcn/card";
 import type { ContractDetails } from "@/data/contracts";
 import { cn } from "@/lib/utils";
-import { CheckIcon, ListChecksIcon } from "lucide-react";
+import { buttonVariants } from "@/components/ui/shadcn/button";
+import { CheckIcon, EyeIcon, ListChecksIcon } from "lucide-react";
 import { getFormatter, getTranslations } from "next-intl/server";
+import { AcceptDialog } from "./acceptDialog";
 import { SendDialog } from "./sendDialog";
 
 const steps = ["created", "sent", "signed", "accepted"] as const;
@@ -14,7 +16,7 @@ type StepState = "done" | "current" | "upcoming";
 export async function ContractStepper({ fetchedData }: { fetchedData: ContractDetails }) {
   const format = await getFormatter();
   const t = await getTranslations("Admin.Contracts.Details.stepper");
-  const { id, status, createdAt, sentAt } = fetchedData;
+  const { id, status, createdAt, sentAt, signedAt, signedFileKey, acceptedAt } = fetchedData;
 
   const isCancelled = status === "Cancelled";
   const doneCount = isCancelled ? (sentAt ? 2 : 1) : doneCountByStatus[status];
@@ -22,6 +24,8 @@ export async function ContractStepper({ fetchedData }: { fetchedData: ContractDe
   const dates: Partial<Record<(typeof steps)[number], Date | null>> = {
     created: createdAt,
     sent: sentAt,
+    signed: signedAt,
+    accepted: acceptedAt,
   };
 
   function getState(index: number): StepState {
@@ -100,6 +104,25 @@ export async function ContractStepper({ fetchedData }: { fetchedData: ContractDe
                   {state === "current" && step === "sent" && (
                     <div className="pt-2">
                       <SendDialog contractId={id} />
+                    </div>
+                  )}
+                  {/* the client's signed copy – viewable from the moment it arrives */}
+                  {step === "signed" && signedFileKey && (
+                    <div className="pt-2">
+                      <a
+                        className={buttonVariants({ variant: "outline", size: "sm" })}
+                        href={`/api/contracts/${id}/signed`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <EyeIcon />
+                        {t("viewSigned")}
+                      </a>
+                    </div>
+                  )}
+                  {state === "current" && step === "accepted" && (
+                    <div className="pt-2">
+                      <AcceptDialog contractId={id} />
                     </div>
                   )}
                 </div>

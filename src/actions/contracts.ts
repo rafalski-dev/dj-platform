@@ -130,3 +130,36 @@ export async function sendContractAction(contractId: string) {
     message: t("success", { number: contract.contractNumber ?? "" }),
   };
 }
+
+// The last step: the DJ has looked at the signed copy from the client and confirms it.
+// After this the client can't replace the file anymore.
+export async function acceptContractAction(contractId: string) {
+  await adminCheck();
+  const t = await getTranslations("Admin.Contracts.Details.accept.serverMessage");
+
+  const contract = await db.contract.findUnique({
+    where: { id: contractId },
+    select: { status: true, signedFileKey: true, contractNumber: true },
+  });
+
+  if (!contract) return { success: false, status: "notFound", message: t("notFound") };
+
+  if (contract.status !== "Signed" || !contract.signedFileKey)
+    return { success: false, status: "invalid", message: t("notSigned") };
+
+  try {
+    await db.contract.update({
+      where: { id: contractId },
+      data: { status: "Accepted", acceptedAt: new Date() },
+    });
+  } catch (error) {
+    console.error(error);
+    return { success: false, status: "error", message: t("unknown") };
+  }
+
+  return {
+    success: true,
+    status: "success",
+    message: t("success", { number: contract.contractNumber ?? "" }),
+  };
+}

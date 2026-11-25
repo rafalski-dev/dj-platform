@@ -321,6 +321,12 @@ model Contract {
   fileKey              String?
   sentAt               DateTime?
 
+  // the signed copy the client sends back (PDF as is, or a compressed JPG photo)
+  signedFileKey        String?
+  signedAt             DateTime?
+  // the DJ confirmed the signed copy – no more changes after this
+  acceptedAt           DateTime?
+
   // whole PLN; required in the create form, nullable only for contracts made before it existed
   price                Int?
 

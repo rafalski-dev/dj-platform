@@ -888,7 +888,23 @@
           "description": "Odeślij podpisaną umowę do DJ-a.",
           "locked": "Odeślesz ją, gdy umowa będzie gotowa.",
           "hint": "PDF, JPG lub PNG · do 10 MB",
-          "button": "Wybierz plik"
+          "button": "Wybierz plik",
+          "replace": "Zmień plik",
+          "uploading": "Wysyłanie",
+          "sentTitle": "Podpisana umowa wysłana",
+          "sent": "Wysłana {date}. DJ wkrótce ją sprawdzi.",
+          "accepted": "Wysłana {date} i zaakceptowana przez DJ-a.",
+          "toast": {
+            "successTitle": "Umowa wysłana",
+            "errorTitle": "Umowa nie została wysłana"
+          },
+          "serverMessage": {
+            "success": "DJ otrzymał Twoją podpisaną umowę.",
+            "type": "Wybierz plik PDF, JPG lub PNG.",
+            "size": "Plik jest większy niż 10 MB.",
+            "notFound": "Do tej umowy nie można już wysłać podpisanej kopii.",
+            "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+          }
         }
       },
       "details": {
@@ -1116,6 +1132,26 @@
             "unknown": "Coś poszło nie tak. Spróbuj ponownie."
           }
         },
+        "accept": {
+          "button": "Zatwierdź umowę",
+          "dialog": {
+            "title": "Zatwierdzić podpisaną umowę?",
+            "description": "Najpierw sprawdź podpisaną kopię. Po zatwierdzeniu klient nie będzie mógł już podmienić pliku.",
+            "cancel": "Anuluj",
+            "confirm": "Zatwierdź",
+            "pending": "Zatwierdzanie..."
+          },
+          "toast": {
+            "successTitle": "Umowa zatwierdzona",
+            "errorTitle": "Nie zatwierdzono umowy"
+          },
+          "serverMessage": {
+            "success": "Zatwierdzono umowę {number}.",
+            "notFound": "Ta umowa już nie istnieje.",
+            "notSigned": "Klient nie przesłał jeszcze podpisanej kopii.",
+            "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+          }
+        },
         "send": {
           "button": "Wyślij do klienta",
           "dialog": {
@@ -1141,6 +1177,7 @@
         "stepper": {
           "title": "Postęp",
           "cancelled": "Ta umowa została anulowana.",
+          "viewSigned": "Zobacz podpisaną umowę",
           "steps": {
             "created": {
               "title": "Szkic utworzony",

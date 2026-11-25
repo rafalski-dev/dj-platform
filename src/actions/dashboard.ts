@@ -1,9 +1,17 @@
 "use server";
 
-import { SELECTED_EVENT_COOKIE } from "@/constants/dashboard";
+import { DeleteObjectCommand, HeadObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import {
+  SELECTED_EVENT_COOKIE,
+  SIGNED_CONTRACT_MAX_SIZE,
+  SIGNED_CONTRACT_TYPES,
+  SignedContractType,
+} from "@/constants/dashboard";
 import { getClientEventOptions, getOptionValue } from "@/data/dashboard";
 import { getSession } from "@/lib/auth-helpers";
 import { db } from "@/lib/db";
+import { r2 } from "@/lib/r2";
 import { dateFormatter, formatZodErrors } from "@/lib/utils";
 import {
   eventDetailsSchema,
@@ -143,4 +151,98 @@ export async function eventDetailsAction(eventId: string, formData: EventDetails
     console.error(error);
     return { success: false, status: "error", message: t("error") };
   }
+}
+
+// Signed contract, step 1: the client asks for a short-lived link and uploads the file
+// straight to R2 (a server action can take only 1 MB). Same owner check as the download route.
+export async function signedContractUploadUrlAction(
+  contractId: string,
+  contentType: SignedContractType,
+  size: number,
+) {
+  const session = await getSession();
+  const t = await getTranslations("Dashboard.Contract.card.upload.serverMessage");
+  if (!session) return { success: false, status: "invalidAuth", message: t("unknown") };
+
+  // the arguments come straight from the browser – check them like form data
+  if (!Object.hasOwn(SIGNED_CONTRACT_TYPES, contentType))
+    return { success: false, status: "invalid", message: t("type") };
+  if (!Number.isInteger(size) || size <= 0 || size > SIGNED_CONTRACT_MAX_SIZE)
+    return { success: false, status: "invalid", message: t("size") };
+
+  const extension = SIGNED_CONTRACT_TYPES[contentType];
+
+  const contract = await getUploadableContract(contractId, session.user.id);
+  if (!contract) return { success: false, status: "notFound", message: t("notFound") };
+
+  const fileKey = `contracts/${contract.id}-signed.${extension}`;
+
+  try {
+    // type and size are part of the signature – R2 rejects any other file
+    const url = await getSignedUrl(
+      r2,
+      new PutObjectCommand({
+        Bucket: process.env.R2_BUCKET,
+        Key: fileKey,
+        ContentType: contentType,
+        ContentLength: size,
+      }),
+      { expiresIn: 300 },
+    );
+
+    return { success: true, status: "success", url, fileKey };
+  } catch (error) {
+    console.error(error);
+    return { success: false, status: "error", message: t("unknown") };
+  }
+}
+
+// Signed contract, step 2: after the upload, check the file really is in R2 and mark the
+// contract as signed. A new file replaces the old one until the DJ accepts it.
+export async function signedContractConfirmAction(contractId: string, fileKey: string) {
+  const session = await getSession();
+  const t = await getTranslations("Dashboard.Contract.card.upload.serverMessage");
+  if (!session) return { success: false, status: "invalidAuth", message: t("unknown") };
+
+  const contract = await getUploadableContract(contractId, session.user.id);
+  if (!contract) return { success: false, status: "notFound", message: t("notFound") };
+
+  // only the keys step 1 can hand out for this contract
+  const allowedKeys = Object.values(SIGNED_CONTRACT_TYPES).map(
+    (extension) => `contracts/${contract.id}-signed.${extension}`,
+  );
+  if (!allowedKeys.includes(fileKey))
+    return { success: false, status: "invalid", message: t("unknown") };
+
+  try {
+    await r2.send(new HeadObjectCommand({ Bucket: process.env.R2_BUCKET, Key: fileKey }));
+
+    await db.contract.update({
+      where: { id: contract.id },
+      data: { status: "Signed", signedAt: new Date(), signedFileKey: fileKey },
+    });
+
+    // a PDF replacing a photo (or the other way round) leaves the old file behind
+    if (contract.signedFileKey && contract.signedFileKey !== fileKey)
+      await r2.send(
+        new DeleteObjectCommand({ Bucket: process.env.R2_BUCKET, Key: contract.signedFileKey }),
+      );
+  } catch (error) {
+    console.error(error);
+    return { success: false, status: "error", message: t("unknown") };
+  }
+
+  return { success: true, status: "success", message: t("success") };
+}
+
+// The client's own contract that still takes a signed copy: sent, or signed but not accepted yet
+async function getUploadableContract(contractId: string, userId: string) {
+  return await db.contract.findFirst({
+    where: {
+      id: contractId,
+      status: { in: ["Sent", "Signed"] },
+      event: { client: { userId } },
+    },
+    select: { id: true, signedFileKey: true },
+  });
 }
