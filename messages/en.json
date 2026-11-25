@@ -807,7 +807,7 @@
     "Pages": {
       "home": "Overview",
       "events": "Your events",
-      "contracts": "Your contracts",
+      "contracts": "Contract",
       "playlists": "Your playlists"
     },
     "Account": {
@@ -868,8 +868,58 @@
     },
     "Contract": {
       "empty": {
-        "title": "Your contract isn't ready yet",
-        "description": "We're preparing it. As soon as it's ready, you'll be able to download it here, and we'll let you know by email."
+        "alert": {
+          "title": "Waiting for the DJ to prepare your contract",
+          "description": "We'll let you know by email when it's ready. Meanwhile, check your details below."
+        },
+        "back": "Back to overview"
+      },
+      "card": {
+        "title": "Contract",
+        "download": {
+          "title": "Contract from the DJ",
+          "emptyTitle": "No contract yet",
+          "waiting": "It will show up here once the DJ prepares it.",
+          "ready": "Download the contract, read it carefully and sign it.",
+          "button": "Download PDF"
+        },
+        "upload": {
+          "title": "Signed contract",
+          "description": "Send the signed contract back to the DJ.",
+          "locked": "You can send it once the contract is ready.",
+          "hint": "PDF, JPG or PNG · up to 10 MB",
+          "button": "Choose file"
+        }
+      },
+      "details": {
+        "edit": "Edit",
+        "client": {
+          "title": "Your details",
+          "name": "Name",
+          "taxId": "Tax ID",
+          "phone": "Phone",
+          "address": "Address"
+        },
+        "event": {
+          "title": "Event",
+          "date": "Date",
+          "hours": "Hours",
+          "place": "Venue name",
+          "address": "Venue address"
+        },
+        "ceremony": {
+          "title": "Ceremony",
+          "date": "Date",
+          "startTime": "Start",
+          "place": "Ceremony place",
+          "address": "Ceremony address"
+        },
+        "package": {
+          "title": "Package",
+          "package": "Package",
+          "addons": "Add-ons",
+          "noAddons": "No add-ons"
+        }
       }
     },
     "EventSelector": {
