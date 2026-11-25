@@ -109,6 +109,7 @@ model User {
   role              Role      @default(User)
   
   businessDetails   BusinessDetails?
+  contractSettings  ContractSettings?
   client            Client?
   sessions          Session[]
   accounts          Account[]
@@ -189,6 +190,20 @@ model BusinessDetails {
   createdAt            DateTime      @default(now())
   updatedAt            DateTime      @updatedAt
   @@map("business_details")
+}
+
+// The DJ's terms that are the same in every contract (Settings → Contract)
+model ContractSettings {
+  id                   String       @id @default(cuid())
+  // whole PLN for each started hour over the contract time
+  overtimeRate         Int
+
+  userId               String       @unique
+  user                 User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+  @@map("contract_settings")
 }
 
 model Client {
@@ -305,6 +320,9 @@ model Contract {
 
   fileKey              String?
   sentAt               DateTime?
+
+  // whole PLN; required in the create form, nullable only for contracts made before it existed
+  price                Int?
 
   @@map("contract")
 }

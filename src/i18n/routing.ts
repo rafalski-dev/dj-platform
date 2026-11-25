@@ -111,6 +111,10 @@ export const routing = defineRouting({
       pl: "/administrator/ustawienia/dane-firmy",
       en: "/admin/settings/business-details",
     },
+    "/admin/settings/contract-details": {
+      pl: "/administrator/ustawienia/umowa",
+      en: "/admin/settings/contract-details",
+    },
     "/dashboard": {
       pl: "/panel-klienta",
       en: "/dashboard",

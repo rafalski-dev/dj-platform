@@ -9,6 +9,7 @@ import { CardContent, CardFooter } from "@/components/ui/shadcn/card";
 import { Spinner } from "@/components/ui/shadcn/spinner";
 import { toast } from "@/components/ui/shadcn/toast";
 import { ControlledSearchSelect } from "@/components/shared/form/comboxField";
+import { ControlledInput } from "@/components/shared/form/inputFields";
 import { useRouter } from "@/i18n/navigation";
 import { createContractAction } from "@/actions/contracts";
 import { createContractSchema, CreateContractSchema } from "@/validation/contracts";
@@ -27,7 +28,11 @@ export function ContractCreateForm({ clients }: { clients: ClientWithEvents[] })
     setValue,
     setError,
     formState: { isSubmitting },
-  } = useForm<CreateContractSchema>({ resolver: zodResolver(schema) });
+  } = useForm<CreateContractSchema>({
+    resolver: zodResolver(schema),
+    // an empty string keeps the price input controlled from the first render
+    defaultValues: { price: "" },
+  });
 
   const selectedClient = useWatch({ control, name: "client" });
 
@@ -83,6 +88,16 @@ export function ContractCreateForm({ clients }: { clients: ClientWithEvents[] })
               required
             />
             <EventRadioField control={control} events={clientEvents} />
+            <ControlledInput
+              name="price"
+              control={control}
+              type="number"
+              label={t("price.label")}
+              placeholder={t("price.placeholder")}
+              icon="zł"
+              align="inline-end"
+              required
+            />
           </div>
         </form>
       </CardContent>

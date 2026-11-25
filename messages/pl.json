@@ -1181,6 +1181,12 @@
           "noClient": "Najpierw wybierz klienta",
           "required": "Wybierz wydarzenie"
         },
+        "price": {
+          "label": "Cena wydarzenia",
+          "placeholder": "np. 4500",
+          "required": "Podaj cenę wydarzenia",
+          "invalid": "Podaj pełną kwotę w złotych"
+        },
         "submit": "Utwórz",
         "submitting": "Tworzenie",
         "toast": {
@@ -1290,7 +1296,8 @@
       "description": "Zarządzaj swoim kontem i danymi firmy, które trafiają na umowy.",
       "tabs": {
         "accountDetails": "Konto",
-        "businessDetails": "Dane firmy"
+        "businessDetails": "Dane firmy",
+        "contractDetails": "Umowa"
       },
       "password": {
         "title": "Hasło",
@@ -1341,6 +1348,10 @@
         },
         "city": {
           "required": "Podaj miejscowość"
+        },
+        "overtimeRate": {
+          "required": "Podaj stawkę za nadgodzinę",
+          "validation": "Podaj pełną kwotę w złotych"
         }
       }
     },
