@@ -40,6 +40,10 @@ const styles = StyleSheet.create({
 
 type ContractTemplateProps = {
   signedAt: Date;
+  // null only for contracts created before the price field – then the dots stay
+  price: number | null;
+  // from Settings → Contract; null until the DJ fills it in – then the dots stay
+  overtimeRate: number | null;
   client: Client;
   performer: BusinessDetails;
   // hours are checked before rendering (lib/contractPdf), so here they're always set
@@ -74,10 +78,20 @@ const formatTime = (date: Date) =>
     minute: "2-digit",
   }).format(date);
 
+// whole PLN, e.g. 12500 → "12 500"
+const formatPrice = (price: number) => new Intl.NumberFormat("pl-PL").format(price);
+
 const joinParts = (parts: (string | null | undefined)[], separator = ", ") =>
   parts.filter(Boolean).join(separator);
 
-export function ContractTemplate({ signedAt, client, performer, event }: ContractTemplateProps) {
+export function ContractTemplate({
+  signedAt,
+  price,
+  overtimeRate,
+  client,
+  performer,
+  event,
+}: ContractTemplateProps) {
   const clientAddress = joinParts([
     client.streetAndNumber,
     joinParts([client.postcode, client.city], " "),
@@ -119,9 +133,10 @@ export function ContractTemplate({ signedAt, client, performer, event }: Contrac
 
         <Text style={styles.section}>§ 2</Text>
         <Text style={styles.paragraph}>
-          Za wyżej wymienioną usługę Zamawiający zapłaci Wykonawcy kwotę ........... zł (słownie
-          ...........................). Wynagrodzenie za każdą rozpoczętą godzinę ponad czas zawarty
-          w umowie wynosi ........... zł (słownie ...........................).
+          Za wyżej wymienioną usługę Zamawiający zapłaci Wykonawcy kwotę{" "}
+          {price ? formatPrice(price) : "..........."} zł. Wynagrodzenie za każdą rozpoczętą godzinę
+          ponad czas zawarty w umowie wynosi{" "}
+          {overtimeRate ? formatPrice(overtimeRate) : "..........."} zł.
         </Text>
 
         <Text style={styles.section}>§ 3</Text>

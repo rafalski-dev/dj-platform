@@ -41,7 +41,7 @@ export async function createContractAction(formData: CreateContractSchema) {
   try {
     contractId = await db.$transaction(async (tx) => {
       const contract = await tx.contract.create({
-        data: { eventId: event.id },
+        data: { eventId: event.id, price: Number(result.data.price) },
         select: { id: true, number: true, createdAt: true },
       });
 

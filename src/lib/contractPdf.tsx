@@ -9,6 +9,7 @@ export async function buildContractPdf(contractId: string, userId: string) {
     where: { id: contractId },
     select: {
       createdAt: true,
+      price: true,
       event: {
         select: {
           type: true,
@@ -29,13 +30,18 @@ export async function buildContractPdf(contractId: string, userId: string) {
   const { startsAt, endsAt } = contract.event;
   if (!startsAt || !endsAt) return { error: "missingEventHours" as const };
 
-  const performer = await db.businessDetails.findUnique({ where: { userId } });
+  const [performer, contractSettings] = await Promise.all([
+    db.businessDetails.findUnique({ where: { userId } }),
+    db.contractSettings.findUnique({ where: { userId }, select: { overtimeRate: true } }),
+  ]);
 
   if (!performer) return { error: "noBusinessDetails" as const };
 
   const pdf = await renderToBuffer(
     <ContractTemplate
       signedAt={contract.createdAt}
+      price={contract.price}
+      overtimeRate={contractSettings?.overtimeRate ?? null}
       event={{ ...contract.event, startsAt, endsAt }}
       client={contract.event.client}
       performer={performer}

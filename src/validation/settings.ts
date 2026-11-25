@@ -94,3 +94,16 @@ export function businessDetailsSchema(t: SettingsTranslator) {
 }
 
 export type BusinessDetailsType = z.infer<ReturnType<typeof businessDetailsSchema>>;
+
+export function contractDetailsSchema(t: SettingsTranslator) {
+  return z.object({
+    // whole PLN as typed in the input – the action turns it into a number
+    overtimeRate: z
+      .string()
+      .trim()
+      .min(1, { error: t("fields.overtimeRate.required") })
+      .regex(/^[1-9]\d{0,5}$/, { error: t("fields.overtimeRate.validation") }),
+  });
+}
+
+export type ContractDetailsType = z.infer<ReturnType<typeof contractDetailsSchema>>;

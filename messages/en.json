@@ -1181,6 +1181,12 @@
           "noClient": "Select a client first",
           "required": "Select an event"
         },
+        "price": {
+          "label": "Event price",
+          "placeholder": "e.g. 4500",
+          "required": "Enter the event price",
+          "invalid": "Enter a whole amount in PLN"
+        },
         "submit": "Create",
         "submitting": "Creating",
         "toast": {
@@ -1290,7 +1296,8 @@
       "description": "Manage your account and the business details used in your contracts.",
       "tabs": {
         "accountDetails": "Account",
-        "businessDetails": "Business details"
+        "businessDetails": "Business details",
+        "contractDetails": "Contract"
       },
       "password": {
         "title": "Password",
@@ -1341,6 +1348,10 @@
         },
         "city": {
           "required": "Enter your city"
+        },
+        "overtimeRate": {
+          "required": "Enter the overtime rate",
+          "validation": "Enter a whole amount in PLN"
         }
       }
     },

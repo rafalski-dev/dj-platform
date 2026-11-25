@@ -8,6 +8,8 @@ import {
   AccountDetailsType,
   businessDetailsSchema,
   BusinessDetailsType,
+  contractDetailsSchema,
+  ContractDetailsType,
 } from "@/validation/settings";
 import { getTranslations } from "next-intl/server";
 import { revalidatePath } from "next/cache";
@@ -85,6 +87,43 @@ export async function businessDetailsAction(formData: BusinessDetailsType) {
     revalidatePath("/[locale]/admin/settings/business-details", "page");
 
     return { success: true, status: "success", message: "Business details saved" };
+  } catch (error) {
+    console.error(error);
+    return {
+      success: false,
+      status: "error",
+      message: "Something went wrong. Please try again.",
+    };
+  }
+}
+
+export async function contractDetailsAction(formData: ContractDetailsType) {
+  const session = await adminCheck();
+  const t = await getTranslations("Admin.Settings");
+
+  const schema = contractDetailsSchema(t);
+  const result = schema.safeParse(formData);
+
+  if (!result.success) {
+    return {
+      success: false,
+      status: "invalid",
+      message: "Check your details and try again.",
+      errors: formatZodErrors(result.error),
+    };
+  }
+
+  const data = { overtimeRate: Number(result.data.overtimeRate) };
+
+  try {
+    await db.contractSettings.upsert({
+      where: { userId: session.user.id },
+      create: { ...data, userId: session.user.id },
+      update: data,
+    });
+    revalidatePath("/[locale]/admin/settings/contract-details", "page");
+
+    return { success: true, status: "success", message: "Contract details saved" };
   } catch (error) {
     console.error(error);
     return {
