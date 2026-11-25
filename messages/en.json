@@ -748,6 +748,16 @@
       "fallback": "If the button doesn't work, copy the address below and paste it into your browser:",
       "ignore": "If you didn't ask for this, ignore this message. Nothing will change."
     },
+    "ContractSent": {
+      "subject": "Your contract {number} is ready",
+      "preview": "Your contract for {date} is ready – download it, sign it and send it back.",
+      "heading": "Your contract is ready",
+      "greeting": "Hi {name},",
+      "intro": "your contract for {date} is waiting in the client panel.",
+      "steps": "Download it, read it carefully, sign it and send it back to me in the same place – a PDF or a clear photo of the signed pages is fine.",
+      "button": "Open contract",
+      "footnote": "If you have any questions about the contract, just reply to this email or give me a call."
+    },
     "InquiryAccepted": {
       "subject": "{date} is confirmed",
       "preview": "Your date {date} is confirmed – fill in the details for the contract.",
@@ -888,7 +898,23 @@
           "description": "Send the signed contract back to the DJ.",
           "locked": "You can send it once the contract is ready.",
           "hint": "PDF, JPG or PNG · up to 10 MB",
-          "button": "Choose file"
+          "button": "Choose file",
+          "replace": "Replace file",
+          "uploading": "Sending",
+          "sentTitle": "Signed contract sent",
+          "sent": "Sent on {date}. The DJ will check it soon.",
+          "accepted": "Sent on {date} and accepted by the DJ.",
+          "toast": {
+            "successTitle": "Contract sent",
+            "errorTitle": "Contract not sent"
+          },
+          "serverMessage": {
+            "success": "The DJ has received your signed contract.",
+            "type": "Choose a PDF, JPG or PNG file.",
+            "size": "The file is larger than 10 MB.",
+            "notFound": "This contract can't take a signed copy anymore.",
+            "unknown": "Something went wrong. Please try again."
+          }
         }
       },
       "details": {
@@ -1116,6 +1142,26 @@
             "unknown": "Something went wrong. Please try again."
           }
         },
+        "accept": {
+          "button": "Confirm contract",
+          "dialog": {
+            "title": "Confirm the signed contract?",
+            "description": "Check the signed copy first. After confirming, the client can't replace the file anymore.",
+            "cancel": "Cancel",
+            "confirm": "Confirm",
+            "pending": "Confirming..."
+          },
+          "toast": {
+            "successTitle": "Contract confirmed",
+            "errorTitle": "Contract not confirmed"
+          },
+          "serverMessage": {
+            "success": "Contract {number} has been confirmed.",
+            "notFound": "This contract no longer exists.",
+            "notSigned": "The client hasn't sent a signed copy yet.",
+            "unknown": "Something went wrong. Please try again."
+          }
+        },
         "send": {
           "button": "Send to client",
           "dialog": {
@@ -1133,6 +1179,7 @@
             "success": "Contract {number} has been sent.",
             "notFound": "This contract no longer exists.",
             "alreadySent": "This contract has already been sent.",
+            "successNoEmail": "Contract {number} has been sent, but the email to the client failed. Let them know yourself.",
             "noBusinessDetails": "Fill in your business details in Settings before sending a contract.",
             "unknown": "Something went wrong. Please try again.",
             "missingEventHours": "The event has no hours yet. Fill them in on the event before sending the contract."
@@ -1141,6 +1188,7 @@
         "stepper": {
           "title": "Progress",
           "cancelled": "This contract has been cancelled.",
+          "viewSigned": "See signed contract",
           "steps": {
             "created": {
               "title": "Draft created",
