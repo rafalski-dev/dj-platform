@@ -981,6 +981,25 @@
         "today": "Today!",
         "past": "Done"
       },
+      "contract": {
+        "label": "Contract",
+        "title": "Contract",
+        "waiting": {
+          "description": "The DJ is preparing it. You'll get an email when it's ready."
+        },
+        "ready": {
+          "description": "Ready to sign. Download it, sign it and send it back.",
+          "action": "Sign contract"
+        },
+        "signed": {
+          "description": "Sent. The DJ will confirm it soon.",
+          "action": "View"
+        },
+        "accepted": {
+          "description": "Signed and confirmed by the DJ.",
+          "action": "View"
+        }
+      },
       "missingFields": {
         "title": "{count, plural, one {# thing left} other {# things left}} to fill in before we can prepare your contract.",
         "doneDescription": "All filled in. You can still change it.",

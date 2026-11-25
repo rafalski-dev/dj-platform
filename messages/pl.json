@@ -981,6 +981,25 @@
         "today": "Dziś!",
         "past": "Odbyło się"
       },
+      "contract": {
+        "label": "Umowa",
+        "title": "Umowa",
+        "waiting": {
+          "description": "DJ ją przygotowuje. Dostaniesz maila, gdy będzie gotowa."
+        },
+        "ready": {
+          "description": "Gotowa do podpisu. Pobierz ją, podpisz i odeślij.",
+          "action": "Podpisz umowę"
+        },
+        "signed": {
+          "description": "Wysłana. DJ wkrótce ją zatwierdzi.",
+          "action": "Zobacz"
+        },
+        "accepted": {
+          "description": "Podpisana i zatwierdzona przez DJ-a.",
+          "action": "Zobacz"
+        }
+      },
       "missingFields": {
         "title": "{count, plural, one {Została # rzecz} few {Zostały # rzeczy} many {Zostało # rzeczy} other {Zostało # rzeczy}} do uzupełnienia, zanim przygotujemy umowę.",
         "doneDescription": "Wszystko uzupełnione. Możesz to jeszcze zmienić.",

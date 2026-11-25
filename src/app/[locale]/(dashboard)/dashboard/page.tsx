@@ -4,11 +4,15 @@ import { MissingFieldsAlert } from "@/components/client/sections/overview/missin
 import { MissingFieldsTasks } from "@/components/client/sections/overview/missingFieldsTasks";
 import { OverviewEmpty } from "@/components/client/sections/overview/overviewEmpty";
 import { OverviewWelcome } from "@/components/client/sections/overview/overviewWelcome";
+import { getClientContract } from "@/data/contracts";
 import { getEventMissingFields, getSelectedEventOption } from "@/data/dashboard";
 
 export default async function Dashboard() {
   const selected = await getSelectedEventOption();
-  const missing = selected?.kind === "event" ? await getEventMissingFields(selected.id) : [];
+  const [missing, contract] =
+    selected?.kind === "event"
+      ? await Promise.all([getEventMissingFields(selected.id), getClientContract()])
+      : [[], null];
 
   return (
     <>
@@ -19,7 +23,7 @@ export default async function Dashboard() {
         <>
           <EventOverviewCard event={selected} />
           {missing.length > 0 && <MissingFieldsAlert count={missing.length} />}
-          <MissingFieldsTasks missing={missing} />
+          <MissingFieldsTasks missing={missing} contractStatus={contract?.status ?? null} />
         </>
       )}
     </>
