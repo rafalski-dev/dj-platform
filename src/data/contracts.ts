@@ -25,7 +25,8 @@ export async function getPaginatedContracts(rowsLimit: number, page: number, que
     where: getContractsWhere(query),
     take: rowsLimit,
     skip: rowsToSkip,
-    orderBy: [{ event: { date: "desc" } }, { id: "asc" }],
+    // earliest event first; id keeps the order stable across pages
+    orderBy: [{ event: { date: "asc" } }, { id: "asc" }],
     select: {
       id: true,
       contractNumber: true,

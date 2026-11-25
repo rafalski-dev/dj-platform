@@ -49,9 +49,13 @@ export function ContractCreateForm({ clients }: { clients: ClientWithEvents[] })
   async function onSubmit(formData: CreateContractSchema) {
     const response = await createContractAction(formData);
 
-    if (response.success) {
+    if (response.success && response.contractId) {
       toast.add({ type: "success", title: t("toast.successTitle"), description: response.message });
-      push({ pathname: "/admin/contracts" });
+      // straight to the new contract – the admin sends it from there
+      push({
+        pathname: "/admin/contracts/[contractId]",
+        params: { contractId: response.contractId },
+      });
       return;
     }
 
