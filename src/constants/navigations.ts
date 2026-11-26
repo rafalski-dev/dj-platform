@@ -31,6 +31,7 @@ export const dashboardEventItems: DashboardItem[] = [
   { navKey: "contracts", path: "/dashboard/contracts", requiresEvent: true },
   { navKey: "wedding", path: "/dashboard/wedding", requiresEvent: true, requiresWedding: true },
   { navKey: "playlists", path: "/dashboard/playlists", requiresEvent: true },
+  { navKey: "notes", path: "/dashboard/notes", requiresEvent: true },
 ];
 
 export const dashboardAccountItems: DashboardItem[] = [

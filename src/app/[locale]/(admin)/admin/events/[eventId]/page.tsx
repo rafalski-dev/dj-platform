@@ -8,7 +8,10 @@ import {
 import { EventPackage } from "@/components/admin/sections/events/eventDetails/eventPackage";
 import { EventWeddingDetails } from "@/components/admin/sections/events/eventDetails/eventWeddingDetails";
 import { Breadcrumbs } from "@/components/admin/shared/breadcrumbs";
+import { NotesBoard } from "@/components/shared/notes/notesBoard";
 import { getEventDetails } from "@/data/events";
+import { getEventNotes } from "@/data/notes";
+import { adminCheck } from "@/lib/auth-helpers";
 import { notFound } from "next/navigation";
 
 export default async function Event({
@@ -18,7 +21,11 @@ export default async function Event({
 }) {
   const { eventId } = await params;
 
-  const event = await getEventDetails(eventId);
+  const [session, event, notes] = await Promise.all([
+    adminCheck(),
+    getEventDetails(eventId),
+    getEventNotes(eventId),
+  ]);
   if (!event) notFound();
 
   return (
@@ -30,6 +37,7 @@ export default async function Event({
           <EventDateAndPlace fetchedData={event} />
           {event.wedding && <EventWeddingDetails fetchedData={event.wedding} />}
           <EventPackage fetchedData={event} />
+          <NotesBoard eventId={event.id} notes={notes} currentUserId={session.user.id} />
         </div>
         <div className="flex min-w-0 flex-col gap-5">
           <EventClient fetchedData={event.client} />

@@ -12,6 +12,7 @@ import {
   HeartIcon,
   HomeIcon,
   ListMusicIcon,
+  NotebookPenIcon,
   MapPinIcon,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -23,6 +24,7 @@ const icons = {
   wedding: <HeartIcon size={19} strokeWidth={1.4} />,
   contracts: <FilesIcon size={19} strokeWidth={1.4} />,
   playlists: <ListMusicIcon size={19} strokeWidth={1.4} />,
+  notes: <NotebookPenIcon size={19} strokeWidth={1.4} />,
   account: <CircleUserIcon size={19} strokeWidth={1.4} />,
 };
 

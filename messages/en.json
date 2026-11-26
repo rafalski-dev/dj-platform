@@ -790,6 +790,50 @@
       "description": "{name} privacy policy — how we process and protect your personal data in line with GDPR."
     }
   },
+  "Notes": {
+    "title": "Notes",
+    "add": "New note",
+    "empty": {
+      "title": "No notes yet",
+      "description": "Write down anything you want to remember or tell each other."
+    },
+    "save": "Add note",
+    "saveChanges": "Save changes",
+    "saving": "Saving",
+    "cancel": "Cancel",
+    "edit": "Edit note",
+    "edited": "edited",
+    "author": {
+      "you": "You",
+      "dj": "DJ",
+      "deleted": "Deleted account"
+    },
+    "fields": {
+      "content": {
+        "label": "Note",
+        "placeholder": "Write your note…",
+        "required": "Write something first",
+        "tooLong": "Use up to 2000 characters"
+      }
+    },
+    "delete": {
+      "button": "Delete note",
+      "title": "Delete this note?",
+      "description": "It will disappear for both you and the other side. This can't be undone.",
+      "confirm": "Delete"
+    },
+    "toast": {
+      "errorTitle": "Note not saved"
+    },
+    "serverMessage": {
+      "created": "Note added",
+      "updated": "Note saved",
+      "deleted": "Note deleted",
+      "invalid": "Check the note and try again.",
+      "notFound": "This note or event is no longer available.",
+      "unknown": "Something went wrong. Please try again."
+    }
+  },
   "Dashboard": {
     "Welcome": {
       "label": "Welcome",
@@ -811,6 +855,7 @@
           "wedding": "Wedding",
           "contracts": "Contract",
           "playlists": "Playlist",
+          "notes": "Notes",
           "account": "My account"
         }
       }
@@ -819,7 +864,8 @@
       "home": "Overview",
       "events": "Your events",
       "contracts": "Contract",
-      "playlists": "Playlist"
+      "playlists": "Playlist",
+      "notes": "Notes"
     },
     "Playlist": {
       "open": "You can add and remove songs until the DJ locks the playlist.",
