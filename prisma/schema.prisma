@@ -111,6 +111,7 @@ model User {
   businessDetails   BusinessDetails?
   contractSettings  ContractSettings?
   client            Client?
+  notes             Note[]
   sessions          Session[]
   accounts          Account[]
 
@@ -271,6 +272,7 @@ model Event {
   playlist             Playlist?
   wedding              WeddingDetails?
   inquiry              Inquiry?
+  notes                Note[]
 
   createdAt            DateTime     @default(now())
   updatedAt            DateTime     @updatedAt
@@ -305,6 +307,26 @@ model WeddingDetails {
   updatedAt            DateTime     @updatedAt
 
   @@map("wedding_details")
+}
+
+// Shared notes of an event – the couple and the DJ both read and add them.
+// Only the author edits or deletes their own note.
+model Note {
+  id                   String       @id @default(cuid())
+  content              String       @db.Text
+
+  eventId              String
+  event                Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  // a deleted account keeps its notes on the event, just without an author
+  authorId             String?
+  author               User?        @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  @@index([eventId])
+  @@map("note")
 }
 
 model Contract {

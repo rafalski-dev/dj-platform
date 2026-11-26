@@ -790,6 +790,50 @@
       "description": "Polityka prywatności {name} — jak przetwarzamy i chronimy Twoje dane osobowe zgodnie z RODO."
     }
   },
+  "Notes": {
+    "title": "Notatki",
+    "add": "Nowa notatka",
+    "empty": {
+      "title": "Nie ma jeszcze notatek",
+      "description": "Zapisz tu wszystko, o czym chcecie pamiętać albo co chcecie sobie przekazać."
+    },
+    "save": "Dodaj notatkę",
+    "saveChanges": "Zapisz zmiany",
+    "saving": "Zapisywanie",
+    "cancel": "Anuluj",
+    "edit": "Edytuj notatkę",
+    "edited": "edytowano",
+    "author": {
+      "you": "Ty",
+      "dj": "DJ",
+      "deleted": "Usunięte konto"
+    },
+    "fields": {
+      "content": {
+        "label": "Notatka",
+        "placeholder": "Napisz notatkę…",
+        "required": "Najpierw coś napisz",
+        "tooLong": "Maksymalnie 2000 znaków"
+      }
+    },
+    "delete": {
+      "button": "Usuń notatkę",
+      "title": "Usunąć tę notatkę?",
+      "description": "Zniknie dla Ciebie i dla drugiej strony. Tego nie można cofnąć.",
+      "confirm": "Usuń"
+    },
+    "toast": {
+      "errorTitle": "Nie zapisano notatki"
+    },
+    "serverMessage": {
+      "created": "Dodano notatkę",
+      "updated": "Zapisano notatkę",
+      "deleted": "Usunięto notatkę",
+      "invalid": "Sprawdź notatkę i spróbuj ponownie.",
+      "notFound": "Ta notatka lub wydarzenie nie jest już dostępne.",
+      "unknown": "Coś poszło nie tak. Spróbuj ponownie."
+    }
+  },
   "Dashboard": {
     "Welcome": {
       "label": "Witamy",
@@ -811,6 +855,7 @@
           "wedding": "Wesele",
           "contracts": "Umowa",
           "playlists": "Playlista",
+          "notes": "Notatki",
           "account": "Moje konto"
         }
       }
@@ -819,7 +864,8 @@
       "home": "Przegląd",
       "events": "Twoje wydarzenia",
       "contracts": "Umowa",
-      "playlists": "Playlista"
+      "playlists": "Playlista",
+      "notes": "Notatki"
     },
     "Playlist": {
       "open": "Możesz dodawać i usuwać utwory, dopóki DJ nie zablokuje playlisty.",

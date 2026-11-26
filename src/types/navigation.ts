@@ -21,7 +21,7 @@ export type AdminItem = {
 };
 
 export type DashboardItem = {
-  navKey: "home" | "event" | "wedding" | "contracts" | "playlists" | "account";
+  navKey: "home" | "event" | "wedding" | "contracts" | "playlists" | "notes" | "account";
   path: Pathname;
   requiresEvent?: boolean;
   // hidden (not greyed out) unless the selected event is a wedding
