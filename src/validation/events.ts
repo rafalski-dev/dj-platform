@@ -126,20 +126,7 @@ export function createEventSchema(t: CreateEventTranslator) {
             message: t("basics.wedding.required.groom"),
           });
         }
-        if (!data.basics.wedding.brideWitness) {
-          ctx.addIssue({
-            code: "custom",
-            path: ["basics", "wedding", "brideWitness"],
-            message: t("basics.wedding.required.brideWitness"),
-          });
-        }
-        if (!data.basics.wedding.groomWitness) {
-          ctx.addIssue({
-            code: "custom",
-            path: ["basics", "wedding", "groomWitness"],
-            message: t("basics.wedding.required.groomWitness"),
-          });
-        }
+        // witnesses are optional – the couple often adds them later in the client panel
         if (!data.dateAndPlace.weddingKind) {
           ctx.addIssue({
             code: "custom",

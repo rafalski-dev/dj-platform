@@ -18,6 +18,8 @@ import {
   EventDetailsType,
   myDetailsSchema,
   MyDetailsType,
+  weddingDetailsSchema,
+  WeddingDetailsType,
 } from "@/validation/dashboard";
 import { getTranslations } from "next-intl/server";
 import { cookies } from "next/headers";
@@ -149,6 +151,58 @@ export async function eventDetailsAction(eventId: string, formData: EventDetails
             },
           }),
       },
+    });
+
+    return { success: true, status: "success", message: t("saved") };
+  } catch (error) {
+    console.error(error);
+    return { success: false, status: "error", message: t("error") };
+  }
+}
+
+// The couple's people for the DJ (speeches, toasts) – only for the client's own wedding.
+// A wedding from an inquiry has no details row yet – it's created here with no ceremony;
+// the DJ sets the ceremony kind in the admin panel.
+export async function weddingDetailsAction(eventId: string, formData: WeddingDetailsType) {
+  const session = await getSession();
+  const t = await getTranslations("Dashboard.WeddingEdit");
+  if (!session) return { success: false, status: "invalidAuth", message: t("error") };
+
+  const result = weddingDetailsSchema(t).safeParse(formData);
+
+  if (!result.success) {
+    return {
+      success: false,
+      status: "invalid",
+      message: t("invalid"),
+      errors: formatZodErrors(result.error),
+    };
+  }
+
+  // empty optional fields are stored as null, like in the admin form
+  const { data: values } = result;
+  const data = {
+    bride: values.bride,
+    groom: values.groom,
+    brideWitness: values.brideWitness || null,
+    groomWitness: values.groomWitness || null,
+    brideMother: values.brideMother || null,
+    brideFather: values.brideFather || null,
+    groomMother: values.groomMother || null,
+    groomFather: values.groomFather || null,
+  };
+
+  try {
+    const event = await db.event.findFirst({
+      where: { id: eventId, type: "Wedding", client: { userId: session.user.id } },
+      select: { id: true },
+    });
+    if (!event) return { success: false, status: "notFound", message: t("error") };
+
+    await db.weddingDetails.upsert({
+      where: { eventId: event.id },
+      create: { ...data, eventId: event.id, weddingKind: "None" },
+      update: data,
     });
 
     return { success: true, status: "success", message: t("saved") };

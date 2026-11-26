@@ -70,3 +70,47 @@ export function eventDetailsSchema(t: EventDetailsTranslator) {
 }
 
 export type EventDetailsType = z.infer<ReturnType<typeof eventDetailsSchema>>;
+
+type WeddingDetailsTranslator = ReturnType<typeof useTranslations<"Dashboard.WeddingEdit">>;
+
+// Only the couple is required – witnesses are often chosen later, parents may not apply
+export function weddingDetailsSchema(t: WeddingDetailsTranslator) {
+  return z.object({
+    bride: z
+      .string()
+      .trim()
+      .min(1, { error: t("fields.bride.required") })
+      .max(100, { error: t("fields.tooLong") }),
+    groom: z
+      .string()
+      .trim()
+      .min(1, { error: t("fields.groom.required") })
+      .max(100, { error: t("fields.tooLong") }),
+    brideWitness: z
+      .string()
+      .trim()
+      .max(100, { error: t("fields.tooLong") }),
+    groomWitness: z
+      .string()
+      .trim()
+      .max(100, { error: t("fields.tooLong") }),
+    brideMother: z
+      .string()
+      .trim()
+      .max(100, { error: t("fields.tooLong") }),
+    brideFather: z
+      .string()
+      .trim()
+      .max(100, { error: t("fields.tooLong") }),
+    groomMother: z
+      .string()
+      .trim()
+      .max(100, { error: t("fields.tooLong") }),
+    groomFather: z
+      .string()
+      .trim()
+      .max(100, { error: t("fields.tooLong") }),
+  });
+}
+
+export type WeddingDetailsType = z.infer<ReturnType<typeof weddingDetailsSchema>>;

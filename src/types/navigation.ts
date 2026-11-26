@@ -21,9 +21,11 @@ export type AdminItem = {
 };
 
 export type DashboardItem = {
-  navKey: "home" | "event" | "contracts" | "playlists" | "account";
+  navKey: "home" | "event" | "wedding" | "contracts" | "playlists" | "account";
   path: Pathname;
   requiresEvent?: boolean;
+  // hidden (not greyed out) unless the selected event is a wedding
+  requiresWedding?: boolean;
 };
 
 // TS can match `{ pathname: <union> }` against Link's href only for up to 25 routes –

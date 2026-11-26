@@ -10,14 +10,18 @@ export async function MissingFieldsTasks({
   missing,
   contractStatus,
   playlist,
+  wedding,
 }: {
   missing: MissingField[];
   contractStatus: ContractStatus | null;
   playlist: { status: PlaylistStatus; songs: number } | null;
+  // only for a wedding – done once the couple's names are in
+  wedding?: { coupleDone: boolean };
 }) {
   const t = await getTranslations("Dashboard.Overview.missingFields");
   const tContract = await getTranslations("Dashboard.Overview.contract");
   const tPlaylist = await getTranslations("Dashboard.Overview.playlist");
+  const tWedding = await getTranslations("Dashboard.Overview.wedding");
 
   const missingEvent = missing.filter((field) => EVENT_FIELDS.includes(field));
   const addressDone = !missing.some((field) => ADDRESS_FIELDS.includes(field));
@@ -53,6 +57,18 @@ export async function MissingFieldsTasks({
         }}
       />
       <ContractTaskCard status={contractStatus} t={tContract} />
+      {wedding && (
+        <OverviewTaskCard
+          done={wedding.coupleDone}
+          label={tWedding("label")}
+          title={tWedding("title")}
+          description={tWedding(wedding.coupleDone ? "doneDescription" : "description")}
+          action={{
+            label: wedding.coupleDone ? t("edit") : tWedding("action"),
+            pathname: "/dashboard/wedding",
+          }}
+        />
+      )}
       <PlaylistTaskCard playlist={playlist} t={tPlaylist} />
     </div>
   );

@@ -18,6 +18,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   const selected = await getSelectedEventOption();
   const hasEvent = selected?.kind === "event";
+  const isWedding = hasEvent && selected.type === "Wedding";
 
   return (
     <>
@@ -25,7 +26,11 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <Wrapper>
         <div className="grid min-h-dvh grid-cols-1 pt-18 lg:grid-cols-[250px_1fr]">
           <aside className="border-border hidden h-[calc(100dvh-4.5rem)] border-r pr-5 lg:sticky lg:top-18 lg:flex lg:flex-col lg:justify-between lg:py-8">
-            <NavigationClientDesktop eventSelector={<EventSelector />} hasEvent={hasEvent} />
+            <NavigationClientDesktop
+              eventSelector={<EventSelector />}
+              hasEvent={hasEvent}
+              isWedding={isWedding}
+            />
             <LogoutButton />
           </aside>
           <main className="flex flex-col gap-5 py-5 md:py-6 lg:py-8 lg:pl-8">{children}</main>

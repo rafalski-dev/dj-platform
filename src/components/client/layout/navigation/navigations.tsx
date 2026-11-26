@@ -9,6 +9,7 @@ import {
   CircleUserIcon,
   DotIcon,
   FilesIcon,
+  HeartIcon,
   HomeIcon,
   ListMusicIcon,
   MapPinIcon,
@@ -19,6 +20,7 @@ import type { ReactNode } from "react";
 const icons = {
   home: <HomeIcon size={19} strokeWidth={1.4} />,
   event: <MapPinIcon size={19} strokeWidth={1.4} />,
+  wedding: <HeartIcon size={19} strokeWidth={1.4} />,
   contracts: <FilesIcon size={19} strokeWidth={1.4} />,
   playlists: <ListMusicIcon size={19} strokeWidth={1.4} />,
   account: <CircleUserIcon size={19} strokeWidth={1.4} />,
@@ -29,20 +31,35 @@ type NavigationClientProps = {
   eventSelector?: ReactNode;
   // false while only an inquiry (or nothing) is selected
   hasEvent: boolean;
+  // the selected event is a wedding – shows the Wedding page
+  isWedding: boolean;
 };
 
-export function NavigationClientContent({ eventSelector, hasEvent }: NavigationClientProps) {
+export function NavigationClientContent({
+  eventSelector,
+  hasEvent,
+  isWedding,
+}: NavigationClientProps) {
   return (
     <div className="mt-6 print:hidden">
-      <NavigationGroups eventSelector={eventSelector} hasEvent={hasEvent} isSheet />
+      <NavigationGroups
+        eventSelector={eventSelector}
+        hasEvent={hasEvent}
+        isWedding={isWedding}
+        isSheet
+      />
     </div>
   );
 }
 
-export function NavigationClientDesktop({ eventSelector, hasEvent }: NavigationClientProps) {
+export function NavigationClientDesktop({
+  eventSelector,
+  hasEvent,
+  isWedding,
+}: NavigationClientProps) {
   return (
     <div className="print:hidden">
-      <NavigationGroups eventSelector={eventSelector} hasEvent={hasEvent} />
+      <NavigationGroups eventSelector={eventSelector} hasEvent={hasEvent} isWedding={isWedding} />
     </div>
   );
 }
@@ -50,6 +67,7 @@ export function NavigationClientDesktop({ eventSelector, hasEvent }: NavigationC
 function NavigationGroups({
   eventSelector,
   hasEvent,
+  isWedding,
   isSheet = false,
 }: NavigationClientProps & { isSheet?: boolean }) {
   const t = useTranslations("Dashboard.Header");
@@ -59,7 +77,11 @@ function NavigationGroups({
       <div>
         <GroupTitle>{t("nav.eventTitle")}</GroupTitle>
         {eventSelector && <div className="mt-3">{eventSelector}</div>}
-        <NavigationList items={dashboardEventItems} hasEvent={hasEvent} isSheet={isSheet} />
+        <NavigationList
+          items={dashboardEventItems.filter((item) => !item.requiresWedding || isWedding)}
+          hasEvent={hasEvent}
+          isSheet={isSheet}
+        />
       </div>
       <div>
         <GroupTitle>{t("nav.accountTitle")}</GroupTitle>

@@ -83,8 +83,8 @@ export function eventDataFormatter(formData: CreateEventSchema) {
         create: {
           bride: formData.basics.wedding.bride,
           groom: formData.basics.wedding.groom,
-          brideWitness: formData.basics.wedding.brideWitness,
-          groomWitness: formData.basics.wedding.groomWitness,
+          brideWitness: formData.basics.wedding.brideWitness || null,
+          groomWitness: formData.basics.wedding.groomWitness || null,
           brideMother: formData.basics.wedding.brideMother || null,
           brideFather: formData.basics.wedding.brideFather || null,
           groomMother: formData.basics.wedding.groomMother || null,
