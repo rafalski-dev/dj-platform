@@ -288,8 +288,9 @@ model WeddingDetails {
 
   bride                String
   groom                String
-  brideWitness         String
-  groomWitness         String
+  // witnesses are often chosen late – only the couple is required
+  brideWitness         String?
+  groomWitness         String?
   brideMother          String?
   brideFather          String?
   groomMother          String?

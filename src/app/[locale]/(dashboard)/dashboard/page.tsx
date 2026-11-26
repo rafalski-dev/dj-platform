@@ -6,18 +6,25 @@ import { OverviewEmpty } from "@/components/client/sections/overview/overviewEmp
 import { OverviewWelcome } from "@/components/client/sections/overview/overviewWelcome";
 import { getClientContract } from "@/data/contracts";
 import { getClientPlaylistSummary } from "@/data/playlists";
-import { getEventMissingFields, getSelectedEventOption } from "@/data/dashboard";
+import {
+  getEventMissingFields,
+  getSelectedEventOption,
+  getWeddingDetailsToEdit,
+} from "@/data/dashboard";
 
 export default async function Dashboard() {
   const selected = await getSelectedEventOption();
-  const [missing, contract, playlist] =
+  const isWedding = selected?.kind === "event" && selected.type === "Wedding";
+  const [missing, contract, playlist, weddingEvent] =
     selected?.kind === "event"
       ? await Promise.all([
           getEventMissingFields(selected.id),
           getClientContract(),
           getClientPlaylistSummary(),
+          isWedding ? getWeddingDetailsToEdit(selected.id) : null,
         ])
-      : [[], null, null];
+      : [[], null, null, null];
+  const couple = weddingEvent?.wedding;
 
   return (
     <>
@@ -32,6 +39,7 @@ export default async function Dashboard() {
             missing={missing}
             contractStatus={contract?.status ?? null}
             playlist={playlist && { status: playlist.status, songs: playlist._count.songs }}
+            wedding={isWedding ? { coupleDone: !!(couple?.bride && couple.groom) } : undefined}
           />
         </>
       )}

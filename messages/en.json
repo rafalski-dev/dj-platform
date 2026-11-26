@@ -808,6 +808,7 @@
         "navItems": {
           "home": "Overview",
           "event": "Time and Place",
+          "wedding": "Wedding",
           "contracts": "Contract",
           "playlists": "Playlist",
           "account": "My account"
@@ -985,6 +986,13 @@
         "today": "Today!",
         "past": "Done"
       },
+      "wedding": {
+        "label": "Wedding",
+        "title": "Couple and family",
+        "description": "Add the couple, witnesses and parents – the DJ needs them for toasts.",
+        "doneDescription": "The couple is in. You can still add or change the rest.",
+        "action": "Add names"
+      },
       "playlist": {
         "label": "Playlist",
         "title": "Playlist",
@@ -1040,6 +1048,30 @@
           "description": "It goes on your contract.",
           "action": "Add address"
         }
+      }
+    },
+    "WeddingEdit": {
+      "title": "Wedding",
+      "coupleTitle": "Couple",
+      "witnessesTitle": "Witnesses",
+      "parentsTitle": "Parents",
+      "save": "Save details",
+      "saving": "Saving",
+      "saved": "Wedding details are saved",
+      "notSaved": "Wedding details weren't saved",
+      "invalid": "Check the details and try again.",
+      "error": "Something went wrong. Please try again.",
+      "fields": {
+        "fullNamePlaceholder": "Full name",
+        "tooLong": "Use up to 100 characters",
+        "bride": { "label": "Bride", "required": "Enter the bride's name" },
+        "groom": { "label": "Groom", "required": "Enter the groom's name" },
+        "brideWitness": "Maid of honour",
+        "groomWitness": "Best man",
+        "brideMother": "Bride's mother",
+        "brideFather": "Bride's father",
+        "groomMother": "Groom's mother",
+        "groomFather": "Groom's father"
       }
     },
     "EventEdit": {

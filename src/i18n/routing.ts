@@ -135,6 +135,10 @@ export const routing = defineRouting({
       pl: "/panel-klienta/wydarzenie/edycja",
       en: "/dashboard/event/edit",
     },
+    "/dashboard/wedding": {
+      pl: "/panel-klienta/wesele",
+      en: "/dashboard/wedding",
+    },
     "/dashboard/account": {
       pl: "/panel-klienta/konto",
       en: "/dashboard/account",

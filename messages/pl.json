@@ -808,6 +808,7 @@
         "navItems": {
           "home": "Przegląd",
           "event": "Godziny i miejsce",
+          "wedding": "Wesele",
           "contracts": "Umowa",
           "playlists": "Playlista",
           "account": "Moje konto"
@@ -985,6 +986,13 @@
         "today": "Dziś!",
         "past": "Odbyło się"
       },
+      "wedding": {
+        "label": "Wesele",
+        "title": "Para i rodzina",
+        "description": "Dodaj parę młodą, świadków i rodziców – DJ potrzebuje ich do toastów.",
+        "doneDescription": "Para młoda dodana. Resztę możesz jeszcze uzupełnić lub zmienić.",
+        "action": "Dodaj osoby"
+      },
       "playlist": {
         "label": "Playlista",
         "title": "Playlista",
@@ -1040,6 +1048,30 @@
           "description": "Trafi do Twojej umowy.",
           "action": "Dodaj adres"
         }
+      }
+    },
+    "WeddingEdit": {
+      "title": "Wesele",
+      "coupleTitle": "Para młoda",
+      "witnessesTitle": "Świadkowie",
+      "parentsTitle": "Rodzice",
+      "save": "Zapisz dane",
+      "saving": "Zapisywanie",
+      "saved": "Dane wesela zostały zapisane",
+      "notSaved": "Nie udało się zapisać danych wesela",
+      "invalid": "Sprawdź dane i spróbuj ponownie.",
+      "error": "Coś poszło nie tak. Spróbuj ponownie.",
+      "fields": {
+        "fullNamePlaceholder": "Imię i nazwisko",
+        "tooLong": "Maksymalnie 100 znaków",
+        "bride": { "label": "Panna młoda", "required": "Podaj imię panny młodej" },
+        "groom": { "label": "Pan młody", "required": "Podaj imię pana młodego" },
+        "brideWitness": "Świadkowa",
+        "groomWitness": "Świadek",
+        "brideMother": "Mama panny młodej",
+        "brideFather": "Tata panny młodej",
+        "groomMother": "Mama pana młodego",
+        "groomFather": "Tata pana młodego"
       }
     },
     "EventEdit": {

@@ -57,6 +57,7 @@ export async function NavigationClientMobile({ display }: { display: string }) {
         <NavigationClientContent
           eventSelector={<EventSelector />}
           hasEvent={selected?.kind === "event"}
+          isWedding={selected?.kind === "event" && selected.type === "Wedding"}
         />
         <SheetFooter>
           <LogoutButton />

@@ -95,6 +95,32 @@ export async function getEventDetailsToEdit(eventId: string) {
   });
 }
 
+// The selected wedding's people for the client's Wedding page – checked against the user.
+// null for an event that isn't a wedding.
+export async function getWeddingDetailsToEdit(eventId: string) {
+  const session = await getSession();
+  if (!session) return null;
+
+  return db.event.findFirst({
+    where: { id: eventId, type: "Wedding", client: { userId: session.user.id } },
+    select: {
+      id: true,
+      wedding: {
+        select: {
+          bride: true,
+          groom: true,
+          brideWitness: true,
+          groomWitness: true,
+          brideMother: true,
+          brideFather: true,
+          groomMother: true,
+          groomFather: true,
+        },
+      },
+    },
+  });
+}
+
 // What goes into the contract of the selected event – shown read-only while the DJ prepares it,
 // so the client can still fix something. Checked against the user.
 export async function getContractDetails(eventId: string) {
